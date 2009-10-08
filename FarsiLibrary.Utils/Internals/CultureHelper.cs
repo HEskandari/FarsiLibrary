@@ -10,9 +10,9 @@ namespace FarsiLibrary.Utils.Internals
     /// </summary>
     internal static class CultureHelper
     {
-        private static readonly CultureInfo faCulture = new CultureInfo("fa-IR");
-        private static readonly CultureInfo arCulture = new CultureInfo("ar-SA");
-        private static readonly CultureInfo internalfaCulture = new PersianCultureInfo();
+        private static CultureInfo faCulture;
+        private static CultureInfo arCulture;
+        private static CultureInfo internalfaCulture;
         private static readonly CultureInfo neuCulture = CultureInfo.InvariantCulture;
         private static readonly PersianCalendar pc = new PersianCalendar();
         private static readonly HijriCalendar hc = new HijriCalendar();
@@ -66,7 +66,13 @@ namespace FarsiLibrary.Utils.Internals
         /// </summary>
         public static CultureInfo ArabicCulture
         {
-            get { return arCulture; }
+            get
+            {
+                if(arCulture == null)
+                    arCulture = new CultureInfo("ar-SA");
+
+                return arCulture;
+            }
         }
 
         /// <summary>
@@ -74,7 +80,13 @@ namespace FarsiLibrary.Utils.Internals
         /// </summary>
         public static CultureInfo FarsiCulture
         {
-            get { return faCulture; }
+            get
+            {
+                if(faCulture == null)
+                    faCulture = new CultureInfo("fa-IR");
+
+                return faCulture;
+            }
         }
 
         /// <summary>
@@ -82,7 +94,13 @@ namespace FarsiLibrary.Utils.Internals
         /// </summary>
         public static CultureInfo PersianCulture
         {
-            get { return internalfaCulture; }
+            get
+            {
+                if (internalfaCulture == null)
+                    internalfaCulture = new PersianCultureInfo();
+
+                return internalfaCulture;
+            }
         }
 
         /// <summary>

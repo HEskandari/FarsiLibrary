@@ -36,7 +36,9 @@ namespace FarsiLibrary.LiveSamples
             var culture = new CultureInfo(tag);
 
             Thread.CurrentThread.CurrentUICulture = culture;
-            Thread.CurrentThread.CurrentCulture = culture;
+            //Note: Commented out for Security reasons. When run in
+            //Partial trust mode, you can not set CurrentCulture property.
+            //Thread.CurrentThread.CurrentCulture = culture;
             LocalizeDictionary.Instance.Culture = culture;
 
             RefreshCurrentPage();

@@ -697,7 +697,7 @@
                                 <ToggleButton x:Name="DropDownButton" Focusable="false" Margin="0" Grid.Column="0" Grid.ColumnSpan="3" Style="{DynamicResource ComboBoxButtonStyle}" IsChecked="{Binding Path=IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" />
                             </Grid>
                         </Border>
-                        <Controls:FXPopup x:Name="PART_Popup" Placement="Bottom" Focusable="false" PopupAnimation="{DynamicResource {x:Static SystemParameters.ComboBoxPopupAnimationKey}}" IsOpen="{Binding Path=IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}}">
+                        <Controls:FXPopup x:Name="PART_Popup" PlacementTarget="{Binding }" Placement="Bottom" Focusable="false" PopupAnimation="{DynamicResource {x:Static SystemParameters.ComboBoxPopupAnimationKey}}" IsOpen="{Binding Path=IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}}">
                             <Border Name="DropDownBorder" Background="{DynamicResource BackgroundBrush}" MinWidth="{TemplateBinding ActualWidth}" MaxHeight="{TemplateBinding MaxDropDownHeight}">
                                 <ScrollViewer CanContentScroll="{TemplateBinding ScrollViewer.CanContentScroll}" Focusable="false" HorizontalScrollBarVisibility="{TemplateBinding ScrollViewer.HorizontalScrollBarVisibility}" VerticalScrollBarVisibility="{TemplateBinding ScrollViewer.VerticalScrollBarVisibility}">
                                     <ItemsPresenter KeyboardNavigation.DirectionalNavigation="Cycle" Margin="1" />

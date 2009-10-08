@@ -29,7 +29,6 @@
     <Compile Include="LocalizerManagerTest.cs" />
     <Compile Include="MessageBoxTest.cs" />
     <Compile Include="Mocks\MockStyledControl.cs">
-      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Mocks\Office2003ColorStub.cs" />
     <Compile Include="MonthViewCultureTest.cs" />

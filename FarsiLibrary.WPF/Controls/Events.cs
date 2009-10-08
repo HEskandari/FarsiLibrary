@@ -136,17 +136,17 @@ namespace FarsiLibrary.WPF.Controls
 
         #region Methods
 
-        /// <summary>
-        /// This method is used to perform the proper type casting in order to
-        /// call the type-safe DateSelectionChangedEventHandler delegate for the DateSelectionChangedEvent event.
-        /// </summary>
-        /// <param name="genericHandler">The handler to invoke.</param>
-        /// <param name="genericTarget">The current object along the event's route.</param>
-        protected override void InvokeEventHandler(Delegate genericHandler, object genericTarget)
-        {
-            DateSelectionChangedEventHandler handler = (DateSelectionChangedEventHandler)genericHandler;
-            handler(genericTarget, this);
-        }
+        ///// <summary>
+        ///// This method is used to perform the proper type casting in order to
+        ///// call the type-safe DateSelectionChangedEventHandler delegate for the DateSelectionChangedEvent event.
+        ///// </summary>
+        ///// <param name="genericHandler">The handler to invoke.</param>
+        ///// <param name="genericTarget">The current object along the event's route.</param>
+        //protected override void InvokeEventHandler(Delegate genericHandler, object genericTarget)
+        //{
+        //    DateSelectionChangedEventHandler handler = (DateSelectionChangedEventHandler)genericHandler;
+        //    handler(genericTarget, this);
+        //}
 
         #endregion
     }
