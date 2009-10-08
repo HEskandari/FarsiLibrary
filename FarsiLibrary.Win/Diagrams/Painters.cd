@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Font Name="Tahoma" Size="8.25" />
+  <Class Name="FarsiLibrary.Win.Drawing.FAPainterBase" Collapsed="true">
+    <Position X="3" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Drawing\FAPainterBase.cs</FileName>
+      <HashCode>AAAAAAAAAGAAAAAAAAAAAAAAAAAAAAACAAAAAgIAAAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="FarsiLibrary.Win.Drawing.FAPainterOffice2000" Collapsed="true">
+    <Position X="0.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Drawing\FAPainterOffice2000.cs</FileName>
+      <HashCode>AAEAAAAAIAAAgEAAGQAAAAAAAABAAAAAAAAAAQAAAAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="FarsiLibrary.Win.Drawing.FAPainterOffice2003" Collapsed="true">
+    <Position X="3" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Drawing\FAPainterOffice2003.cs</FileName>
+      <HashCode>AAEAAAAAIAAAgEAAGQAAAAAAAABAAAAAAAAAAQAAAAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="FarsiLibrary.Win.Drawing.FAPainterWindowsXP" Collapsed="true">
+    <Position X="5.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Drawing\FAPainterWindowsXP.cs</FileName>
+      <HashCode>AAEAAAAAIAAAgEAAGQAAAAAAAABAAAAAAAAAAQAAAAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Interface Name="FarsiLibrary.Win.Drawing.IFAPainter">
+    <Position X="7" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Drawing\IFAPainter.cs</FileName>
+      <HashCode>AAEAAAAAIEAAgEAAGQAAAAAAAABAAAAAAAAAAQIAAAA=</HashCode>
+    </TypeIdentifier>
+  </Interface>
+</ClassDiagram>

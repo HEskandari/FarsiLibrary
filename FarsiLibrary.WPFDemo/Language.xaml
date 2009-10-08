@@ -1,0 +1,19 @@
+﻿<Window x:Class="FarsiLibrary.WPFDemo.Language"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="FarsiLibrary FX Demo Application" Height="180" Width="350" WindowStartupLocation="CenterScreen">
+	<StackPanel>
+		<Label Content="Please select your language : " />
+		<ComboBox Width="200" x:Name="cmbLanguage">
+			<ComboBox.Items>
+				<ComboBoxItem Content="English" IsSelected="True" />
+				<ComboBoxItem Content="Persian" />
+				<ComboBoxItem Content="Arabic" />
+			</ComboBox.Items>
+		</ComboBox>
+
+		<TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Width="250" Margin="20" Text="Copyright (c) 2007 Hadi Eskandari (H.Eskandari@Gmail.com) under MIT license." TextWrapping="Wrap" TextAlignment="Center"  />
+		
+		<Button x:Name="btnOkay" Content="Proceed" IsDefault="True" Width="100" Margin="0,-10,0,0" Click="btnOkay_Click" />
+	</StackPanel>
+</Window>

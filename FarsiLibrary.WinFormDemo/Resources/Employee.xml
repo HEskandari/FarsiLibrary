@@ -1,0 +1,112 @@
+<?xml version="1.0" standalone="yes"?>
+<PersonDataSet xmlns="http://tempuri.org/PersonDataSet.xsd">
+  <xs:schema id="PersonDataSet" targetNamespace="http://tempuri.org/PersonDataSet.xsd" xmlns:mstns="http://tempuri.org/PersonDataSet.xsd" xmlns="http://tempuri.org/PersonDataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" attributeFormDefault="qualified" elementFormDefault="qualified">
+    <xs:element name="PersonDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true">
+      <xs:complexType>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element name="Employee">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="EmployeeID" type="xs:int" />
+                <xs:element name="Lastname" type="xs:string" minOccurs="0" />
+                <xs:element name="Firstname" type="xs:string" minOccurs="0" />
+                <xs:element name="Birthdate" type="xs:dateTime" minOccurs="0" />
+                <xs:element name="Hiredate" type="xs:dateTime" minOccurs="0" />
+                <xs:element name="Address" type="xs:string" minOccurs="0" />
+                <xs:element name="City" type="xs:string" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:choice>
+      </xs:complexType>
+      <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+        <xs:selector xpath=".//mstns:Employee" />
+        <xs:field xpath="mstns:EmployeeID" />
+      </xs:unique>
+    </xs:element>
+  </xs:schema>
+  <Employee>
+    <EmployeeID>1</EmployeeID>
+    <Lastname>Davolio</Lastname>
+    <Firstname>Nancy</Firstname>
+    <Birthdate>1948-12-08T00:00:00+03:30</Birthdate>
+    <Hiredate>1992-05-01T00:00:00+04:30</Hiredate>
+    <Address>507 - 20th Ave. E.
+Apt. 2A</Address>
+    <City>Seattle</City>
+  </Employee>
+  <Employee>
+    <EmployeeID>2</EmployeeID>
+    <Lastname>Fuller</Lastname>
+    <Firstname>Andrew</Firstname>
+    <Birthdate>1952-02-19T00:00:00+03:30</Birthdate>
+    <Hiredate>1992-08-14T00:00:00+04:30</Hiredate>
+    <Address>908 W. Capital Way</Address>
+    <City>Tacoma</City>
+  </Employee>
+  <Employee>
+    <EmployeeID>3</EmployeeID>
+    <Lastname>Leverling</Lastname>
+    <Firstname>Janet</Firstname>
+    <Birthdate>1963-08-30T00:00:00+04:30</Birthdate>
+    <Hiredate>1992-04-01T00:00:00+04:30</Hiredate>
+    <Address>722 Moss Bay Blvd.</Address>
+    <City>Kirkland</City>
+  </Employee>
+  <Employee>
+    <EmployeeID>4</EmployeeID>
+    <Lastname>Peacock</Lastname>
+    <Firstname>Margaret</Firstname>
+    <Birthdate>1937-09-19T00:00:00+04:30</Birthdate>
+    <Hiredate>1993-05-03T00:00:00+04:30</Hiredate>
+    <Address>4110 Old Redmond Rd.</Address>
+    <City>Redmond</City>
+  </Employee>
+  <Employee>
+    <EmployeeID>5</EmployeeID>
+    <Lastname>Buchanan</Lastname>
+    <Firstname>Steven</Firstname>
+    <Birthdate>1955-03-04T00:00:00+03:30</Birthdate>
+    <Hiredate>1993-10-17T00:00:00+03:30</Hiredate>
+    <Address>14 Garrett Hill</Address>
+    <City>London</City>
+  </Employee>
+  <Employee>
+    <EmployeeID>6</EmployeeID>
+    <Lastname>Suyama</Lastname>
+    <Firstname>Michael</Firstname>
+    <Birthdate>1963-07-02T00:00:00+04:30</Birthdate>
+    <Hiredate>1993-10-17T00:00:00+03:30</Hiredate>
+    <Address>Coventry House
+Miner Rd.</Address>
+    <City>London</City>
+  </Employee>
+  <Employee>
+    <EmployeeID>7</EmployeeID>
+    <Lastname>King</Lastname>
+    <Firstname>Robert</Firstname>
+    <Birthdate>1960-05-29T00:00:00+04:30</Birthdate>
+    <Hiredate>1994-01-02T00:00:00+03:30</Hiredate>
+    <Address>Edgeham Hollow
+Winchester Way</Address>
+    <City>London</City>
+  </Employee>
+  <Employee>
+    <EmployeeID>8</EmployeeID>
+    <Lastname>Callahan</Lastname>
+    <Firstname>Laura</Firstname>
+    <Birthdate>1958-01-09T00:00:00+03:30</Birthdate>
+    <Hiredate>1994-03-05T00:00:00+03:30</Hiredate>
+    <Address>4726 - 11th Ave. N.E.</Address>
+    <City>Seattle</City>
+  </Employee>
+  <Employee>
+    <EmployeeID>9</EmployeeID>
+    <Lastname>Dodsworth</Lastname>
+    <Firstname>Anne</Firstname>
+    <Birthdate>1966-01-27T00:00:00+03:30</Birthdate>
+    <Hiredate>1994-11-15T00:00:00+03:30</Hiredate>
+    <Address>7 Houndstooth Rd.</Address>
+    <City>London</City>
+  </Employee>
+</PersonDataSet>

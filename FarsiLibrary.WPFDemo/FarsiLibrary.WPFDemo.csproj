@@ -1,0 +1,106 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{92DB562E-4261-466D-ACE4-66A51505B7C2}</ProjectGuid>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <RootNamespace>FarsiLibrary.WPFDemo</RootNamespace>
+    <AssemblyName>FarsiLibrary.WPFDemo</AssemblyName>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <StartupObject>FarsiLibrary.WPFDemo.Program</StartupObject>
+    <ProductVersion>9.0.30729</ProductVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\Solution Items\CommonAssemblyInfo.cs">
+      <Link>Properties\CommonAssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="Converters\LongDateTimeConverter.cs" />
+    <Compile Include="Language.xaml.cs">
+      <DependentUpon>Language.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\DateConverter.xaml.cs">
+      <DependentUpon>DateConverter.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\DatePicker.xaml.cs">
+      <DependentUpon>DatePicker.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\MonthView.xaml.cs">
+      <DependentUpon>MonthView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Themes.xaml.cs">
+      <DependentUpon>Themes.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Language.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\DateConverter.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\DatePicker.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\MonthView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Themes.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FarsiLibrary.Resources\FarsiLibrary.Resources.csproj">
+      <Project>{E5575624-4B92-4E51-B98B-20F31FE5B5B4}</Project>
+      <Name>FarsiLibrary.Resources</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FarsiLibrary.Utils\FarsiLibrary.Utils.csproj">
+      <Project>{ED29E567-C801-49E9-8C33-CFB66042B07B}</Project>
+      <Name>FarsiLibrary.Utils</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FarsiLibrary.Win\FarsiLibrary.Win.csproj">
+      <Project>{83C3AEB8-5322-4DB6-9E7E-4BF8A319DCE7}</Project>
+      <Name>FarsiLibrary.Win</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FarsiLibrary.WPF.VisualStudio.Design\FarsiLibrary.WPF.VisualStudio.Design.csproj">
+      <Project>{E7F44116-95CA-4E29-9215-FB4366589780}</Project>
+      <Name>FarsiLibrary.WPF.VisualStudio.Design</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FarsiLibrary.WPF\FarsiLibrary.WPF.csproj">
+      <Project>{01D673DE-5CD4-491D-B4AF-563360C1BC9E}</Project>
+      <Name>FarsiLibrary.WPF</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\App.png" />
+  </ItemGroup>
+  <PropertyGroup>
+    <ProjectRefType>WPF</ProjectRefType>
+  </PropertyGroup>
+  <Import Project="CSharp.targets" />
+</Project>

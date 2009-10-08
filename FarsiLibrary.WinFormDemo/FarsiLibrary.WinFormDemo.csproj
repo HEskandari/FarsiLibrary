@@ -1,0 +1,373 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{A5EE7D36-30E7-49AB-90EC-97836840C144}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>FarsiLibrary.WinFormDemo</RootNamespace>
+    <AssemblyName>FarsiLibrary.WinFormDemo</AssemblyName>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <TargetFrameworkSubset>
+    </TargetFrameworkSubset>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="..\Solution Items\CommonAssemblyInfo.cs">
+      <Link>Properties\CommonAssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="Demo\DemoBase.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Demo\DemoBase.Designer.cs">
+      <DependentUpon>DemoBase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Demo\DemoItem.cs" />
+    <Compile Include="Demo\IDemoPage.cs" />
+    <Compile Include="Pages\CustomFormattingAndValidating.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Pages\CustomFormattingAndValidating.Designer.cs">
+      <DependentUpon>CustomFormattingAndValidating.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\DevExpressIntegration.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Pages\DevExpressIntegration.Designer.cs">
+      <DependentUpon>DevExpressIntegration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ThemeAndFocusStyle.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Pages\ThemeAndFocusStyle.Designer.cs">
+      <DependentUpon>ThemeAndFocusStyle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\MultiViewControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Pages\MultiViewControl.Designer.cs">
+      <DependentUpon>MultiViewControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\DayViewControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Pages\DayViewControl.Designer.cs">
+      <DependentUpon>DayViewControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Employee.cs" />
+    <Compile Include="Pages\Events.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Pages\Events.Designer.cs">
+      <DependentUpon>Events.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\RightToLeft.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Pages\RightToLeft.Designer.cs">
+      <DependentUpon>RightToLeft.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Cultures.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Pages\Cultures.Designer.cs">
+      <DependentUpon>Cultures.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\DateConversion.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Pages\DateConversion.Designer.cs">
+      <DependentUpon>DateConversion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\DateCalculation.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Pages\DateCalculation.Designer.cs">
+      <DependentUpon>DateCalculation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ConvertNumbersToWord.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Pages\ConvertNumbersToWord.Designer.cs">
+      <DependentUpon>ConvertNumbersToWord.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\BindingToDataSet.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Pages\BindingToDataSet.Designer.cs">
+      <DependentUpon>BindingToDataSet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\BindingToList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Pages\BindingToList.Designer.cs">
+      <DependentUpon>BindingToList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\CustomCulturesAndLocalizer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Pages\CustomCulturesAndLocalizer.Designer.cs">
+      <DependentUpon>CustomCulturesAndLocalizer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\DateValidation.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Pages\DateValidation.Designer.cs">
+      <DependentUpon>DateValidation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\GridViewColumnEditor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Pages\GridViewColumnEditor.Designer.cs">
+      <DependentUpon>GridViewColumnEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\UsingThemeManager.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Pages\UsingThemeManager.Designer.cs">
+      <DependentUpon>UsingThemeManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ToolStripIntegration.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Pages\ToolStripIntegration.Designer.cs">
+      <DependentUpon>ToolStripIntegration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ToStringFormatter.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Pages\ToStringFormatter.Designer.cs">
+      <DependentUpon>ToStringFormatter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ScrollingOptions.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Pages\ScrollingOptions.Designer.cs">
+      <DependentUpon>ScrollingOptions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Casting.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Pages\Casting.Designer.cs">
+      <DependentUpon>Casting.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\DayCustomDrawing.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Pages\DayCustomDrawing.Designer.cs">
+      <DependentUpon>DayCustomDrawing.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\MessageBoxDisplay.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Pages\MessageBoxDisplay.Designer.cs">
+      <DependentUpon>MessageBoxDisplay.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\MultiSelection.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Pages\MultiSelection.Designer.cs">
+      <DependentUpon>MultiSelection.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\DateTimeFormat.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Pages\DateTimeFormat.Designer.cs">
+      <DependentUpon>DateTimeFormat.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainWinForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainWinForm.Designer.cs">
+      <DependentUpon>MainWinForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Data\ESLocalizer.cs" />
+    <Compile Include="Data\PersonnelDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PersonnelDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <EmbeddedResource Include="Demo\DemoBase.resx">
+      <DependentUpon>DemoBase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\CustomFormattingAndValidating.resx">
+      <DependentUpon>CustomFormattingAndValidating.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\DevExpressIntegration.resx">
+      <DependentUpon>DevExpressIntegration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\ThemeAndFocusStyle.resx">
+      <DependentUpon>ThemeAndFocusStyle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\MultiViewControl.resx">
+      <DependentUpon>MultiViewControl.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\DayViewControl.resx">
+      <DependentUpon>DayViewControl.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Events.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>Events.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\RightToLeft.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>RightToLeft.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Cultures.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>Cultures.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\DateConversion.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>DateConversion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\DateCalculation.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>DateCalculation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\ConvertNumbersToWord.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>ConvertNumbersToWord.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\BindingToDataSet.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>BindingToDataSet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\BindingToList.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>BindingToList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\CustomCulturesAndLocalizer.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>CustomCulturesAndLocalizer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\DateValidation.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>DateValidation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\GridViewColumnEditor.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>GridViewColumnEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\UsingThemeManager.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>UsingThemeManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\ToolStripIntegration.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>ToolStripIntegration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\ToStringFormatter.resx">
+      <DependentUpon>ToStringFormatter.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\ScrollingOptions.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>ScrollingOptions.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Casting.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>Casting.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\DayCustomDrawing.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>DayCustomDrawing.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\MessageBoxDisplay.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>MessageBoxDisplay.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\MultiSelection.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>MultiSelection.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\DateTimeFormat.resx">
+      <DependentUpon>DateTimeFormat.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainWinForm.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>MainWinForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Employee.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Redo.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Data\PersonnelDataSet.xsc">
+      <DependentUpon>PersonnelDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Data\PersonnelDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>PersonnelDataSet.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Data\PersonnelDataSet.xss">
+      <DependentUpon>PersonnelDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Resources\OK.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FarsiLibrary.Resources\FarsiLibrary.Resources.csproj">
+      <Project>{E5575624-4B92-4E51-B98B-20F31FE5B5B4}</Project>
+      <Name>FarsiLibrary.Resources</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FarsiLibrary.Utils\FarsiLibrary.Utils.csproj">
+      <Project>{ED29E567-C801-49E9-8C33-CFB66042B07B}</Project>
+      <Name>FarsiLibrary.Utils</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FarsiLibrary.Win.External\FarsiLibrary.Win.External.csproj">
+      <Project>{240A0D2C-5E44-4C05-8995-EE63E4AE9D0E}</Project>
+      <Name>FarsiLibrary.Win.External</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FarsiLibrary.Win\FarsiLibrary.Win.csproj">
+      <Project>{83C3AEB8-5322-4DB6-9E7E-4BF8A319DCE7}</Project>
+      <Name>FarsiLibrary.Win</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="DevExpress.Data.v8.3, Version=8.3.2.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Lib\DevExpTrial\DevExpress.Data.v8.3.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Utils.v8.3, Version=8.3.2.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Lib\DevExpTrial\DevExpress.Utils.v8.3.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraEditors.v8.3, Version=8.3.2.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Lib\DevExpTrial\DevExpress.XtraEditors.v8.3.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraEditors.v8.3.Design, Version=8.3.2.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Lib\DevExpTrial\DevExpress.XtraEditors.v8.3.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\new.png" />
+  </ItemGroup>
+  <PropertyGroup>
+    <ProjectRefType>Win</ProjectRefType>
+  </PropertyGroup>
+  <Import Project="CSharp.targets" />
+</Project>

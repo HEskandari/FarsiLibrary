@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectType>Local</ProjectType>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{240A0D2C-5E44-4C05-8995-EE63E4AE9D0E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <AssemblyName>FarsiLibrary.Win.External</AssemblyName>
+    <RootNamespace>FarsiLibrary.Win.External</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DevExpress.Data.v8.3, Version=8.3.2.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Lib\DevExpTrial\DevExpress.Data.v8.3.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Utils.v8.3, Version=8.3.2.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Lib\DevExpTrial\DevExpress.Utils.v8.3.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraEditors.v8.3, Version=8.3.2.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Lib\DevExpTrial\DevExpress.XtraEditors.v8.3.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FarsiLibrary.Resources\FarsiLibrary.Resources.csproj">
+      <Project>{E5575624-4B92-4E51-B98B-20F31FE5B5B4}</Project>
+      <Name>FarsiLibrary.Resources</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FarsiLibrary.Utils\FarsiLibrary.Utils.csproj">
+      <Project>{ED29E567-C801-49E9-8C33-CFB66042B07B}</Project>
+      <Name>FarsiLibrary.Utils</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FarsiLibrary.Win\FarsiLibrary.Win.csproj">
+      <Project>{83C3AEB8-5322-4DB6-9E7E-4BF8A319DCE7}</Project>
+      <Name>FarsiLibrary.Win</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\Solution Items\CommonAssemblyInfo.cs">
+      <Link>Properties\CommonAssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="DevExpress\RepositoryItemFADatePicker.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="DevExpress\XtraFADatePicker.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="DevExpress\XtraFAMonthView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+  </ItemGroup>
+  <PropertyGroup>
+    <ProjectRefType>Win</ProjectRefType>
+  </PropertyGroup>
+  <Import Project="CSharp.targets" />
+</Project>

@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Font Name="Tahoma" Size="8.25" />
+  <Class Name="FarsiLibrary.Win.FAContainerComboBox" Collapsed="true">
+    <Position X="5.75" Y="11.75" Width="1.75" />
+    <TypeIdentifier>
+      <FileName>Controls\FAContainerComboBox.cs</FileName>
+      <HashCode>AAAAQAAIAziACAgSABAIAQAACEAAAAAAICAcCAACGgA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FarsiLibrary.Win.FADatePicker" Collapsed="true">
+    <Position X="4" Y="13" Width="2.25" />
+    <TypeIdentifier>
+      <FileName>Controls\FADatePicker.cs</FileName>
+      <HashCode>AIRkIAAwBAggFAAEABQGgQAAAAABAQAAAQIDCAEAAJI=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FarsiLibrary.Win.FAMonthView" Collapsed="true">
+    <Position X="1.75" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Controls\FAMonthView.cs</FileName>
+      <HashCode>6y3gcMu5rzJw0YboZPRAmELgwhegAao9egArjLLOQcw=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FarsiLibrary.Win.BaseClasses.BaseControl" Collapsed="true">
+    <Position X="5.75" Y="9" Width="1.75" />
+    <TypeIdentifier>
+      <FileName>BaseClasses\BaseControl.cs</FileName>
+      <HashCode>JAJQFRRYEDFBAQDIYTVQEBAAgFAAgAkYIIAJCAACAFg=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="FarsiLibrary.Win.BaseClasses.BaseStyledControl" Collapsed="true">
+    <Position X="4.75" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>BaseClasses\BaseStyledControl.cs</FileName>
+      <HashCode>AEBAAgIAIBBAAINQQAQAAACgAEAAAAAAAAAAAAAAgIA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FarsiLibrary.Win.BaseControls.TextEditBase" Collapsed="true">
+    <Position X="5.75" Y="10.25" Width="1.75" />
+    <TypeIdentifier>
+      <FileName>BaseClasses\TextEditBase.cs</FileName>
+      <HashCode>IwCATAgAAAbZArBTAAAIHAgCEAIAkBEBEAAQSAYHDII=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FarsiLibrary.Win.FADatePickerConverter" Collapsed="true">
+    <Position X="7" Y="13" Width="2.25" />
+    <TypeIdentifier>
+      <FileName>Controls\FADatePickerConverter.cs</FileName>
+      <HashCode>AIRkIAAwJAgglAAEQBQGhYABAAADAQEEQQILCAECILM=</HashCode>
+    </TypeIdentifier>
+  </Class>
+</ClassDiagram>

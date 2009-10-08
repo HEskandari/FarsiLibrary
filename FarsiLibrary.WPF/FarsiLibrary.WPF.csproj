@@ -1,0 +1,85 @@
+﻿<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{01D673DE-5CD4-491D-B4AF-563360C1BC9E}</ProjectGuid>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <RootNamespace>FarsiLibrary.WPF</RootNamespace>
+    <AssemblyName>FarsiLibrary.WPF</AssemblyName>
+    <WarningLevel>4</WarningLevel>
+    <OutputType>library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <ProductVersion>9.0.30729</ProductVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <Page Include="Themes\Aero.NormalColor.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\Generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\Solution Items\CommonAssemblyInfo.cs">
+      <Link>Properties\CommonAssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="Automation\FXDatePickerAutomationPeer.cs" />
+    <Compile Include="Automation\FXMonthViewAutomationPeer.cs" />
+    <Compile Include="Automation\FXMonthViewContainerPeer.cs" />
+    <Compile Include="Automation\FXMonthViewItemAutomationPeer.cs" />
+    <Compile Include="Base\TextCell.cs" />
+    <Compile Include="Controls\Decorators\AeroButtonChrome.cs" />
+    <Compile Include="Controls\Decorators\ButtonChrome.cs" />
+    <Compile Include="Controls\Decorators\LunaButtonChrome.cs" />
+    <Compile Include="Controls\Popup\FXPopup.cs" />
+    <Compile Include="Controls\ThemeColors.cs" />
+    <Compile Include="Converters\DateTimeValueConverter.cs" />
+    <Compile Include="Controls\DatePicker\FXDatePicker.cs" />
+    <Compile Include="Controls\Events.cs" />
+    <Compile Include="Controls\MonthView\CalendarDay.cs" />
+    <Compile Include="Controls\MonthView\CalendarDayCollection.cs" />
+    <Compile Include="Controls\MonthView\FXMonthViewButton.cs" />
+    <Compile Include="Controls\MonthView\FXMonthViewCommands.cs" />
+    <Compile Include="Controls\MonthView\FXMonthViewHeader.cs" />
+    <Compile Include="Controls\MonthView\FXMonthViewHelper.cs" />
+    <Compile Include="Converters\DaysHeaderConverter.cs" />
+    <Compile Include="Controls\MonthView\FXMonthView.cs" />
+    <Compile Include="Controls\MonthView\FXMonthViewContainer.cs" />
+    <Compile Include="Controls\MonthView\FXMonthViewWeekDayHeaderCell.cs" />
+    <Compile Include="Controls\MonthView\FXMonthViewItem.cs" />
+    <Compile Include="Converters\DayValueConverter.cs" />
+    <Compile Include="Converters\PersianDateValueConverter.cs" />
+    <Compile Include="Converters\YearMonthConverter.cs" />
+    <Compile Include="Properties\LocalAssemblyInfo.cs" />
+    <Compile Include="Resources\StringLookupExtension.cs" />
+    <Compile Include="Controls\Decorators\SystemDropShadowChrome.cs" />
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FarsiLibrary.Resources\FarsiLibrary.Resources.csproj">
+      <Project>{E5575624-4B92-4E51-B98B-20F31FE5B5B4}</Project>
+      <Name>FarsiLibrary.Resources</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FarsiLibrary.Utils\FarsiLibrary.Utils.csproj">
+      <Project>{ED29E567-C801-49E9-8C33-CFB66042B07B}</Project>
+      <Name>FarsiLibrary.Utils</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="UIAutomationTypes">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="FXDatePicker.Icon.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="FXMonthView.Icon.bmp" />
+  </ItemGroup>
+  <PropertyGroup>
+    <ProjectRefType>WPF</ProjectRefType>
+  </PropertyGroup>
+  <Import Project="CSharp.targets" />
+</Project>

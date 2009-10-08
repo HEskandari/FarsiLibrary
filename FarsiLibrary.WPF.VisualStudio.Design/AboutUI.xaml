@@ -1,0 +1,117 @@
+﻿<Window x:Class="FarsiLibrary.WPF.VisualStudio.Design.AboutUI"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Height="334" Width="545">
+    <Window.Resources>
+        <SolidColorBrush x:Key="SolidBorderBrush" Color="#888"/>
+        <SolidColorBrush x:Key="DisabledForegroundBrush" Color="#888"/>
+        <SolidColorBrush x:Key="DisabledBackgroundBrush" Color="#EEE"/>
+        <SolidColorBrush x:Key="DisabledBorderBrush" Color="#AAA"/>
+        <SolidColorBrush x:Key="WindowBackgroundBrush" Color="#FFF"/>
+
+        <LinearGradientBrush x:Key="LightBrush" EndPoint="0,1" StartPoint="0,0">
+            <GradientStop Color="#FFF" Offset="0.0"/>
+            <GradientStop Color="#EEE" Offset="1.0"/>
+        </LinearGradientBrush>
+
+        <Style x:Key="SimpleTabItem" TargetType="{x:Type TabItem}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type TabItem}">
+                        <Grid>
+                            <Border Margin="0,0,-4,0" x:Name="Border" Background="{DynamicResource LightBrush}" BorderBrush="{DynamicResource SolidBorderBrush}" BorderThickness="1,1,1,1" CornerRadius="2,12,0,0">
+                                <ContentPresenter HorizontalAlignment="Center" Margin="12,2,12,2" x:Name="ContentSite" VerticalAlignment="Center" RecognizesAccessKey="True" ContentSource="Header"/>
+                            </Border>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsSelected" Value="True">
+                                <Setter Property="Panel.ZIndex" Value="100"/>
+                                <Setter Property="Background" Value="{DynamicResource WindowBackgroundBrush}" TargetName="Border"/>
+                                <Setter Property="BorderThickness" Value="1,1,1,0" TargetName="Border"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter Property="Background" Value="{DynamicResource DisabledBackgroundBrush}" TargetName="Border"/>
+                                <Setter Property="BorderBrush" Value="{DynamicResource DisabledBorderBrush}" TargetName="Border"/>
+                                <Setter Property="Foreground" Value="{DynamicResource DisabledForegroundBrush}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="SimpleTabControl" TargetType="{x:Type TabControl}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type TabControl}">
+                        <Grid KeyboardNavigation.TabNavigation="Local">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <TabPanel Grid.Row="0" Margin="0,0,4,-1" x:Name="HeaderPanel" Background="Transparent" IsItemsHost="True" Panel.ZIndex="1" KeyboardNavigation.TabIndex="1"/>
+                            <Border Grid.Row="1" x:Name="Border" Background="{DynamicResource WindowBackgroundBrush}" BorderBrush="{DynamicResource SolidBorderBrush}" BorderThickness="1" CornerRadius="2" KeyboardNavigation.DirectionalNavigation="Contained" KeyboardNavigation.TabNavigation="Local" KeyboardNavigation.TabIndex="2">
+                                <ContentPresenter Margin="4" x:Name="PART_SelectedContentHost" ContentSource="SelectedContent"/>
+                            </Border>
+                        </Grid>
+
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter Property="Foreground" Value="{DynamicResource DisabledForegroundBrush}"/>
+                                <Setter Property="BorderBrush" Value="{DynamicResource DisabledBorderBrush}" TargetName="Border"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
+    <StackPanel>
+        <Label Content="Farsi Library WPF Controls" FontFamily="Tahoma" FontSize="14" FontWeight="Bold" />
+        <Label Content="By Hadi Eskandari (H.Eskandari@Gmail.com)" FontFamily="Tahoma" FontSize="11" Margin="0,-5,-5,0" />
+        <Line Margin="10" />
+        <TabControl Height="220" Margin="5" Padding="5" Style="{Binding Source={StaticResource SimpleTabControl}}">
+            <TabItem Header="Assemblies" Style="{Binding Source={StaticResource SimpleTabItem}}">
+                <ListBox ItemsSource="{Binding Assemblies}" />
+            </TabItem>
+            <TabItem Header="License" Style="{Binding Source={StaticResource SimpleTabItem}}">
+                <ScrollViewer>
+                    <TextBlock TextWrapping="WrapWithOverflow">
+                    <Bold>Copyright (c) 2007 Hadi Eskandari (H.Eskandari@Gmail.com)</Bold>
+                    <LineBreak /><LineBreak />
+                    <Run>
+                        Permission is hereby granted, free of charge, to any person
+                        obtaining a copy of this software and associated documentation
+                        files (the "Software"), to deal in the Software without
+                        restriction, including without limitation the rights to use,
+                        copy, modify, merge, publish, distribute, sublicense, and/or sell
+                        copies of the Software, and to permit persons to whom the
+                        Software is furnished to do so, subject to the following
+                        conditions:
+                    </Run>
+                    <LineBreak />
+                    <LineBreak />
+                    <Run>
+                        The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+                    </Run>
+                    <LineBreak />
+                    <LineBreak />
+                    <Run>
+                        THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+                        EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+                        OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+                        NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+                        HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+                        WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+                        FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+                        OTHER DEALINGS IN THE SOFTWARE.
+                    </Run>
+
+                    </TextBlock>
+                </ScrollViewer>
+            </TabItem>
+        </TabControl>
+    </StackPanel>
+</Window>

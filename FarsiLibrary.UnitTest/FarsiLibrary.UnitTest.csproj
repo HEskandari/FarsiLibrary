@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{7761D638-D2C2-49FC-9A0C-D561A03B17AF}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>FarsiLibrary.UnitTest</RootNamespace>
+    <AssemblyName>FarsiLibrary.UnitTest</AssemblyName>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="..\Solution Items\CommonAssemblyInfo.cs">
+      <Link>Properties\CommonAssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="BaseStyledControlTest.cs" />
+    <Compile Include="CollectionExtensionTests.cs" />
+    <Compile Include="CultureInfoExtensionTests.cs" />
+    <Compile Include="HelpersTest.cs" />
+    <Compile Include="Helpers\CultureSwitchContext.cs" />
+    <Compile Include="DateConversionTest.cs" />
+    <Compile Include="DrawingTests.cs" />
+    <Compile Include="ExceptionTests.cs" />
+    <Compile Include="Helpers\DateTimeFormatWrapper.cs" />
+    <Compile Include="Helpers\TestFormatProvider.cs" />
+    <Compile Include="InternalTests.cs" />
+    <Compile Include="LocalizerManagerTest.cs" />
+    <Compile Include="MessageBoxTest.cs" />
+    <Compile Include="Mocks\MockStyledControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Mocks\Office2003ColorStub.cs" />
+    <Compile Include="MonthViewCultureTest.cs" />
+    <Compile Include="MonthViewTests.cs" />
+    <Compile Include="PainterFactoryTest.cs" />
+    <Compile Include="PersianCalendarTest.cs" />
+    <Compile Include="PersianCultureInfoTests.cs" />
+    <Compile Include="PersianDateConverterTests.cs" />
+    <Compile Include="PersianDateExtensionTests.cs" />
+    <Compile Include="PersianDateTest.cs" />
+    <Compile Include="PersianDateTimeFormatTests.cs" />
+    <Compile Include="ToWordConversionTest.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FarsiLibrary.Resources\FarsiLibrary.Resources.csproj">
+      <Project>{E5575624-4B92-4E51-B98B-20F31FE5B5B4}</Project>
+      <Name>FarsiLibrary.Resources</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FarsiLibrary.Utils\FarsiLibrary.Utils.csproj">
+      <Project>{ED29E567-C801-49E9-8C33-CFB66042B07B}</Project>
+      <Name>FarsiLibrary.Utils</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FarsiLibrary.Win\FarsiLibrary.Win.csproj">
+      <Project>{83C3AEB8-5322-4DB6-9E7E-4BF8A319DCE7}</Project>
+      <Name>FarsiLibrary.Win</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <ProjectRefType>Test</ProjectRefType>
+  </PropertyGroup>
+  <Import Project="CSharp.targets" />
+</Project>

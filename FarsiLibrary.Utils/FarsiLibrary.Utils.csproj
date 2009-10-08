@@ -1,0 +1,63 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectType>Local</ProjectType>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{ED29E567-C801-49E9-8C33-CFB66042B07B}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AssemblyName>FarsiLibrary.Utils</AssemblyName>
+    <RootNamespace>FarsiLibrary.Utils</RootNamespace>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <TargetFrameworkSubset>
+    </TargetFrameworkSubset>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="..\Solution Items\CommonAssemblyInfo.cs">
+      <Link>Properties\CommonAssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="DateTimeExtensions.cs" />
+    <Compile Include="Internals\CollectionHelper.cs" />
+    <Compile Include="Internals\CultureHelper.cs" />
+    <Compile Include="Enums.cs" />
+    <Compile Include="Exceptions\InvalidPersianDateException.cs" />
+    <Compile Include="Exceptions\InvalidPersianDateFormatException.cs" />
+    <Compile Include="CultureInfoExtensions.cs" />
+    <Compile Include="Internals\Guard.cs" />
+    <Compile Include="Internals\ThemeWrapper.cs" />
+    <Compile Include="PersianCalendar.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="PersianCultureInfo.cs" />
+    <Compile Include="PersianDate.cs" />
+    <Compile Include="PersianDateConverter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="PersianDateTimeFormatInfo.cs" />
+    <Compile Include="PersianMonthNames.cs" />
+    <Compile Include="PersianWeekDayNames.cs" />
+    <Compile Include="Internals\ReflectionHelper.cs" />
+    <Compile Include="toEnglish.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="toFarsi.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ToWords.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Internals\Utils.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FarsiLibrary.Resources\FarsiLibrary.Resources.csproj">
+      <Project>{E5575624-4B92-4E51-B98B-20F31FE5B5B4}</Project>
+      <Name>FarsiLibrary.Resources</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <ProjectRefType>Win</ProjectRefType>
+  </PropertyGroup>
+  <Import Project="CSharp.targets" />
+</Project>

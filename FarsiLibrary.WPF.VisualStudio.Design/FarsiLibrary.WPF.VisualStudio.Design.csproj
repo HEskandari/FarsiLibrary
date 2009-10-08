@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{E7F44116-95CA-4E29-9215-FB4366589780}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>FarsiLibrary.WPF.VisualStudio.Design</RootNamespace>
+    <AssemblyName>FarsiLibrary.WPF.VisualStudio.Design</AssemblyName>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Windows.Design, Version=3.5.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.Windows.Design.Extensibility, Version=3.5.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.Windows.Design.Interaction, Version=3.5.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.Windows.Design.Markup, Version=3.5.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="UIAutomationProvider" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AboutUI.xaml.cs">
+      <DependentUpon>AboutUI.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DesignerPropertyChangedEventArgs.cs" />
+    <Compile Include="MonthViewDesignerUI.xaml.cs">
+      <DependentUpon>MonthViewDesignerUI.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MonthViewDesignMenuProvider.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="MonthViewDesignAdorner.cs" />
+    <Compile Include="VisualStudioMetadata.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="AboutUI.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MonthViewDesignerUI.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Themes\BrushesAndColors.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\FarsiLibrary.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\System.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\Theme.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FarsiLibrary.WPF\FarsiLibrary.WPF.csproj">
+      <Project>{01D673DE-5CD4-491D-B4AF-563360C1BC9E}</Project>
+      <Name>FarsiLibrary.WPF</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+  	<ProjectRefType>WPF</ProjectRefType>
+  </PropertyGroup>
+  <Import Project="CSharp.targets" /> 
+</Project>
