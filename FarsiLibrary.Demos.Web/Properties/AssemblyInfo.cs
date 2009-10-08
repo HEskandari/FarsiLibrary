@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("FarsiLibrary.WebMvcDemo")]
+[assembly: AssemblyTitle("FarsiLibrary.Demos.Web")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("FarsiLibrary.WebMvcDemo")]
+[assembly: AssemblyProduct("FarsiLibrary.Demos.Web")]
 [assembly: AssemblyCopyright("Copyright ©  2009")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("d803d3bd-d1d9-4621-ae00-7c1f013713bc")]
+[assembly: Guid("3d5900ae-111a-45be-96b3-d9e4606ca793")]
 
 // Version information for an assembly consists of the following four values:
 //

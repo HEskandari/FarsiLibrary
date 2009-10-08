@@ -4,14 +4,13 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>9.0.30729</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{52C80A3E-91F4-4011-A11B-DC2355DE60EE}</ProjectGuid>
-    <ProjectTypeGuids>{603c0e0b-db56-11dc-be95-000d561079b0};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <ProjectGuid>{0755D3D6-B700-4AB7-AED1-8A675F39C5BE}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>FarsiLibrary.WebMvcDemo</RootNamespace>
-    <AssemblyName>FarsiLibrary.WebMvcDemo</AssemblyName>
+    <RootNamespace>FarsiLibrary.Demos.Web</RootNamespace>
+    <AssemblyName>FarsiLibrary.Demos.Web</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
-    <MvcBuildViews>false</MvcBuildViews>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -39,15 +38,14 @@
     <Reference Include="System.Data.DataSetExtensions">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
-    <Reference Include="System.Web.Mvc, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Web.Extensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
     <Reference Include="System.Xml.Linq">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
-    <Reference Include="System.Web.Extensions, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
-    <Reference Include="System.Web.Abstractions" />
-    <Reference Include="System.Web.Routing" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
@@ -55,33 +53,58 @@
     <Reference Include="System.Web.Mobile" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Default.aspx.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Global.asax.cs">
-      <DependentUpon>Global.asax</DependentUpon>
-    </Compile>
-    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Content Include="Cultures.aspx" />
+    <Content Include="CustomRendering.aspx" />
+    <Content Include="Default.aspx" />
+    <Content Include="Demos.aspx" />
+    <Content Include="Index.aspx" />
+    <Content Include="Styles.aspx" />
+    <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Calendar.htm" />
-    <Content Include="Calendar.js" />
-    <Content Include="Content\Calendar.css" />
-    <Content Include="Default.aspx" />
-    <Content Include="Global.asax" />
-    <Content Include="Images\calendar.png" />
-    <Content Include="Images\Language-EN.gif" />
-    <Content Include="Images\Language-FA.gif" />
-    <Content Include="Scripts\jquery-1.3.2-vsdoc.js" />
-    <Content Include="Scripts\jquery-1.3.2.js" />
-    <Content Include="Views\Home\Demos.aspx" />
-    <Content Include="Web.config" />
-    <Content Include="Content\Site.css" />
-    <Content Include="Views\Home\Index.aspx" />
-    <Content Include="Views\Shared\Site.Master" />
-    <Content Include="Views\Web.config" />
+    <Compile Include="Cultures.aspx.cs">
+      <DependentUpon>Cultures.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Cultures.aspx.designer.cs">
+      <DependentUpon>Cultures.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CustomRendering.aspx.cs">
+      <DependentUpon>CustomRendering.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CustomRendering.aspx.designer.cs">
+      <DependentUpon>CustomRendering.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Default.aspx.cs">
+      <SubType>ASPXCodeBehind</SubType>
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Demos.aspx.cs">
+      <DependentUpon>Demos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Demos.aspx.designer.cs">
+      <DependentUpon>Demos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Index.aspx.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Index.aspx.designer.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Styles.aspx.cs">
+      <DependentUpon>Styles.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Styles.aspx.designer.cs">
+      <DependentUpon>Styles.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\FarsiLibrary.Resources\FarsiLibrary.Resources.csproj">
@@ -92,9 +115,9 @@
       <Project>{ED29E567-C801-49E9-8C33-CFB66042B07B}</Project>
       <Name>FarsiLibrary.Utils</Name>
     </ProjectReference>
-    <ProjectReference Include="..\FarsiLibrary.Web.Mvc\FarsiLibrary.Web.Mvc.csproj">
-      <Project>{C5EDB5C3-126A-4085-93EF-AFFC73D0AABA}</Project>
-      <Name>FarsiLibrary.Web.Mvc</Name>
+    <ProjectReference Include="..\FarsiLibrary.Web\FarsiLibrary.Web.csproj">
+      <Project>{2D79754C-5006-4D92-9119-C18448C07F0A}</Project>
+      <Name>FarsiLibrary.Web</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
@@ -105,17 +128,17 @@
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
-  </Target> -->
-  <Target Name="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
-    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(ProjectDir)\..\$(ProjectName)" />
   </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
   <ProjectExtensions>
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
-          <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>8715</DevelopmentServerPort>
+          <AutoAssignPort>False</AutoAssignPort>
+          <DevelopmentServerPort>8888</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>
           </IISUrl>
