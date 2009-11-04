@@ -1,21 +1,0 @@
-﻿<Page x:Class="FarsiLibrary.WPFDemo.Pages.DateConverter"
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:FL="http://schemas.hightech.ir/wpf/2008/FarsiLibrary"
-    xmlns:Cnv="clr-namespace:FarsiLibrary.WPFDemo.Converters"
-    Height="254" Width="495" Title="DateConverter">
-    <Page.Resources>
-        <Cnv:LongDateTimeConverter x:Key="CustomDateConverter" />
-    </Page.Resources>
-    <Grid Margin="10">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" MinHeight="30" />
-            <RowDefinition Height="Auto" MinHeight="30" />
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*" />
-        </Grid.ColumnDefinitions>
-
-        <FL:FXDatePicker x:Name="dp" Grid.Row="0" Height="23" Grid.Column="0" VerticalAlignment="Top" DateConverter="{StaticResource CustomDateConverter}" />
-        <TextBlock Grid.Row="1" Grid.Column="0" TextWrapping="Wrap">            <Run>To Format the date displayed in DatePicker, you can assign a new IValueConverter instance and format the DateTime value. You need to set the converter to DateConverter property of the FXDatePicker control.</Run>        </TextBlock>    </Grid>
-</Page>

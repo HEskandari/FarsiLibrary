@@ -2,6 +2,7 @@
 using System.Globalization;
 using System.Windows.Data;
 using FarsiLibrary.Utils;
+using FarsiLibrary.Utils.Internals;
 
 namespace FarsiLibrary.WPF.Converters
 {
@@ -14,14 +15,19 @@ namespace FarsiLibrary.WPF.Converters
             {
                 string converting = (string) value;
                 if (string.IsNullOrEmpty(converting))
-                {
                     return null;
-                }
 
-                DateTime dt;
-                if(DateTime.TryParse(converting, out dt))
+                if(CultureHelper.IsFarsiCulture)
                 {
-                    return dt.ToPersianDate();
+                    PersianDate pd;
+                    if(PersianDate.TryParse(converting, out pd))
+                        return pd;
+                }
+                else
+                {
+                    DateTime dt;
+                    if (DateTime.TryParse(converting, out dt))
+                        return dt.ToPersianDate();
                 }
             }
 

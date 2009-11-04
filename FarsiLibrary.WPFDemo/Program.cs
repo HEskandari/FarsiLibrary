@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows;
+using FarsiLibrary.LiveSamples;
 
 namespace FarsiLibrary.WPFDemo
 {
@@ -10,7 +11,7 @@ namespace FarsiLibrary.WPFDemo
         {
             try
             {
-                new App().Run(new Language());
+                new App().Run(new MainWindow());
             }
             catch (Exception ex)
             {

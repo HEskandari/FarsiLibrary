@@ -36,7 +36,7 @@ namespace FarsiLibrary.Utils
 
         public static DayOfWeek FirstDayOfWeek
         {
-            get { return DayOfWeek.Monday; }
+            get { return DayOfWeek.Saturday; }
         }
 
         public static string FullDateTimePattern

@@ -4,6 +4,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 	ProjectSection(SolutionItems) = preProject
 		Solution Items\CommonAssemblyInfo.cs = Solution Items\CommonAssemblyInfo.cs
 		Solution Items\License.txt = Solution Items\License.txt
+		Solution Items\Logo.png = Solution Items\Logo.png
 		Solution Items\Release Note.txt = Solution Items\Release Note.txt
 	EndProjectSection
 EndProject
@@ -33,11 +34,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{7E7AC667
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Extensions", "Extensions", "{A7A272B2-65F6-4606-ADD8-9DADF36C9108}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FarsiLibrary.LiveDemo", "FarsiLibrary.LiveDemo\FarsiLibrary.LiveDemo.csproj", "{BC880FDF-0130-4904-A7F5-CFC7D345BA44}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FarsiLibrary.Demos.Web", "FarsiLibrary.Demos.Web\FarsiLibrary.Demos.Web.csproj", "{0755D3D6-B700-4AB7-AED1-8A675F39C5BE}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FarsiLibrary.WinFormDemo", "FarsiLibrary.WinFormDemo\FarsiLibrary.WinFormDemo.csproj", "{A5EE7D36-30E7-49AB-90EC-97836840C144}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FarsiLibrary.LiveSamples", "FarsiLibrary.LiveSamples\FarsiLibrary.LiveSamples.csproj", "{2059F040-AD97-47A5-B8E6-ECB3AF68307D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -139,16 +140,6 @@ Global
 		{240A0D2C-5E44-4C05-8995-EE63E4AE9D0E}.Release|Any CPU.Build.0 = Release|Any CPU
 		{240A0D2C-5E44-4C05-8995-EE63E4AE9D0E}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{240A0D2C-5E44-4C05-8995-EE63E4AE9D0E}.Release|Mixed Platforms.Build.0 = Release|Any CPU
-		{BC880FDF-0130-4904-A7F5-CFC7D345BA44}.Debug|.NET.ActiveCfg = Debug|Any CPU
-		{BC880FDF-0130-4904-A7F5-CFC7D345BA44}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BC880FDF-0130-4904-A7F5-CFC7D345BA44}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BC880FDF-0130-4904-A7F5-CFC7D345BA44}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{BC880FDF-0130-4904-A7F5-CFC7D345BA44}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{BC880FDF-0130-4904-A7F5-CFC7D345BA44}.Release|.NET.ActiveCfg = Release|Any CPU
-		{BC880FDF-0130-4904-A7F5-CFC7D345BA44}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BC880FDF-0130-4904-A7F5-CFC7D345BA44}.Release|Any CPU.Build.0 = Release|Any CPU
-		{BC880FDF-0130-4904-A7F5-CFC7D345BA44}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{BC880FDF-0130-4904-A7F5-CFC7D345BA44}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{0755D3D6-B700-4AB7-AED1-8A675F39C5BE}.Debug|.NET.ActiveCfg = Debug|Any CPU
 		{0755D3D6-B700-4AB7-AED1-8A675F39C5BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{0755D3D6-B700-4AB7-AED1-8A675F39C5BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
@@ -169,6 +160,16 @@ Global
 		{A5EE7D36-30E7-49AB-90EC-97836840C144}.Release|Any CPU.Build.0 = Release|Any CPU
 		{A5EE7D36-30E7-49AB-90EC-97836840C144}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{A5EE7D36-30E7-49AB-90EC-97836840C144}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{2059F040-AD97-47A5-B8E6-ECB3AF68307D}.Debug|.NET.ActiveCfg = Debug|Any CPU
+		{2059F040-AD97-47A5-B8E6-ECB3AF68307D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2059F040-AD97-47A5-B8E6-ECB3AF68307D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2059F040-AD97-47A5-B8E6-ECB3AF68307D}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{2059F040-AD97-47A5-B8E6-ECB3AF68307D}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{2059F040-AD97-47A5-B8E6-ECB3AF68307D}.Release|.NET.ActiveCfg = Release|Any CPU
+		{2059F040-AD97-47A5-B8E6-ECB3AF68307D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2059F040-AD97-47A5-B8E6-ECB3AF68307D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2059F040-AD97-47A5-B8E6-ECB3AF68307D}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{2059F040-AD97-47A5-B8E6-ECB3AF68307D}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -182,9 +183,9 @@ Global
 		{83C3AEB8-5322-4DB6-9E7E-4BF8A319DCE7} = {6E1B09D2-C8FB-4AF6-B9B6-55BADED52D06}
 		{7761D638-D2C2-49FC-9A0C-D561A03B17AF} = {7E7AC667-9A20-4A48-A3B0-2109781977B4}
 		{92DB562E-4261-466D-ACE4-66A51505B7C2} = {604CE13D-1B5A-41CA-B60D-E7DD5C1C91A2}
-		{BC880FDF-0130-4904-A7F5-CFC7D345BA44} = {604CE13D-1B5A-41CA-B60D-E7DD5C1C91A2}
 		{0755D3D6-B700-4AB7-AED1-8A675F39C5BE} = {604CE13D-1B5A-41CA-B60D-E7DD5C1C91A2}
 		{A5EE7D36-30E7-49AB-90EC-97836840C144} = {604CE13D-1B5A-41CA-B60D-E7DD5C1C91A2}
+		{2059F040-AD97-47A5-B8E6-ECB3AF68307D} = {604CE13D-1B5A-41CA-B60D-E7DD5C1C91A2}
 		{240A0D2C-5E44-4C05-8995-EE63E4AE9D0E} = {A7A272B2-65F6-4606-ADD8-9DADF36C9108}
 	EndGlobalSection
 EndGlobal

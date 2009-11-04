@@ -13,68 +13,26 @@
     <ProductVersion>9.0.30729</ProductVersion>
   </PropertyGroup>
   <ItemGroup>
-    <ApplicationDefinition Include="App.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </ApplicationDefinition>
-    <Compile Include="App.xaml.cs">
-      <DependentUpon>App.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="..\Solution Items\CommonAssemblyInfo.cs">
       <Link>Properties\CommonAssemblyInfo.cs</Link>
     </Compile>
-    <Compile Include="Converters\LongDateTimeConverter.cs" />
-    <Compile Include="Language.xaml.cs">
-      <DependentUpon>Language.xaml</DependentUpon>
-    </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\DateConverter.xaml.cs">
-      <DependentUpon>DateConverter.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\DatePicker.xaml.cs">
-      <DependentUpon>DatePicker.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\MonthView.xaml.cs">
-      <DependentUpon>MonthView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\Themes.xaml.cs">
-      <DependentUpon>Themes.xaml</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <Page Include="Language.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="MainWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Pages\DateConverter.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Pages\DatePicker.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Pages\MonthView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Pages\Themes.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\FarsiLibrary.LiveSamples\FarsiLibrary.LiveSamples.csproj">
+      <Project>{2059F040-AD97-47A5-B8E6-ECB3AF68307D}</Project>
+      <Name>FarsiLibrary.LiveSamples</Name>
+    </ProjectReference>
     <ProjectReference Include="..\FarsiLibrary.Resources\FarsiLibrary.Resources.csproj">
       <Project>{E5575624-4B92-4E51-B98B-20F31FE5B5B4}</Project>
       <Name>FarsiLibrary.Resources</Name>
