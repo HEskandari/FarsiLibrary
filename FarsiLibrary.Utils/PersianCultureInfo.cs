@@ -51,15 +51,22 @@ namespace FarsiLibrary.Utils
 
         private void SetCalendar()
         {
-            ReflectionHelper.SetField(format, CultureFieldNames.Calendar, systemCalendar);
+            try
+            {
+                ReflectionHelper.SetField(format, CultureFieldNames.Calendar, systemCalendar);
 
-            var cultureTable = ReflectionHelper.GetField(format, CultureFieldNames.CultureTableRecord);
-            var isReadonly = ReflectionHelper.GetField(this, CultureFieldNames.IsReadonly);
-            var cultureId = ReflectionHelper.GetProperty(systemCalendar, CultureFieldNames.ID);
-            
-            ReflectionHelper.InvokeMethod(cultureTable, CultureFieldNames.UseCurrentCalendar, cultureId);
+                var cultureTable = ReflectionHelper.GetField(format, CultureFieldNames.CultureTableRecord);
+                var isReadonly = ReflectionHelper.GetField(this, CultureFieldNames.IsReadonly);
+                var cultureId = ReflectionHelper.GetProperty(systemCalendar, CultureFieldNames.ID);
 
-            base.DateTimeFormat = format;
+                ReflectionHelper.InvokeMethod(cultureTable, CultureFieldNames.UseCurrentCalendar, cultureId);
+
+                base.DateTimeFormat = format;
+            }
+            catch(Exception ex)
+            {
+                //Note:In design-mode in VS2010 this may throw.
+            }
         }
 
         private DateTimeFormatInfo CreateDateTimeFormatInfo()
