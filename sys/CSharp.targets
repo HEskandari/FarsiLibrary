@@ -4,7 +4,7 @@
     <BaseIntermediateOutputPath>$(SolutionDir)..\out\obj\$(Configuration)\FarsiLibrary\$(AssemblyName)\</BaseIntermediateOutputPath>
  		<CurrentLevelDir Condition="'$(CurrentLevelDir)' == ''" >$(SolutionDir)</CurrentLevelDir>
 		<DefaultOutputRootDir>$(SolutionDir)..\out\</DefaultOutputRootDir>
-		<Libs>$(SolutionDir)\..\lib\</Libs>
+		<Libs>$(SolutionDir)\lib\</Libs>
 		<UnitTestRunner>$(Libs)\xunit\xunitext.runner.msbuild.dll</UnitTestRunner>
 		<OutputPath>$(SolutionDir)..\out\bin\$(Configuration)\FarsiLibrary\$(AssemblyName)</OutputPath>
 		<OutputDir>$(SolutionDir)\..\out\bin\$(Configuration)\FarsiLibrary\</OutputDir>
