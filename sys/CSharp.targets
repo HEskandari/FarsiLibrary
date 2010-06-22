@@ -2,23 +2,23 @@
   <PropertyGroup>
     <SolutionDir>$(MSBuildProjectDirectory)</SolutionDir>
     <BaseIntermediateOutputPath>$(SolutionDir)..\out\obj\$(Configuration)\FarsiLibrary\$(AssemblyName)\</BaseIntermediateOutputPath>
- 		<CurrentLevelDir Condition="'$(CurrentLevelDir)' == ''" >$(SolutionDir)</CurrentLevelDir>
-		<DefaultOutputRootDir>$(SolutionDir)..\out\</DefaultOutputRootDir>
-		<Libs>$(SolutionDir)\lib\</Libs>
-		<UnitTestRunner>$(Libs)\xunit\xunitext.runner.msbuild.dll</UnitTestRunner>
-		<OutputPath>$(SolutionDir)\out\bin\$(Configuration)\FarsiLibrary\$(AssemblyName)</OutputPath>
-		<OutputDir>$(SolutionDir)\out\bin\$(Configuration)\FarsiLibrary\</OutputDir>
-		<WarningLevel>2</WarningLevel>
-		<TreatWarningsAsErrors>false</TreatWarningsAsErrors>
-		<DocumentationFile>$(OutputDir)$(AssemblyName).xml</DocumentationFile>
-		<NoWarn>1699</NoWarn>
+ 	<CurrentLevelDir Condition="'$(CurrentLevelDir)' == ''" >$(SolutionDir)</CurrentLevelDir>
+	<DefaultOutputRootDir>$(SolutionDir)..\out\</DefaultOutputRootDir>
+	<Libs>$(SolutionDir)\lib\</Libs>
+	<UnitTestRunner>$(Libs)\xunit\xunitext.runner.msbuild.dll</UnitTestRunner>
+	<OutputPath>$(SolutionDir)\out\bin\$(Configuration)\FarsiLibrary\$(AssemblyName)</OutputPath>
+	<OutputDir>$(SolutionDir)\out\bin\$(Configuration)\FarsiLibrary\</OutputDir>
+	<WarningLevel>2</WarningLevel>
+	<TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+	<DocumentationFile>$(OutputDir)$(AssemblyName).xml</DocumentationFile>
+	<NoWarn>1699</NoWarn>
     <DefaultClientScript>JScript</DefaultClientScript>
     <DefaultHTMLPageLayout>Grid</DefaultHTMLPageLayout>
     <DefaultTargetSchema>IE50</DefaultTargetSchema>
     <DelaySign>false</DelaySign>
-		<TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
-		<BuildDependsOn>Init;BeforeBuild;Build;AfterBuild</BuildDependsOn>
-    <ProductVersion>9.0.21022</ProductVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+	<BuildDependsOn>Init;BeforeBuild;Build;AfterBuild</BuildDependsOn>
+    <ProductVersion>9.0.30729</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -65,7 +65,7 @@
     <MSBuild Projects="$(SolutionName)" Targets="$(Targets)" Properties="SolutionDir=$(MSBuildProjectDirectory)\;Configuration=$(Configuration)" />
     
     <!-- Won't run unit test for now -->
-    <!-- NUnit Assembly="$(OutputDir)\FarsiLibrary.UnitTest\FarsiLibrary.UnitTest.dll" Condition="$(ShouldRunTests) == 'True'" -->
+    <NUnit Assembly="$(OutputDir)\FarsiLibrary.UnitTest\FarsiLibrary.UnitTest.dll" Condition="$(ShouldRunTests) == 'True'" />
   </Target>
 
   <PropertyGroup>

@@ -1,13 +1,15 @@
 using System;
 using System.Collections;
+using System.Security;
 using System.Security.Permissions;
 using FarsiLibrary.Win.Events;
 
 namespace FarsiLibrary.Win.FAPopup
 {
-    [UIPermission(SecurityAction.Assert, Window = UIPermissionWindow.AllWindows, Clipboard = UIPermissionClipboard.OwnClipboard)]
-    [ReflectionPermission(SecurityAction.Assert, Flags = ReflectionPermissionFlag.AllFlags)]
-    [SecurityPermission(SecurityAction.Assert, Flags = SecurityPermissionFlag.UnmanagedCode | SecurityPermissionFlag.ControlAppDomain | SecurityPermissionFlag.ControlThread)]
+    [UIPermission(SecurityAction.Assert, Unrestricted = true, Window = UIPermissionWindow.AllWindows, Clipboard = UIPermissionClipboard.OwnClipboard)]
+    [ReflectionPermission(SecurityAction.Assert, Unrestricted = true, Flags = ReflectionPermissionFlag.MemberAccess)]
+    [SecurityPermission(SecurityAction.Assert, Unrestricted = true, Flags = SecurityPermissionFlag.UnmanagedCode | SecurityPermissionFlag.ControlAppDomain | SecurityPermissionFlag.ControlThread)]
+    [SecurityCritical]
     internal class HookInfo
     {
         #region Fields

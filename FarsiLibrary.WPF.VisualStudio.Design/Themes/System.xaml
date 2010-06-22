@@ -563,7 +563,7 @@
                 <ControlTemplate>
                     <AdornedElementPlaceholder />
                 </ControlTemplate>
-            </Setter.Value>                
+            </Setter.Value>
         </Setter>
         <Style.Triggers>
             <Trigger Property="IsEnabled" Value="false">

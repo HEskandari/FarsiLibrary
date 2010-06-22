@@ -199,7 +199,7 @@ namespace FarsiLibrary.UnitTest
 
         #region ThemeWrapper
 
-        [Test]
+        [Test, Ignore]
         public void Can_Get_Theme_Name_From_Wrapper()
         {
             var themeName = ThemeWrapper.CurrentThemeName;

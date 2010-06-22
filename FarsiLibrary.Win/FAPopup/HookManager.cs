@@ -1,22 +1,24 @@
 using System;
 using System.Collections;
 using System.Runtime.InteropServices;
+using System.Security;
 using System.Security.Permissions;
 using System.Windows.Forms;
 using FarsiLibrary.Win.Events;
 
 namespace FarsiLibrary.Win.FAPopup
 {
-    [UIPermission(SecurityAction.Assert, Window = UIPermissionWindow.AllWindows, Clipboard = UIPermissionClipboard.OwnClipboard)]
-    [ReflectionPermission(SecurityAction.Assert, Flags = ReflectionPermissionFlag.AllFlags)]
-    [SecurityPermission(SecurityAction.Assert, Flags = SecurityPermissionFlag.UnmanagedCode | SecurityPermissionFlag.ControlAppDomain | SecurityPermissionFlag.ControlThread)]
+    [UIPermission(SecurityAction.Assert, Unrestricted = true, Window = UIPermissionWindow.AllWindows, Clipboard = UIPermissionClipboard.OwnClipboard)]
+    [ReflectionPermission(SecurityAction.Assert, Unrestricted = true, Flags = ReflectionPermissionFlag.MemberAccess)]
+    [SecurityPermission(SecurityAction.Assert, Flags = SecurityPermissionFlag.UnmanagedCode | SecurityPermissionFlag.ControlAppDomain | SecurityPermissionFlag.ControlThread | SecurityPermissionFlag.UnmanagedCode)]
+    [SecurityCritical]
     internal class HookManager
     {
         #region Fields
 
-        Hashtable hookHash;
         public ArrayList HookControllers;
-        static HookManager defaultManager = new HookManager();
+        private static HookManager defaultManager = new HookManager();
+        private Hashtable hookHash;
 
         #endregion
 
@@ -24,18 +26,19 @@ namespace FarsiLibrary.Win.FAPopup
         
         public HookManager()
         {
-            Application.ApplicationExit += new EventHandler(OnApplicationExit);
-            Application.ThreadExit += new EventHandler(OnThreadExit);
+            Application.ApplicationExit += OnApplicationExit;
+            Application.ThreadExit += OnThreadExit;
 
             hookHash = new Hashtable();
             HookControllers = new ArrayList();
         }
         
+        [SecuritySafeCritical]
         ~HookManager()
         {
             RemoveHooks();
-            Application.ApplicationExit -= new EventHandler(OnApplicationExit);
-            Application.ThreadExit -= new EventHandler(OnThreadExit);
+            Application.ApplicationExit -= OnApplicationExit;
+            Application.ThreadExit -= OnThreadExit;
         }
 
         #endregion
