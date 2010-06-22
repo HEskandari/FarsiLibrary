@@ -6,8 +6,8 @@
 		<DefaultOutputRootDir>$(SolutionDir)..\out\</DefaultOutputRootDir>
 		<Libs>$(SolutionDir)\lib\</Libs>
 		<UnitTestRunner>$(Libs)\xunit\xunitext.runner.msbuild.dll</UnitTestRunner>
-		<OutputPath>$(SolutionDir)..\out\bin\$(Configuration)\FarsiLibrary\$(AssemblyName)</OutputPath>
-		<OutputDir>$(SolutionDir)\..\out\bin\$(Configuration)\FarsiLibrary\</OutputDir>
+		<OutputPath>$(SolutionDir)\out\bin\$(Configuration)\FarsiLibrary\$(AssemblyName)</OutputPath>
+		<OutputDir>$(SolutionDir)\out\bin\$(Configuration)\FarsiLibrary\</OutputDir>
 		<WarningLevel>2</WarningLevel>
 		<TreatWarningsAsErrors>false</TreatWarningsAsErrors>
 		<DocumentationFile>$(OutputDir)$(AssemblyName).xml</DocumentationFile>
