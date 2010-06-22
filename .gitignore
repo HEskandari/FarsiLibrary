@@ -5,3 +5,6 @@ _ReSharper.*
 *.resharper
 *.resharper.user
 *.suo
+*.sln.cache
+[Dd]ebug.log
+
