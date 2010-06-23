@@ -7,4 +7,4 @@ _ReSharper.*
 *.suo
 *.sln.cache
 [Dd]ebug.log
-
+[Rr]elease.log
