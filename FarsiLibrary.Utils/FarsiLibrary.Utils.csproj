@@ -19,7 +19,6 @@
     <Compile Include="DateTimeExtensions.cs" />
     <Compile Include="Internals\CollectionHelper.cs" />
     <Compile Include="Internals\CultureHelper.cs" />
-    <Compile Include="Enums.cs" />
     <Compile Include="Exceptions\InvalidPersianDateException.cs" />
     <Compile Include="Exceptions\InvalidPersianDateFormatException.cs" />
     <Compile Include="CultureInfoExtensions.cs" />

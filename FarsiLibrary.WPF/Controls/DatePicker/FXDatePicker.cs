@@ -61,9 +61,8 @@ namespace FarsiLibrary.WPF.Controls
 
         #region Dependency Properties
 
-        //public new static readonly DependencyProperty IsDropDownOpenProperty = DependencyProperty.Register("IsDropDownOpen", typeof(bool), typeof(FXDatePicker), new FrameworkPropertyMetadata(false, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, OnIsDropDownOpenChanged, CoerceIsDropDownOpen));
-        //public new static readonly DependencyProperty IsReadOnlyProperty = TextBoxBase.IsReadOnlyProperty.AddOwner(typeof(FXDatePicker));
-        //public new static readonly DependencyProperty TextProperty = TextPropertyKey.DependencyProperty;
+        public new static readonly DependencyProperty IsDropDownOpenProperty = DependencyProperty.Register("IsDropDownOpen", typeof(bool), typeof(FXDatePicker), new FrameworkPropertyMetadata(false, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, OnIsDropDownOpenChanged, CoerceIsDropDownOpen));
+        public new static readonly DependencyProperty TextProperty = TextPropertyKey.DependencyProperty;
         public static readonly DependencyProperty IsValidProperty = IsValidPropertyKey.DependencyProperty;
         public static readonly DependencyProperty NullValueTextProperty = DependencyProperty.Register("NullValueText", typeof(string), typeof(FXDatePicker), new FrameworkPropertyMetadata(FALocalizeManager.Instance.GetLocalizer().GetLocalizedString(StringID.Validation_NullText), new PropertyChangedCallback(OnNullValueTextChanged)));
         public static readonly DependencyProperty SelectedDateTimeProperty = DependencyProperty.Register("SelectedDateTime", typeof(DateTime?), typeof(FXDatePicker), new FrameworkPropertyMetadata(null, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault | FrameworkPropertyMetadataOptions.Journal, OnSelectedDateTimeChanged, CoerceSelectedDateTime));
@@ -139,8 +138,8 @@ namespace FarsiLibrary.WPF.Controls
 
             EventManager.RegisterClassHandler(typeof(FXDatePicker), Keyboard.KeyDownEvent, new KeyEventHandler(KeyDownHandler), true);
             EventManager.RegisterClassHandler(typeof(FXDatePicker), Mouse.MouseDownEvent, new MouseButtonEventHandler(OnMouseButtonDown), true);
-            EventManager.RegisterClassHandler(typeof(FXDatePicker), ContextMenuService.ContextMenuOpeningEvent, new ContextMenuEventHandler(OnContextMenuOpen), true);
-            EventManager.RegisterClassHandler(typeof(FXDatePicker), ContextMenuService.ContextMenuClosingEvent, new ContextMenuEventHandler(OnContextMenuClose), true);
+            //EventManager.RegisterClassHandler(typeof(FXDatePicker), ContextMenuService.ContextMenuOpeningEvent, new ContextMenuEventHandler(OnContextMenuOpen), true);
+            //EventManager.RegisterClassHandler(typeof(FXDatePicker), ContextMenuService.ContextMenuClosingEvent, new ContextMenuEventHandler(OnContextMenuClose), true);
         }
 
         #endregion
@@ -251,23 +250,14 @@ namespace FarsiLibrary.WPF.Controls
             set { SetValue(NullValueTextProperty, value); }
         }
 
-        ///// <summary>
-        ///// Whether or not the "popup" for this control is currently open
-        ///// </summary>
-        //public new bool IsDropDownOpen
-        //{
-        //    get { return (bool)GetValue(IsDropDownOpenProperty); }
-        //    set { SetValue(IsDropDownOpenProperty, value); }
-        //}
-
-        ///// <summary>
-        ///// When the FXDatePicker is Editable, if the TextBox within it is read only.
-        ///// </summary>
-        //public new bool IsReadOnly
-        //{
-        //    get { return (bool)GetValue(IsReadOnlyProperty); }
-        //    set { SetValue(IsReadOnlyProperty, value); }
-        //}
+        /// <summary>
+        /// Whether or not the "popup" for this control is currently open
+        /// </summary>
+        public new bool IsDropDownOpen
+        {
+            get { return (bool)GetValue(IsDropDownOpenProperty); }
+            set { SetValue(IsDropDownOpenProperty, value); }
+        }
 
         /// <summary>
         /// A property indicating whether the SelectedDateTime is valid or not
@@ -277,13 +267,13 @@ namespace FarsiLibrary.WPF.Controls
             get { return SelectedDateTime.HasValue; }
         }
 
-        ///// <summary>
-        ///// Text store the formated SelectedDateTime, if the SelectedDateTime is null, it should store the NullValueText property
-        ///// </summary>
-        //public new string Text
-        //{
-        //    get { return (string)GetValue(TextProperty); }
-        //}
+        /// <summary>
+        /// Text store the formated SelectedDateTime, if the SelectedDateTime is null, it should store the NullValueText property
+        /// </summary>
+        public new string Text
+        {
+            get { return (string)GetValue(TextProperty); }
+        }
 
         private bool HasCapture
         {

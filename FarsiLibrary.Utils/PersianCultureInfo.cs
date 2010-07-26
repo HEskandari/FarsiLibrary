@@ -12,19 +12,24 @@ namespace FarsiLibrary.Utils
     {
         #region FieldNames
 
-        private class CultureFieldNames
+        private struct CultureFieldNames
         {
-            public const string CultureTableRecord = "m_cultureTableRecord";
-            public const string Calendar = "calendar";
-            public const string UseCurrentCalendar = "UseCurrentCalendar";
-            public const string ID = "ID";
-            public const string IsReadonly = "m_isReadOnly";
+            public string Calendar
+            {
+                get { return "calendar"; }
+            }
+
+            public string IsReadonly
+            {
+                get { return "m_isReadOnly"; }
+            }
         }
 
         #endregion
 
         #region Fields
 
+        private static CultureFieldNames FieldNames;
         private readonly PersianCalendar calendar;
         private readonly System.Globalization.PersianCalendar systemCalendar;
         private DateTimeFormatInfo format;
@@ -49,58 +54,43 @@ namespace FarsiLibrary.Utils
 
         #region Private Methods
 
-        private void SetCalendar()
+        protected void SetCalendar()
         {
-            try
-            {
-                ReflectionHelper.SetField(format, CultureFieldNames.Calendar, systemCalendar);
-
-                var cultureTable = ReflectionHelper.GetField(format, CultureFieldNames.CultureTableRecord);
-                var isReadonly = ReflectionHelper.GetField(this, CultureFieldNames.IsReadonly);
-                var cultureId = ReflectionHelper.GetProperty(systemCalendar, CultureFieldNames.ID);
-
-                ReflectionHelper.InvokeMethod(cultureTable, CultureFieldNames.UseCurrentCalendar, cultureId);
-
-                base.DateTimeFormat = format;
-            }
-            catch(Exception ex)
-            {
-                //Note:In design-mode in VS2010 this may throw.
-            }
+            ReflectionHelper.SetField(format, FieldNames.Calendar, systemCalendar);
+            base.DateTimeFormat = format;
         }
 
-        private DateTimeFormatInfo CreateDateTimeFormatInfo()
+        protected internal DateTimeFormatInfo CreateDateTimeFormatInfo()
         {
             if (format == null)
             {
                 format = new DateTimeFormatInfo
-                             {
-                                 AbbreviatedDayNames = PersianDateTimeFormatInfo.AbbreviatedDayNames,
-                                 AbbreviatedMonthGenitiveNames = PersianDateTimeFormatInfo.AbbreviatedMonthGenitiveNames,
-                                 AbbreviatedMonthNames = PersianDateTimeFormatInfo.AbbreviatedMonthNames,
-                                 AMDesignator = PersianDateTimeFormatInfo.AMDesignator,
-                                 //CalendarWeekRule = CalendarWeekRule.FirstFullWeek,
-                                 DateSeparator = PersianDateTimeFormatInfo.DateSeparator,
-                                 DayNames = PersianDateTimeFormatInfo.DayNames,
-                                 FirstDayOfWeek = PersianDateTimeFormatInfo.FirstDayOfWeek,
-                                 FullDateTimePattern = PersianDateTimeFormatInfo.FullDateTimePattern,
-                                 LongDatePattern = PersianDateTimeFormatInfo.LongDatePattern,
-                                 LongTimePattern = PersianDateTimeFormatInfo.LongTimePattern,
-                                 MonthDayPattern = PersianDateTimeFormatInfo.MonthDayPattern,
-                                 MonthGenitiveNames = PersianDateTimeFormatInfo.MonthGenitiveNames,
-                                 MonthNames = PersianDateTimeFormatInfo.MonthNames,
-                                 PMDesignator = PersianDateTimeFormatInfo.PMDesignator,
-                                 ShortDatePattern = PersianDateTimeFormatInfo.ShortDatePattern,
-                                 ShortestDayNames = PersianDateTimeFormatInfo.ShortestDayNames,
-                                 ShortTimePattern = PersianDateTimeFormatInfo.ShortTimePattern,
-                                 TimeSeparator = PersianDateTimeFormatInfo.TimeSeparator,
-                                 YearMonthPattern = PersianDateTimeFormatInfo.YearMonthPattern
-                             };
+                {
+                    AbbreviatedDayNames = PersianDateTimeFormatInfo.AbbreviatedDayNames,
+                    AbbreviatedMonthGenitiveNames = PersianDateTimeFormatInfo.AbbreviatedMonthGenitiveNames,
+                    AbbreviatedMonthNames = PersianDateTimeFormatInfo.AbbreviatedMonthNames,
+                    AMDesignator = PersianDateTimeFormatInfo.AMDesignator,
+                    DateSeparator = PersianDateTimeFormatInfo.DateSeparator,
+                    DayNames = PersianDateTimeFormatInfo.DayNames,
+                    FirstDayOfWeek = PersianDateTimeFormatInfo.FirstDayOfWeek,
+                    FullDateTimePattern = PersianDateTimeFormatInfo.FullDateTimePattern,
+                    LongDatePattern = PersianDateTimeFormatInfo.LongDatePattern,
+                    LongTimePattern = PersianDateTimeFormatInfo.LongTimePattern,
+                    MonthDayPattern = PersianDateTimeFormatInfo.MonthDayPattern,
+                    MonthGenitiveNames = PersianDateTimeFormatInfo.MonthGenitiveNames,
+                    MonthNames = PersianDateTimeFormatInfo.MonthNames,
+                    PMDesignator = PersianDateTimeFormatInfo.PMDesignator,
+                    ShortDatePattern = PersianDateTimeFormatInfo.ShortDatePattern,
+                    ShortestDayNames = PersianDateTimeFormatInfo.ShortestDayNames,
+                    ShortTimePattern = PersianDateTimeFormatInfo.ShortTimePattern,
+                    TimeSeparator = PersianDateTimeFormatInfo.TimeSeparator,
+                    YearMonthPattern = PersianDateTimeFormatInfo.YearMonthPattern
+                };
 
                 //Make format information readonly to fix
                 //cloning problems that might happen with 
                 //other controls.
-                ReflectionHelper.SetField(format, CultureFieldNames.IsReadonly, true);
+                ReflectionHelper.SetField(format, FieldNames.IsReadonly, true);
             }
 
             return format;

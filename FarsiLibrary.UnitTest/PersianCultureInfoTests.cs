@@ -39,7 +39,7 @@ namespace FarsiLibrary.UnitTest
         }
 
         [Test]
-        public void Creating_Culture_Will_Aquire_Correct_Calendar()
+        public void Creating_PersianCultureInfo_Will_Set_Correct_Calendar()
         {
             PersianCultureInfo ci = new PersianCultureInfo();
 
@@ -48,7 +48,7 @@ namespace FarsiLibrary.UnitTest
         }
 
         [Test]
-        public void Setting_ThreadCulture_To_PersianCulture_Will_Accquire_Correct_Calendar()
+        public void Setting_ThreadCulture_To_PersianCulture_Will_Set_Correct_Calendar()
         {
             using (new CultureSwitchContext(new PersianCultureInfo()))
             {
@@ -198,6 +198,31 @@ namespace FarsiLibrary.UnitTest
             using (new CultureSwitchContext(cip))
             {
                 Assert.DoesNotThrow(() => { var tb = new MaskedTextBox(); }, "Should be able to create a MaskedTextBox control");
+            }
+        }
+
+        [Test]
+        public void Setting_Culture_To_PersianCultureInfo_Will_Set_DateTimeFormat()
+        {
+            var cip = new PersianCultureInfo();
+            var format = cip.CreateDateTimeFormatInfo();
+
+            using(new CultureSwitchContext(cip))
+            {
+                Assert.That(cip.DateTimeFormat, Is.Not.Null);
+                Assert.AreEqual(format.AbbreviatedDayNames, cip.DateTimeFormat.AbbreviatedDayNames);
+                Assert.AreEqual(format.AbbreviatedMonthGenitiveNames, cip.DateTimeFormat.AbbreviatedMonthGenitiveNames);
+                Assert.AreEqual(format.AbbreviatedMonthNames, cip.DateTimeFormat.AbbreviatedMonthNames);
+                Assert.AreEqual(format.AMDesignator, cip.DateTimeFormat.AMDesignator);
+                Assert.AreEqual(format.PMDesignator, cip.DateTimeFormat.PMDesignator);
+                Assert.AreEqual(format.Calendar, cip.DateTimeFormat.Calendar);
+                Assert.AreEqual(format.DayNames, cip.DateTimeFormat.DayNames);
+                Assert.AreEqual(format.DateSeparator, cip.DateTimeFormat.DateSeparator);
+                Assert.AreEqual(format.ShortDatePattern, cip.DateTimeFormat.ShortDatePattern);
+                Assert.AreEqual(format.ShortestDayNames, cip.DateTimeFormat.ShortestDayNames);
+                Assert.AreEqual(format.ShortTimePattern, cip.DateTimeFormat.ShortTimePattern);
+                Assert.AreEqual(format.YearMonthPattern, cip.DateTimeFormat.YearMonthPattern);
+                Assert.AreEqual(format.TimeSeparator, cip.DateTimeFormat.TimeSeparator);
             }
         }
     }

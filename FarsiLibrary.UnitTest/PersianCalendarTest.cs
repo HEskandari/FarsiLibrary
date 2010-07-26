@@ -301,5 +301,13 @@ namespace FarsiLibrary.UnitTest
             DateTime dt = new DateTime(000000000000000000L, DateTimeKind.Local);
             Assert.Throws<InvalidPersianDateException>(() => calendar.GetEra(dt));
         }
+
+        [Test]
+        public void Can_()
+        {
+            var dt = DateTime.MaxValue;
+
+            Assert.Throws<InvalidPersianDateException>(() => calendar.ToDateTime(dt.Year, dt.Month, dt.Day, dt.Hour, dt.Minute, dt.Second, dt.Millisecond));
+        }
     }
 }
