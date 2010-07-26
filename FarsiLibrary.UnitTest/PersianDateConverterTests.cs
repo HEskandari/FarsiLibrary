@@ -128,5 +128,18 @@ namespace FarsiLibrary.UnitTest
             Assert.AreEqual(10, pd.Month);
             Assert.AreEqual(11, pd.Day);
         }
+
+        [Test]
+        public void Can_Convert_Directly_To_Gregorian_Date_From_String()
+        {
+            var dt = PersianDateConverter.ToGregorianDateTime("1387/07/29 02:31:30"); //2008/10/20
+
+            Assert.That(dt.Year, Is.EqualTo(2008));
+            Assert.That(dt.Month, Is.EqualTo(10));
+            Assert.That(dt.Day, Is.EqualTo(20));
+            Assert.That(dt.Hour, Is.EqualTo(2));
+            Assert.That(dt.Minute, Is.EqualTo(31));
+            Assert.That(dt.Second, Is.EqualTo(30));
+        }
     }
 }
