@@ -51,6 +51,8 @@ namespace FarsiLibrary.Win.External.DevExpress
             Properties.PopupControl = popupContainerControl;
             Properties.QueryPopUp += OnEditorQueryPopup;
 
+            popupContainerControl.Size = new Size(200, 200);
+            popupContainerControl.PopupContainerProperties.PopupSizeable = false;
             popupContainerControl.PopupContainerProperties.CloseOnLostFocus = true;
             popupContainerControl.PopupContainerProperties.CloseOnOuterMouseClick = true;
             popupContainerControl.PopupContainerProperties.PopupSizeable = false;
@@ -256,7 +258,7 @@ namespace FarsiLibrary.Win.External.DevExpress
         [Browsable(false)]
         public bool IsCaptionVisible
         {
-            get { return true; }
+            get { return false; }
         }
 
         protected virtual void OnChanged()
@@ -275,6 +277,11 @@ namespace FarsiLibrary.Win.External.DevExpress
             fProperties = new RepositoryItemFADatePicker();
             Properties.PopupControl = popupContainerControl;
             Properties.SetOwner(this);
+        }
+
+        protected override Size CalcPopupFormSize()
+        {
+            return new Size(168, 168);
         }
 
         protected override void OnRightToLeftChanged(EventArgs e)
