@@ -215,7 +215,7 @@ namespace FarsiLibrary.Win.Enums
     /// <summary>
     /// Action Type of the ActRect class.
     /// </summary>
-    internal enum TRectangleAction
+    public enum FocusedPart
     {
         None,
         MonthPrev,
@@ -226,7 +226,9 @@ namespace FarsiLibrary.Win.Enums
         NoneButton,
         MonthDay,
         WeekDay,
-        Hidden
+        Hidden,
+        YearValue,
+        MonthValue,
     }
 
     /// <summary>

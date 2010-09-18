@@ -82,7 +82,7 @@ namespace FarsiLibrary.Win.Controls
 				set;
 			}
 
-		    public TRectangleAction Action
+		    public FocusedPart Action
 		    {
 		        get; 
                 set;
@@ -113,7 +113,7 @@ namespace FarsiLibrary.Win.Controls
 
 			#region Ctor
 
-			public ActRect(Rectangle rc, TRectangleStatus state, TRectangleAction act, bool invalidate)
+			public ActRect(Rectangle rc, TRectangleStatus state, FocusedPart act, bool invalidate)
 			{
 				Rect = rc;
 				State = state;
@@ -121,11 +121,11 @@ namespace FarsiLibrary.Win.Controls
 				Action = act;
 			}
 
-			public ActRect(Rectangle rc, TRectangleStatus state, TRectangleAction act) : this(rc, state, act, true)
+			public ActRect(Rectangle rc, TRectangleStatus state, FocusedPart act) : this(rc, state, act, true)
 			{
 			}
 
-			public ActRect(Rectangle rc, TRectangleAction act, object tag)
+			public ActRect(Rectangle rc, FocusedPart act, object tag)
 			{
 				Rect = rc;
 				State = TRectangleStatus.Normal;
@@ -133,19 +133,19 @@ namespace FarsiLibrary.Win.Controls
 				Tag = tag;
 			}
 
-			public ActRect(Rectangle rc, TRectangleAction act) : this(rc, TRectangleStatus.Normal, act, true)
+			public ActRect(Rectangle rc, FocusedPart act) : this(rc, TRectangleStatus.Normal, act, true)
 			{
 			}
 
-			public ActRect(Rectangle rc, TRectangleStatus state) : this(rc, state, TRectangleAction.None, true)
+			public ActRect(Rectangle rc, TRectangleStatus state) : this(rc, state, FocusedPart.None, true)
 			{
 			}
 
-			public ActRect(Rectangle rc) : this(rc, TRectangleStatus.Normal, TRectangleAction.None, true)
+			public ActRect(Rectangle rc) : this(rc, TRectangleStatus.Normal, FocusedPart.None, true)
 			{
 			}
 
-			public ActRect() : this(Rectangle.Empty, TRectangleStatus.Normal, TRectangleAction.None, true)
+			public ActRect() : this(Rectangle.Empty, TRectangleStatus.Normal, FocusedPart.None, true)
 			{
 			}
 
@@ -562,7 +562,7 @@ namespace FarsiLibrary.Win.Controls
 
 	        // Draw left arrow and add it as Active Rectangle
 	        var rect = Painter.DrawArrow(g, rc, true, !Enabled, DEF_ARROW_SIZE);
-	        AddActiveRect(rect, TRectangleAction.MonthPrev);
+	        AddActiveRect(rect, FocusedPart.MonthPrev);
 
 	        var sz = g.MeasureString(strLongestMonth, Font);
 	        var rcText = new Rectangle(rect.Right + 4, rc.Y, (int) sz.Width + 20, rc.Height);
@@ -570,7 +570,7 @@ namespace FarsiLibrary.Win.Controls
 	        
 	        // draw  right arrow and add it like Active Rectangle
 	        rect = Painter.DrawArrow(g, new Rectangle(rcText.Right, rc.Y, 100, rc.Height), false, !Enabled, DEF_ARROW_SIZE);
-	        AddActiveRect(rect, TRectangleAction.MonthNext);
+	        AddActiveRect(rect, FocusedPart.MonthNext);
 	    }
 
 	    private void OnDrawYearHeader(PaintEventArgs pevent)
@@ -581,14 +581,14 @@ namespace FarsiLibrary.Win.Controls
 	        var strYear = toFarsi.Convert(ViewYear.ToString(), DefaultCulture);
 
 	        var rect = Painter.DrawArrow(g, new Rectangle(rc.Right - 4 - DEF_ARROW_SIZE - 2, rc.Y, DEF_ARROW_SIZE * 2, rc.Height), false, !Enabled, DEF_ARROW_SIZE);
-	        AddActiveRect(rect, TRectangleAction.YearNext);
+	        AddActiveRect(rect, FocusedPart.YearNext);
 
 	        var sz = g.MeasureString(strYear, Font);
 	        var rcText = new Rectangle(rect.Left - 4 - (int) sz.Width - 8, rc.Y, (int) sz.Width + 8, rc.Height);
 	        g.DrawString(strYear, Font, SystemBrushes.WindowText, rcText, OneLineNoTrimming);
 
 	        rect = Painter.DrawArrow(g, new Rectangle(rcText.Left - 4 - DEF_ARROW_SIZE - 2, rc.Y, DEF_ARROW_SIZE * 2, rc.Height), true, !Enabled, DEF_ARROW_SIZE);
-	        AddActiveRect(rect, TRectangleAction.YearPrev);
+	        AddActiveRect(rect, FocusedPart.YearPrev);
 	    }
 
 	    private void OnDrawFooter(PaintEventArgs pevent)
@@ -640,7 +640,7 @@ namespace FarsiLibrary.Win.Controls
 	        
             if(ShowTodayButton)
             {
-                AddActiveRect(rcToday, TRectangleAction.TodayButton, DEF_TODAY_TAB_INDEX);
+                AddActiveRect(rcToday, FocusedPart.TodayButton, DEF_TODAY_TAB_INDEX);
                 var todayState = ItemState.Normal;
 
        	        if(btnTodayActive)
@@ -650,12 +650,12 @@ namespace FarsiLibrary.Win.Controls
             }
             else
             {
-                AddActiveRect(rcToday, TRectangleAction.Hidden, DEF_TODAY_TAB_INDEX);
+                AddActiveRect(rcToday, FocusedPart.Hidden, DEF_TODAY_TAB_INDEX);
             }
 
 	        if(ShowEmptyButton)
 	        {
-	            AddActiveRect(rcNone, TRectangleAction.NoneButton, DEF_NONE_TAB_INDEX);
+	            AddActiveRect(rcNone, FocusedPart.NoneButton, DEF_NONE_TAB_INDEX);
 
        	        var noneState = ItemState.Normal;
 
@@ -666,7 +666,7 @@ namespace FarsiLibrary.Win.Controls
 	        }
 	        else
 	        {
-	            AddActiveRect(rcNone, TRectangleAction.Hidden, DEF_NONE_TAB_INDEX);
+	            AddActiveRect(rcNone, FocusedPart.Hidden, DEF_NONE_TAB_INDEX);
 	        }
 
 	        fmt.Dispose();
@@ -810,11 +810,11 @@ namespace FarsiLibrary.Win.Controls
 	                }
 					
 	                g.DrawString(DayNo, Font, SystemBrushes.ControlText, rcDay, OneLineNoTrimming);
-	                AddActiveRect(rcDay, TRectangleAction.MonthDay, index);
+	                AddActiveRect(rcDay, FocusedPart.MonthDay, index);
 	            }
                 else if (SelectedDay == x) //Current Day
 	            {
-                    AddActiveRect(rcDay, TRectangleAction.MonthDay, index);
+                    AddActiveRect(rcDay, FocusedPart.MonthDay, index);
 	                var args = new CustomDrawDayEventArgs(rcDay, g, ViewYear, ViewMonth, x, true, dtInPaint);
 	                OnDrawCurrentDay(args);
 	                
@@ -838,7 +838,7 @@ namespace FarsiLibrary.Win.Controls
 	            }
 	            else //Other Days
 	            {
-                    AddActiveRect(rcDay, TRectangleAction.MonthDay, index);
+                    AddActiveRect(rcDay, FocusedPart.MonthDay, index);
                     var args = new CustomDrawDayEventArgs(rcDay, g, ViewYear, ViewMonth, x, false, dtInPaint);
                     OnDrawCurrentDay(args);
 
@@ -961,7 +961,7 @@ namespace FarsiLibrary.Win.Controls
 	        Invalidate();
 	    }
 
-	    private void AddActiveRect(Rectangle rc, TRectangleAction action, object tag)
+	    private void AddActiveRect(Rectangle rc, FocusedPart action, object tag)
 	    {
 	        if (rectsCreated == false)
 	        {
@@ -969,7 +969,7 @@ namespace FarsiLibrary.Win.Controls
 	        }
 	    }
 
-	    private void AddActiveRect(Rectangle rc, TRectangleAction action)
+	    private void AddActiveRect(Rectangle rc, FocusedPart action)
 	    {
 	        if (rectsCreated == false)
 	        {
@@ -1228,31 +1228,31 @@ namespace FarsiLibrary.Win.Controls
 
 	        switch (rc.Action)
 	        {
-                case TRectangleAction.Hidden:
+                case FocusedPart.Hidden:
                     break;
-	            case TRectangleAction.MonthPrev:
+	            case FocusedPart.MonthPrev:
 	                ToPrevMonth();
 	                break;
-	            case TRectangleAction.MonthNext:
+	            case FocusedPart.MonthNext:
 	                ToNextMonth();
 	                break;
-	            case TRectangleAction.YearPrev:
+	            case FocusedPart.YearPrev:
 	                ToPrevYear();
 	                break;
-	            case TRectangleAction.YearNext:
+	            case FocusedPart.YearNext:
 	                ToNextYear();
 	                break;
-	            case TRectangleAction.TodayButton:
+	            case FocusedPart.TodayButton:
 	                iLastFocused = DEF_TODAY_TAB_INDEX;
 	                SetTodayDay();
 	                OnButtonClicked(new CalendarButtonClickedEventArgs(FAMonthViewButtons.Today) { Rect = rc });
 	                break;
-	            case TRectangleAction.NoneButton:
+	            case FocusedPart.NoneButton:
 	                iLastFocused = DEF_NONE_TAB_INDEX;
 	                SetNoneDay();
                     OnButtonClicked(new CalendarButtonClickedEventArgs(FAMonthViewButtons.None) { Rect = rc });
 	                break;
-	            case TRectangleAction.MonthDay:
+	            case FocusedPart.MonthDay:
 	                if (SelectedDay == 0) return;
 
 	                var index = (int) rc.Tag;
@@ -1279,7 +1279,7 @@ namespace FarsiLibrary.Win.Controls
 
 	    private void OnSelectionClick(ActRect rc)
 	    {
-	        if (rc.Action == TRectangleAction.MonthDay)
+	        if (rc.Action == FocusedPart.MonthDay)
 	        {
 	            if (rc.IsSelected == false) 
 	            {
@@ -1326,11 +1326,11 @@ namespace FarsiLibrary.Win.Controls
 
 	        switch (rect.Action)
 	        {
-	            case TRectangleAction.TodayButton:
+	            case FocusedPart.TodayButton:
 	                SetTodayDay();
 	                break;
 
-	            case TRectangleAction.NoneButton:
+	            case FocusedPart.NoneButton:
 	                SetNoneDay();
 	                break;
 	        }
@@ -1498,17 +1498,17 @@ namespace FarsiLibrary.Win.Controls
 
 	        var rect = FindActiveRectByPoint(pnt);
 
-	        if (rect != null && rect.Action != TRectangleAction.WeekDay)
+	        if (rect != null && rect.Action != FocusedPart.WeekDay)
 	        {
 	            rect.State |= TRectangleStatus.Active;
 	        }
 
-	        if (rect != null && ShowTodayButton && rect.Action == TRectangleAction.TodayButton)
+	        if (rect != null && ShowTodayButton && rect.Action == FocusedPart.TodayButton)
 	        {
 	            btnTodayActive = true;
 	        }
 
-	        if (rect != null && ShowEmptyButton && rect.Action == TRectangleAction.NoneButton)
+	        if (rect != null && ShowEmptyButton && rect.Action == FocusedPart.NoneButton)
 	        {
 	            btnNoneActive = true;
 	        }
@@ -1573,17 +1573,17 @@ namespace FarsiLibrary.Win.Controls
 
 	        var rect = FindActiveRectByPoint(pnt);
 
-	        if (rect != null && rect.Action != TRectangleAction.WeekDay)
+	        if (rect != null && rect.Action != FocusedPart.WeekDay)
 	        {
 	            rect.State |= TRectangleStatus.Active;
 	        }
 
-	        if (rect != null && ShowTodayButton && rect.Action == TRectangleAction.TodayButton)
+	        if (rect != null && ShowTodayButton && rect.Action == FocusedPart.TodayButton)
 	        {
 	            btnTodayActive = true;
 	        }
 
-	        if (rect != null && ShowEmptyButton && rect.Action == TRectangleAction.NoneButton)
+	        if (rect != null && ShowEmptyButton && rect.Action == FocusedPart.NoneButton)
 	        {
 	            btnNoneActive = true;
 	        }
@@ -1606,7 +1606,7 @@ namespace FarsiLibrary.Win.Controls
             if(rect == null)
                 return;
 
-	        if (rect.Action != TRectangleAction.WeekDay)
+	        if (rect.Action != FocusedPart.WeekDay)
 	        {
 	            if (iLastFocused == DEF_NONE_TAB_INDEX)
 	            {
@@ -1620,19 +1620,19 @@ namespace FarsiLibrary.Win.Controls
 
                 switch (rect.Action)
                 {
-                    case TRectangleAction.MonthPrev:
+                    case FocusedPart.MonthPrev:
                         ToPrevMonth();
                         break;
 
-                    case TRectangleAction.MonthNext:
+                    case FocusedPart.MonthNext:
                         ToNextMonth();
                         break;
 
-                    case TRectangleAction.YearPrev:
+                    case FocusedPart.YearPrev:
                         ToPrevYear();
                         break;
 
-                    case TRectangleAction.YearNext:
+                    case FocusedPart.YearNext:
                         ToNextYear();
                         break;
 
@@ -1652,7 +1652,7 @@ namespace FarsiLibrary.Win.Controls
             if(rect == null)
                 return;
 
-	        if (rect.Action != TRectangleAction.WeekDay)
+	        if (rect.Action != FocusedPart.WeekDay)
 	        {
 	            ResetActiveRectanglesState();
 	            ResetFocusedRectangleState();
@@ -1676,19 +1676,14 @@ namespace FarsiLibrary.Win.Controls
 	    }
 
 	    /// <summary>
-	    /// Returns index of the ActRect control on click, if the HitTest is true. Returns -1 if hitting was not successfull.
+	    /// Returns the part of the control that is tested.
 	    /// </summary>
 	    /// <param name="location"></param>
 	    /// <returns></returns>
-	    public int HitTest(Point location)
+	    public FocusedPart HitTest(Point location)
 	    {
 	        var rect = FindActiveRectByPoint(location);
-	        if (rect != null)
-	        {
-	            return (int)rect.Tag;
-	        }
-	        
-            return -1;
+	        return rect != null ? rect.Action : FocusedPart.None;
 	    }
 
 	    protected override void OnMouseClick(MouseEventArgs e)
@@ -1705,7 +1700,7 @@ namespace FarsiLibrary.Win.Controls
 
 	        var rect = FindActiveRectByPoint(pnt);
 
-	        if (rect != null && rect.Action != TRectangleAction.WeekDay)
+	        if (rect != null && rect.Action != FocusedPart.WeekDay)
 	        {
 	            ResetActiveRectanglesState();
 	            ResetSelectedRectangleState();

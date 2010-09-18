@@ -108,7 +108,7 @@ namespace FarsiLibrary.Win.Controls
             monthView.ViewDateTimeChanged += (sender, e) => ViewDateTime = monthView.ViewDateTime;
             monthView.ButtonClicked += (sender, e) =>
             {
-                if (e.Rect.Action == TRectangleAction.MonthDay && e.Rect.IsFocused)
+                if (e.Rect.Action == FocusedPart.MonthDay && e.Rect.IsFocused)
                 {
                     ShowDayView();
                 }

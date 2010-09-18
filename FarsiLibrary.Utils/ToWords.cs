@@ -25,6 +25,7 @@ namespace FarsiLibrary.Utils
 
         static ToWords()
 		{
+            cvtText[0] = "صفر";
 			cvtText[1] = "يک";
             cvtText[2] = "دو";
             cvtText[3] = "سه";
@@ -138,7 +139,12 @@ namespace FarsiLibrary.Utils
 				result += cvtText[x];
 			}
 
-			return result;
+            if (x == 0)
+            {
+                result += cvtText[0];
+            }
+
+		    return result;
 		}
 
 
@@ -148,7 +154,7 @@ namespace FarsiLibrary.Utils
 		/// <returns></returns>
         public static string ToString(int x) 
 		{
-			return (ToString(long.Parse(x.ToString())));
+			return ToString(long.Parse(x.ToString()));
 		}
 
 		/// <summary>Converts a long number to its written form in Persian</summary>
@@ -208,7 +214,7 @@ namespace FarsiLibrary.Utils
                 result += String.Format("{0}", " و "); ;
 			}
 
-			if (x > 0) 
+			if (x >= 0) 
 			{
 				result += cvt100(x);
 			}
