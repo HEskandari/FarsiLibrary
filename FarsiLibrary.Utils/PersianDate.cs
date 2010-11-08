@@ -50,6 +50,7 @@ namespace FarsiLibrary.Utils
         private readonly TimeSpan time;
         private readonly PersianDateTimeFormatInfo formatting;
         private static readonly PersianCalendar pc;
+        private static readonly IPrettyFormatter prettyFormatter;
 
         [NonSerialized]
         public static DateTime MinValue;
@@ -69,29 +70,12 @@ namespace FarsiLibrary.Utils
             MinValue = new DateTime(196037280000000000L); // 12:00:00.000 AM, 22/03/0622
             MaxValue = DateTime.MaxValue;
             pc = new PersianCalendar();
+            prettyFormatter = new PrettyFormatter();
         }
 
         #endregion
 
         #region Props
-
-        /// <summary>
-        /// AMDesignator.
-        /// </summary>
-        [Obsolete("Use PersianDateTimeFormatInfo.AMDesignator property instead.")]
-        public string AMDesignator
-        {
-            get { return PersianDateTimeFormatInfo.AMDesignator; }
-        }
-
-        /// <summary>
-        /// PMDesignator.
-        /// </summary>
-        [Obsolete("Use PersianDateTimeFormatInfo.PMDesignator property instead.")]
-        public string PMDesignator
-        {
-            get { return PersianDateTimeFormatInfo.PMDesignator; }
-        }
 
         /// <summary>
         /// Current date/time in PersianDate format.
@@ -487,6 +471,15 @@ namespace FarsiLibrary.Utils
         public string ToWritten()
         {
             return string.Format("{0} {1} {2} {3}", LocalizedWeekDayName, day, LocalizedMonthName, year);
+        }
+
+        /// <summary>
+        /// Returns a pretty representation of this date instance
+        /// </summary>
+        /// <returns></returns>
+        public string ToPrettyDate()
+        {
+            return prettyFormatter.Format(this);
         }
 
         #endregion

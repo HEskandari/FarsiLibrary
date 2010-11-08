@@ -50,8 +50,18 @@
                 case StringID.MessageBox_Abort: return "لغو";
                 case StringID.MessageBox_Ignore: return "ادامه عملیات";
                 case StringID.MessageBox_Retry: return "سعی مجدد";
-                case StringID.MessageBox_No: return "خیر";                    
+                case StringID.MessageBox_No: return "خیر";
                 case StringID.MessageBox_Yes: return "بله";
+
+                case StringID.PrettyFormatter_DaysAgo: return "روز قبل {0}";
+                case StringID.PrettyFormatter_HoursAgo: return "ساعت قبل {0}";
+                case StringID.PrettyFormatter_JustNow: return "همین لحظه";
+                case StringID.PrettyFormatter_MinutesAgo: return "دقیقه قبل {0}";
+                case StringID.PrettyFormatter_OneHourAgo: return "یک ساعت قبل}";
+                case StringID.PrettyFormatter_OneMinuteAgo: return "یک دقیقه قبل}";
+                case StringID.PrettyFormatter_OneWeekAgo: return "یک هقفته قبل";
+                case StringID.PrettyFormatter_WeeksAgo: return "هفته قبل {0}";
+                case StringID.PrettyFormatter_Yesterday: return "دیروز";
             }
 
             return "";

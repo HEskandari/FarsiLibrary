@@ -49,6 +49,17 @@
                 case StringID.MessageBox_No: return "No";
                 case StringID.MessageBox_Retry: return "Retry";
                 case StringID.MessageBox_Yes: return "Yes";
+
+                case StringID.PrettyFormatter_DaysAgo: return "{0} days ago";
+                case StringID.PrettyFormatter_HoursAgo: return "{0} hours ago";
+                case StringID.PrettyFormatter_JustNow: return "just now";
+                case StringID.PrettyFormatter_MinutesAgo: return "{0} minutes ago";
+                case StringID.PrettyFormatter_OneHourAgo: return "an hour ago";
+                case StringID.PrettyFormatter_OneMinuteAgo: return "a minute ago";
+                case StringID.PrettyFormatter_OneWeekAgo: return "a week ago";
+                case StringID.PrettyFormatter_WeeksAgo: return "{0} weeks ago";
+                case StringID.PrettyFormatter_Yesterday: return "yesterday";
+
             }
 
             return "";
