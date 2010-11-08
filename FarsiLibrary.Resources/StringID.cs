@@ -53,7 +53,18 @@ namespace FarsiLibrary.Resources
         MessageBox_No,
         MessageBox_Abort,
         MessageBox_Retry,
-        MessageBox_Ignore
+        MessageBox_Ignore,
+
+        PrettyFormatter_JustNow,
+        PrettyFormatter_OneMinuteAgo,
+        PrettyFormatter_MinutesAgo,
+        PrettyFormatter_OneHourAgo,
+        PrettyFormatter_HoursAgo,
+        PrettyFormatter_Yesterday,
+        PrettyFormatter_DaysAgo,
+        PrettyFormatter_OneWeekAgo,
+        PrettyFormatter_WeeksAgo,
+
     }
 
 	#endregion

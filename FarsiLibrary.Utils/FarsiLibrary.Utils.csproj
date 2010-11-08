@@ -24,6 +24,7 @@
     <Compile Include="CultureInfoExtensions.cs" />
     <Compile Include="Internals\Guard.cs" />
     <Compile Include="Internals\ThemeWrapper.cs" />
+    <Compile Include="IPrettyFormatter.cs" />
     <Compile Include="PersianCalendar.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -36,6 +37,7 @@
     <Compile Include="PersianMonthNames.cs" />
     <Compile Include="PersianWeekDayNames.cs" />
     <Compile Include="Internals\ReflectionHelper.cs" />
+    <Compile Include="PrettyFormatter.cs" />
     <Compile Include="toEnglish.cs">
       <SubType>Code</SubType>
     </Compile>
