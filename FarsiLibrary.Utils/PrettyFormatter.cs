@@ -82,7 +82,7 @@ namespace FarsiLibrary.Utils
 
         private string FormatForSameDay(int secondDiff)
         {
-            var query = from formatter in PastSecondFormatters 
+            var query = from formatter in SecondFormatters 
                         where formatter.Condition(secondDiff) 
                         select formatter.Message(secondDiff);
 
