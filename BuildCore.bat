@@ -1,5 +1,5 @@
 @echo off
-set MSBUILD=%WINDIR%\Microsoft.NET\Framework\v3.5\MSBuild.exe
+set MSBUILD=%WINDIR%\Microsoft.NET\Framework\v4.0.30319\MSBuild.exe
 set TARGET=Rebuild
 set SOLFILE=%1
 set CONFIG=%2

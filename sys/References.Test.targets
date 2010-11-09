@@ -8,9 +8,6 @@ References.targets
 	    <Reference Include="nUnit.Framework">
 			   <HintPath>$(Libs)nUnit\nUnit.Framework.dll</HintPath>
 		  </Reference>
-	    <Reference Include="nUnit.Framework.Extensions">
-			   <HintPath>$(Libs)nUnit\nUnit.Framework.Extensions.dll</HintPath>
-		  </Reference>
       <Reference Include="Moq">
          <HintPath>$(Libs)Moq\Moq.dll</HintPath>
       </Reference>

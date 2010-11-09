@@ -5,7 +5,6 @@
  	<CurrentLevelDir Condition="'$(CurrentLevelDir)' == ''" >$(SolutionDir)</CurrentLevelDir>
 	<DefaultOutputRootDir>$(SolutionDir)..\out\</DefaultOutputRootDir>
 	<Libs>$(SolutionDir)\lib\</Libs>
-	<UnitTestRunner>$(Libs)\xunit\xunitext.runner.msbuild.dll</UnitTestRunner>
 	<OutputPath>$(SolutionDir)\out\bin\$(Configuration)\FarsiLibrary\$(AssemblyName)</OutputPath>
 	<OutputDir>$(SolutionDir)\out\bin\$(Configuration)\FarsiLibrary\</OutputDir>
 	<WarningLevel>2</WarningLevel>
@@ -21,8 +20,14 @@
     <ProductVersion>9.0.30729</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <FileAlignment>512</FileAlignment>
+	<NUnitPath>$(Libs)NUnit</NUnitPath>
+	<MSBuildCommunityTasksLib>$(Libs)\MSBuild\MSBuild.Community.Tasks.dll</MSBuildCommunityTasksLib>
+	<UnitTestAssembly>$(OutputDir)FarsiLibrary.UnitTest\FarsiLibrary.UnitTest.dll</UnitTestAssembly>
   </PropertyGroup>
-
+  
+  <!--Task Imports-->
+  <UsingTask AssemblyFile="$(MSBuildCommunityTasksLib)" TaskName="MSBuild.Community.Tasks.NUnit" />
+  
 	<!-- Debug Build -->
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -40,10 +45,6 @@
     <ErrorReport>prompt</ErrorReport>
   </PropertyGroup>
   
-  <!-- Import the xUnit test runner -->
-  <!-- Moved away from xUnit. -->
-  <!-- UsingTask AssemblyFile="$(UnitTestRunner)" TaskName="XunitExt.Runner.MSBuild.xunit" -->
-
   <ItemGroup>
     <CopyKeyFile Include="$(SolutionDir)\FarsiLibrary.snk" />
   </ItemGroup>
@@ -64,10 +65,10 @@
   <Target Name="BuildSolution" DependsOnTargets="DisplayMessages;CopyKeyFile">
     <MSBuild Projects="$(SolutionName)" Targets="$(Targets)" Properties="SolutionDir=$(MSBuildProjectDirectory)\;Configuration=$(Configuration)" />
     
-    <!-- Won't run unit test for now -->
-    <!--<NUnit Assembly="$(OutputDir)\FarsiLibrary.UnitTest\FarsiLibrary.UnitTest.dll" Condition="$(ShouldRunTests) == 'True'" />-->
+	<Message Importance="high" Text="Running Unit Tests from $(UnitTestAssembly)" Condition="$(ShouldRunTests) == 'True'" />
+    <NUnit DisableShadowCopy="true" ToolPath="$(NUnitPath)" Assemblies="$(UnitTestAssembly)" Condition="$(ShouldRunTests) == 'True'" />
   </Target>
-
+  
   <PropertyGroup>
     <IntermediateOutputPath>$(BaseIntermediateOutputPath)$(Configuration)\</IntermediateOutputPath>
   </PropertyGroup>
