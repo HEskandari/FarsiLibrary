@@ -65,7 +65,7 @@
     <MSBuild Projects="$(SolutionName)" Targets="$(Targets)" Properties="SolutionDir=$(MSBuildProjectDirectory)\;Configuration=$(Configuration)" />
     
     <!-- Won't run unit test for now -->
-    <NUnit Assembly="$(OutputDir)\FarsiLibrary.UnitTest\FarsiLibrary.UnitTest.dll" Condition="$(ShouldRunTests) == 'True'" />
+    <!--<NUnit Assembly="$(OutputDir)\FarsiLibrary.UnitTest\FarsiLibrary.UnitTest.dll" Condition="$(ShouldRunTests) == 'True'" />-->
   </Target>
 
   <PropertyGroup>
