@@ -22,6 +22,7 @@
     <Compile Include="FALocalizer.cs" />
     <Compile Include="FALocalizeManager.cs" />
     <Compile Include="BaseLocalizer.cs" />
+    <Compile Include="FormatterStringID.cs" />
     <Compile Include="StringID.cs" />
   </ItemGroup>
   <PropertyGroup>

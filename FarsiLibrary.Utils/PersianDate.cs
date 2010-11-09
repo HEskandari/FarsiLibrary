@@ -50,7 +50,6 @@ namespace FarsiLibrary.Utils
         private readonly TimeSpan time;
         private readonly PersianDateTimeFormatInfo formatting;
         private static readonly PersianCalendar pc;
-        private static readonly IPrettyFormatter prettyFormatter;
 
         [NonSerialized]
         public static DateTime MinValue;
@@ -70,7 +69,6 @@ namespace FarsiLibrary.Utils
             MinValue = new DateTime(196037280000000000L); // 12:00:00.000 AM, 22/03/0622
             MaxValue = DateTime.MaxValue;
             pc = new PersianCalendar();
-            prettyFormatter = new PrettyFormatter();
         }
 
         #endregion
@@ -479,7 +477,7 @@ namespace FarsiLibrary.Utils
         /// <returns></returns>
         public string ToPrettyDate()
         {
-            return prettyFormatter.Format(this);
+            return null;
         }
 
         #endregion
