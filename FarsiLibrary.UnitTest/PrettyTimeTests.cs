@@ -3,6 +3,7 @@ using FarsiLibrary.UnitTest.Helpers;
 using FarsiLibrary.Utils.Formatter;
 using NUnit.Framework;
 using System.Globalization;
+using FarsiLibrary.Utils;
 
 namespace FarsiLibrary.UnitTest
 {
@@ -36,11 +37,10 @@ namespace FarsiLibrary.UnitTest
         {
             using (var context = new CultureSwitchContext(new CultureInfo(cultureName)))
             {
-                var datetime = DateTime.Now;
-                var then = DateTime.Now.AddSeconds(seconds);
-                var pretty = new PrettyTime(datetime);
+                var date = DateTime.Now.AddSeconds(seconds);
+                var pretty = new PrettyTime();
 
-                var result = pretty.Format(then);
+                var result = pretty.Format(date);
 
                 Assert.NotNull(result);
                 Assert.AreEqual(expected, result);
@@ -138,6 +138,15 @@ namespace FarsiLibrary.UnitTest
             var justNow = new PrettyTime().Format(DateTime.Now);
 
             Assert.AreEqual("moments from now", justNow);
+        }
+
+        [Test]
+        public void Can_Convert_Dates_Using_ExtensionMethod()
+        {
+            var date = DateTime.Now;
+            var pretty = date.ToPrettyTime();
+
+            Assert.AreEqual("moments from now", pretty);
         }
     }
 }

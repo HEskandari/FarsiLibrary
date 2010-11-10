@@ -1,4 +1,5 @@
 ﻿using System;
+using FarsiLibrary.Utils.Formatter;
 using FarsiLibrary.Utils.Internals;
 
 namespace FarsiLibrary.Utils
@@ -99,6 +100,12 @@ namespace FarsiLibrary.Utils
             }
 
             return diff;
+        }
+
+        public static string ToPrettyTime(this DateTime date)
+        {
+            var pretty = new PrettyTime();
+            return pretty.Format(date);
         }
 
         private static int GetEndOfWeekDiff(DateTime dateTime)
