@@ -62,7 +62,6 @@ namespace FarsiLibrary.Win.Controls
             if(DataGridView == null)
                 return;
 
-
             // First paint the borders and background of the cell.
             base.Paint(graphics, clipBounds, cellBounds, rowIndex, cellState, value, formattedValue, errorText, cellStyle, advancedBorderStyle, paintParts & ~(DataGridViewPaintParts.ErrorIcon | DataGridViewPaintParts.ContentForeground));
 
@@ -71,7 +70,7 @@ namespace FarsiLibrary.Win.Controls
             var cellEdited = cellCurrent && DataGridView.EditingControl != null;
 
             // If the cell is in editing mode, there is nothing else to paint
-            if (!cellEdited && value != null && !string.IsNullOrEmpty(value.ToString()))
+            if (!cellEdited && value != null && IsValueEmpty(value))
             {
                 PersianDate pd = null;
                 if (value is DateTime)
@@ -107,6 +106,17 @@ namespace FarsiLibrary.Win.Controls
             if (PartPainted(paintParts, DataGridViewPaintParts.ErrorIcon))
                 base.Paint(graphics, clipBounds, cellBounds, rowIndex, cellState, value, formattedValue, errorText, cellStyle, advancedBorderStyle, DataGridViewPaintParts.ErrorIcon);
         }
+
+		private static bool IsValueEmpty(object value)
+		{
+			if(value == null)
+				return true;
+
+			if(value is DateTime && (DateTime)value == DateTime.MinValue)
+				return true;
+
+			return !string.IsNullOrEmpty(value.ToString());
+		}
 
         private DataGridViewFADateTimePickerColumn GetColumn()
         {
@@ -184,20 +194,22 @@ namespace FarsiLibrary.Win.Controls
                 }
                 else
                 {
-                    if(CultureHelper.IsFarsiCulture)
-                    {
-                        PersianDate pd = PersianDate.Parse(formattedValue);
-                        editor.SelectedDateTime = pd.ToDateTime();
-                    }
-                    else
-                    {
-                        editor.SelectedDateTime = DateTime.Parse(formattedValue);
-                    }
+                	editor.SelectedDateTime = GetParsedDate(formattedValue);
                 }
             }
         }
 
-        #endregion
+		private PersianDate GetParsedDate(string formattedValue)
+		{
+			if (CultureHelper.IsBuiltinFarsiCulture)
+			{
+				return PersianDate.Parse(formattedValue);
+			}
+
+			return DateTime.Parse(formattedValue);
+		}
+
+    	#endregion
     }
 
     #endregion

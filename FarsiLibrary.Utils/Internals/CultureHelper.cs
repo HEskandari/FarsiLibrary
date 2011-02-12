@@ -189,7 +189,17 @@ namespace FarsiLibrary.Utils.Internals
 
         public static bool IsFarsiCulture
         {
-            get { return CurrentCulture.Equals(FarsiCulture) || CurrentCulture.Name.Equals("fa", StringComparison.InvariantCultureIgnoreCase); }
+            get { return IsCustomizedFarsiCulture || IsBuiltinFarsiCulture; }
         }
+
+    	public static bool IsCustomizedFarsiCulture
+    	{
+			get { return CurrentCulture.Equals(PersianCulture); }
+    	}
+
+    	public static bool IsBuiltinFarsiCulture
+    	{
+			get { return CurrentCulture.Name.Equals("fa", StringComparison.InvariantCultureIgnoreCase); }
+    	}
     }
 }
