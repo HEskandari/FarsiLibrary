@@ -30,6 +30,7 @@
   </PropertyGroup>
   <Import Project="CSharp.targets" />
   <PropertyGroup>
-    <PreBuildEvent>copy "$(SolutionDir)FarsiLibrary.snk" "C:\FarsiLibrary.snk" /y</PreBuildEvent>
+    <PreBuildEvent>
+    </PreBuildEvent>
   </PropertyGroup>
 </Project>

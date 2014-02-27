@@ -45,10 +45,6 @@
       <Project>{83C3AEB8-5322-4DB6-9E7E-4BF8A319DCE7}</Project>
       <Name>FarsiLibrary.Win</Name>
     </ProjectReference>
-    <ProjectReference Include="..\FarsiLibrary.WPF.VisualStudio.Design\FarsiLibrary.WPF.VisualStudio.Design.csproj">
-      <Project>{E7F44116-95CA-4E29-9215-FB4366589780}</Project>
-      <Name>FarsiLibrary.WPF.VisualStudio.Design</Name>
-    </ProjectReference>
     <ProjectReference Include="..\FarsiLibrary.WPF\FarsiLibrary.WPF.csproj">
       <Project>{01D673DE-5CD4-491D-B4AF-563360C1BC9E}</Project>
       <Name>FarsiLibrary.WPF</Name>
