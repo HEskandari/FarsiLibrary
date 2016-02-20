@@ -78,7 +78,7 @@ namespace FarsiLibrary.Win.External.DevExpress
         }
 
         [Description("Gets or sets a value specifying whether the editor's value can be changed by end users.")]
-        public virtual bool ReadOnly
+        public new bool ReadOnly
         {
             get { return Properties.ReadOnly; }
             set
