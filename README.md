@@ -12,4 +12,4 @@ This project is released under MIT license. Make sure you read the licensing agr
 using it.
 
 [1]: http://www.codeproject.com/KB/selection/FarsiLibrary.aspx
-[2]: http://www.hightech.ir
+[2]: http://www.seesharpsoftware.com.au
