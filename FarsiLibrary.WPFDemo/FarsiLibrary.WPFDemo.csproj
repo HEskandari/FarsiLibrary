@@ -16,23 +16,78 @@
     <Compile Include="..\Solution Items\CommonAssemblyInfo.cs">
       <Link>Properties\CommonAssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Localization\CultureHelper.cs" />
+    <Compile Include="Localization\LocalizationExtension.cs" />
+    <Compile Include="Localization\LocalizeDictionary.cs" />
+    <Compile Include="Localization\LocalizedObjectOperation.cs" />
+    <Compile Include="Localization\LocBrush.cs" />
+    <Compile Include="Localization\LocDouble.cs" />
+    <Compile Include="Localization\LocFlowDirection.cs" />
+    <Compile Include="Localization\LocHorzAlignment.cs" />
+    <Compile Include="Localization\LocImage.cs" />
+    <Compile Include="Localization\LocText.cs" />
+    <Compile Include="Localization\LocThickness.cs" />
+    <Compile Include="Localization\ObjectDependencyManager.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\DateConverter.xaml.cs">
+      <DependentUpon>DateConverter.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\DatePicker.xaml.cs">
+      <DependentUpon>DatePicker.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\MonthView.xaml.cs">
+      <DependentUpon>MonthView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Themes.xaml.cs">
+      <DependentUpon>Themes.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <AppDesigner Include="Properties\" />
+    <Compile Include="Properties\Resources1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="RootPage.xaml.cs">
+      <DependentUpon>RootPage.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Page Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="MainWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\DateConverter.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\DatePicker.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\MonthView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\Themes.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="RootPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\FarsiLibrary.LiveSamples\FarsiLibrary.LiveSamples.csproj">
-      <Project>{2059F040-AD97-47A5-B8E6-ECB3AF68307D}</Project>
-      <Name>FarsiLibrary.LiveSamples</Name>
-    </ProjectReference>
     <ProjectReference Include="..\FarsiLibrary.Resources\FarsiLibrary.Resources.csproj">
       <Project>{E5575624-4B92-4E51-B98B-20F31FE5B5B4}</Project>
       <Name>FarsiLibrary.Resources</Name>
@@ -52,6 +107,13 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Icons\App.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.fa-ir.resx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources1.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <ProjectRefType>WPF</ProjectRefType>

@@ -8,3 +8,4 @@ _ReSharper.*
 *.sln.cache
 [Dd]ebug.log
 [Rr]elease.log
+.vs
