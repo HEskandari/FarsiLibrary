@@ -6,7 +6,7 @@ namespace FarsiLibrary.Utils.Formatter.TimeUnits
     {
         public Month()
         {
-            MillisPerUnit = 2629743830L;
+            MillisPerUnit = 1000L * 60L * 60L * 24L * 30L;
         }
 
         protected override string GetResourcePrefix()

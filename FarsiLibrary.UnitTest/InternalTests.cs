@@ -197,19 +197,6 @@ namespace FarsiLibrary.UnitTest
 
         #endregion
 
-        #region ThemeWrapper
-
-        [Test, Ignore]
-        public void Can_Get_Theme_Name_From_Wrapper()
-        {
-            var themeName = ThemeWrapper.CurrentThemeName;
-
-            Assert.IsNotEmpty(themeName);
-        }
-
-        #endregion
-
-
         #region TestClass
 
         public class ReflectionTestClass

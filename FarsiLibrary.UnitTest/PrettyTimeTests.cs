@@ -3,6 +3,7 @@ using FarsiLibrary.UnitTest.Helpers;
 using FarsiLibrary.Utils.Formatter;
 using NUnit.Framework;
 using System.Globalization;
+using System.Threading;
 using FarsiLibrary.Utils;
 
 namespace FarsiLibrary.UnitTest
@@ -16,7 +17,7 @@ namespace FarsiLibrary.UnitTest
         [TestCase(-5, "پنج روز قبل", "fa-IR")]
         public void Can_Format_Days(int days, string expected, string cultureName)
         {
-            using (var context = new CultureSwitchContext(new CultureInfo(cultureName)))
+            using (new CultureSwitchContext(new CultureInfo(cultureName)))
             {
                 var datetime = DateTime.Now;
                 var then = DateTime.Now.AddDays(days);
@@ -35,7 +36,7 @@ namespace FarsiLibrary.UnitTest
         [TestCase(-5, "چند لحظه قبل", "fa-IR")]
         public void Can_Format_Seconds(int seconds, string expected, string cultureName)
         {
-            using (var context = new CultureSwitchContext(new CultureInfo(cultureName)))
+            using (new CultureSwitchContext(new CultureInfo(cultureName)))
             {
                 var date = DateTime.Now.AddSeconds(seconds);
                 var pretty = new PrettyTime();
@@ -53,7 +54,7 @@ namespace FarsiLibrary.UnitTest
         [TestCase(-10, "ده دقیقه قبل", "fa-IR")]
         public void Can_Format_Minutes(int minutes, string expected, string cultureName)
         {
-            using (var context = new CultureSwitchContext(new CultureInfo(cultureName)))
+            using (new CultureSwitchContext(new CultureInfo(cultureName)))
             {
                 var datetime = DateTime.Now;
                 var then = DateTime.Now.AddMinutes(minutes);
@@ -72,7 +73,7 @@ namespace FarsiLibrary.UnitTest
         [TestCase(-2, "دو ساعت قبل", "fa-IR")]
         public void Can_Format_Hours(int hours, string expected, string cultureName)
         {
-            using (var context = new CultureSwitchContext(new CultureInfo(cultureName)))
+            using (new CultureSwitchContext(new CultureInfo(cultureName)))
             {
                 var datetime = DateTime.Now;
                 var then = DateTime.Now.AddHours(hours);
@@ -85,19 +86,19 @@ namespace FarsiLibrary.UnitTest
             }
         }
 
-        [TestCase(-2, "1 year ago", "en-US")]
+        [TestCase(-1, "1 year ago", "en-US")]
         [TestCase(2, "2 years from now", "en-US")]
         [TestCase(50, "5 decades from now", "en-US")]
         [TestCase(100, "10 decades from now", "en-US")]
         [TestCase(101, "1 century from now", "en-US")]
-        [TestCase(-2, "يک سال قبل", "fa-IR")]
+        [TestCase(-1, "يک سال قبل", "fa-IR")]
         [TestCase(2, "دو سال بعد", "fa-IR")]
         [TestCase(50, "پنج دهه بعد", "fa-IR")]
         [TestCase(100, "ده دهه بعد", "fa-IR")]
         [TestCase(101, "يک قرن بعد", "fa-IR")]
         public void Can_Format_Years(int years, string expected, string cultureName)
         {
-            using (var context = new CultureSwitchContext(new CultureInfo(cultureName)))
+            using (new CultureSwitchContext(new CultureInfo(cultureName)))
             {
                 var datetime = DateTime.Now;
                 var then = DateTime.Now.AddYears(years);
@@ -144,9 +145,12 @@ namespace FarsiLibrary.UnitTest
         public void Can_Convert_Dates_Using_ExtensionMethod()
         {
             var date = DateTime.Now;
+            
+            Thread.Sleep(1000); //to simulate delay
+
             var pretty = date.ToPrettyTime();
 
-            Assert.AreEqual("moments from now", pretty);
+            Assert.AreEqual("moments ago", pretty);
         }
     }
 }

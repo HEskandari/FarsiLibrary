@@ -4,7 +4,7 @@ namespace FarsiLibrary.Utils.Formatter.TimeUnits
     {
         public Year()
         {
-            MillisPerUnit = 2629743830L * 12L;
+            MillisPerUnit = 1000L * 60L * 60L * 24L * 30L * 12L;
         }
 
         protected override string GetResourcePrefix()
