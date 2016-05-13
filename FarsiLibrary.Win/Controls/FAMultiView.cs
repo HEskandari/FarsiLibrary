@@ -24,7 +24,6 @@ namespace FarsiLibrary.Win.Controls
         private bool showTodayButton = true;
         private bool showFocusRect = false;
         private bool showBorder = true;
-        private bool controlsDateChanging = false;
         private ScrollOptionTypes scrollOptions = ScrollOptionTypes.Month;
         private readonly bool isInitialized;
 

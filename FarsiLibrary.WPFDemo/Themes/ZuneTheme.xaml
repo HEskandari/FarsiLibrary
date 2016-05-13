@@ -1,0 +1,728 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:Cnv="clr-namespace:FarsiLibrary.WPF.Converters;assembly=FarsiLibrary.WPF"
+                    xmlns:Res="clr-namespace:FarsiLibrary.WPF.Resources;assembly=FarsiLibrary.WPF"
+                    xmlns:local="clr-namespace:FarsiLibrary.WPF.Controls;assembly=FarsiLibrary.WPF">
+
+
+    <!--  ButtonBase Template and Style  -->
+    <Style x:Key="{x:Type ButtonBase}" TargetType="{x:Type ButtonBase}">
+        <Setter Property="Background" Value="{DynamicResource ButtonDefaultBackgroundBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource ButtonDefaultBorderBrush}" />
+        <Setter Property="Foreground" Value="{DynamicResource ButtonDefaultTextBrush}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="HorizontalAlignment" Value="Center" />
+        <Setter Property="FontFamily" Value="{DynamicResource MessageFontFamily}" />
+        <Setter Property="FontSize" Value="{DynamicResource MessageFontSize}" />
+        <Setter Property="FontWeight" Value="{DynamicResource MessageFontWeight}" />
+        <Setter Property="Padding" Value="1" />
+        <Setter Property="FocusVisualStyle" Value="{DynamicResource ButtonBaseFocusVisualStyle}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ButtonBase}">
+                    <Border x:Name="ButtonTemplateGrid"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="3">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+                            <ContentPresenter x:Name="Content"
+                                              Grid.RowSpan="2"
+                                              Margin="{TemplateBinding Padding}"
+                                              HorizontalAlignment="Center"
+                                              VerticalAlignment="Center"
+                                              Content="{TemplateBinding Content}"
+                                              ContentTemplate="{TemplateBinding ContentTemplate}"
+                                              ContentTemplateSelector="{TemplateBinding ContentTemplateSelector}"
+                                              RecognizesAccessKey="true" />
+                            <Border x:Name="HighlightBackground"
+                                    Grid.Row="0"
+                                    Margin="1,1,1,0"
+                                    Background="{DynamicResource ButtonSelectionGrad}"
+                                    CornerRadius="2"
+                                    Opacity="0.15"
+                                    RenderTransformOrigin="0.5,1" />
+                        </Grid>
+                    </Border>
+
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsFocused" Value="true">
+                            <Setter Property="Background" Value="{DynamicResource ButtonDefaultBackgroundBrush}" />
+                            <Setter Property="Foreground" Value="{DynamicResource ButtonDefaultTextBrush}" />
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="true">
+                            <Setter Property="Background" Value="{DynamicResource ButtonMouseOverBackgroundBrush}" />
+                            <Setter Property="BorderBrush" Value="{DynamicResource ButtonMouseOverBorderBrush}" />
+                            <Setter Property="Foreground" Value="{DynamicResource ButtonMouseOverTextBrush}" />
+                            <Setter TargetName="HighlightBackground" Property="Opacity" Value="0.4" />
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="true">
+                            <Setter Property="Background" Value="{DynamicResource ButtonPressedBackgroundBrush}" />
+                            <Setter Property="BorderBrush" Value="{DynamicResource ButtonPressedBorderBrush}" />
+                            <Setter Property="Foreground" Value="{DynamicResource ButtonDefaultTextBrush}" />
+                            <Setter TargetName="HighlightBackground" Property="Opacity" Value="0.1" />
+                            <Setter TargetName="HighlightBackground" Property="RenderTransform">
+                                <Setter.Value>
+                                    <ScaleTransform ScaleX="1" ScaleY="-1" />
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="false">
+                            <Setter Property="Background" Value="{DynamicResource ButtonDisabledBackgroundBrush}" />
+                            <Setter Property="BorderBrush" Value="{DynamicResource ButtonDisabledBorderBrush}" />
+                            <Setter Property="Foreground" Value="{DynamicResource DisabledTextBrush}" />
+                            <Setter TargetName="HighlightBackground" Property="Visibility" Value="Hidden" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--  RepeatButton  -->
+    <Style x:Key="{x:Type RepeatButton}"
+           BasedOn="{StaticResource {x:Type ButtonBase}}"
+           TargetType="{x:Type RepeatButton}" />
+
+    <SolidColorBrush x:Key="DisabledButtonForeground" Color="Gray" />
+    <SolidColorBrush x:Key="ActiveSelectionBackground" Color="#FFF0AA56" />
+    <SolidColorBrush x:Key="ActiveSelectionForeground" Color="Black" />
+
+    <Cnv:DaysHeaderConverter x:Key="DefaultDayHeaderConverter" />
+    <Cnv:DayValueConverter x:Key="DefaultDayValueConverter" />
+    <PathGeometry x:Key="Arrow" Figures="M 0 0 L 3.5 4 L 7 0 Z" />
+
+    <LinearGradientBrush x:Key="HeaderBGBrush" StartPoint="0.5,0.072" EndPoint="0.499,1.036">
+        <GradientStop Offset="1" Color="#FFC57A23" />
+        <GradientStop Offset="0" Color="#FFF0AA56" />
+        <GradientStop Offset="0.495" Color="#FFD37400" />
+        <GradientStop Offset="0.462" Color="#FFF28400" />
+    </LinearGradientBrush>
+
+    <ControlTemplate x:Key="GlassButton" TargetType="{x:Type Button}">
+        <ControlTemplate.Resources>
+            <Storyboard x:Key="Timeline1">
+                <DoubleAnimationUsingKeyFrames BeginTime="00:00:00"
+                                               Storyboard.TargetName="glow"
+                                               Storyboard.TargetProperty="(UIElement.Opacity)">
+                    <SplineDoubleKeyFrame KeyTime="00:00:00.3000000" Value="1" />
+                </DoubleAnimationUsingKeyFrames>
+            </Storyboard>
+            <Storyboard x:Key="Timeline2">
+                <DoubleAnimationUsingKeyFrames BeginTime="00:00:00"
+                                               Storyboard.TargetName="glow"
+                                               Storyboard.TargetProperty="(UIElement.Opacity)">
+                    <SplineDoubleKeyFrame KeyTime="00:00:00.3000000" Value="0" />
+                </DoubleAnimationUsingKeyFrames>
+            </Storyboard>
+        </ControlTemplate.Resources>
+        <Border BorderBrush="#FFFFFFFF"
+                BorderThickness="1,1,1,1"
+                CornerRadius="4,4,4,4">
+            <Border x:Name="border"
+                    Background="#7F000000"
+                    BorderBrush="#FF000000"
+                    BorderThickness="1,1,1,1"
+                    CornerRadius="4,4,4,4">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="0.507*" />
+                        <RowDefinition Height="0.493*" />
+                    </Grid.RowDefinitions>
+                    <Border x:Name="glow"
+                            Grid.RowSpan="2"
+                            Width="Auto"
+                            HorizontalAlignment="Stretch"
+                            CornerRadius="4,4,4,4"
+                            Opacity="0">
+                        <Border.Background>
+                            <RadialGradientBrush>
+                                <RadialGradientBrush.RelativeTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform ScaleX="1.702" ScaleY="2.243" />
+                                        <SkewTransform AngleX="0" AngleY="0" />
+                                        <RotateTransform Angle="0" />
+                                        <TranslateTransform X="-0.368" Y="-0.152" />
+                                    </TransformGroup>
+                                </RadialGradientBrush.RelativeTransform>
+                                <GradientStop Offset="0" Color="#FFC57A23" />
+                                <GradientStop Offset="1" Color="#FFF28400" />
+                            </RadialGradientBrush>
+                        </Border.Background>
+                    </Border>
+                    <ContentPresenter Grid.RowSpan="2"
+                                      Width="Auto"
+                                      HorizontalAlignment="Center"
+                                      VerticalAlignment="Center" />
+                    <Border x:Name="shine"
+                            Width="Auto"
+                            Margin="0,0,0,0"
+                            HorizontalAlignment="Stretch"
+                            CornerRadius="4,4,0,0">
+                        <Border.Background>
+                            <LinearGradientBrush StartPoint="0.494,0.028" EndPoint="0.494,0.889">
+                                <GradientStop Offset="0" Color="#99FFFFFF" />
+                                <GradientStop Offset="1" Color="#33FFFFFF" />
+                            </LinearGradientBrush>
+                        </Border.Background>
+                    </Border>
+                </Grid>
+            </Border>
+        </Border>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsPressed" Value="True">
+                <Setter TargetName="shine" Property="Opacity" Value="0.4" />
+                <Setter TargetName="border" Property="Background" Value="#CC000000" />
+                <Setter TargetName="glow" Property="Visibility" Value="Hidden" />
+            </Trigger>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Trigger.EnterActions>
+                    <BeginStoryboard Storyboard="{StaticResource Timeline1}" />
+                </Trigger.EnterActions>
+                <Trigger.ExitActions>
+                    <BeginStoryboard x:Name="Timeline2_BeginStoryboard" Storyboard="{StaticResource Timeline2}" />
+                </Trigger.ExitActions>
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+    <Style x:Key="CustomDayStyle" TargetType="{x:Type local:FXMonthViewItem}">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="Padding" Value="4,1,4,1" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="BorderBrush" Value="Transparent" />
+        <Setter Property="FontFamily" Value="Tahoma" />
+        <Setter Property="FontSize" Value="11" />
+        <Setter Property="FontStyle" Value="Normal" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type local:FXMonthViewItem}">
+                    <Border x:Name="DayBorder"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            Padding="{TemplateBinding Padding}"
+                            SnapsToDevicePixels="true">
+                        <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                          Content="{Binding Converter={StaticResource DefaultDayValueConverter}}"
+                                          SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                    </Border>
+
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsSelected" Value="true">
+                            <Setter TargetName="DayBorder" Property="Background" Value="{DynamicResource ActiveSelectionBackground}" />
+                            <Setter Property="Foreground" Value="{DynamicResource ActiveSelectionForeground}" />
+                            <Setter Property="FontStyle" Value="Italic" />
+                        </Trigger>
+
+                        <Trigger Property="IsEnabled" Value="false">
+                            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}" />
+                        </Trigger>
+
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsSelected" Value="true" />
+                                <Condition Property="Selector.IsSelectionActive" Value="false" />
+                            </MultiTrigger.Conditions>
+
+                            <Setter TargetName="DayBorder" Property="Background" Value="{DynamicResource ActiveSelectionBackground}" />
+                            <Setter Property="Foreground" Value="{DynamicResource ActiveSelectionForeground}" />
+                        </MultiTrigger>
+                    </ControlTemplate.Triggers>
+
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Name="CustomWeekDayHeaderStyle" TargetType="{x:Type local:FXMonthViewWeekDayHeaderCell}">
+        <Setter Property="Background" Value="#FF888888" />
+        <Setter Property="Foreground" Value="White" />
+        <Setter Property="FontFamily" Value="Segeo UI" />
+        <Setter Property="FontSize" Value="10.5" />
+        <Setter Property="FontStyle" Value="Normal" />
+        <Setter Property="Padding" Value="0,2,0,0" />
+        <Setter Property="Margin" Value="0,0,0,0" />
+        <Setter Property="CellCornerRadius" Value="0" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type local:FXMonthViewWeekDayHeaderCell}">
+                    <Border Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="{TemplateBinding CellCornerRadius}"
+                            Padding="{TemplateBinding Padding}"
+                            SnapsToDevicePixels="True">
+                        <TextBlock VerticalAlignment="Center"
+                                   FontFamily="{TemplateBinding FontFamily}"
+                                   FontSize="{TemplateBinding FontSize}"
+                                   FontStyle="{TemplateBinding FontStyle}"
+                                   Foreground="{TemplateBinding Foreground}"
+                                   Text="{TemplateBinding Text}"
+                                   TextAlignment="Center" />
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="CustomYearStyle" TargetType="{x:Type local:FXMonthViewHeader}">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Foreground" Value="#FFDEF2FF" />
+        <Setter Property="FontFamily" Value="Segeo UI" />
+        <Setter Property="FontSize" Value="10.5" />
+        <Setter Property="FontStyle" Value="Normal" />
+        <Setter Property="TextAlignment" Value="Center" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type local:FXMonthViewHeader}">
+                    <Border Background="{TemplateBinding Background}" BorderThickness="0,0,0,0">
+                        <TextBlock VerticalAlignment="Center" TextAlignment="{TemplateBinding TextAlignment}">
+                            <TextBlock.Text>
+                                <Binding ConverterParameter="Year" Mode="OneWay">
+                                    <Binding.Converter>
+                                        <Cnv:YearMonthConverter />
+                                    </Binding.Converter>
+                                </Binding>
+                            </TextBlock.Text>
+                        </TextBlock>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="CustomMonthStyle" TargetType="{x:Type local:FXMonthViewHeader}">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Foreground" Value="#FFDEF2FF" />
+        <Setter Property="FontFamily" Value="Segeo UI" />
+        <Setter Property="FontSize" Value="10.5" />
+        <Setter Property="FontStyle" Value="Normal" />
+        <Setter Property="TextAlignment" Value="Center" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type local:FXMonthViewHeader}">
+                    <Border Background="{TemplateBinding Background}" BorderThickness="0,0,0,0">
+                        <TextBlock VerticalAlignment="Center" TextAlignment="{TemplateBinding TextAlignment}">
+                            <TextBlock.Text>
+                                <Binding ConverterParameter="Month" Mode="OneWay">
+                                    <Binding.Converter>
+                                        <Cnv:YearMonthConverter />
+                                    </Binding.Converter>
+                                </Binding>
+                            </TextBlock.Text>
+                        </TextBlock>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="CustomWeekDayStyle" TargetType="{x:Type local:FXMonthViewWeekDayHeaderCell}">
+        <Setter Property="Background" Value="#FF5E5E5E" />
+        <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.WindowTextBrushKey}}" />
+        <Setter Property="FontFamily" Value="Tahoma" />
+        <Setter Property="FontSize" Value="10" />
+        <Setter Property="FontStyle" Value="Normal" />
+        <Setter Property="Padding" Value="0,2,0,0" />
+        <Setter Property="Margin" Value="0,0,0,0" />
+        <Setter Property="CellCornerRadius" Value="0,0,0,0" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type local:FXMonthViewWeekDayHeaderCell}">
+                    <Border Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="{TemplateBinding CellCornerRadius}"
+                            Padding="{TemplateBinding Padding}"
+                            SnapsToDevicePixels="True">
+                        <TextBlock FontFamily="{TemplateBinding FontFamily}"
+                                   FontSize="{TemplateBinding FontSize}"
+                                   FontStyle="{TemplateBinding FontStyle}"
+                                   Foreground="{TemplateBinding Foreground}"
+                                   Text="{TemplateBinding Text}"
+                                   TextAlignment="Center" />
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <ControlTemplate x:Key="CustomMonthViewStyle" TargetType="{x:Type local:FXMonthView}">
+        <Border x:Name="PART_ViewBorder"
+                Background="{TemplateBinding Background}"
+                BorderBrush="{TemplateBinding BorderBrush}"
+                BorderThickness="{TemplateBinding BorderThickness}"
+                Padding="{TemplateBinding Padding}">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <!--  Header  -->
+                    <RowDefinition Height="20" />
+                    <!--  Day Header View  -->
+                    <RowDefinition Height="Auto" />
+                    <!--  Top Separator  -->
+                    <RowDefinition Height="2" />
+                    <!--  Month Days  -->
+                    <RowDefinition Height="*" />
+                    <!--  Bottom Separator  -->
+                    <RowDefinition Height="2" />
+                    <!--  Selector Buttons  -->
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <!--  Header  -->
+                <Border Background="{DynamicResource HeaderBGBrush}">
+                    <Grid Grid.Row="0" Grid.Column="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="20" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <!--  Prev Month  -->
+                            <ColumnDefinition Width="*" />
+                            <!--  Month Name  -->
+                            <ColumnDefinition Width="Auto" />
+                            <!--  Next Month  -->
+                            <ColumnDefinition Width="Auto" />
+                            <!--  Prev Year  -->
+                            <ColumnDefinition Width="30" />
+                            <!--  Year Name  -->
+                            <ColumnDefinition Width="Auto" />
+                            <!--  Next Year  -->
+                        </Grid.ColumnDefinitions>
+
+                        <!--  Prev Month  -->
+                        <RepeatButton x:Name="PART_PreviousMonthButton"
+                                      Grid.Row="0"
+                                      Grid.Column="0"
+                                      Width="14"
+                                      Height="13"
+                                      Margin="5, 0, 0, 0"
+                                      HorizontalAlignment="Left"
+                                      VerticalAlignment="Center"
+                                      Command="local:FXMonthViewCommands.ChangeToPrevMonth"
+                                      Focusable="False"
+                                      Foreground="Black">
+                            <Viewbox>
+                                <Path Data="{StaticResource Arrow}" Fill="{Binding Path=Foreground, ElementName=PART_PreviousMonthButton}">
+                                    <Path.LayoutTransform>
+                                        <RotateTransform Angle="90" />
+                                    </Path.LayoutTransform>
+                                </Path>
+                            </Viewbox>
+                        </RepeatButton>
+
+                        <!--  Month Name  -->
+                        <local:FXMonthViewHeader x:Name="PART_MonthName"
+                                                 Grid.Row="0"
+                                                 Grid.Column="1"
+                                                 DataContext="{TemplateBinding ViewDateTime}"
+                                                 Style="{TemplateBinding HeaderMonthStyle}" />
+
+                        <!--  Next Month  -->
+                        <RepeatButton x:Name="PART_NextMonthButton"
+                                      Grid.Row="0"
+                                      Grid.Column="2"
+                                      Width="14"
+                                      Height="13"
+                                      Margin="0, 0, 5, 0"
+                                      HorizontalAlignment="Right"
+                                      VerticalAlignment="Center"
+                                      Command="local:FXMonthViewCommands.ChangeToNextMonth"
+                                      Focusable="False"
+                                      Foreground="Black">
+                            <Viewbox>
+                                <Path Data="{StaticResource Arrow}" Fill="{Binding Path=Foreground, ElementName=PART_NextMonthButton}">
+                                    <Path.LayoutTransform>
+                                        <RotateTransform Angle="-90" />
+                                    </Path.LayoutTransform>
+                                </Path>
+                            </Viewbox>
+                        </RepeatButton>
+
+                        <!--  Prev Year  -->
+                        <RepeatButton x:Name="PART_PreviousYearButton"
+                                      Grid.Row="0"
+                                      Grid.Column="3"
+                                      Width="14"
+                                      Height="13"
+                                      Margin="5, 0, 0, 0"
+                                      HorizontalAlignment="Left"
+                                      VerticalAlignment="Center"
+                                      Command="local:FXMonthViewCommands.ChangeToPrevYear"
+                                      Focusable="False">
+                            <Viewbox>
+                                <Path Data="{StaticResource Arrow}" Fill="{Binding Path=Foreground, ElementName=PART_PreviousYearButton}">
+                                    <Path.LayoutTransform>
+                                        <RotateTransform Angle="90" />
+                                    </Path.LayoutTransform>
+                                </Path>
+                            </Viewbox>
+                        </RepeatButton>
+
+                        <!--  Year Name  -->
+                        <local:FXMonthViewHeader x:Name="PART_YearName"
+                                                 Grid.Row="0"
+                                                 Grid.Column="4"
+                                                 DataContext="{TemplateBinding ViewDateTime}"
+                                                 Style="{TemplateBinding HeaderYearStyle}" />
+
+                        <!--  Next Year  -->
+                        <RepeatButton x:Name="PART_NextYearButton"
+                                      Grid.Row="0"
+                                      Grid.Column="5"
+                                      Width="14"
+                                      Height="13"
+                                      Margin="0, 0, 5, 0"
+                                      HorizontalAlignment="Right"
+                                      VerticalAlignment="Center"
+                                      Command="local:FXMonthViewCommands.ChangeToNextYear"
+                                      Focusable="False">
+                            <Viewbox>
+                                <Path Data="{StaticResource Arrow}" Fill="{Binding Path=Foreground, ElementName=PART_NextYearButton}">
+                                    <Path.LayoutTransform>
+                                        <RotateTransform Angle="-90" />
+                                    </Path.LayoutTransform>
+                                </Path>
+                            </Viewbox>
+                        </RepeatButton>
+                    </Grid>
+                </Border>
+
+                <!--  Day Header View  -->
+                <Grid x:Name="PART_WeekDayNames"
+                      Grid.Row="1"
+                      Grid.Column="0"
+                      Background="#FF5E5E5E">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="20" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+
+                    <local:FXMonthViewWeekDayHeaderCell x:Name="PART_DayOne"
+                                                        Grid.Row="0"
+                                                        Grid.Column="0"
+                                                        Background="Transparent"
+                                                        DayNo="0"
+                                                        Foreground="#FFFF8B00"
+                                                        Style="{TemplateBinding WeekDayHeaderStyle}"
+                                                        Text="{Binding ElementName=PART_DayOne,
+                                                                       Path=DayNo,
+                                                                       Mode=OneWay,
+                                                                       Converter={StaticResource DefaultDayHeaderConverter}}" />
+                    <local:FXMonthViewWeekDayHeaderCell x:Name="PART_DayTwo"
+                                                        Grid.Row="0"
+                                                        Grid.Column="1"
+                                                        Background="Transparent"
+                                                        DayNo="1"
+                                                        Foreground="#FFFF8B00"
+                                                        Style="{TemplateBinding WeekDayHeaderStyle}"
+                                                        Text="{Binding ElementName=PART_DayTwo,
+                                                                       Path=DayNo,
+                                                                       Mode=OneWay,
+                                                                       Converter={StaticResource DefaultDayHeaderConverter}}" />
+                    <local:FXMonthViewWeekDayHeaderCell x:Name="PART_DayThree"
+                                                        Grid.Row="0"
+                                                        Grid.Column="2"
+                                                        Background="Transparent"
+                                                        DayNo="2"
+                                                        Foreground="#FFFF8B00"
+                                                        Style="{TemplateBinding WeekDayHeaderStyle}"
+                                                        Text="{Binding ElementName=PART_DayThree,
+                                                                       Path=DayNo,
+                                                                       Mode=OneWay,
+                                                                       Converter={StaticResource DefaultDayHeaderConverter}}" />
+                    <local:FXMonthViewWeekDayHeaderCell x:Name="PART_DayFour"
+                                                        Grid.Row="0"
+                                                        Grid.Column="3"
+                                                        Background="Transparent"
+                                                        DayNo="3"
+                                                        Foreground="#FFFF8B00"
+                                                        Style="{TemplateBinding WeekDayHeaderStyle}"
+                                                        Text="{Binding ElementName=PART_DayFour,
+                                                                       Path=DayNo,
+                                                                       Mode=OneWay,
+                                                                       Converter={StaticResource DefaultDayHeaderConverter}}" />
+                    <local:FXMonthViewWeekDayHeaderCell x:Name="PART_DayFive"
+                                                        Grid.Row="0"
+                                                        Grid.Column="4"
+                                                        Background="Transparent"
+                                                        DayNo="4"
+                                                        Foreground="#FFFF8B00"
+                                                        Style="{TemplateBinding WeekDayHeaderStyle}"
+                                                        Text="{Binding ElementName=PART_DayFive,
+                                                                       Path=DayNo,
+                                                                       Mode=OneWay,
+                                                                       Converter={StaticResource DefaultDayHeaderConverter}}" />
+                    <local:FXMonthViewWeekDayHeaderCell x:Name="PART_DaySix"
+                                                        Grid.Row="0"
+                                                        Grid.Column="5"
+                                                        Background="Transparent"
+                                                        DayNo="5"
+                                                        Foreground="#FFFF8B00"
+                                                        Style="{TemplateBinding WeekDayHeaderStyle}"
+                                                        Text="{Binding ElementName=PART_DaySix,
+                                                                       Path=DayNo,
+                                                                       Mode=OneWay,
+                                                                       Converter={StaticResource DefaultDayHeaderConverter}}" />
+                    <local:FXMonthViewWeekDayHeaderCell x:Name="PART_DaySeven"
+                                                        Grid.Row="0"
+                                                        Grid.Column="6"
+                                                        Background="Transparent"
+                                                        DayNo="6"
+                                                        Foreground="#FFFF8B00"
+                                                        Style="{TemplateBinding WeekDayHeaderStyle}"
+                                                        Text="{Binding ElementName=PART_DaySeven,
+                                                                       Path=DayNo,
+                                                                       Mode=OneWay,
+                                                                       Converter={StaticResource DefaultDayHeaderConverter}}" />
+                </Grid>
+
+                <!--  Top Separator  -->
+                <Grid x:Name="PART_WeekDaySeparator"
+                      Grid.Row="2"
+                      Grid.Column="0"
+                      SnapsToDevicePixels="True">
+                    <Rectangle x:Name="DayHeadersSplitLine"
+                               Grid.Row="1"
+                               Grid.Column="0"
+                               Height="1"
+                               Margin="2,0,2,0"
+                               VerticalAlignment="Bottom"
+                               Fill="Black"
+                               SnapsToDevicePixels="True" />
+                </Grid>
+
+                <!--  Month Days  -->
+                <local:FXMonthViewContainer x:Name="PART_MonthDays"
+                                            Grid.Row="3"
+                                            Grid.Column="0"
+                                            Background="{TemplateBinding Background}"
+                                            BorderThickness="0"
+                                            FocusVisualStyle="{TemplateBinding FocusVisualStyle}"
+                                            FontFamily="{TemplateBinding FontFamily}"
+                                            FontSize="{TemplateBinding FontSize}"
+                                            FontStretch="{TemplateBinding FontStretch}"
+                                            FontStyle="{TemplateBinding FontStyle}"
+                                            FontWeight="{TemplateBinding FontWeight}"
+                                            Foreground="{TemplateBinding Foreground}"
+                                            IsTextSearchEnabled="False"
+                                            ItemContainerStyle="{TemplateBinding DayContainerStyle}"
+                                            Padding="{TemplateBinding Padding}"
+                                            ScrollViewer.HorizontalScrollBarVisibility="Hidden"
+                                            ScrollViewer.VerticalScrollBarVisibility="Hidden"
+                                            SelectionMode="Extended">
+                    <ListBox.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <UniformGrid Columns="7" Rows="6" />
+                        </ItemsPanelTemplate>
+                    </ListBox.ItemsPanel>
+                </local:FXMonthViewContainer>
+
+                <!--  Bottom Separator  -->
+                <Grid x:Name="PART_BottomSeparator"
+                      Grid.Row="4"
+                      Grid.Column="0"
+                      SnapsToDevicePixels="True">
+                    <Rectangle x:Name="DayFooterSplitLine"
+                               Grid.Row="1"
+                               Grid.Column="0"
+                               Height="1"
+                               Margin="2,0,2,0"
+                               VerticalAlignment="Bottom"
+                               Fill="Black"
+                               SnapsToDevicePixels="True" />
+                </Grid>
+
+                <!--  Selector Buttons  -->
+                <Grid x:Name="PART_ButtonPanel"
+                      Grid.Row="5"
+                      Grid.Column="0"
+                      Width="Auto"
+                      HorizontalAlignment="Center"
+                      VerticalAlignment="Center"
+                      Background="Transparent">
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+
+                    <local:FXMonthViewButton x:Name="PART_EmptyDateButton"
+                                             Grid.Row="0"
+                                             Grid.Column="0"
+                                             Width="60"
+                                             Margin="0, 3, 2, 2"
+                                             Command="local:FXMonthViewCommands.SelectEmptyDate"
+                                             Content="{Res:StringLookup Key=FAMonthView_None}"
+                                             Template="{DynamicResource GlassButton}" />
+                    <local:FXMonthViewButton x:Name="PART_TodayDateButton"
+                                             Grid.Row="0"
+                                             Grid.Column="1"
+                                             Width="60"
+                                             Margin="2, 3, 0, 2"
+                                             Command="local:FXMonthViewCommands.SelectTodayDate"
+                                             Content="{Res:StringLookup Key=FAMonthView_Today}"
+                                             Template="{DynamicResource GlassButton}" />
+                </Grid>
+            </Grid>
+        </Border>
+
+        <ControlTemplate.Triggers>
+            <Trigger Property="ShowWeekDayNames" Value="False">
+                <Setter TargetName="PART_WeekDayNames" Property="Visibility" Value="Collapsed" />
+                <Setter TargetName="PART_WeekDaySeparator" Property="Visibility" Value="Collapsed" />
+            </Trigger>
+
+            <Trigger Property="ShowTodayButton" Value="False">
+                <Setter TargetName="PART_TodayDateButton" Property="Visibility" Value="Collapsed" />
+            </Trigger>
+
+            <Trigger Property="ShowEmptyButton" Value="False">
+                <Setter TargetName="PART_EmptyDateButton" Property="Visibility" Value="Collapsed" />
+            </Trigger>
+
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter TargetName="DayFooterSplitLine" Property="Fill" Value="Gray" />
+                <Setter TargetName="DayHeadersSplitLine" Property="Fill" Value="Gray" />
+                <Setter TargetName="PART_WeekDayNames" Property="Background" Value="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" />
+                <Setter TargetName="PART_ViewBorder" Property="Background" Value="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" />
+                <Setter TargetName="PART_NextYearButton" Property="Foreground" Value="{StaticResource DisabledButtonForeground}" />
+                <Setter TargetName="PART_PreviousYearButton" Property="Foreground" Value="{StaticResource DisabledButtonForeground}" />
+                <Setter TargetName="PART_PreviousMonthButton" Property="Foreground" Value="{StaticResource DisabledButtonForeground}" />
+                <Setter TargetName="PART_NextMonthButton" Property="Foreground" Value="{StaticResource DisabledButtonForeground}" />
+            </Trigger>
+
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="ShowTodayButton" Value="False" />
+                    <Condition Property="ShowEmptyButton" Value="False" />
+                </MultiTrigger.Conditions>
+
+                <Setter TargetName="PART_BottomSeparator" Property="Visibility" Value="Collapsed" />
+                <Setter TargetName="PART_ButtonPanel" Property="Visibility" Value="Collapsed" />
+            </MultiTrigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+</ResourceDictionary>

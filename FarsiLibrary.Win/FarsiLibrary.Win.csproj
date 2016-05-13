@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="12.0">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -11,6 +11,12 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>FarsiLibrary.Win</AssemblyName>
     <RootNamespace>FarsiLibrary.Win</RootNamespace>
+    <OutputPath>..\binaries\</OutputPath>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="..\FarsiLibrary.Resources\FarsiLibrary.Resources.csproj">
@@ -36,9 +42,7 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="BaseClasses\DateTimeCollection.cs" />
-    <Compile Include="Controls\DataGridViewFADateTimePickerColumn.cs">
-      <SubType>Component</SubType>
-    </Compile>
+    <Compile Include="Controls\DataGridViewFADateTimePickerColumn.cs" />
     <Compile Include="Controls\FAContainerComboBox.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -157,8 +161,20 @@
   <ItemGroup>
     <EmbeddedResource Include="Controls\FADayView.bmp" />
   </ItemGroup>
-  <PropertyGroup>
-    <ProjectRefType>Win</ProjectRefType>
-  </PropertyGroup>
-  <Import Project="CSharp.targets" />
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.Design" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Drawing.Design" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Windows.Forms" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

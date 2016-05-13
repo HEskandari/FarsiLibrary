@@ -23,7 +23,6 @@ namespace FarsiLibrary.Win.Controls
         #region Fields
 
         private bool showBorder = true;
-        private Calendar customCalendar;
         private Font defaultDayFont;
         private Font defaultHeaderFont;
         private Font defaultFooterFont;

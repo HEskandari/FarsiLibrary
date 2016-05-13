@@ -8,8 +8,8 @@
 
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="/FarsiLibrary.LiveSamples;component/Themes/ZuneTheme.xaml" />
-                <ResourceDictionary Source="/FarsiLibrary.LiveSamples;component/Themes/BrushesAndColors.xaml" />
+                <ResourceDictionary Source="/FarsiLibrary.WPFDemo;component/Themes/ZuneTheme.xaml" />
+                <ResourceDictionary Source="/FarsiLibrary.WPFDemo;component/Themes/BrushesAndColors.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
 

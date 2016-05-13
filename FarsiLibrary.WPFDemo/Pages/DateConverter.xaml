@@ -8,7 +8,7 @@
     <Page.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="/FarsiLibrary.LiveSamples;component/Themes/ThemeExpression.xaml" />
+                <ResourceDictionary Source="/FarsiLibrary.WPFDemo;component/Themes/ThemeExpression.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Page.Resources>

@@ -1,0 +1,10 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/FarsiLibrary.WPFDemo;component/Themes/BrushesAndColors.xaml" />
+        <ResourceDictionary Source="/FarsiLibrary.WPFDemo;component/Themes/System.xaml" />
+        <ResourceDictionary Source="/FarsiLibrary.WPFDemo;component/Themes/DefaultTheme.xaml" />
+        <ResourceDictionary Source="/FarsiLibrary.WPFDemo;component/Themes/Pages.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+</ResourceDictionary>

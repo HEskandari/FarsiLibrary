@@ -11,6 +11,9 @@
     <OutputType>library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <ProductVersion>9.0.30729</ProductVersion>
+	<OutputPath>..\binaries\</OutputPath>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <ItemGroup>
     <Page Include="Themes\Aero.NormalColor.xaml">
@@ -79,8 +82,31 @@
   <ItemGroup>
     <EmbeddedResource Include="FXMonthView.Icon.bmp" />
   </ItemGroup>
-  <PropertyGroup>
-    <ProjectRefType>WPF</ProjectRefType>
-  </PropertyGroup>
-  <Import Project="CSharp.targets" />
+  <ItemGroup>    
+	    <Reference Include="System" />
+	    <Reference Include="System.Data" />
+	    <Reference Include="System.Xml" />
+      <Reference Include="System.Core" />
+      <Reference Include="System.Xml.Linq" />
+      <Reference Include="System.Drawing" />
+  </ItemGroup>
+  <ItemGroup>    
+    <Reference Include="System.Design" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Drawing.Design" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Windows.Forms" />
+	</ItemGroup>
+	<ItemGroup>    
+    <Reference Include="PresentationFramework.Aero" />
+    <Reference Include="PresentationFramework.Classic" />
+    <Reference Include="PresentationFramework.Luna" />
+    <Reference Include="PresentationFramework.Royale" />
+    <Reference Include="UIAutomationProvider" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+	<Reference Include="System.Xaml" />
+	</ItemGroup>
+<Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

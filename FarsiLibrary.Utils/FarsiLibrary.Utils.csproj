@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="12.0">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -11,7 +11,28 @@
     <AssemblyName>FarsiLibrary.Utils</AssemblyName>
     <RootNamespace>FarsiLibrary.Utils</RootNamespace>
     <AppDesignerFolder>Properties</AppDesignerFolder>
+    <OutputPath>..\binaries\</OutputPath>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <TargetFrameworkProfile />
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.Design" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Drawing.Design" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Windows.Forms" />
+  </ItemGroup>
   <ItemGroup>
     <Compile Include="..\Solution Items\CommonAssemblyInfo.cs">
       <Link>Properties\CommonAssemblyInfo.cs</Link>
@@ -67,13 +88,9 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\FarsiLibrary.Resources\FarsiLibrary.Resources.csproj">
-      <Project>{E5575624-4B92-4E51-B98B-20F31FE5B5B4}</Project>
+      <Project>{e5575624-4b92-4e51-b98b-20f31fe5b5b4}</Project>
       <Name>FarsiLibrary.Resources</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
-  <PropertyGroup>
-    <ProjectRefType>Win</ProjectRefType>
-  </PropertyGroup>
-  <Import Project="CSharp.targets" />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

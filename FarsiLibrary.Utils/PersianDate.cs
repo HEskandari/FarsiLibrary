@@ -48,7 +48,6 @@ namespace FarsiLibrary.Utils
         private int second;
         private int millisecond;
         private readonly TimeSpan time;
-        private readonly PersianDateTimeFormatInfo formatting;
         private static readonly PersianCalendar pc;
 
         [NonSerialized]

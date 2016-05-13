@@ -173,7 +173,6 @@ namespace FarsiLibrary.Win.Controls
         private bool showEmptyButton;
         private bool showTodayButton;
         private bool showBorder = true;
-        private readonly StringFormat format;
         private ScrollOptionTypes scrollOption;
 
         #endregion
@@ -447,20 +446,6 @@ namespace FarsiLibrary.Win.Controls
         /// </summary>
         public FAMonthView() : this(false)
         {
-        }
-
-        /// <summary>
-        /// Disposes the control.
-        /// </summary>
-        /// <param name="disposing"></param>
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                if (format != null) format.Dispose();
-            }
-
-            base.Dispose(disposing);
         }
 
         #endregion

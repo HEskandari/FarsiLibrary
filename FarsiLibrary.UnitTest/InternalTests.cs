@@ -5,6 +5,7 @@ using FarsiLibrary.Utils;
 using FarsiLibrary.Utils.Internals;
 using NUnit.Framework;
 using PersianCalendar=FarsiLibrary.Utils.PersianCalendar;
+using Guard = FarsiLibrary.Utils.Internals.Guard;
 
 namespace FarsiLibrary.UnitTest
 {

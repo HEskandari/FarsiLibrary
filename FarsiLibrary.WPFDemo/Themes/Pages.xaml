@@ -1,0 +1,31 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:Cnv="clr-namespace:FarsiLibrary.WPFDemo.Converters"
+                    xmlns:FL="clr-namespace:FarsiLibrary.WPF.Converters;assembly=FarsiLibrary.WPF">
+
+    <XmlDataProvider x:Key="demos">
+        <x:XData>
+            <Demos xmlns="">
+                <Demo Title="FXMonthView" Page="Pages\MonthView.xaml" />
+                <Demo Title="FXDatePicker" Page="Pages\DatePicker.xaml" />
+                <Demo Title="Themes" Page="Pages\Themes.xaml" />
+                <Demo Title="Converter" Page="Pages\DateConverter.xaml" />
+            </Demos>
+        </x:XData>
+    </XmlDataProvider>
+
+    <DataTemplate x:Key="DemoTemplate">
+        <TextBlock x:Name="tb"
+                   Margin="2"
+                   HorizontalAlignment="Center"
+                   FontFamily="Tahoma"
+                   FontSize="12"
+                   FontWeight="Heavy"
+                   Text="{Binding XPath=@Title}" />
+    </DataTemplate>
+
+    <FL:PersianDateValueConverter x:Key="DateConverter" />
+
+    <Cnv:LongDateTimeConverter x:Key="CustomDateConverter" />
+
+</ResourceDictionary>

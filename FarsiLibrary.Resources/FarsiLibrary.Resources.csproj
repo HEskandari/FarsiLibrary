@@ -12,7 +12,7 @@
     <RootNamespace>FarsiLibrary.Resources</RootNamespace>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
-    <TargetFrameworkProfile />
+	<OutputPath>..\binaries\</OutputPath>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="..\Solution Items\CommonAssemblyInfo.cs">
@@ -27,18 +27,20 @@
     <Compile Include="FormatterStringID.cs" />
     <Compile Include="StringID.cs" />
   </ItemGroup>
-  <PropertyGroup>
-    <ProjectRefType>Win</ProjectRefType>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
-    <Prefer32Bit>false</Prefer32Bit>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
-    <Prefer32Bit>false</Prefer32Bit>
-  </PropertyGroup>
-  <Import Project="CSharp.targets" />
-  <PropertyGroup>
-    <PreBuildEvent>
-    </PreBuildEvent>
-  </PropertyGroup>
+  <ItemGroup>    
+	    <Reference Include="System" />
+	    <Reference Include="System.Data" />
+	    <Reference Include="System.Xml" />
+      <Reference Include="System.Core" />
+      <Reference Include="System.Xml.Linq" />
+      <Reference Include="System.Drawing" />
+  </ItemGroup>
+  <ItemGroup>    
+    <Reference Include="System.Design" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Drawing.Design" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Windows.Forms" />
+	</ItemGroup>
+	<Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
