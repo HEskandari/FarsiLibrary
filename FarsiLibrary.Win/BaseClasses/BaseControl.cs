@@ -3,6 +3,7 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Drawing.Text;
 using System.Windows.Forms;
+using FarsiLibrary.Localization;
 using FarsiLibrary.Win.Drawing;
 using FarsiLibrary.Win.Enums;
 using FarsiLibrary.Win.Events;
@@ -275,7 +276,7 @@ namespace FarsiLibrary.Win.BaseClasses
                 }
                 else
                 {
-                    AddError(Resources.FALocalizeManager.Instance.GetLocalizer().GetLocalizedString(Resources.StringID.Validation_NotValid));
+                    AddError(FALocalizeManager.Instance.GetLocalizer().GetLocalizedString(StringID.Validation_NotValid));
                 }
             }
 		}

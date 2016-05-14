@@ -5,7 +5,6 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Globalization;
 using System.Windows.Forms;
-using FarsiLibrary.Resources;
 using FarsiLibrary.Utils;
 using FarsiLibrary.Utils.Internals;
 using FarsiLibrary.Win.BaseClasses;
@@ -14,6 +13,7 @@ using FarsiLibrary.Win.Enums;
 using FarsiLibrary.Win.Events;
 using System.Drawing.Design;
 using System.Linq;
+using FarsiLibrary.Localization;
 
 namespace FarsiLibrary.Win.Controls
 {

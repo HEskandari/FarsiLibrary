@@ -1,4 +1,4 @@
-﻿namespace FarsiLibrary.Resources
+﻿namespace FarsiLibrary.Localization
 {
     /// <summary>
     /// Localizer class used to get string values of Arabic language.

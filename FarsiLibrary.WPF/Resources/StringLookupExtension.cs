@@ -1,6 +1,7 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Windows.Markup;
-using FarsiLibrary.Resources;
+using FarsiLibrary.Localization;
 
 namespace FarsiLibrary.WPF.Resources
 {
@@ -17,7 +18,10 @@ namespace FarsiLibrary.WPF.Resources
         /// </summary>
         public override object ProvideValue(IServiceProvider provider)
         {
-            StringID selectedID = (StringID) Enum.Parse(typeof (StringID), Key, true);
+            StringID selectedID;
+            if (!Enum.TryParse(Key, true, out selectedID))
+                throw new InvalidEnumArgumentException("Key", 0, typeof(StringID));
+
             return FALocalizeManager.Instance.GetLocalizer().GetLocalizedString(selectedID);
         }
     }

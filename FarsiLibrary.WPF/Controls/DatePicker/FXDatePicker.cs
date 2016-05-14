@@ -6,11 +6,11 @@ using System.Windows.Data;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Threading;
-using FarsiLibrary.Resources;
 using FarsiLibrary.Utils.Internals;
 using FarsiLibrary.WPF.Automation;
 using FarsiLibrary.WPF.Converters;
 using System.Windows.Automation.Peers;
+using FarsiLibrary.Localization;
 
 namespace FarsiLibrary.WPF.Controls
 {

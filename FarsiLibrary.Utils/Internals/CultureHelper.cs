@@ -58,7 +58,7 @@ namespace FarsiLibrary.Utils.Internals
         /// </summary>
         public static CultureInfo CurrentCulture
         {
-            get { return Thread.CurrentThread.CurrentUICulture; }
+            get { return CultureInfo.CurrentUICulture; }
         }
 
         /// <summary>

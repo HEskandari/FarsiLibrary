@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing.Design;
-using FarsiLibrary.Resources;
+using FarsiLibrary.Localization;
 using FarsiLibrary.Utils;
 using FarsiLibrary.Win.BaseClasses;
 using FarsiLibrary.Win.Design;

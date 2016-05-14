@@ -5,7 +5,7 @@ using System.Linq;
 using System.Reflection;
 using System.Threading;
 using System.Windows.Forms;
-using FarsiLibrary.Resources;
+using FarsiLibrary.Localization;
 using FarsiLibrary.Win.Design;
 using FarsiLibrary.WinFormDemo.Demo;
 using FarsiLibrary.WinFormDemo.Pages;

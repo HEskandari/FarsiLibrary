@@ -14,6 +14,12 @@
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <TargetFrameworkProfile />
   </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>..\FarsiLibrary.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
   <ItemGroup>
     <Compile Include="..\Solution Items\CommonAssemblyInfo.cs">
       <Link>Properties\CommonAssemblyInfo.cs</Link>
@@ -327,9 +333,9 @@
     <None Include="Resources\OK.bmp" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\FarsiLibrary.Resources\FarsiLibrary.Resources.csproj">
+    <ProjectReference Include="..\FarsiLibrary.Resources\FarsiLibrary.Localization.csproj">
       <Project>{E5575624-4B92-4E51-B98B-20F31FE5B5B4}</Project>
-      <Name>FarsiLibrary.Resources</Name>
+      <Name>FarsiLibrary.Localization</Name>
     </ProjectReference>
     <ProjectReference Include="..\FarsiLibrary.Utils\FarsiLibrary.Utils.csproj">
       <Project>{ED29E567-C801-49E9-8C33-CFB66042B07B}</Project>

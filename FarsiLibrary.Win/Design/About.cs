@@ -2,7 +2,7 @@
 using System.ComponentModel;
 using System.Timers;
 using System.Windows.Forms;
-using FarsiLibrary.Resources;
+using FarsiLibrary.Localization;
 using Timer=System.Timers.Timer;
 
 namespace FarsiLibrary.Win.Design

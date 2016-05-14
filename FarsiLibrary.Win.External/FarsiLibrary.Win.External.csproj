@@ -15,6 +15,12 @@
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <TargetFrameworkProfile />
   </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>..\FarsiLibrary.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
   <ItemGroup>
     <Compile Include="..\Solution Items\CommonAssemblyInfo.cs">
       <Link>Properties\CommonAssemblyInfo.cs</Link>
@@ -58,14 +64,13 @@
   <ItemGroup>
     <Reference Include="System.Design" />
     <Reference Include="System.Drawing" />
-    <Reference Include="System.Drawing.Design" />
     <Reference Include="System.Security" />
     <Reference Include="System.Windows.Forms" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\FarsiLibrary.Resources\FarsiLibrary.Resources.csproj">
+    <ProjectReference Include="..\FarsiLibrary.Resources\FarsiLibrary.Localization.csproj">
       <Project>{e5575624-4b92-4e51-b98b-20f31fe5b5b4}</Project>
-      <Name>FarsiLibrary.Resources</Name>
+      <Name>FarsiLibrary.Localization</Name>
     </ProjectReference>
     <ProjectReference Include="..\FarsiLibrary.Utils\FarsiLibrary.Utils.csproj">
       <Project>{ed29e567-c801-49e9-8c33-cfb66042b07b}</Project>

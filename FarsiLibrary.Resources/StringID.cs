@@ -1,4 +1,4 @@
-namespace FarsiLibrary.Resources
+namespace FarsiLibrary.Localization
 {
     #region StringID
 

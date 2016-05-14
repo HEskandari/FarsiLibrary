@@ -1,5 +1,5 @@
-﻿using FarsiLibrary.Resources;
-using System.Globalization;
+﻿using System.Globalization;
+using FarsiLibrary.Localization;
 
 namespace FarsiLibrary.Utils
 {

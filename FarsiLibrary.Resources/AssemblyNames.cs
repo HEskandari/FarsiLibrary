@@ -1,7 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
-namespace FarsiLibrary.Resources
+namespace FarsiLibrary.Localization
 {
     internal static class AssemblyNames
     {
@@ -16,9 +15,9 @@ namespace FarsiLibrary.Resources
         public static Product WebForms = new Product {Name = "FarsiLibrary.Web"};
         public static Product Wpf = new Product {Name = "FarsiLibrary.WPF"};
         public static Product Utils = new Product {Name = "FarsiLibrary.Utils"};
-        public static Product Resources = new Product {Name = "FarsiLibrary.Resources"};
+        public static Product Localization = new Product {Name = "FarsiLibrary.Localization" };
         
-        public static List<Product> Products = new List<Product> { WinForms, Wpf, WebForms, Utils, Resources };
+        public static List<Product> Products = new List<Product> { WinForms, Wpf, WebForms, Utils, Localization };
 
         internal class Product
         {

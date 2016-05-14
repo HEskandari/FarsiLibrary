@@ -21,8 +21,6 @@ namespace FarsiLibrary.WPF.VisualStudio.Design
     {
         internal FarsiLibraryVisualStudioAttributeTableBuilder()
         {
-            var builder = new AttributeTableBuilder();
-
             AddToolboxBrowsableAttributes();
             AddMonthViewAttributes();
             AddMonthViewDesigners();

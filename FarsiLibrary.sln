@@ -20,7 +20,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FarsiLibrary.Win", "FarsiLi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FarsiLibrary.Utils", "FarsiLibrary.Utils\FarsiLibrary.Utils.csproj", "{ED29E567-C801-49E9-8C33-CFB66042B07B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FarsiLibrary.Resources", "FarsiLibrary.Resources\FarsiLibrary.Resources.csproj", "{E5575624-4B92-4E51-B98B-20F31FE5B5B4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FarsiLibrary.Localization", "FarsiLibrary.Resources\FarsiLibrary.Localization.csproj", "{E5575624-4B92-4E51-B98B-20F31FE5B5B4}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FarsiLibrary.UnitTest", "FarsiLibrary.UnitTest\FarsiLibrary.UnitTest.csproj", "{7761D638-D2C2-49FC-9A0C-D561A03B17AF}"
 EndProject

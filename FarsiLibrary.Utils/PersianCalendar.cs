@@ -1,6 +1,6 @@
 using System;
 using System.Globalization;
-using FarsiLibrary.Resources;
+using FarsiLibrary.Localization;
 using FarsiLibrary.Utils.Exceptions;
 
 namespace FarsiLibrary.Utils

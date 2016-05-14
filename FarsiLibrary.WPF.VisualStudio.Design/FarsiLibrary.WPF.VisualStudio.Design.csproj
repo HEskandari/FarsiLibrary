@@ -14,6 +14,15 @@
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <TargetFrameworkProfile />
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>..\FarsiLibrary.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
   <ItemGroup>
     <Compile Include="AboutUI.xaml.cs">
       <DependentUpon>AboutUI.xaml</DependentUpon>
@@ -40,7 +49,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Themes\FarsiLibrary.xaml">
+    <Page Include="Themes\DefaultTheme.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -54,6 +63,14 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\FarsiLibrary.Resources\FarsiLibrary.Localization.csproj">
+      <Project>{e5575624-4b92-4e51-b98b-20f31fe5b5b4}</Project>
+      <Name>FarsiLibrary.Localization</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FarsiLibrary.Utils\FarsiLibrary.Utils.csproj">
+      <Project>{ed29e567-c801-49e9-8c33-cfb66042b07b}</Project>
+      <Name>FarsiLibrary.Utils</Name>
+    </ProjectReference>
     <ProjectReference Include="..\FarsiLibrary.WPF\FarsiLibrary.WPF.csproj">
       <Project>{01D673DE-5CD4-491D-B4AF-563360C1BC9E}</Project>
       <Name>FarsiLibrary.WPF</Name>

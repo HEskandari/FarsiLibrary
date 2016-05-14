@@ -1,6 +1,6 @@
 using System;
 using System.Globalization;
-using FarsiLibrary.Resources;
+using FarsiLibrary.Localization;
 using FarsiLibrary.WinFormDemo.Data;
 using FarsiLibrary.WinFormDemo.Demo;
 

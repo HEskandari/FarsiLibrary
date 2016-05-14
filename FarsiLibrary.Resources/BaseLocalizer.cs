@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace FarsiLibrary.Resources
+namespace FarsiLibrary.Localization
 {
     public abstract class BaseLocalizer
     {

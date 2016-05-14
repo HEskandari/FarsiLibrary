@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace FarsiLibrary.Resources
+﻿namespace FarsiLibrary.Localization
 {
     public class ENLocalizer : BaseLocalizer
     {

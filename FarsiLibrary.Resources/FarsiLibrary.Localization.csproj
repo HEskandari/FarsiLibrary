@@ -8,11 +8,17 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{E5575624-4B92-4E51-B98B-20F31FE5B5B4}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <AssemblyName>FarsiLibrary.Resources</AssemblyName>
-    <RootNamespace>FarsiLibrary.Resources</RootNamespace>
+    <AssemblyName>FarsiLibrary.Localization</AssemblyName>
+    <RootNamespace>FarsiLibrary.Localization</RootNamespace>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
-	<OutputPath>..\binaries\</OutputPath>
+    <OutputPath>..\binaries\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>..\FarsiLibrary.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="..\Solution Items\CommonAssemblyInfo.cs">
@@ -27,20 +33,17 @@
     <Compile Include="FormatterStringID.cs" />
     <Compile Include="StringID.cs" />
   </ItemGroup>
-  <ItemGroup>    
-	    <Reference Include="System" />
-	    <Reference Include="System.Data" />
-	    <Reference Include="System.Xml" />
-      <Reference Include="System.Core" />
-      <Reference Include="System.Xml.Linq" />
-      <Reference Include="System.Drawing" />
-  </ItemGroup>
-  <ItemGroup>    
-    <Reference Include="System.Design" />
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Drawing" />
-    <Reference Include="System.Drawing.Design" />
-    <Reference Include="System.Security" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
-	</ItemGroup>
-	<Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
