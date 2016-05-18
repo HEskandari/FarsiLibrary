@@ -10,3 +10,5 @@ _ReSharper.*
 [Dd]ebug.log
 [Rr]elease.log
 .vs
+.fake
+packages
