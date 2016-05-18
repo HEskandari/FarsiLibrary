@@ -30,7 +30,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FarsiLibrary.WPFDemo", "Far
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FarsiLibrary.WPF.VisualStudio.Design", "FarsiLibrary.WPF.VisualStudio.Design\FarsiLibrary.WPF.VisualStudio.Design.csproj", "{E7F44116-95CA-4E29-9215-FB4366589780}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FarsiLibrary.Win.External", "FarsiLibrary.Win.External\FarsiLibrary.Win.External.csproj", "{240A0D2C-5E44-4C05-8995-EE63E4AE9D0E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FarsiLibrary.Win.DevExpress", "FarsiLibrary.Win.External\FarsiLibrary.Win.DevExpress.csproj", "{240A0D2C-5E44-4C05-8995-EE63E4AE9D0E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FarsiLibrary.WinFormDemo", "FarsiLibrary.WinFormDemo\FarsiLibrary.WinFormDemo.csproj", "{A5EE7D36-30E7-49AB-90EC-97836840C144}"
 EndProject

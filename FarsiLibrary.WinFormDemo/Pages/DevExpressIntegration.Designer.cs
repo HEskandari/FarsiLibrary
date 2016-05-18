@@ -1,4 +1,6 @@
-﻿namespace FarsiLibrary.WinFormDemo.Pages
+﻿using FarsiLibrary.Win.DevExpress;
+
+namespace FarsiLibrary.WinFormDemo.Pages
 {
     partial class DevExpressIntegration
     {
@@ -29,7 +31,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DevExpressIntegration));
-            this.xtraFADatePicker1 = new FarsiLibrary.Win.External.DevExpress.XtraFADatePicker();
+            this.xtraFADatePicker1 = new XtraFADatePicker();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -108,7 +110,7 @@
 
         #endregion
 
-        private FarsiLibrary.Win.External.DevExpress.XtraFADatePicker xtraFADatePicker1;
+        private XtraFADatePicker xtraFADatePicker1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;

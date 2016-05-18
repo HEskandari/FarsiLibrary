@@ -341,9 +341,9 @@
       <Project>{ED29E567-C801-49E9-8C33-CFB66042B07B}</Project>
       <Name>FarsiLibrary.Utils</Name>
     </ProjectReference>
-    <ProjectReference Include="..\FarsiLibrary.Win.External\FarsiLibrary.Win.External.csproj">
+    <ProjectReference Include="..\FarsiLibrary.Win.External\FarsiLibrary.Win.DevExpress.csproj">
       <Project>{240A0D2C-5E44-4C05-8995-EE63E4AE9D0E}</Project>
-      <Name>FarsiLibrary.Win.External</Name>
+      <Name>FarsiLibrary.Win.DevExpress</Name>
     </ProjectReference>
     <ProjectReference Include="..\FarsiLibrary.Win\FarsiLibrary.Win.csproj">
       <Project>{83C3AEB8-5322-4DB6-9E7E-4BF8A319DCE7}</Project>
