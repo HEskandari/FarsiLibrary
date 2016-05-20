@@ -44,15 +44,39 @@ Target "Test" (fun _ ->
                 OutputFile = OutputDir + "TestResults.xml"})
 )
 
-Target "Deploy" (fun _ ->
+Target "PackageAll" (fun _ ->
     trace "Generating nuget package..."
+)
+
+Target "PackageUtils" (fun _ ->
+    trace "Generating nuget package for FarsiLibrary.Utils..."
+    NuGet (fun p -> 
+        {p with
+            OutputPath = DeployDir
+            WorkingDir = OutputDir
+            Publish = false }) 
+            "FarsiLibrary.Utils.nuspec"
+)
+
+Target "PackageWPF" (fun _ ->
+    trace "Generating nuget package for FarsiLibrary.WPF..."
+)
+
+Target "PackageWin" (fun _ ->
+    trace "Generating nuget package for FarsiLibrary.Win..."
 )
 
 "EnsureDir"
    ==> "Clean"
    ==> "Restorepackages"
    ==> "Build"
-   ==> "Test"
-   ==> "Deploy"
 
-Run "Test"
+"PackageUtils"
+   ==> "PackageWin"
+   ==> "PackageWPF"
+   ==> "PackageAll"
+
+"Build"
+   ==> "Test"
+
+RunTargetOrDefault "Test"
