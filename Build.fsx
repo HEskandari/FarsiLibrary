@@ -1,24 +1,39 @@
 #r "./lib/FAKE/FakeLib.dll"
 open Fake 
+open AssemblyInfoFile
 
+let OutputDir          = "./binaries/"
+let PublishDir         = "./publish/"
+let Solution           = "FarsiLibrary.sln"
+let ToolsFolder        = "./lib/"
+let PackagesFolder     = "./packages"
+let TestAssembly       = "FarsiLibrary.UnitTest.dll"
+let TestRunnerPath     = "./packages/NUnit.Runners.2.6.4/tools"
+let CommonAssemblyInfo = "./Solution Items/CommonAssemblyInfo.cs"
 
-let OutputDir      = "./binaries/"
-let DeployDir      = "./publish/"
-let Solution       = "FarsiLibrary.sln"
-let ToolsFolder    = "./lib/"
-let PackagesFolder = "./packages"
-let TestAssembly   = "FarsiLibrary.UnitTest.dll"
-let TestRunnerPath = "./packages/NUnit.Runners.2.6.4/tools"
+let GeneratePackage packageName = 
+    let assemblyFile = OutputDir + packageName + ".dll"
+    let nugetSpec : string = packageName + ".nuspec"
+    let version = Fake.VersionHelper.GetAssemblyVersionString assemblyFile
+    tracefn "Generating nuget package for %s version %s ..." packageName version
+    
+    NuGet (fun p -> 
+        {p with
+            Version = version
+            OutputPath = PublishDir
+            WorkingDir = OutputDir
+            Publish = false }) 
+            nugetSpec
 
 Target "EnsureDir" (fun _ -> 
     trace "Ensuring directories exists..."
     ensureDirectory OutputDir
-    ensureDirectory DeployDir
+    ensureDirectory PublishDir
 )
 
 Target "Clean" (fun _ ->
     trace "Cleaning the output folder..."
-    CleanDirs [ OutputDir; DeployDir ]
+    CleanDirs [ OutputDir; PublishDir ]
 )
 
 Target "RestorePackages" (fun _ -> 
@@ -45,25 +60,10 @@ Target "Test" (fun _ ->
 )
 
 Target "PackageAll" (fun _ ->
-    trace "Generating nuget package..."
-)
-
-Target "PackageUtils" (fun _ ->
-    trace "Generating nuget package for FarsiLibrary.Utils..."
-    NuGet (fun p -> 
-        {p with
-            OutputPath = DeployDir
-            WorkingDir = OutputDir
-            Publish = false }) 
-            "FarsiLibrary.Utils.nuspec"
-)
-
-Target "PackageWPF" (fun _ ->
-    trace "Generating nuget package for FarsiLibrary.WPF..."
-)
-
-Target "PackageWin" (fun _ ->
-    trace "Generating nuget package for FarsiLibrary.Win..."
+    GeneratePackage "FarsiLibrary.Utils"
+    GeneratePackage "FarsiLibrary.WPF"
+    GeneratePackage "FarsiLibrary.Win"
+    GeneratePackage "FarsiLibrary.Win.DevExpress"
 )
 
 "EnsureDir"
@@ -71,12 +71,9 @@ Target "PackageWin" (fun _ ->
    ==> "Restorepackages"
    ==> "Build"
 
-"PackageUtils"
-   ==> "PackageWin"
-   ==> "PackageWPF"
-   ==> "PackageAll"
-
 "Build"
    ==> "Test"
+   ==> "PackageAll"
 
 RunTargetOrDefault "Test"
+
