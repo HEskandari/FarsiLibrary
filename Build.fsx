@@ -9,12 +9,12 @@ let ToolsFolder        = "./lib/"
 let PackagesFolder     = "./packages"
 let TestAssembly       = "FarsiLibrary.UnitTest.dll"
 let TestRunnerPath     = "./packages/NUnit.Runners.2.6.4/tools"
-let CommonAssemblyInfo = "./Solution Items/CommonAssemblyInfo.cs"
+let SolutionItems      = "./Solution Items/"
 
 let GeneratePackage packageName = 
     let assemblyFile = OutputDir + packageName + ".dll"
-    let nugetSpec : string = packageName + ".nuspec"
-    let version = Fake.VersionHelper.GetAssemblyVersionString assemblyFile
+    let nugetSpec = SolutionItems + packageName + ".nuspec"
+    let version = GetAssemblyVersionString assemblyFile
     tracefn "Generating nuget package for %s version %s ..." packageName version
     
     NuGet (fun p -> 
