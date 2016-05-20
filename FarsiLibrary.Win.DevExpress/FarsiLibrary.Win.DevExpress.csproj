@@ -66,7 +66,7 @@
     <Reference Include="System.Windows.Forms" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\FarsiLibrary.Resources\FarsiLibrary.Localization.csproj">
+    <ProjectReference Include="..\FarsiLibrary.Localization\FarsiLibrary.Localization.csproj">
       <Project>{e5575624-4b92-4e51-b98b-20f31fe5b5b4}</Project>
       <Name>FarsiLibrary.Localization</Name>
     </ProjectReference>

@@ -68,7 +68,7 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\FarsiLibrary.Resources\FarsiLibrary.Localization.csproj">
+    <ProjectReference Include="..\FarsiLibrary.Localization\FarsiLibrary.Localization.csproj">
       <Project>{E5575624-4B92-4E51-B98B-20F31FE5B5B4}</Project>
       <Name>FarsiLibrary.Localization</Name>
     </ProjectReference>

@@ -20,7 +20,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FarsiLibrary.Win", "FarsiLi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FarsiLibrary.Utils", "FarsiLibrary.Utils\FarsiLibrary.Utils.csproj", "{ED29E567-C801-49E9-8C33-CFB66042B07B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FarsiLibrary.Localization", "FarsiLibrary.Resources\FarsiLibrary.Localization.csproj", "{E5575624-4B92-4E51-B98B-20F31FE5B5B4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FarsiLibrary.Localization", "FarsiLibrary.Localization\FarsiLibrary.Localization.csproj", "{E5575624-4B92-4E51-B98B-20F31FE5B5B4}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FarsiLibrary.UnitTest", "FarsiLibrary.UnitTest\FarsiLibrary.UnitTest.csproj", "{7761D638-D2C2-49FC-9A0C-D561A03B17AF}"
 EndProject
@@ -30,7 +30,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FarsiLibrary.WPFDemo", "Far
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FarsiLibrary.WPF.VisualStudio.Design", "FarsiLibrary.WPF.VisualStudio.Design\FarsiLibrary.WPF.VisualStudio.Design.csproj", "{E7F44116-95CA-4E29-9215-FB4366589780}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FarsiLibrary.Win.DevExpress", "FarsiLibrary.Win.External\FarsiLibrary.Win.DevExpress.csproj", "{240A0D2C-5E44-4C05-8995-EE63E4AE9D0E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FarsiLibrary.Win.DevExpress", "FarsiLibrary.Win.DevExpress\FarsiLibrary.Win.DevExpress.csproj", "{240A0D2C-5E44-4C05-8995-EE63E4AE9D0E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FarsiLibrary.WinFormDemo", "FarsiLibrary.WinFormDemo\FarsiLibrary.WinFormDemo.csproj", "{A5EE7D36-30E7-49AB-90EC-97836840C144}"
 EndProject

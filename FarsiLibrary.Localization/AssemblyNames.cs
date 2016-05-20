@@ -8,8 +8,8 @@ namespace FarsiLibrary.Localization
         public const string AssemblyTradeMark = "Farsi Library and Controls by Hadi Eskandari (H.Eskandari@Gmail.com). All rights are reserved for the author. Contact the author to obtain license to use this product.";
         public const string AssemblyCopyright = "Copyright (c) 2005-2009";
         public const string AssemblyGenericTitle = "Farsi Library";
-        public const string Version = "2.5.0.0";
-        public const string ShortVersion = "2.5";
+        public const string Version = "2.6.0.0";
+        public const string ShortVersion = "2.6";
 
         public static Product WinForms = new Product {Name = "FarsiLibrary.Win"};
         public static Product WebForms = new Product {Name = "FarsiLibrary.Web"};
