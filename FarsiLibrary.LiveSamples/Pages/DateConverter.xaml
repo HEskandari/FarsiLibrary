@@ -1,25 +1,0 @@
-﻿<Page x:Class="FarsiLibrary.LiveSamples.Pages.DateConverter"
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:FL="http://schemas.hightech.ir/wpf/2008/FarsiLibrary"
-    xmlns:Loc="clr-namespace:FarsiLibrary.LiveSamples.Localization"
-    Title="DateConverter" FlowDirection="{Loc:LocFlowDirection Key=Flow}">
-    <Page.Resources>
-      <ResourceDictionary>
-        <ResourceDictionary.MergedDictionaries>
-          <ResourceDictionary Source="/FarsiLibrary.LiveSamples;component/Themes/ThemeExpression.xaml" />
-        </ResourceDictionary.MergedDictionaries>
-      </ResourceDictionary>
-    </Page.Resources>
-    <Grid Margin="10">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" MinHeight="30" />
-            <RowDefinition Height="Auto" MinHeight="30" />
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*" />
-        </Grid.ColumnDefinitions>
-
-        <FL:FXDatePicker x:Name="dp" Grid.Row="0" Height="23" Grid.Column="0" VerticalAlignment="Top" DateConverter="{StaticResource CustomDateConverter}" />
-        <TextBlock Grid.Row="1" Grid.Column="0" TextWrapping="Wrap" FlowDirection="{Loc:LocFlowDirection Key=Flow}" >            <Run Text="{Loc:LocText Key=DateConverterParagraph}" Foreground="White" />        </TextBlock>    </Grid>
-</Page>

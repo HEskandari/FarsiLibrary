@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections;
 using System.ComponentModel;
-using FarsiLibrary.Resources;
 using FarsiLibrary.Utils.Exceptions;
 using System.Collections.Generic;
 using FarsiLibrary.Utils.Internals;
 using System.Globalization;
+using FarsiLibrary.Localization;
 
 namespace FarsiLibrary.Utils
 {
@@ -48,7 +48,6 @@ namespace FarsiLibrary.Utils
         private int second;
         private int millisecond;
         private readonly TimeSpan time;
-        private readonly PersianDateTimeFormatInfo formatting;
         private static readonly PersianCalendar pc;
 
         [NonSerialized]

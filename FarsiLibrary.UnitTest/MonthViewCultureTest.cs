@@ -1,6 +1,6 @@
 using System.Globalization;
 using System.Threading;
-using FarsiLibrary.Resources;
+using FarsiLibrary.Localization;
 using FarsiLibrary.Win.Controls;
 using NUnit.Framework;
 

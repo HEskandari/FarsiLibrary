@@ -1,0 +1,184 @@
+﻿<Page x:Class="FarsiLibrary.WPFDemo.Pages.MonthView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:FL="http://schemas.hightech.ir/wpf/2008/FarsiLibrary"
+      xmlns:loc="clr-namespace:FarsiLibrary.WPFDemo.Localization"
+      FlowDirection="{loc:LocFlowDirection Key=Flow}">
+
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/FarsiLibrary.WPFDemo;component/Themes/ThemeExpression.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
+
+    <Grid Margin="10">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" MinHeight="30" />
+            <RowDefinition Height="Auto" MinHeight="30" />
+            <RowDefinition Height="Auto" MinHeight="30" />
+            <RowDefinition Height="Auto" MinHeight="30" />
+            <RowDefinition Height="Auto" MinHeight="30" />
+            <RowDefinition Height="Auto" MinHeight="30" />
+            <RowDefinition Height="Auto" MinHeight="30" />
+            <RowDefinition Height="Auto" MinHeight="30" />
+            <RowDefinition Height="Auto" MinHeight="30" />
+            <RowDefinition Height="Auto" MinHeight="30" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <FL:FXMonthView x:Name="mv"
+                        Grid.Row="0"
+                        Grid.RowSpan="6"
+                        Grid.Column="0"
+                        Width="200">
+
+            <FL:FXMonthView.Resources>
+                <Style TargetType="{x:Type FL:FXMonthView}" />
+                <Style TargetType="{x:Type RepeatButton}" />
+                <Style TargetType="{x:Type Button}" />
+            </FL:FXMonthView.Resources>
+
+        </FL:FXMonthView>
+
+        <StackPanel Grid.Row="0"
+                    Grid.Column="1"
+                    Orientation="Horizontal">
+            <Label Width="150"
+                   VerticalAlignment="Center"
+                   HorizontalContentAlignment="Right"
+                   Content="{loc:LocText Key=SelectedDate,
+                                         Suffix=':'}" />
+            <Label VerticalAlignment="Center" Content="{Binding ElementName=mv, Path=SelectedDateTime}" />
+        </StackPanel>
+
+        <StackPanel Grid.Row="1"
+                    Grid.Column="1"
+                    Orientation="Horizontal">
+            <Label Width="150"
+                   VerticalAlignment="Center"
+                   HorizontalContentAlignment="Right"
+                   Content="{loc:LocText Key=ViewDate,
+                                         Suffix=':'}" />
+            <Label VerticalAlignment="Center" Content="{Binding ElementName=mv, Path=ViewDateTime}" />
+        </StackPanel>
+
+        <StackPanel Grid.Row="2"
+                    Grid.Column="1"
+                    Orientation="Horizontal">
+            <Label Width="150"
+                   VerticalAlignment="Center"
+                   HorizontalContentAlignment="Right"
+                   Content="{loc:LocText Key=ShowEmptyButton,
+                                         Suffix=':'}" />
+            <CheckBox VerticalAlignment="Center"
+                      VerticalContentAlignment="Center"
+                      IsChecked="{Binding ElementName=mv,
+                                          Path=ShowEmptyButton}" />
+        </StackPanel>
+
+        <StackPanel Grid.Row="3"
+                    Grid.Column="1"
+                    Orientation="Horizontal">
+            <Label Width="150"
+                   VerticalAlignment="Center"
+                   HorizontalContentAlignment="Right"
+                   Content="{loc:LocText Key=ShowTodayButton,
+                                         Suffix=':'}" />
+            <CheckBox VerticalAlignment="Center"
+                      VerticalContentAlignment="Center"
+                      IsChecked="{Binding ElementName=mv,
+                                          Path=ShowTodayButton}" />
+        </StackPanel>
+
+        <StackPanel Grid.Row="4"
+                    Grid.Column="1"
+                    Orientation="Horizontal">
+            <Label Width="150"
+                   VerticalAlignment="Center"
+                   HorizontalContentAlignment="Right"
+                   Content="{loc:LocText Key=ShowWeekNames,
+                                         Suffix=':'}" />
+            <CheckBox VerticalAlignment="Center"
+                      VerticalContentAlignment="Center"
+                      IsChecked="{Binding ElementName=mv,
+                                          Path=ShowWeekDayNames}" />
+        </StackPanel>
+
+        <StackPanel Grid.Row="5"
+                    Grid.Column="1"
+                    Orientation="Horizontal">
+            <Label Width="150"
+                   VerticalAlignment="Center"
+                   HorizontalContentAlignment="Right"
+                   Content="{loc:LocText Key=IsEnabled,
+                                         Suffix=':'}" />
+            <CheckBox VerticalAlignment="Center"
+                      VerticalContentAlignment="Center"
+                      IsChecked="{Binding ElementName=mv,
+                                          Path=IsEnabled}" />
+        </StackPanel>
+
+        <StackPanel Grid.Row="6"
+                    Grid.Column="1"
+                    Height="Auto"
+                    Orientation="Horizontal">
+            <Label Width="150"
+                   VerticalAlignment="Center"
+                   HorizontalContentAlignment="Right"
+                   Content="{loc:LocText Key=Direction,
+                                         Suffix=':'}" />
+            <ComboBox x:Name="cmbDirection"
+                      Width="100"
+                      Height="23"
+                      Margin="5"
+                      VerticalAlignment="Center"
+                      SelectionChanged="cmbDirection_SelectionChanged">
+                <ComboBox.Items>
+                    <ComboBoxItem Content="Left To Right"
+                                  IsSelected="True"
+                                  Tag="LTR" />
+                    <ComboBoxItem Content="Right To Left" Tag="RTL" />
+                </ComboBox.Items>
+            </ComboBox>
+        </StackPanel>
+
+        <Label Grid.Row="7"
+               Grid.Column="0"
+               Content="{Binding Path=Text,
+                                 ElementName=mv}" />
+
+        <Button Grid.Row="7"
+                Grid.Column="1"
+                Width="150"
+                Height="25"
+                Margin="10, 10, 0, 0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                Click="SetDateToValue"
+                Content="{loc:LocText Key=SetDateSpecific}" />
+        <Button Grid.Row="8"
+                Grid.Column="1"
+                Width="150"
+                Height="25"
+                Margin="10, 10, 0, 0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                Click="SetDateToNull"
+                Content="{loc:LocText Key=SetDateNull}" />
+        <Button Grid.Row="9"
+                Grid.Column="1"
+                Width="150"
+                Height="25"
+                Margin="10, 10, 0, 0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                Click="SetDateToToday"
+                Content="{loc:LocText Key=SetDateToday}" />
+    </Grid>
+</Page>

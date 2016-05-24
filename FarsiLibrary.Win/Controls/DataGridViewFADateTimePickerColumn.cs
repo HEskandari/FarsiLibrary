@@ -19,7 +19,6 @@ namespace FarsiLibrary.Win.Controls
 
         private static readonly Type valueType = typeof (DateTime);
         private static readonly Type editType = typeof (DataGridViewFADateTimePickerEditor);
-        private FormatInfoTypes format;
         
         #endregion
 

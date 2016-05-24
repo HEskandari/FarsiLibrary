@@ -32,13 +32,6 @@ namespace FarsiLibrary.UnitTest
         }
 
         [Test]
-        public void Default_PersianCulture_Has_Wrong_CalendarType()
-        {
-            CultureInfo ci = new CultureInfo("fa-IR");
-            Assert.That(ci.Calendar, Is.Not.TypeOf(typeof(System.Globalization.PersianCalendar)));
-        }
-
-        [Test]
         public void Creating_PersianCultureInfo_Will_Set_Correct_Calendar()
         {
             PersianCultureInfo ci = new PersianCultureInfo();
@@ -91,16 +84,6 @@ namespace FarsiLibrary.UnitTest
         {
             var ci = new PersianCultureInfo();
             Assert.DoesNotThrow(() => ci.DateTimeFormat = DateTimeFormatWrapper.GetFormatInfo());
-        }
-
-        [Test]
-        public void Using_Invalid_DateRange_Throws()
-        {
-            using (new CultureSwitchContext(new PersianCultureInfo()))
-            {
-                DateTime dt = DateTime.MinValue;
-                Assert.Throws<ArgumentOutOfRangeException>(() => dt.ToString());
-            }
         }
 
         [Test]

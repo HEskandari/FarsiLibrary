@@ -1,5 +1,5 @@
 using System.Globalization;
-using FarsiLibrary.Resources;
+using FarsiLibrary.Localization;
 using FarsiLibrary.Win.Controls;
 using NUnit.Framework;
 

@@ -1,37 +1,47 @@
 ﻿<UserControl x:Class="FarsiLibrary.WPF.VisualStudio.Design.MonthViewDesignerUI"
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:Controls="clr-namespace:FarsiLibrary.WPF.Controls;assembly=FarsiLibrary.WPF">
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:controls="clr-namespace:FarsiLibrary.WPF.Controls;assembly=FarsiLibrary.WPF">
     <UserControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/FarsiLibrary.WPF.VisualStudio.Design;component/Themes/Theme.xaml" />
             </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>            
+        </ResourceDictionary>
     </UserControl.Resources>
-        
-    <Expander x:Name="TaskOpener" IsExpanded="False" Margin="10" Padding="10" Header="Options...">
+
+    <Expander x:Name="TaskOpener"
+              Margin="10"
+              Header="Options..."
+              IsExpanded="False"
+              Padding="10">
         <StackPanel x:Name="ContentPanel" SnapsToDevicePixels="True">
             <CheckBox Content="Show Today Button" IsChecked="{Binding Path=ShowTodayButton}" />
             <CheckBox Content="Show Empty Button" IsChecked="{Binding Path=ShowEmptyButton}" />
             <CheckBox Content="Show WeekDay Names" IsChecked="{Binding Path=ShowWeekDayNames}" />
 
-            <Rectangle Fill="{DynamicResource Text1Brush}" Height="1" SnapsToDevicePixels="True" Margin="-5,5,-5,5" />
-            
-            <StackPanel Orientation="Horizontal">
-                <TextBlock Text="Selected Date : " Width="150" />
-                <Controls:FXDatePicker SelectedDateTime="{Binding Path=SelectedDateTime}" Width="120" />
-            </StackPanel>
-            
-            <Rectangle Fill="{DynamicResource Text1Brush}" Height="1" SnapsToDevicePixels="True" Margin="-5,5,-5,5" />
+            <Rectangle Height="1"
+                       Margin="-5,5,-5,5"
+                       Fill="{DynamicResource Text1Brush}"
+                       SnapsToDevicePixels="True" />
 
             <StackPanel Orientation="Horizontal">
-                <TextBlock Text="Maximum Selectable Date : " Width="150" />
-                <Controls:FXDatePicker SelectedDateTime="{Binding Path=MaxDate}" Width="120" />
+                <TextBlock Width="150" Text="Selected Date : " />
+                <controls:FXDatePicker Width="120" SelectedDateTime="{Binding Path=SelectedDateTime}" />
+            </StackPanel>
+
+            <Rectangle Height="1"
+                       Margin="-5,5,-5,5"
+                       Fill="{DynamicResource Text1Brush}"
+                       SnapsToDevicePixels="True" />
+
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Width="150" Text="Maximum Selectable Date : " />
+                <controls:FXDatePicker Width="120" SelectedDateTime="{Binding Path=MaxDate}" />
             </StackPanel>
             <StackPanel Orientation="Horizontal">
-                <TextBlock Text="Minimum Selectable Date : " Width="150" />
-                <Controls:FXDatePicker SelectedDateTime="{Binding Path=MinDate}" Width="120" />
+                <TextBlock Width="150" Text="Minimum Selectable Date : " />
+                <controls:FXDatePicker Width="120" SelectedDateTime="{Binding Path=MinDate}" />
             </StackPanel>
         </StackPanel>
     </Expander>

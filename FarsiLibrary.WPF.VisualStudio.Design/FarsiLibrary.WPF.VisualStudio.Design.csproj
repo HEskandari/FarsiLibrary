@@ -10,13 +10,19 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>FarsiLibrary.WPF.VisualStudio.Design</RootNamespace>
     <AssemblyName>FarsiLibrary.WPF.VisualStudio.Design</AssemblyName>
+    <OutputPath>..\binaries\</OutputPath>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <TargetFrameworkProfile />
   </PropertyGroup>
-  <ItemGroup>
-    <Reference Include="Microsoft.Windows.Design, Version=3.5.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
-    <Reference Include="Microsoft.Windows.Design.Extensibility, Version=3.5.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
-    <Reference Include="Microsoft.Windows.Design.Interaction, Version=3.5.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
-    <Reference Include="Microsoft.Windows.Design.Markup, Version=3.5.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
-  </ItemGroup>
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>..\FarsiLibrary.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
   <ItemGroup>
     <Compile Include="AboutUI.xaml.cs">
       <DependentUpon>AboutUI.xaml</DependentUpon>
@@ -43,7 +49,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Themes\FarsiLibrary.xaml">
+    <Page Include="Themes\DefaultTheme.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -57,13 +63,46 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\FarsiLibrary.Localization\FarsiLibrary.Localization.csproj">
+      <Project>{e5575624-4b92-4e51-b98b-20f31fe5b5b4}</Project>
+      <Name>FarsiLibrary.Localization</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FarsiLibrary.Utils\FarsiLibrary.Utils.csproj">
+      <Project>{ed29e567-c801-49e9-8c33-cfb66042b07b}</Project>
+      <Name>FarsiLibrary.Utils</Name>
+    </ProjectReference>
     <ProjectReference Include="..\FarsiLibrary.WPF\FarsiLibrary.WPF.csproj">
       <Project>{01D673DE-5CD4-491D-B4AF-563360C1BC9E}</Project>
       <Name>FarsiLibrary.WPF</Name>
     </ProjectReference>
   </ItemGroup>
-  <PropertyGroup>
-    <ProjectRefType>WPF</ProjectRefType>
-  </PropertyGroup>
-  <Import Project="CSharp.targets" />
+  <ItemGroup>
+    <Reference Include="Microsoft.Windows.Design.Extensibility, Version=4.3.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=x86" />
+    <Reference Include="Microsoft.Windows.Design.Interaction, Version=4.3.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=x86" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.Design" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Drawing.Design" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Windows.Forms" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="PresentationFramework.Aero" />
+    <Reference Include="PresentationFramework.Classic" />
+    <Reference Include="PresentationFramework.Luna" />
+    <Reference Include="PresentationFramework.Royale" />
+    <Reference Include="UIAutomationProvider" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System.Xaml" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

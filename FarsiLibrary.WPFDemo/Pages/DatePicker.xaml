@@ -1,0 +1,113 @@
+﻿<Page x:Class="FarsiLibrary.WPFDemo.Pages.DatePicker"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:FL="http://schemas.hightech.ir/wpf/2008/FarsiLibrary"
+      xmlns:Loc="clr-namespace:FarsiLibrary.WPFDemo.Localization"
+      Title="DatePicker"
+      FlowDirection="{Loc:LocFlowDirection Key=Flow}">
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/FarsiLibrary.WPFDemo;component/Themes/ThemeExpression.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" MinHeight="30" />
+            <RowDefinition Height="Auto" MinHeight="30" />
+            <RowDefinition Height="Auto" MinHeight="30" />
+            <RowDefinition Height="Auto" MinHeight="30" />
+            <RowDefinition Height="Auto" MinHeight="30" />
+            <RowDefinition Height="Auto" MinHeight="30" />
+            <RowDefinition Height="Auto" MinHeight="30" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <FL:FXDatePicker x:Name="dp"
+                         Grid.Row="0"
+                         Grid.Column="0"
+                         Height="23"
+                         VerticalAlignment="Top" />
+
+        <StackPanel Grid.Row="0"
+                    Grid.Column="1"
+                    Margin="10, 0, 0, 0"
+                    Orientation="Horizontal">
+            <Label VerticalAlignment="Center" Content="{Loc:LocText Key=SelectedDate, Suffix=':'}" />
+            <Label VerticalAlignment="Center" Content="{Binding Path=SelectedDateTime, ElementName=dp}" />
+        </StackPanel>
+
+        <StackPanel Grid.Row="1"
+                    Grid.Column="1"
+                    Margin="10, 0, 0, 0"
+                    Orientation="Horizontal">
+            <Label VerticalAlignment="Center" Content="{Loc:LocText Key=PersianDate, Suffix=':'}" />
+            <Label VerticalAlignment="Center" Content="{Binding Path=Text, ElementName=dp, Converter={StaticResource DateConverter}}" />
+        </StackPanel>
+
+        <StackPanel Grid.Row="2"
+                    Grid.Column="1"
+                    Margin="10, 0, 0, 0"
+                    Orientation="Horizontal">
+            <Label VerticalAlignment="Center" Content="{Loc:LocText Key=Direction, Suffix=':'}" />
+            <ComboBox x:Name="cmbDirection"
+                      Width="100"
+                      Height="20"
+                      VerticalAlignment="Center"
+                      SelectionChanged="cmbDirection_SelectionChanged">
+                <ComboBox.Items>
+                    <ComboBoxItem Content="Left To Right"
+                                  IsSelected="True"
+                                  Tag="LTR" />
+                    <ComboBoxItem Content="Right To Left" Tag="RTL" />
+                </ComboBox.Items>
+            </ComboBox>
+        </StackPanel>
+
+        <Button Grid.Row="4"
+                Grid.Column="1"
+                Width="150"
+                Height="25"
+                Margin="10, 10, 0, 0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                Click="SetDateToValue"
+                Content="{Loc:LocText Key=SetDateSpecific}" />
+
+        <StackPanel Grid.Row="5"
+                    Grid.Column="1"
+                    Orientation="Horizontal">
+            <Label Width="150"
+                   VerticalAlignment="Center"
+                   HorizontalContentAlignment="Right"
+                   Content="{Loc:LocText Key=IsEnabled,
+                                         Suffix=':'}" />
+            <CheckBox VerticalAlignment="Center"
+                      VerticalContentAlignment="Center"
+                      IsChecked="{Binding ElementName=dp,
+                                          Path=IsEnabled}" />
+        </StackPanel>
+        <Button Grid.Row="5"
+                Grid.Column="1"
+                Width="150"
+                Height="25"
+                Margin="10, 10, 0, 0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                Click="SetDateToNull"
+                Content="{Loc:LocText Key=SetDateNull}" />
+        <Button Grid.Row="6"
+                Grid.Column="1"
+                Width="150"
+                Height="25"
+                Margin="10, 10, 0, 0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                Click="SetDateToToday"
+                Content="{Loc:LocText Key=SetDateToday}" />
+    </Grid>
+</Page>

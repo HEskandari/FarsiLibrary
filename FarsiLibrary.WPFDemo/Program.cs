@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Windows;
-using FarsiLibrary.LiveSamples;
 
 namespace FarsiLibrary.WPFDemo
 {

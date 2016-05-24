@@ -1,0 +1,40 @@
+﻿<Page x:Class="FarsiLibrary.WPFDemo.Pages.Themes"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:Loc="clr-namespace:FarsiLibrary.WPFDemo.Localization"
+      xmlns:local="clr-namespace:FarsiLibrary.WPF.Controls;assembly=FarsiLibrary.WPF"
+      FlowDirection="{Loc:LocFlowDirection Key=Flow}">
+    <Page.Resources>
+
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/FarsiLibrary.WPFDemo;component/Themes/ZuneTheme.xaml" />
+                <ResourceDictionary Source="/FarsiLibrary.WPFDemo;component/Themes/BrushesAndColors.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+
+    </Page.Resources>
+
+    <StackPanel Margin="5" Orientation="Horizontal">
+        <local:FXMonthView x:Name="mv"
+                           Width="180"
+                           Height="180"
+                           Margin="5"
+                           Background="#FF5E5E5E"
+                           DayContainerStyle="{StaticResource CustomDayStyle}"
+                           Foreground="#FFFFF5C7"
+                           HeaderMonthStyle="{StaticResource CustomMonthStyle}"
+                           HeaderYearStyle="{StaticResource CustomYearStyle}"
+                           Template="{StaticResource CustomMonthViewStyle}"
+                           WeekDayHeaderStyle="{StaticResource CustomWeekDayStyle}" />
+
+        <local:FXMonthView x:Name="mvNormal"
+                           Width="180"
+                           Height="180"
+                           Margin="5">
+            <local:FXMonthView.Resources>
+                <Style TargetType="{x:Type RepeatButton}" />
+            </local:FXMonthView.Resources>
+        </local:FXMonthView>
+    </StackPanel>
+</Page>

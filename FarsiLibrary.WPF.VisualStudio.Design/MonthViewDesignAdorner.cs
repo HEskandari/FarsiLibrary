@@ -18,7 +18,7 @@ public class MonthViewDesignAdorner : PrimarySelectionAdornerProvider
         designerUI = new MonthViewDesignerUI();
     }
 
-    protected override void Activate(ModelItem item, DependencyObject view)
+    protected override void Activate(ModelItem item)
     {
         calendarModelItem = item;
 
@@ -26,7 +26,7 @@ public class MonthViewDesignAdorner : PrimarySelectionAdornerProvider
         PlaceAdornerPanel();
         SubscribeDesignerEvents();
 
-        base.Activate(item, view);
+        base.Activate(item);
     }
 
     protected override void Deactivate()
@@ -62,12 +62,12 @@ private void OnDesignerUIPropertyChanged(object sender, PropertyChangedEventArgs
 
     private void OnDesignerUILoaded(object sender, RoutedEventArgs e)
     {
-        designerUI.ShowEmptyButton = (bool) calendarModelItem.Properties[FXMonthView.ShowEmptyButtonProperty].ComputedValue;
-        designerUI.ShowTodayButton = (bool) calendarModelItem.Properties[FXMonthView.ShowTodayButtonProperty].ComputedValue;
-        designerUI.ShowWeekDayNames = (bool) calendarModelItem.Properties[FXMonthView.ShowWeekDayNamesProperty].ComputedValue;
-        designerUI.SelectedDateTime = (DateTime?) calendarModelItem.Properties[FXMonthView.SelectedDateTimeProperty].ComputedValue;
-        designerUI.MaxDate = (DateTime) calendarModelItem.Properties[FXMonthView.MaxDateProperty].ComputedValue;
-        designerUI.MinDate = (DateTime) calendarModelItem.Properties[FXMonthView.MinDateProperty].ComputedValue;
+        designerUI.ShowEmptyButton = (bool) calendarModelItem.Properties[FXMonthView.ShowEmptyButtonProperty.Name].ComputedValue;
+        designerUI.ShowTodayButton = (bool) calendarModelItem.Properties[FXMonthView.ShowTodayButtonProperty.Name].ComputedValue;
+        designerUI.ShowWeekDayNames = (bool) calendarModelItem.Properties[FXMonthView.ShowWeekDayNamesProperty.Name].ComputedValue;
+        designerUI.SelectedDateTime = (DateTime?) calendarModelItem.Properties[FXMonthView.SelectedDateTimeProperty.Name].ComputedValue;
+        designerUI.MaxDate = (DateTime) calendarModelItem.Properties[FXMonthView.MaxDateProperty.Name].ComputedValue;
+        designerUI.MinDate = (DateTime) calendarModelItem.Properties[FXMonthView.MinDateProperty.Name].ComputedValue;
     }
 
     private void SubscribeDesignerEvents()

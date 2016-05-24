@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?> 
+<package xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">        
+  <metadata xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">                      
+    <id>Farsi.Library.Win</id>
+    <version>@build.number@</version>
+    <title>Farsi Library for Windows Forms</title>
+    <authors>Hadi Eskandari</authors>
+    <owners>Hadi Eskandari</owners>
+    <licenseUrl>http://opensource.org/licenses/mit-license.php</licenseUrl>
+    <projectUrl>http://github.com/HEskandari/FarsiLibrary</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Library containing farsi controls, which has correct Right-To-Left drawing. Also contains classes to work with Jalali Dates.</description>
+    <copyright>Copyright (c) Hadi Eskandari</copyright>
+    <tags>farsi persian language calendar datepicker datepickers controls dates jalali win</tags>
+	<dependencies />
+	</metadata>
+	<files>
+       <file src="FarsiLibrary.Utils.dll" target="lib\net46" />
+       <file src="FarsiLibrary.Win.dll" target="lib\net46" />
+       <file src="FarsiLibrary.Localization.dll" target="lib\net46" />
+    </files>
+</package>

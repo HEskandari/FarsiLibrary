@@ -6,13 +6,15 @@ using Microsoft.Windows.Design.Metadata;
 
 namespace FarsiLibrary.WPF.VisualStudio.Design
 {
-    public class VisualStudioMetadata : IRegisterMetadata
+    public class VisualStudioMetadata : IProvideAttributeTable
     {
-        public void Register()
+        public VisualStudioMetadata()
         {
             AttributeTableBuilder builder = new FarsiLibraryVisualStudioAttributeTableBuilder();
-            MetadataStore.AddAttributeTable(builder.CreateTable());
+            AttributeTable = builder.CreateTable();
         }
+
+        public AttributeTable AttributeTable { get; }
     }
 
     internal class FarsiLibraryVisualStudioAttributeTableBuilder : AttributeTableBuilder
@@ -27,41 +29,37 @@ namespace FarsiLibrary.WPF.VisualStudio.Design
 
         private void AddToolboxBrowsableAttributes()
         {
-            var builder = new AttributeTableBuilder();
-
-            builder.AddCustomAttributes(typeof(FXMonthViewButton),            ToolboxBrowsableAttribute.No);
-            builder.AddCustomAttributes(typeof(FXMonthViewContainer),         ToolboxBrowsableAttribute.No);
-            builder.AddCustomAttributes(typeof(FXMonthViewHeader),            ToolboxBrowsableAttribute.No);
-            builder.AddCustomAttributes(typeof(FXMonthViewItem),              ToolboxBrowsableAttribute.No);
-            builder.AddCustomAttributes(typeof(FXMonthViewWeekDayHeaderCell), ToolboxBrowsableAttribute.No);
-            builder.AddCustomAttributes(typeof(FXPopup),                      ToolboxBrowsableAttribute.No);
-
-            MetadataStore.AddAttributeTable(builder.CreateTable());
+            AddCustomAttributes(typeof(FXMonthViewButton),            ToolboxBrowsableAttribute.No);
+            AddCustomAttributes(typeof(FXMonthViewContainer),         ToolboxBrowsableAttribute.No);
+            AddCustomAttributes(typeof(FXMonthViewHeader),            ToolboxBrowsableAttribute.No);
+            AddCustomAttributes(typeof(FXMonthViewItem),              ToolboxBrowsableAttribute.No);
+            AddCustomAttributes(typeof(FXMonthViewWeekDayHeaderCell), ToolboxBrowsableAttribute.No);
+            AddCustomAttributes(typeof(FXPopup),                      ToolboxBrowsableAttribute.No);
         }
 
         private void AddMonthViewAttributes()
         {
             AddCallback(typeof(FXMonthView), builder =>
             {
-                builder.AddCustomAttributes(FXMonthView.ButtonStyleProperty, BrowsableAttribute.No);
-                builder.AddCustomAttributes(FXMonthView.WeekDayHeaderStyleProperty, BrowsableAttribute.No);
-                builder.AddCustomAttributes(FXMonthView.HeaderMonthStyleProperty, BrowsableAttribute.No);
-                builder.AddCustomAttributes(FXMonthView.DayContainerStyleProperty, BrowsableAttribute.No);
-                builder.AddCustomAttributes(FXMonthView.HeaderYearStyleProperty, BrowsableAttribute.No);
-                builder.AddCustomAttributes(FXMonthView.DayContainerStyleSelectorProperty, BrowsableAttribute.No);
-                builder.AddCustomAttributes(FXMonthView.DayTemplateSelectorProperty, BrowsableAttribute.No);
-                builder.AddCustomAttributes(FXMonthView.DayTemplateProperty, BrowsableAttribute.No);
-                builder.AddCustomAttributes(FXMonthView.ViewPreChangeAnimationProperty, BrowsableAttribute.No);
-                builder.AddCustomAttributes(FXMonthView.ViewPostChangeAnimationProperty, BrowsableAttribute.No);
+                builder.AddCustomAttributes(FXMonthView.ButtonStyleProperty.Name, BrowsableAttribute.No);
+                builder.AddCustomAttributes(FXMonthView.WeekDayHeaderStyleProperty.Name, BrowsableAttribute.No);
+                builder.AddCustomAttributes(FXMonthView.HeaderMonthStyleProperty.Name, BrowsableAttribute.No);
+                builder.AddCustomAttributes(FXMonthView.DayContainerStyleProperty.Name, BrowsableAttribute.No);
+                builder.AddCustomAttributes(FXMonthView.HeaderYearStyleProperty.Name, BrowsableAttribute.No);
+                builder.AddCustomAttributes(FXMonthView.DayContainerStyleSelectorProperty.Name, BrowsableAttribute.No);
+                builder.AddCustomAttributes(FXMonthView.DayTemplateSelectorProperty.Name, BrowsableAttribute.No);
+                builder.AddCustomAttributes(FXMonthView.DayTemplateProperty.Name, BrowsableAttribute.No);
+                builder.AddCustomAttributes(FXMonthView.ViewPreChangeAnimationProperty.Name, BrowsableAttribute.No);
+                builder.AddCustomAttributes(FXMonthView.ViewPostChangeAnimationProperty.Name, BrowsableAttribute.No);
 
                 var behaviorCategory = new CategoryAttribute("Behavior");
-                builder.AddCustomAttributes(FXMonthView.ViewDateTimeProperty, behaviorCategory);
-                builder.AddCustomAttributes(FXMonthView.SelectedDateTimeProperty, behaviorCategory);
-                builder.AddCustomAttributes(FXMonthView.ShowTodayButtonProperty, behaviorCategory);
-                builder.AddCustomAttributes(FXMonthView.ShowEmptyButtonProperty, behaviorCategory);
-                builder.AddCustomAttributes(FXMonthView.ShowWeekDayNamesProperty, behaviorCategory);
-                builder.AddCustomAttributes(FXMonthView.MaxDateProperty, behaviorCategory);
-                builder.AddCustomAttributes(FXMonthView.MinDateProperty, behaviorCategory);
+                builder.AddCustomAttributes(FXMonthView.ViewDateTimeProperty.Name, behaviorCategory);
+                builder.AddCustomAttributes(FXMonthView.SelectedDateTimeProperty.Name, behaviorCategory);
+                builder.AddCustomAttributes(FXMonthView.ShowTodayButtonProperty.Name, behaviorCategory);
+                builder.AddCustomAttributes(FXMonthView.ShowEmptyButtonProperty.Name, behaviorCategory);
+                builder.AddCustomAttributes(FXMonthView.ShowWeekDayNamesProperty.Name, behaviorCategory);
+                builder.AddCustomAttributes(FXMonthView.MaxDateProperty.Name, behaviorCategory);
+                builder.AddCustomAttributes(FXMonthView.MinDateProperty.Name, behaviorCategory);
 
                 builder.AddCustomAttributes();
             });
@@ -74,10 +72,7 @@ namespace FarsiLibrary.WPF.VisualStudio.Design
 
         private void AddMonthViewDesigners()
         {
-            var builder = new AttributeTableBuilder();
-            builder.AddCustomAttributes(typeof (FXMonthView), new FeatureAttribute(typeof (MonthViewDesignAdorner)));
-
-            MetadataStore.AddAttributeTable(builder.CreateTable());
+            AddCustomAttributes(typeof (FXMonthView), new FeatureAttribute(typeof (MonthViewDesignAdorner)));
         }
     }
 }

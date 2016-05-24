@@ -1,5 +1,5 @@
-﻿using FarsiLibrary.Resources;
-using System;
+﻿using System;
+using FarsiLibrary.Localization;
 
 namespace FarsiLibrary.Win
 {

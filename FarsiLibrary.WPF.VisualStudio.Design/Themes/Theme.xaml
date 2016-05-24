@@ -1,9 +1,7 @@
-﻿<ResourceDictionary 
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="BrushesAndColors.xaml" />
         <ResourceDictionary Source="System.xaml" />
-        <ResourceDictionary Source="FarsiLibrary.xaml" />
+        <ResourceDictionary Source="DefaultTheme.xaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

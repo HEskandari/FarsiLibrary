@@ -2,7 +2,7 @@ using System;
 using System.ComponentModel;
 using System.Globalization;
 using System.Threading;
-using FarsiLibrary.Resources;
+using FarsiLibrary.Localization;
 using FarsiLibrary.Utils;
 using FarsiLibrary.Utils.Internals;
 using PersianCalendar=FarsiLibrary.Utils.PersianCalendar;

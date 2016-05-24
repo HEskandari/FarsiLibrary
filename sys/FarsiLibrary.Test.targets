@@ -1,9 +1,0 @@
-<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="References.Common.targets" />
-  <Import Project="References.Win.targets" />	
-  <Import Project="References.WPF.targets" />	
-  <Import Project="References.Test.targets" />
-  <PropertyGroup>
-    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-  </PropertyGroup>
-</Project>

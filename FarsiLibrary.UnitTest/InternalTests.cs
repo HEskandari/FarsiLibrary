@@ -5,6 +5,7 @@ using FarsiLibrary.Utils;
 using FarsiLibrary.Utils.Internals;
 using NUnit.Framework;
 using PersianCalendar=FarsiLibrary.Utils.PersianCalendar;
+using Guard = FarsiLibrary.Utils.Internals.Guard;
 
 namespace FarsiLibrary.UnitTest
 {
@@ -196,19 +197,6 @@ namespace FarsiLibrary.UnitTest
         }
 
         #endregion
-
-        #region ThemeWrapper
-
-        [Test, Ignore]
-        public void Can_Get_Theme_Name_From_Wrapper()
-        {
-            var themeName = ThemeWrapper.CurrentThemeName;
-
-            Assert.IsNotEmpty(themeName);
-        }
-
-        #endregion
-
 
         #region TestClass
 

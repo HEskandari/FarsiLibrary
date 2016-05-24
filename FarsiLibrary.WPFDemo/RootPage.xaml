@@ -1,0 +1,102 @@
+﻿<Page x:Class="FarsiLibrary.WPFDemo.RootPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:Custom="http://schemas.hightech.ir/wpf/2008/FarsiLibrary"
+      xmlns:Loc="clr-namespace:FarsiLibrary.WPFDemo.Localization"
+      Title="Farsi Library Samples"
+      Background="{DynamicResource DialogBackgroundBrush}">
+    <Page.Resources>
+
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/FarsiLibrary.WPFDemo;component/Themes/BrushesAndColors.xaml" />
+                <ResourceDictionary Source="/FarsiLibrary.WPFDemo;component/Themes/System.xaml" />
+                <ResourceDictionary Source="/FarsiLibrary.WPFDemo;component/Themes/DefaultTheme.xaml" />
+                <ResourceDictionary Source="/FarsiLibrary.WPFDemo;component/Themes/Pages.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+
+    </Page.Resources>
+    <DockPanel LastChildFill="True">
+        <StatusBar x:Name="status" DockPanel.Dock="Bottom">
+            <StatusBarItem>
+                <StackPanel Height="25" Orientation="Horizontal">
+                    <TextBlock x:Name="statusText"
+                               VerticalAlignment="Center"
+                               Text="Language: " />
+                    <ComboBox x:Name="cmbLanguage"
+                              Width="120"
+                              Height="20"
+                              VerticalAlignment="Center"
+                              SelectionChanged="ComboBox_SelectionChanged">
+                        <ComboBoxItem Content="{Loc:LocText Key=Farsi}"
+                                      IsSelected="True"
+                                      Tag="fa-ir" />
+                        <ComboBoxItem Content="{Loc:LocText Key=English}" Tag="en-us" />
+                    </ComboBox>
+                </StackPanel>
+            </StatusBarItem>
+        </StatusBar>
+
+        <Border Width="800"
+                Height="500"
+                BorderBrush="Black"
+                BorderThickness="0.5"
+                CornerRadius="2"
+                Padding="10">
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="70" />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+
+                <Border Grid.Row="0"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="2"
+                        Height="65"
+                        DockPanel.Dock="Top">
+                    <Image HorizontalAlignment="Left" Source="/FarsiLibrary.WPFDemo;component/Images/Logo.png" />
+                </Border>
+
+                <ListBox x:Name="DemoList"
+                         Grid.Row="1"
+                         Grid.Column="0"
+                         Width="200"
+                         Margin="10"
+                         VerticalAlignment="Top"
+                         HorizontalContentAlignment="Center"
+                         ItemTemplate="{StaticResource DemoTemplate}"
+                         ItemsSource="{Binding Source={StaticResource demos},
+                                               XPath=Demos/Demo}"
+                         Padding="5"
+                         SelectedIndex="0"
+                         SelectedValuePath="@Page" />
+
+                <Border Grid.Row="1"
+                        Grid.Column="1"
+                        Margin="10"
+                        Background="{DynamicResource PaletteBrush}"
+                        BorderBrush="{DynamicResource RecessedBrush}"
+                        BorderThickness="0"
+                        CornerRadius="2"
+                        Padding="10">
+
+                    <Frame x:Name="ContentFrame"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Top"
+                           NavigationUIVisibility="Hidden"
+                           Source="{Binding SelectedValue,
+                                            ElementName=DemoList}" />
+
+                </Border>
+            </Grid>
+
+        </Border>
+    </DockPanel>
+</Page>

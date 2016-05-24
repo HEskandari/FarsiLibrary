@@ -10,31 +10,26 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>FarsiLibrary.UnitTest</RootNamespace>
     <AssemblyName>FarsiLibrary.UnitTest</AssemblyName>
+    <OutputPath>..\binaries\</OutputPath>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="..\Solution Items\CommonAssemblyInfo.cs">
       <Link>Properties\CommonAssemblyInfo.cs</Link>
     </Compile>
-    <Compile Include="BaseStyledControlTest.cs" />
     <Compile Include="CollectionExtensionTests.cs" />
     <Compile Include="CultureInfoExtensionTests.cs" />
-    <Compile Include="HelpersTest.cs" />
     <Compile Include="Helpers\CultureSwitchContext.cs" />
     <Compile Include="DateConversionTest.cs" />
-    <Compile Include="DrawingTests.cs" />
     <Compile Include="ExceptionTests.cs" />
     <Compile Include="Helpers\DateTimeFormatWrapper.cs" />
     <Compile Include="Helpers\TestFormatProvider.cs" />
     <Compile Include="InternalTests.cs" />
     <Compile Include="LocalizerManagerTest.cs" />
     <Compile Include="MessageBoxTest.cs" />
-    <Compile Include="Mocks\MockStyledControl.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Mocks\Office2003ColorStub.cs" />
     <Compile Include="MonthViewCultureTest.cs" />
     <Compile Include="MonthViewTests.cs" />
-    <Compile Include="PainterFactoryTest.cs" />
     <Compile Include="PersianCalendarTest.cs" />
     <Compile Include="PersianCultureInfoTests.cs" />
     <Compile Include="PersianDateConverterTests.cs" />
@@ -44,10 +39,35 @@
     <Compile Include="PrettyTimeTests.cs" />
     <Compile Include="ToWordConversionTest.cs" />
   </ItemGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>..\FarsiLibrary.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
   <ItemGroup>
-    <ProjectReference Include="..\FarsiLibrary.Resources\FarsiLibrary.Resources.csproj">
+    <Reference Include="nunit.framework, Version=2.6.4.14350, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
+      <HintPath>..\packages\NUnit.2.6.4\lib\nunit.framework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.Design" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Drawing.Design" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Windows.Forms" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FarsiLibrary.Localization\FarsiLibrary.Localization.csproj">
       <Project>{E5575624-4B92-4E51-B98B-20F31FE5B5B4}</Project>
-      <Name>FarsiLibrary.Resources</Name>
+      <Name>FarsiLibrary.Localization</Name>
     </ProjectReference>
     <ProjectReference Include="..\FarsiLibrary.Utils\FarsiLibrary.Utils.csproj">
       <Project>{ED29E567-C801-49E9-8C33-CFB66042B07B}</Project>
@@ -58,8 +78,8 @@
       <Name>FarsiLibrary.Win</Name>
     </ProjectReference>
   </ItemGroup>
-  <PropertyGroup>
-    <ProjectRefType>Test</ProjectRefType>
-  </PropertyGroup>
-  <Import Project="CSharp.targets" />
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

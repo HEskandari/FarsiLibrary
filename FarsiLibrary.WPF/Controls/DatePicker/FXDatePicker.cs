@@ -6,11 +6,11 @@ using System.Windows.Data;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Threading;
-using FarsiLibrary.Resources;
 using FarsiLibrary.Utils.Internals;
 using FarsiLibrary.WPF.Automation;
 using FarsiLibrary.WPF.Converters;
 using System.Windows.Automation.Peers;
+using FarsiLibrary.Localization;
 
 namespace FarsiLibrary.WPF.Controls
 {
@@ -66,8 +66,8 @@ namespace FarsiLibrary.WPF.Controls
         public static readonly DependencyProperty IsValidProperty = IsValidPropertyKey.DependencyProperty;
         public static readonly DependencyProperty NullValueTextProperty = DependencyProperty.Register("NullValueText", typeof(string), typeof(FXDatePicker), new FrameworkPropertyMetadata(FALocalizeManager.Instance.GetLocalizer().GetLocalizedString(StringID.Validation_NullText), new PropertyChangedCallback(OnNullValueTextChanged)));
         public static readonly DependencyProperty SelectedDateTimeProperty = DependencyProperty.Register("SelectedDateTime", typeof(DateTime?), typeof(FXDatePicker), new FrameworkPropertyMetadata(null, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault | FrameworkPropertyMetadataOptions.Journal, OnSelectedDateTimeChanged, CoerceSelectedDateTime));
-        public static readonly DependencyProperty MinDateProperty = FXMonthView.MinDateProperty.AddOwner(typeof(FXDatePicker), new FrameworkPropertyMetadata(CultureHelper.MinCultureDateTime, new PropertyChangedCallback(OnMinDateChanged)));
-        public static readonly DependencyProperty MaxDateProperty = FXMonthView.MaxDateProperty.AddOwner(typeof(FXDatePicker), new FrameworkPropertyMetadata(CultureHelper.MaxCultureDateTime, new PropertyChangedCallback(OnMaxDateChanged), CoerceMaxDate));
+        public static readonly DependencyProperty MinDateProperty = DependencyProperty.Register("MinDate", typeof(DateTime), typeof(FXDatePicker), new FrameworkPropertyMetadata(CultureHelper.MinCultureDateTime, new PropertyChangedCallback(OnMinDateChanged)));
+        public static readonly DependencyProperty MaxDateProperty = DependencyProperty.Register("MaxDate", typeof(DateTime), typeof(FXDatePicker), new FrameworkPropertyMetadata(CultureHelper.MaxCultureDateTime, new PropertyChangedCallback(OnMaxDateChanged), CoerceMaxDate));
         public static readonly DependencyProperty DateConverterProperty = DependencyProperty.Register("DateConverter", typeof(IValueConverter), typeof(FXDatePicker), new FrameworkPropertyMetadata(null, new PropertyChangedCallback(OnDateConverterChanged)));
         public static readonly DependencyProperty MonthViewStyleProperty = DependencyProperty.Register("MonthViewStyle", typeof(Style), typeof(FXDatePicker), new FrameworkPropertyMetadata(null, FrameworkPropertyMetadataOptions.AffectsMeasure));
         public static readonly DependencyProperty DropDownButtonStyleProperty = DependencyProperty.Register("DropDownButtonStyle", typeof(Style), typeof(FXDatePicker), new FrameworkPropertyMetadata(null, new PropertyChangedCallback(OnDropDownButtonStyleChanged)));
@@ -138,8 +138,6 @@ namespace FarsiLibrary.WPF.Controls
 
             EventManager.RegisterClassHandler(typeof(FXDatePicker), Keyboard.KeyDownEvent, new KeyEventHandler(KeyDownHandler), true);
             EventManager.RegisterClassHandler(typeof(FXDatePicker), Mouse.MouseDownEvent, new MouseButtonEventHandler(OnMouseButtonDown), true);
-            //EventManager.RegisterClassHandler(typeof(FXDatePicker), ContextMenuService.ContextMenuOpeningEvent, new ContextMenuEventHandler(OnContextMenuOpen), true);
-            //EventManager.RegisterClassHandler(typeof(FXDatePicker), ContextMenuService.ContextMenuClosingEvent, new ContextMenuEventHandler(OnContextMenuClose), true);
         }
 
         #endregion

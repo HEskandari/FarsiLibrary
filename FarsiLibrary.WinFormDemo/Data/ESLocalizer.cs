@@ -1,4 +1,4 @@
-﻿using FarsiLibrary.Resources;
+﻿using FarsiLibrary.Localization;
 
 namespace FarsiLibrary.WinFormDemo.Data
 {
