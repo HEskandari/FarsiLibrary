@@ -1,22 +1,23 @@
-using System;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Drawing;
 using System.Data;
 using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
 using FarsiLibrary.WinFormDemo.Demo;
 
 namespace FarsiLibrary.WinFormDemo.Pages
 {
-    public partial class GridViewColumnEditor : DemoBase
+    public partial class DevExpressGridViewEditor : DemoBase
     {
-        #region Ctor
-
-        public GridViewColumnEditor()
+        public DevExpressGridViewEditor()
         {
             InitializeComponent();
         }
-
-        #endregion
-
-        #region Methods
 
         protected override void OnLoad(EventArgs e)
         {
@@ -28,9 +29,7 @@ namespace FarsiLibrary.WinFormDemo.Pages
         private void LoadDataSet()
         {
             StringReader sr = new StringReader(FarsiLibrary.WinFormDemo.Properties.Resources.Employee);
-            ds.ReadXml(sr, XmlReadMode.Auto);
+            personnelDataSet.ReadXml(sr, XmlReadMode.Auto);
         }
-
-        #endregion
     }
 }

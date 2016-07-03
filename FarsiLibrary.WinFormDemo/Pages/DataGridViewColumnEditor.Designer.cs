@@ -2,7 +2,7 @@ using FarsiLibrary.Test;
 
 namespace FarsiLibrary.WinFormDemo.Pages
 {
-    partial class GridViewColumnEditor
+    partial class DataGridViewColumnEditor
     {
         /// <summary>
         /// Required designer variable.

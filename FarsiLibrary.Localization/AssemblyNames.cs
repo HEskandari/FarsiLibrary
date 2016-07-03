@@ -6,7 +6,7 @@ namespace FarsiLibrary.Localization
     {
         public const string Description = "Library containing farsi controls, which has correct Right-To-Left drawing. Also contains classes to work with Jalali Dates";
         public const string AssemblyTradeMark = "Farsi Library and Controls by Hadi Eskandari (H.Eskandari@Gmail.com). All rights are reserved for the author. Contact the author to obtain license to use this product.";
-        public const string AssemblyCopyright = "Copyright (c) 2005-2009";
+        public const string AssemblyCopyright = "Copyright (c) 2005-2016 SeeSharp Software";
         public const string AssemblyGenericTitle = "Farsi Library";
         public const string Version = "2.6.0.0";
         public const string ShortVersion = "2.6";

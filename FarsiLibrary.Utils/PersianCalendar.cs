@@ -14,7 +14,7 @@ namespace FarsiLibrary.Utils
     {
         #region Fields
 
-        private int twoDigitYearMax = 1409;
+        private int twoDigitYearMax = 1399;
 
         #endregion
 
@@ -625,6 +625,12 @@ namespace FarsiLibrary.Utils
                 year++;
                 daysInNextYear = GetDaysInYear(false, year, 0);
             }
+        }
+
+        public static bool IsWithInSupportedRange(DateTime dateTime)
+        {
+            return dateTime < PersianDate.MaxValue &&
+                   dateTime > PersianDate.MinValue;
         }
 
         #endregion

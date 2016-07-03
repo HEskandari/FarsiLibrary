@@ -41,11 +41,17 @@
     <Compile Include="Pages\CustomFormattingAndValidating.Designer.cs">
       <DependentUpon>CustomFormattingAndValidating.cs</DependentUpon>
     </Compile>
-    <Compile Include="Pages\DevExpressIntegration.cs">
+    <Compile Include="Pages\DevExpressEditor.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Pages\DevExpressIntegration.Designer.cs">
-      <DependentUpon>DevExpressIntegration.cs</DependentUpon>
+    <Compile Include="Pages\DevExpressEditor.Designer.cs">
+      <DependentUpon>DevExpressEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\DevExpressGridViewEditor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Pages\DevExpressGridViewEditor.Designer.cs">
+      <DependentUpon>DevExpressGridViewEditor.cs</DependentUpon>
     </Compile>
     <Compile Include="Pages\ThemeAndFocusStyle.cs">
       <SubType>UserControl</SubType>
@@ -102,10 +108,10 @@
     <Compile Include="Pages\ConvertNumbersToWord.Designer.cs">
       <DependentUpon>ConvertNumbersToWord.cs</DependentUpon>
     </Compile>
-    <Compile Include="Pages\BindingToDataSet.cs">
+    <Compile Include="Demo\BindingToDataSet.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Pages\BindingToDataSet.Designer.cs">
+    <Compile Include="Demo\BindingToDataSet.Designer.cs">
       <DependentUpon>BindingToDataSet.cs</DependentUpon>
     </Compile>
     <Compile Include="Pages\BindingToList.cs">
@@ -126,11 +132,11 @@
     <Compile Include="Pages\DateValidation.Designer.cs">
       <DependentUpon>DateValidation.cs</DependentUpon>
     </Compile>
-    <Compile Include="Pages\GridViewColumnEditor.cs">
+    <Compile Include="Pages\DataGridViewColumnEditor.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Pages\GridViewColumnEditor.Designer.cs">
-      <DependentUpon>GridViewColumnEditor.cs</DependentUpon>
+    <Compile Include="Pages\DataGridViewColumnEditor.Designer.cs">
+      <DependentUpon>DataGridViewColumnEditor.cs</DependentUpon>
     </Compile>
     <Compile Include="Pages\UsingThemeManager.cs">
       <SubType>UserControl</SubType>
@@ -205,8 +211,11 @@
     <EmbeddedResource Include="Pages\CustomFormattingAndValidating.resx">
       <DependentUpon>CustomFormattingAndValidating.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Pages\DevExpressIntegration.resx">
-      <DependentUpon>DevExpressIntegration.cs</DependentUpon>
+    <EmbeddedResource Include="Pages\DevExpressEditor.resx">
+      <DependentUpon>DevExpressEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\DevExpressGridViewEditor.resx">
+      <DependentUpon>DevExpressGridViewEditor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Pages\ThemeAndFocusStyle.resx">
       <DependentUpon>ThemeAndFocusStyle.cs</DependentUpon>
@@ -243,7 +252,7 @@
       <SubType>Designer</SubType>
       <DependentUpon>ConvertNumbersToWord.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Pages\BindingToDataSet.resx">
+    <EmbeddedResource Include="Demo\BindingToDataSet.resx">
       <SubType>Designer</SubType>
       <DependentUpon>BindingToDataSet.cs</DependentUpon>
     </EmbeddedResource>
@@ -259,9 +268,9 @@
       <SubType>Designer</SubType>
       <DependentUpon>DateValidation.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Pages\GridViewColumnEditor.resx">
+    <EmbeddedResource Include="Pages\DataGridViewColumnEditor.resx">
       <SubType>Designer</SubType>
-      <DependentUpon>GridViewColumnEditor.cs</DependentUpon>
+      <DependentUpon>DataGridViewColumnEditor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Pages\UsingThemeManager.resx">
       <SubType>Designer</SubType>
@@ -303,6 +312,7 @@
       <SubType>Designer</SubType>
       <DependentUpon>MainWinForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -371,6 +381,10 @@
     <None Include="Resources\new.png" />
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="DevExpress.XtraGrid.v15.1, Version=15.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\DevExpress\DevExpress.XtraGrid.v15.1.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.DataSetExtensions" />

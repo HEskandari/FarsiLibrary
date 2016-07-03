@@ -52,6 +52,10 @@
                 case StringID.MessageBox_Retry: return "سعی مجدد";
                 case StringID.MessageBox_No: return "خیر";
                 case StringID.MessageBox_Yes: return "بله";
+                
+                case StringID.Hour: return "ساعت";
+                case StringID.Minute: return "دقیقه";
+                case StringID.Second: return "ثانیه";
             }
 
             return "";

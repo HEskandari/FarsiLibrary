@@ -36,6 +36,7 @@ namespace FarsiLibrary.WinFormDemo
             this.toolStripButtonExit = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButtonAbout = new System.Windows.Forms.ToolStripButton();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerView)).BeginInit();
             this.splitContainerView.Panel1.SuspendLayout();
             this.splitContainerView.SuspendLayout();
             this.toolStrip1.SuspendLayout();
@@ -70,6 +71,7 @@ namespace FarsiLibrary.WinFormDemo
             this.listBoxDemos.Size = new System.Drawing.Size(227, 508);
             this.listBoxDemos.TabIndex = 0;
             this.listBoxDemos.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBoxDemos_DrawItem);
+            this.listBoxDemos.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listBoxDemos_MouseDoubleClick);
             // 
             // toolStrip1
             // 
@@ -132,6 +134,7 @@ namespace FarsiLibrary.WinFormDemo
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MainWinForm";
             this.splitContainerView.Panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerView)).EndInit();
             this.splitContainerView.ResumeLayout(false);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();

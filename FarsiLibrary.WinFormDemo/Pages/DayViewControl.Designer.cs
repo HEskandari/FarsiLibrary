@@ -102,7 +102,6 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.faDayView1);
             this.Controls.Add(this.faMonthView1);
-            this.IsNew = true;
             this.Name = "DayViewControl";
             this.Size = new System.Drawing.Size(369, 258);
             this.Title = "DayView Control";

@@ -54,6 +54,10 @@ namespace FarsiLibrary.Localization
         MessageBox_Abort,
         MessageBox_Retry,
         MessageBox_Ignore,
+
+        Hour,
+        Minute,
+        Second,
     }
 
 	#endregion

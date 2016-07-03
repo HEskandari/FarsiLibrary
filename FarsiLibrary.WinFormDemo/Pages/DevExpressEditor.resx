@@ -117,58 +117,7 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="toolStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="toolStripButtonShow.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAJ5SURBVDhPdZPNbhJRFMd5AJ/A59ClcSGJCbtquujKjQsT
-        NsaF2h2kBqMxTS0zlERqkDbVhhSt2hQTpVY6FbATbRsoU2gLKVOGwgyFgYEBOsc5l5naWj3Jf3Pv+Z2v
-        e67lb7O6tYvXaO2ydUKz6RoyZCNn+p3hdt6uUnDB6tUuDc8d2UOr+3TsF8ewyS2RZVNidC3NzC7v0g+C
-        kh190NfA+oYH1z3alTdR3rmxtc0JlRrISge6xxpRvakCX5KAWdvkXn7acaLvmSAYFWE2vSu32l1AU9Qe
-        SHIHRF2Ndo+cyYoKK/GE7FvknMj0Yb0vLBszm3C5pkLpSIX5RAmEqgoH1TbwUpvcYZDwEsPdnS7ayUxw
-        OKGVHI1lo5kwgjcfReFdvETg/UqLCC29VwR3MEYja8EJf//JMdgzloqgmfXGyDLRXEwgcL7cglqzC4dV
-        Bfyz7xlkMcAQyyZFHFal3iEwZiyILR3+SjT4OAaRTRH2SgoJpHaPIRAIiMgaAVgSAMs3YXQksGsVBhwR
-        crcjKEYVHfCfCmD79iPJVOU21JXuSa/oOOhizsDZYpO8TKZQBbdvut8CDuL15yyd5yugaUDA3KFCyh1w
-        fCEwgpmDJmzzTej0NFiKp8DhXTCGqD/FvZmyPRJNcGKtP2XMhkLYBNN8gyTI6tnHPFPcbW+m/4xkF/Sl
-        oN6uOz98jMqC1HesNron1eAyYeZMQYKnvlfyQ2rxzyKhmav8bCbunArOc7H1LOSFGpkJ9pzKiRCObsAT
-        apK7P75wfpXR8ACj3pnM2UdehOnRCT9DUZQ4Nk6JrlEfM/w8RN/ypP/9mU4b9kW+rj5hfCZD//nOFstv
-        iHe0KumS0HkAAAAASUVORK5CYII=
-</value>
+  <data name="label1.Text" xml:space="preserve">
+    <value>This shows integration of date controls with DevExpress suite. You can use the controls both in Standalone and integrated with other controls such as Grid, Tree, etc. as a RepositoryItem control. Refer to DevExpress documentation to learn how to use these controls.</value>
   </data>
-  <data name="toolStripButtonExit.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAALvSURBVDhPnZLdT5NnGId7NE9MZtQs0QOTTVFC/NgMwaEW
-        lKU2AtqxNVI+rTLpMAgrpVZYW6pFpbxhfIhQCu0obQUlCkycKCA6HaCCCjSYoZtT42ZI9B/Q5PJtNbzx
-        ZFm8k+vkeXL97vt+8sg+pIItBxyTrpxXtxr3vHx39P9q2nPggSgz03OUS7XpjJ7ImH13JZPZbDasVitm
-        s5nS0lJMJhNGo5GioiKCHj3TnkIe/nKc51Od/HPvNH01GoaFNCnAYrHQ1NQUxuVyhWlubg4z5S7k34kz
-        Ip08HnHy12+1XKzexYBjpxQQ6upscpJW+82c3NLSEuaeK59nd9p5dK2ah4MOEYFfq75loCxJCgiNrK7Z
-        gaJSPie73e4wYw25PL3dFpZnLtlFyrkgpNBtTZACVA4lee1a9vmziDuygU3WaDaUfEG0cS0367Q8GfEw
-        02fnfq+F++et9DpUdBti3gZsq4yf1J3aTcN4FXW3HVSNllMxbMN+/Uc+/yGKGz+l8/d1pyiame4q5sWN
-        bM5XJNFpiJ6VKQS5NzeQTf2YwLHfLZivGjANFqDvz8M8ZGR1/iqGHGr+HKoneNbI474cCCbRJyTgK4h6
-        O0Gc/ctglnvXXNeyayZKrhRhHCgkUreCy+XJPOivYqKjgIlTuTzq3U3PUSVeXYT0BnEHY1Gf3MHXtdtZ
-        UxBJ1P6VrMpdTkTOp/RaFfxxsYK7Ph1jnj2M/ZxDj11B43fLpACtVku8aSNbD8rxer20tbWF8fl8dJfI
-        xf2PiOJebrrSudWcTdfhr2jMWCIFZGZm0trayhbD5jkxhN/v50xxDMEuiyhnMHJSzWiDhnO2rdRnLJQC
-        NBrNe11DYohAIECgcB2TnYeYEploNzDemse5si0IaR/PykJfV6/Xo1arSUlJQaVSkZycTGJiIkqlEoVC
-        gVsXQUfxerrMci6UK7lcuZOz1jiE1I+kCf6rGr7/7BNn1tLY+qzFe+vSF1TUaOb7hcxFr6tT5714Ayv3
-        BpAg4nGPAAAAAElFTkSuQmCC
-</value>
-  </data>
-  <data name="toolStripButtonAbout.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAEwSURBVDhPY0AH//EAqBLcAKTILanqf8/kGXCc2zQZjEHi
-        eA0BScaUdf+/8fbf/5PP/oPx6mu//k89+weOdWNasBuCrLls+xsUnL/pJRhnrn36v/TAf0xDQBynsHS4
-        ZpDiFec/gBXBAIiftuoxGIMMkbKJBIujGLD15newATnrn4MlQZpAtoI0gUDi8gdwA0DqQQDDAJDtIAOQ
-        NSMbAMKZu/7hNgCkGaQR2WYQWHjy9f+YhXf+xy+9BzYApxdgNoIwSBMIwDQTNAAUZTB/gmiQYphGEA6f
-        dxNM4zQAFM8gRTDNyC4AiYNw8KwrmAaAAIhj458AjgWYQmwYpFk9uBxVMwwgGwJSGL/+IwpG1vz3719M
-        A0AAZggotYEwSAMIg9gwZ+PUDANgVTgAVAk1AQMDAEj3SkjPKjgnAAAAAElFTkSuQmCC
-</value>
-  </data>
-  <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>41</value>
-  </metadata>
 </root>

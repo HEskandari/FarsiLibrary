@@ -1,4 +1,5 @@
 using System;
+using System.Globalization;
 using System.Threading;
 using System.Windows.Forms;
 using FarsiLibrary.Utils;
@@ -13,7 +14,8 @@ namespace FarsiLibrary.WinFormDemo
         [STAThread]
         static void Main()
         {
-            Thread.CurrentThread.CurrentUICulture = new PersianCultureInfo();
+            //Thread.CurrentThread.CurrentUICulture = new PersianCultureInfo();
+            Thread.CurrentThread.CurrentUICulture = new CultureInfo("fa-ir");
             Thread.CurrentThread.CurrentCulture = Thread.CurrentThread.CurrentUICulture;
 
             Application.EnableVisualStyles();

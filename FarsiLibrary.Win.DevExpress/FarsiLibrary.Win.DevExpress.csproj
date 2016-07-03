@@ -25,9 +25,12 @@
     <Compile Include="..\Solution Items\CommonAssemblyInfo.cs">
       <Link>Properties\CommonAssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="RepositoryItemDateEditExtentions.cs" />
+    <Compile Include="XtraFADateEdit.Vista.cs" />
     <Compile Include="RepositoryItemFADatePicker.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="XtraFADateEdit.cs" />
     <Compile Include="XtraFADatePicker.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -78,6 +81,13 @@
       <Project>{83c3aeb8-5322-4db6-9e7e-4bf8a319dce7}</Project>
       <Name>FarsiLibrary.Win</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="XtraFADateEdit.TouchUI.cs">
+    </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
