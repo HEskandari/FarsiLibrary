@@ -48,8 +48,8 @@ namespace FarsiLibrary.Win.DevExpress
             if (!CultureHelper.IsFarsiCulture) return base.CreatePopupForm();
 
             if (Properties.CalendarView == CalendarView.TouchUI) return new FATouchPopupDateEditForm(this);
-            if (Properties.CalendarView == CalendarView.Vista || Properties.UseVistaPainter()) return new FAVistaPopupDateEditForm(this);
-            return new FAPopupDateEditForm(this);
+
+            return new VistaPopupPersianDateEditForm(this);
         }
     }
 
@@ -109,46 +109,14 @@ namespace FarsiLibrary.Win.DevExpress
             return new PersianDateEditFormatInfo();
         }
 
-
-        protected override object ConvertToObject(ConvertEditValueEventArgs args)
+        protected override DateEditValueConverter CreateConverter()
         {
-            var obj = args.Value;
-            if (args.Handled)
-                return obj;
+            return new PersianDateEditValueConverter(this);
+        }
 
-            if (obj == null || obj == DBNull.Value)
-                return null;
-
-            if (obj.Equals(NullDate))
-                return null;
-
-            if (obj is string && ((string)obj).Length == 0)
-                return null;
-
-            if (obj is DateTime)
-            {
-                var dt = (DateTime)obj;
-                if (!PersianCalendar.IsWithInSupportedRange(dt))
-                    return null;
-
-                return dt;
-            }
-
-            try
-            {
-                DateTime result;
-                if (DateTime.TryParse(obj.ToString(), out result) &&
-                    PersianCalendar.IsWithInSupportedRange(result))
-                {
-                    return result;
-                }
-            
-                return null;
-            }
-            catch
-            {
-                return null;
-            }
+        protected override DateTime ConvertToDateTime(object val)
+        {
+            return ((PersianDateEditValueConverter)Converter).ConvertToDateTime(val);
         }
 
         protected override bool IsNullValue(object editValue)
@@ -164,22 +132,6 @@ namespace FarsiLibrary.Win.DevExpress
                 return editValue.Equals(NullDate);
 
             return false;
-        }
-
-        protected override DateTime ConvertToDateTime(object val)
-        {
-            var converted = ConvertToObject(DoParseEditValue(val));
-            if (converted is DateTime)
-                return (DateTime)converted;
-
-            var editValueEventArgs = DoFormatEditValue(converted);
-            if (editValueEventArgs.Value is DateTime)
-                return (DateTime)editValueEventArgs.Value;
-
-            if (NullDate is DateTime)
-                return (DateTime)NullDate;
-
-            return PersianDate.MinValue;
         }
 
         public static void Register()
@@ -226,17 +178,70 @@ namespace FarsiLibrary.Win.DevExpress
         }
     }
 
-    public class FAPopupDateEditForm : PopupDateEditForm
+    public class PersianDateEditValueConverter : DateEditValueConverter
     {
-        public FAPopupDateEditForm(DateEdit ownerEdit) : base(ownerEdit)
-        {
-        }
-    }
+        private readonly IDateTimeOwner owner;
 
-    public class FADateEditPainter : DateEditPainter
-    {
-        public FADateEditPainter(DateEditCalendarBase calendar) : base(calendar)
+        public PersianDateEditValueConverter(IDateTimeOwner owner) : base(owner)
         {
+            this.owner = owner;
+        }
+
+        public new DateTime ConvertToDateTime(object val)
+        {
+            var converted = ConvertToObject(owner.DoParseEditValue(val));
+            if (converted is DateTime)
+                return (DateTime)converted;
+
+            var editValueEventArgs = owner.DoFormatEditValue(converted);
+            if (editValueEventArgs.Value is DateTime)
+                return (DateTime)editValueEventArgs.Value;
+
+            if (owner.NullDate is DateTime)
+                return (DateTime)owner.NullDate;
+
+            return PersianDate.MinValue;
+        }
+        
+        protected override object ConvertToObject(ConvertEditValueEventArgs args)
+        {
+            var obj = args.Value;
+            if (args.Handled)
+                return obj;
+
+            if (obj == null || obj == DBNull.Value)
+                return null;
+
+            if (obj.Equals(owner.NullDate))
+                return null;
+
+            if (obj is string && ((string)obj).Length == 0)
+                return null;
+
+            if (obj is DateTime)
+            {
+                var dt = (DateTime)obj;
+                if (!PersianCalendar.IsWithInSupportedRange(dt))
+                    return null;
+
+                return dt;
+            }
+
+            try
+            {
+                DateTime result;
+                if (DateTime.TryParse(obj.ToString(), out result) &&
+                    PersianCalendar.IsWithInSupportedRange(result))
+                {
+                    return result;
+                }
+
+                return null;
+            }
+            catch
+            {
+                return null;
+            }
         }
     }
 }

@@ -39,21 +39,21 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="DevExpress.Data.v15.1, Version=15.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+    <Reference Include="DevExpress.Data.v15.2, Version=15.2.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\lib\DevExpress\DevExpress.Data.v15.1.dll</HintPath>
+      <HintPath>..\lib\DevExpress\DevExpress.Data.v15.2.dll</HintPath>
     </Reference>
-    <Reference Include="DevExpress.Utils.v15.1, Version=15.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+    <Reference Include="DevExpress.Utils.v15.2, Version=15.2.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\lib\DevExpress\DevExpress.Utils.v15.1.dll</HintPath>
+      <HintPath>..\lib\DevExpress\DevExpress.Utils.v15.2.dll</HintPath>
     </Reference>
-    <Reference Include="DevExpress.XtraEditors.v15.1, Version=15.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+    <Reference Include="DevExpress.XtraEditors.v15.2, Version=15.2.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\lib\DevExpress\DevExpress.XtraEditors.v15.1.dll</HintPath>
+      <HintPath>..\lib\DevExpress\DevExpress.XtraEditors.v15.2.dll</HintPath>
     </Reference>
-    <Reference Include="DevExpress.XtraGrid.v15.1, Version=15.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+    <Reference Include="DevExpress.XtraGrid.v15.2, Version=15.2.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\lib\DevExpress\DevExpress.XtraGrid.v15.1.dll</HintPath>
+      <HintPath>..\lib\DevExpress\DevExpress.XtraGrid.v15.2.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
