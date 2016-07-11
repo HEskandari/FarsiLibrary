@@ -95,6 +95,11 @@ namespace FarsiLibrary.Win.DevExpress
             get { return XtraFADateEdit.EditorName; }
         }
 
+        public RepositoryItemXtraFADateEdit()
+        {
+            NullDateCalendarValue = PersianDate.MinValue;
+        }
+
         static RepositoryItemXtraFADateEdit()
         {
             Register();

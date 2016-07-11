@@ -2,24 +2,22 @@
 using System.Drawing;
 using System.Globalization;
 using System.Windows.Forms;
-using DevExpress.Utils;
-using DevExpress.Utils.Drawing;
 using DevExpress.XtraEditors;
 using DevExpress.XtraEditors.Calendar;
 using DevExpress.XtraEditors.Controls;
-using DevExpress.XtraEditors.Drawing;
 using DevExpress.XtraEditors.Popup;
 using DevExpress.XtraEditors.Repository;
 using DevExpress.XtraEditors.ViewInfo;
 using FarsiLibrary.Localization;
 using FarsiLibrary.Utils;
-using FarsiLibrary.Utils.Internals;
+using PersianCalendar = FarsiLibrary.Utils.PersianCalendar;
 
 namespace FarsiLibrary.Win.DevExpress
 {
     public class VistaPersianCalendarViewInfo : VistaCalendarViewInfo
     {
         private readonly PopupPersianCalendarControl calendarControl;
+        private PersianCalendarObjectViewInfo calendarObjectViewInfo;
 
         public VistaPersianCalendarViewInfo(PopupPersianCalendarControl calendarControl) : base(calendarControl)
         {
@@ -54,7 +52,7 @@ namespace FarsiLibrary.Win.DevExpress
 
         protected override CalendarObjectViewInfo CreateCalendar(int index)
         {
-            var calendarObjectViewInfo = new PersianCalendarObjectViewInfo(Calendar)
+            calendarObjectViewInfo = new PersianCalendarObjectViewInfo(calendarControl)
             {
                 ShouldShowHeader = ShowCalendarHeader(index),
                 ViewType = Calendar.View
@@ -63,119 +61,20 @@ namespace FarsiLibrary.Win.DevExpress
             return calendarObjectViewInfo;
         }
 
-        //protected override void CalcDayNumberCells()
-        //{
-        //    DayCells.Clear();
-        //    WeekCells.Clear();
-        //    int x = MonthNumbersRect.Left, y = MonthNumbersRect.Top;
-        //    DateTime cur = MinValue;
-        //    for (int j = 0; j < 6; j++, y += TextHeight + TextHeightIndent)
-        //    {
-        //        int penalty = (j == 0 ? PenaltyIndex : 0);
-        //        for (int i = 0; i < 7; i++, x += DayCellWidth + TextWidthIndent)
-        //        {
-        //            if (j == 0 && i < PenaltyIndex) continue;
-        //            try { cur = FirstVisibleDate.AddDays(j * 7 + i - PenaltyIndex); }
-        //            catch
-        //            {
-        //                j = 6;
-        //                break;
-        //            }
-        //            if (CanAddDate(cur))
-        //            {
-        //                DayNumberCellInfo cell = CreateDayCell(cur);
-        //                cell.Bounds = new Rectangle(x, y, DayCellWidth + TextWidthIndent, TextHeight + TextHeightIndent);
-        //                cell.Text = GetDayText(cur);
-        //                cell.TextBounds = CalcDateNumberBounds(cell.Bounds);
-        //                DayCells.Add(cell);
-        //            }
-        //        }
-        //        x = MonthNumbersRect.Left;
-        //        if (ShowWeekNumbers && cur != MinValue)
-        //        {
-        //            DayNumberCellInfo weekCell = CreateDayCell(cur);
-        //            int? weekNumber = GetWeekNumber(cur);
-        //            weekCell.Text = weekNumber.HasValue ? weekNumber.ToString() : "";
-        //            weekCell.Bounds = CalcWeekCellBounds(weekCell.Text, x, y);
-        //            weekCell.SetAppearance(Appearance);
-        //            weekCell.SetAppearance(weekCell.Appearance.Clone() as AppearanceObject);
-        //            weekCell.Appearance.ForeColor = Color.Red;
-        //            WeekCells.Add(weekCell);
-        //        }
-        //    }
-        //    UpdateExistingCellsState();
-        //}
-
-        //protected override DayNumberCellInfo CreateMonthCellInfo(int row, int col)
-        //{
-        //    DayNumberCellInfo currInfo;
-        //    var currentDate = (PersianDate)DateTime;
-        //    PersianDate pd = new PersianDate(currentDate.Year, 1 + row * 4 + col, 1);
-        //    DateTime dt = pd;
-        //    if (dt > calendar.MaxDateValue) return null;
-        //    if (dt < calendar.MinDateValue && dt.Month < calendar.MinDateValue.Month) return null;
-        //    currInfo = new DayNumberCellInfo(dt);
-        //    currInfo.Text = pd.LocalizedMonthName;
-        //    return currInfo;
-        //}
-
-        //protected override DayNumberCellInfo CreateQuarterCellInfo(int row, int col)
-        //{
-        //    return base.CreateQuarterCellInfo(row, col);
-        //}
-
-        //protected override DayNumberCellInfo CreateYearCellInfo(int row, int col)
-        //{
-        //    DayNumberCellInfo currInfo;
-        //    var currentYear = ((PersianDate)DateTime).Year;
-        //    int beginYear = (currentYear / 10) * 10 - 1;
-        //    int currYear = beginYear + row * 4 + col;
-        //    if (currYear <= 0 || currYear >= 10000) return null;
-        //    PersianDate pd = new PersianDate(currYear, 1, 1);
-        //    DateTime dt = pd;
-
-        //    if (dt > calendar.MaxDateValue) return null;
-        //    if (dt < calendar.MinDateValue && dt.Year < calendar.MinDateValue.Year) return null;
-
-        //    currInfo = new CalendarCellViewInfo(dt);
-        //    currInfo.Text = toFarsi.Convert(pd.Year.ToString());
-        //    if (currYear < (pd.Year / 10) * 10 || currYear > (pd.Year / 10) * 10 + 1) currInfo.State = ObjectState.Disabled;
-        //    return currInfo;
-        //}
-
-        //protected override CalendarCellViewInfo CreateYearsGroupCellInfo(int row, int col)
-        //{
-        //    CalendarCellViewInfo currInfo;
-        //    var currentDate = (PersianDate)DateTime;
-        //    var currentYear = currentDate.Year;
-        //    int beginYearGroup = (currentYear / 100) * 100 - 10;
-        //    int currYearGroup = beginYearGroup + (row * 4 + col) * 10;
-        //    if (currYearGroup < 0 || currYearGroup >= 10000) return null;
-        //    int endYearGroup = currYearGroup + 9;
-        //    if (currYearGroup == 0) currYearGroup = 1;
-        //    PersianDate dateStart = new PersianDate(currYearGroup, 1, 1);
-        //    DateTime dt1 = dateStart;
-        //    if (dt1 > calendar.MaxDateValue) return null;
-        //    if (dt1 < calendar.MinDateValue && endYearGroup < calendar.MinDateValue.Year) return null;
-        //    currInfo = new CalendarCellViewInfo(dt1);
-
-        //    var dateEnd = new PersianDate(endYearGroup, 1, 1);
-        //    currInfo.Text = toFarsi.Convert(dateStart.Year.ToString(CultureInfo.CurrentUICulture) + "-\n" +
-        //                                    dateEnd.Year.ToString(CultureInfo.CurrentUICulture));
-        //    return currInfo;
-        //}
-
-
-        public PersianDate GetTodayDate()
+        public void UpdateCellsState()
         {
-            return PersianDate.Today;
+            calendarObjectViewInfo.UpdateExistingCellsState();
         }
     }
 
     public class PersianCalendarObjectViewInfo : CalendarObjectViewInfo
     {
-        public PersianCalendarObjectViewInfo(CalendarControlBase calendar) : base(calendar)
+        PersianCalendar pc;
+
+        public PersianCalendarObjectViewInfo(PopupPersianCalendarControl calendar) : base(calendar)
         {
+            pc = new PersianCalendar();
+            FirstVisibleDate = calendar.GetTodayPersianDate();
         }
 
         public bool ShouldShowHeader
@@ -198,15 +97,34 @@ namespace FarsiLibrary.Win.DevExpress
 
         protected override void CalcFirstVisibleDate()
         {
-            SetFirstVisibleDate(GetFirstVisibleDate(CurrentDate));
+            var date = DateTime;
+            var firstDate = GetFirstVisibleDate(date);
+
+            SetFirstVisibleDate(firstDate);
+        }
+
+        public override void SetFirstVisibleDate(DateTime firstVisibleDate)
+        {
+            PenaltyIndex = 0;
+            FirstVisibleDate = new DateTime(firstVisibleDate.Ticks, firstVisibleDate.Kind);
+
+            if (View != DateEditCalendarViewType.MonthInfo)
+                return;
+
+            PenaltyIndex = GetFirstDayOffset(FirstVisibleDate);
         }
 
         public override DateTime GetFirstVisibleDate(DateTime editDate)
         {
             try
             {
-                DateTime firstMonthDate = GetFarsiFirstMonthDate(editDate);
-                return firstMonthDate;
+                var firstMonthDate = GetFarsiFirstMonthDate(editDate);
+                var timeSpan = TimeSpan.FromDays(-GetFirstDayOffset(firstMonthDate));
+
+                if (firstMonthDate.Ticks + timeSpan.Ticks < 0L)
+                    return PersianDate.MinValue;
+
+                return firstMonthDate + timeSpan;
             }
             catch
             {
@@ -217,7 +135,7 @@ namespace FarsiLibrary.Win.DevExpress
         private static DateTime GetFarsiFirstMonthDate(DateTime date)
         {
             var pd = (PersianDate)date;
-            return pd.StartOfMonth();
+            return new PersianDate(pd.Year, pd.Month, 1, date.Hour, date.Minute, date.Second, date.Millisecond);
         }
 
         protected override bool IsToday(CalendarCellViewInfo cell)
@@ -227,26 +145,26 @@ namespace FarsiLibrary.Win.DevExpress
 
         protected override bool IsDateSelected(CalendarCellViewInfo cell)
         {
-            var currentDate = (PersianDate)DateTime;
+            var calendarDate = (PersianDate) DateTime;
             var cellDate = (PersianDate)cell.Date;
 
             if (View == DateEditCalendarViewType.YearInfo)
             {
-                return cellDate.Month == currentDate.Month;
+                return cellDate.Month == calendarDate.Month;
             }
 
             if (View == DateEditCalendarViewType.YearsInfo)
             {
-                return cellDate.Year == currentDate.Year;
+                return cellDate.Year == calendarDate.Year;
             }
 
             if (View == DateEditCalendarViewType.YearsGroupInfo)
             {
-                return currentDate.Year >= cellDate.Year &&
-                       currentDate.Year < cellDate.Year + 10;
+                return calendarDate.Year >= cellDate.Year &&
+                       calendarDate.Year < cellDate.Year + 10;
             }
 
-            return AreDatesEqual(cell.Date, DateTime);
+            return AreDatesEqual(cell.Date, calendarDate);
         }
 
         protected bool AreDatesEqual(PersianDate dt1, PersianDate dt2)
@@ -256,13 +174,38 @@ namespace FarsiLibrary.Win.DevExpress
 
         protected override bool IsDateActive(CalendarCellViewInfo cell)
         {
-            var current = (PersianDate)CurrentDate;
-            var cellDate = (PersianDate)cell.Date;
-
             if (View != DateEditCalendarViewType.MonthInfo)
                 return true;
 
+            var current = (PersianDate)DateTime;
+            var cellDate = (PersianDate)cell.Date;
+
             return current.Month == cellDate.Month;
+        }
+
+        protected override DateTime CalcCalendarEndDate()
+        {
+            var pd = (PersianDate)DateTime;
+            switch (Calendar.View)
+            {
+                case DateEditCalendarViewType.MonthInfo:
+                case DateEditCalendarViewType.QuarterInfo:
+                    return new PersianDate(pd.Year, pd.Month, pc.GetDaysInMonth(pd.Year, pd.Month), 23, 59, 59);
+                case DateEditCalendarViewType.YearInfo:
+                    return new PersianDate(pd.Year, 12, pc.GetDaysInMonth(pd.Year, 12), 23, 59, 59);
+                case DateEditCalendarViewType.YearsInfo:
+                {
+                    var year = Math.Min(PersianDate.MaxValue.Year, pd.Year + 9);
+                    return new PersianDate(year, 12, pc.GetDaysInMonth(year, 12), 23, 59, 59);
+                }
+                case DateEditCalendarViewType.YearsGroupInfo:
+                {
+                    var year = Math.Min(PersianDate.MaxValue.Year, pd.Year + 99);
+                    return new PersianDate(year, 12, pc.GetDaysInMonth(year, 12), 23, 59, 59);
+                }
+                default:
+                    return Calendar.MaxValue;
+            }
         }
 
         protected override CalendarCellViewInfo CreateDayCell(DateTime date)
@@ -292,87 +235,101 @@ namespace FarsiLibrary.Win.DevExpress
             return toFarsi.Convert(pd.Day.ToString());
         }
 
-        protected virtual void CalcDayCells()
+        protected override void CalcDayCells()
         {
-            this.DayCells.Clear();
-            int x1 = this.DayCellsBounds.X;
-            int y = this.DayCellsBounds.Y;
-            DateTime minValue = this.MinValue;
-            this.RowCount = this.GetCellRowCount();
-            this.ColumnCount = this.GetCellColumnCount();
-            bool rightToLeftLayout = WindowsFormsSettings.GetIsRightToLeftLayout((Control)this.Calendar);
-            for (int index1 = 0; index1 < this.RowCount; ++index1)
+            DayCells.Clear();
+            RowCount = GetCellRowCount();
+            ColumnCount = GetCellColumnCount();
+
+            var rightToLeftLayout = WindowsFormsSettings.GetIsRightToLeftLayout(Calendar);
+            var y = DayCellsBounds.Y;
+
+            for (var iRow = 0; iRow < RowCount; ++iRow)
             {
-                int x2 = rightToLeftLayout ? this.DayCellsBounds.Right - this.ActualCellSize.Width : this.DayCellsBounds.X;
-                for (int index2 = 0; index2 < this.ColumnCount; ++index2)
+                var x = rightToLeftLayout ? DayCellsBounds.Right - ActualCellSize.Width : DayCellsBounds.X;
+                for (var iCol = 0; iCol < ColumnCount; ++iCol)
                 {
-                    bool correctDate = true;
-                    if (index1 == 0)
+                    bool correctDate;
+
+                    if (iRow == 0)
                     {
-                        if (index2 < this.PenaltyIndex)
+                        if (iCol < PenaltyIndex)
                         {
-                            x2 += rightToLeftLayout ? -this.ActualCellSize.Width : this.ActualCellSize.Width;
+                            x += rightToLeftLayout ? -ActualCellSize.Width : ActualCellSize.Width;
                             continue;
                         }
                     }
+
                     DateTime date;
                     try
                     {
-                        date = this.CalcDate(index1, index2, out correctDate);
+                        date = CalcDate(iRow, iCol, out correctDate);
                     }
                     catch
                     {
-                        index1 = this.RowCount;
+                        iRow = RowCount;
                         break;
                     }
-                    if (correctDate && this.CanAddDate(date))
+
+                    if (correctDate && CanAddDate(date))
                     {
-                        PersianCalendarCellViewInfo dayCell = (PersianCalendarCellViewInfo) this.CreateDayCell(date);
+                        var dayCell = (PersianCalendarCellViewInfo)CreateDayCell(date);
                         dayCell.UpdateVisualState();
-                        dayCell.Bounds = this.CalcCellBounds(x2, y);
-                        dayCell.Text = this.GetCellText(date, index1, index2);
-                        dayCell.ContentBounds = this.CalcDayCellContentBounds(dayCell.Bounds);
+                        dayCell.Bounds = CalcCellBounds(x, y);
+                        dayCell.Text = GetCellText(date, iRow, iCol);
+                        dayCell.ContentBounds = CalcDayCellContentBounds(dayCell.Bounds);
                         dayCell.CalculateTextBounds();
-                        dayCell.Row = index1;
-                        dayCell.Column = index2;
-                        this.UpdateDayCell(dayCell);
-                        this.DayCells.Add(dayCell);
-                        this.CalendarInfo.AddCellToNavigationGrid(dayCell, this.Row, this.Column, index1, index2);
+                        dayCell.Row = iRow;
+                        dayCell.Column = iCol;
+
+                        UpdateDayCell(dayCell);
+                        DayCells.Add(dayCell);
+                        CalendarInfo.AddCellToNavigationGrid(dayCell, Row, Column, iRow, iCol);
                     }
-                    x2 += rightToLeftLayout ? -this.ActualCellSize.Width : this.ActualCellSize.Width;
+
+                    x += rightToLeftLayout ? -ActualCellSize.Width : ActualCellSize.Width;
                 }
-                y += this.ActualCellSize.Height;
+
+                y += ActualCellSize.Height;
             }
         }
 
         private DateTime CalcDate(int row, int column, out bool correctDate)
         {
             correctDate = true;
-            if (this.View == DateEditCalendarViewType.QuarterInfo)
-                return new DateTime(this.CurrentDate.Year, row * 6 + column * 3 + 1, 1);
-            if (this.View == DateEditCalendarViewType.YearInfo)
-                return new DateTime(this.CurrentDate.Year, 1 + row * 4 + column, 1);
-            if (this.View == DateEditCalendarViewType.YearsInfo)
-            {
-                int year = this.CurrentDate.Year / 10 * 10 - 1 + row * 4 + column;
-                if (year > 0 && year < 10000)
-                    return new DateTime(year, 1, 1);
-                correctDate = false;
-                return DateTime.MinValue;
-            }
-            if (this.View != DateEditCalendarViewType.YearsGroupInfo)
-                return this.FirstVisibleDate.AddDays((double)(row * this.GetCellColumnCount() + column - this.PenaltyIndex));
-            int year1 = this.CurrentDate.Year / 100 * 100 - 10 + (row * 4 + column) * 10;
-            if (year1 < 0 || year1 >= 10000)
-            {
-                correctDate = false;
-                return DateTime.MinValue;
-            }
-            if (year1 == 0)
-                year1 = 1;
-            return new DateTime(year1, 1, 1);
-        }
+            var pd = (PersianDate)DateTime;
 
+            if (View == DateEditCalendarViewType.QuarterInfo)
+                return new PersianDate(pd.Year, row * 6 + column * 3 + 1, 1);
+
+            if (View == DateEditCalendarViewType.YearInfo)
+                return new PersianDate(pd.Year, 1 + row * 4 + column, 1);
+
+            if (View == DateEditCalendarViewType.YearsInfo)
+            {
+                int year = pd.Year / 10 * 10 - 1 + row * 4 + column;
+                if (year > 0 && year < 10000)
+                    return new PersianDate(year, 1, 1);
+                correctDate = false;
+                return PersianDate.MinValue;
+            }
+
+            if (View == DateEditCalendarViewType.YearsGroupInfo)
+            {
+                var year = pd.Year / 100 * 100 - 10 + (row * 4 + column) * 10;
+                if (year < 0 || year >= 10000)
+                {
+                    correctDate = false;
+                    return PersianDate.MinValue;
+                }
+
+                if (year == 0)
+                    year = 1;
+                return new PersianDate(year, 1, 1);
+            }
+
+            return FirstVisibleDate.AddDays(row * GetCellColumnCount() + column - PenaltyIndex);
+        }
     }
 
     public class PersianCalendarCellViewInfo : CalendarCellViewInfo
@@ -461,40 +418,6 @@ namespace FarsiLibrary.Win.DevExpress
 
             return string.Empty;
         }
-
-        private string GetFarsiCaption()
-        {
-            var date = (PersianDate)ViewInfo.DateTime;
-            var year = toFarsi.Convert(date.Year.ToString());
-
-            if (Calendar.View == DateEditCalendarViewType.MonthInfo)
-                return year + " " + date.LocalizedMonthName;
-
-            if (Calendar.View == DateEditCalendarViewType.YearInfo ||
-                Calendar.View == DateEditCalendarViewType.QuarterInfo)
-                return year;
-
-            if (Calendar.View == DateEditCalendarViewType.YearsInfo)
-            {
-                int yearNo = Math.Max(1, (date.Year / 10) * 10);
-                var dtFrom = new PersianDate(yearNo, 1, 1);
-                var dtTo = new PersianDate(((date.Year / 10) * 10) + 9, 1, 1);
-
-                return toFarsi.Convert(dtFrom.Year.ToString()) + "-" +
-                       toFarsi.Convert(dtTo.Year.ToString());
-            }
-
-            if (Calendar.View == DateEditCalendarViewType.YearsGroupInfo)
-            {
-                int yearNo = Math.Max(1, (date.Year / 100) * 100);
-                PersianDate dtFrom = new PersianDate(yearNo, 1, 1);
-                PersianDate dtTo = new PersianDate(((date.Year / 100) * 100) + 99, 1, 1);
-                return toFarsi.Convert(dtFrom.Year.ToString()) + "-" +
-                       toFarsi.Convert(dtTo.Year.ToString());
-            }
-
-            return string.Empty;
-        }
     }
 
     public class VistaPopupPersianDateEditForm : VistaPopupDateEditForm
@@ -505,54 +428,66 @@ namespace FarsiLibrary.Win.DevExpress
 
         protected override CalendarControl CreateCalendar()
         {
-            var calendar = new PopupPersianCalendarControl();
-            return calendar;
+            return new PopupPersianCalendarControl();
         }
 
-        protected override void Dispose(bool disposing)
+        protected override DateTime CalcCalendarInitialDate()
         {
-            if (disposing && Calendar != null)
+            if (OwnerEdit.EditValue != null &&
+                !Equals(OwnerEdit.EditValue, OwnerEdit.Properties.NullDate) &&
+                !Equals(OwnerEdit.DateTime, DateTime.MinValue) &&
+                !Equals(OwnerEdit.DateTime, PersianDate.MinValue))
             {
+                return OwnerEdit.DateTime;
             }
-            base.Dispose(disposing);
+            if (!Equals(OwnerEdit.Properties.NullDateCalendarValue, DateTime.MinValue) &&
+                !Equals(OwnerEdit.Properties.NullDateCalendarValue, PersianDate.MinValue))
+            {
+                return OwnerEdit.Properties.NullDateCalendarValue;
+            }
+
+            return DateTime.Today;
         }
     }
 
     public class PopupPersianCalendarControl : PopupCalendarControl
     {
-        private static Utils.PersianCalendar pc;
+        private static PersianCalendar pc;
         private static PersianCultureInfo ci;
 
         static PopupPersianCalendarControl()
         {
             ci = new PersianCultureInfo();
-            pc = new Utils.PersianCalendar();
         }
 
         public PopupPersianCalendarControl()
         {
+            FirstDayOfWeek = DayOfWeek.Saturday;
+            MinValue = PersianDate.MinValue;
+            MaxValue = PersianDate.MaxValue;
         }
 
-        //protected override BaseControlPainter CreatePainter()
-        //{
-        //    if (ActualCalendarView == CalendarView.Vista)
-        //        return new FAVistaDateEditCalendarObjectPainter();
-
-        //    return new CalendarPainter();
-        //}
+        public new VistaPersianCalendarViewInfo CalendarViewInfo => (VistaPersianCalendarViewInfo)base.CalendarViewInfo;
 
         protected override BaseStyleControlViewInfo CreateViewInfo()
         {
             if (ActualCalendarView == CalendarView.Vista)
                 return new VistaPersianCalendarViewInfo(this);
-
+            
             return new CalendarViewInfo(this);
         }
 
-        //protected override DateTime CalculateFirstMonthDate(DateTime dateTime)
-        //{
-        //    return FAVistaDateEditInfoArgs.GetFirstMonthDate(dateTime);
-        //}
+        protected override CalendarControlHandlerBase CreateHandler()
+        {
+            if (ActualCalendarView == CalendarView.Vista)
+                return new VistaPersianCalendarControlHandler(this);
+            return new CalendarControlHandler(this);
+        }
+
+        protected override CalendarSelectionManager CreateSelectionManager()
+        {
+            return new PersianCalendarSelectionManager(this);
+        }
 
         public override DateTimeFormatInfo DateFormat
         {
@@ -566,59 +501,69 @@ namespace FarsiLibrary.Win.DevExpress
             set { }
         }
 
-        //protected override bool ShouldUpdateOnDateChange => useDateChangeOverride ? shouldUpdateOnDateChange : base.ShouldUpdateOnDateChange;
+        public DateTime GetTodayPersianDate()
+        {
+            if (!PersianCalendar.IsWithInSupportedRange(TodayDate) ||
+                TodayDate == PersianDate.MinValue)
+            {
+                return PersianDate.Today;
+            }
 
-        //protected override void OnItemClick(CalendarHitInfo hitInfo)
-        //{
-        //    useDateChangeOverride = true;
-        //    DayNumberCellInfo cell = hitInfo.HitObject as DayNumberCellInfo;
-        //    DateEditCalendarViewType prevView = View;
-        //    DateEditCalendarViewType nextView = DecView();
+            return TodayDate;
+        }
+    }
 
-        //    if (cell != null)
-        //    {
-        //        PersianDate cellDate = cell.Date;
-        //        PersianDate currentDate = DateTime;
+    public class PersianCalendarSelectionManager : CalendarSelectionManager
+    {
+        public PersianCalendarSelectionManager(PopupPersianCalendarControl calendar) : base(calendar)
+        {
+        }
 
-        //        shouldUpdateOnDateChange = false;
-        //        if (View == DateEditCalendarViewType.MonthInfo)
-        //            DateTime = CorrectPersianDateTime(new PersianDate(cellDate.Year, cellDate.Month, CorrectPersianDay(currentDate.Year, cellDate.Month, cellDate.Day), currentDate.Hour, currentDate.Minute, currentDate.Second, currentDate.Millisecond));
-        //        else if (View == DateEditCalendarViewType.YearInfo)
-        //            DateTime = CorrectPersianDateTime(new PersianDate(currentDate.Year, cellDate.Month, CorrectPersianDay(currentDate.Year, cellDate.Month, currentDate.Day), currentDate.Hour, currentDate.Minute, currentDate.Second, currentDate.Millisecond));
-        //        else if (View == DateEditCalendarViewType.YearsInfo)
-        //            DateTime = CorrectPersianDateTime(new PersianDate(cellDate.Year, currentDate.Month, CorrectPersianDay(cellDate.Year, currentDate.Month, currentDate.Day), currentDate.Hour, currentDate.Minute, currentDate.Second, currentDate.Millisecond));
-        //        else if (View == DateEditCalendarViewType.YearsGroupInfo)
-        //        {
-        //            int year = cellDate.Year == 1 ? 0 : cellDate.Year;
-        //            DateTime = CorrectPersianDateTime(new PersianDate(year + currentDate.Year % 10, currentDate.Month, CorrectPersianDay(year + currentDate.Year % 10, currentDate.Month, currentDate.Day), currentDate.Hour, currentDate.Minute, currentDate.Second, currentDate.Millisecond));
-        //        }
-        //        shouldUpdateOnDateChange = true;
-        //        ClearCellsSelection();
-        //        cell.Selected = true;
-        //        if (View != nextView)
-        //            OnViewChanging(View, nextView, false);
-        //    }
-        //    if (View != nextView)
-        //    {
-        //        ClearSelection();
-        //        SetViewCore(nextView);
-        //        OnViewChanged(prevView, nextView);
-        //    }
-        //    else if (Multiselect)
-        //    {
-        //        SetSelectionRange(DateTime);
-        //        Calendars[0].UpdateExistingCellsState();
-        //        Invalidate();
-        //    }
-        //    if (Multiselect)
-        //    {
-        //        RaiseSelectionChanged();
-        //    }
+        public bool SuppressSelectionSet
+        {
+            get { return SuppressSetSelection; }
+            set { SuppressSetSelection = value; }
+        }
 
-        //    useDateChangeOverride = false;
-        //}
+        
+    }
 
-        private int CorrectPersianDay(int year, int month, int day)
+    public class VistaPersianCalendarControlHandler : VistaCalendarControlHandler
+    {
+        private readonly PopupPersianCalendarControl calendar;
+        private static PersianCalendar pc;
+
+        static VistaPersianCalendarControlHandler()
+        {
+            pc = new Utils.PersianCalendar();
+        }
+
+        public VistaPersianCalendarControlHandler(PopupPersianCalendarControl calendar) : base(calendar)
+        {
+            this.calendar = calendar;
+        }
+
+        protected override DateTime ExtractDateTimeFromCellDate(DateTime date)
+        {
+            PersianDate pd = date;
+            
+            if (View == DateEditCalendarViewType.MonthInfo)
+                return new PersianDate(pd.Year, pd.Month, CorrectDay(pd.Year, pd.Month, pd.Day), pd.Hour, pd.Minute, pd.Second, pd.Millisecond);
+
+            if (View == DateEditCalendarViewType.YearInfo)
+                return new PersianDate(pd.Year, pd.Month, CorrectDay(pd.Year, pd.Month, pd.Day), SelectedDate.Hour, SelectedDate.Minute, SelectedDate.Second, SelectedDate.Millisecond);
+
+            if (View == DateEditCalendarViewType.YearsInfo)
+                return new PersianDate(pd.Year, pd.Month, CorrectDay(pd.Year, pd.Month, pd.Day), SelectedDate.Hour, SelectedDate.Minute, SelectedDate.Second, SelectedDate.Millisecond);
+
+            if (View != DateEditCalendarViewType.YearsGroupInfo)
+                return pd;
+
+            var yearDiff = pd.Year == 1 ? 0 : pd.Year;
+            return new PersianDate(yearDiff + pd.Year % 10, pd.Month, CorrectDay(yearDiff + pd.Year % 10, pd.Month, pd.Day), SelectedDate.Hour, SelectedDate.Minute, SelectedDate.Second, SelectedDate.Millisecond);
+        }
+
+        protected override int CorrectDay(int year, int month, int day)
         {
             if (day <= 0) return 1;
             if (day > pc.GetDaysInMonth(year, month)) return pc.GetDaysInMonth(year, month);
@@ -626,16 +571,10 @@ namespace FarsiLibrary.Win.DevExpress
             return day;
         }
 
-        private DateTime CorrectPersianDateTime(PersianDate persianDate)
+        protected override void ProcessCellClick(CalendarCellViewInfo cell)
         {
-            return persianDate;
+            base.ProcessCellClick(cell);
+            calendar.CalendarViewInfo.UpdateCellsState();
         }
-
-        //internal int AnimationLock => LockAnimation;
-        //internal Rectangle RectCaption => CaptionRect;
-        //internal Rectangle RectCaptionButton => CaptionButtonRect;
-        internal bool RightToLeftSet => IsRightToLeft;
-        internal DateTime MaxDateValue => MaxValue;
-        internal DateTime MinDateValue => MinValue;
     }
 }

@@ -1,4 +1,5 @@
-﻿using FarsiLibrary.Win.DevExpress;
+﻿using DevExpress.XtraEditors;
+using FarsiLibrary.Win.DevExpress;
 
 namespace FarsiLibrary.WinFormDemo.Pages
 {
@@ -46,6 +47,7 @@ namespace FarsiLibrary.WinFormDemo.Pages
             this.xtraFADatePicker1 = new FarsiLibrary.Win.DevExpress.XtraFADatePicker();
             this.dateEdit1 = new FarsiLibrary.Win.DevExpress.XtraFADateEdit();
             this.propertyGrid1 = new System.Windows.Forms.PropertyGrid();
+            this.dateEdit2 = new DevExpress.XtraEditors.DateEdit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -55,6 +57,8 @@ namespace FarsiLibrary.WinFormDemo.Pages
             ((System.ComponentModel.ISupportInitialize)(this.xtraFADatePicker1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEdit1.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEdit1.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dateEdit2.Properties.CalendarTimeProperties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dateEdit2.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -129,6 +133,7 @@ namespace FarsiLibrary.WinFormDemo.Pages
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.dateEdit2);
             this.splitContainer1.Panel1.Controls.Add(this.lblTouchUIValue);
             this.splitContainer1.Panel1.Controls.Add(this.label8);
             this.splitContainer1.Panel1.Controls.Add(this.label6);
@@ -186,6 +191,8 @@ namespace FarsiLibrary.WinFormDemo.Pages
             this.xtraFADateEdit1.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.xtraFADateEdit1.Properties.CalendarView = DevExpress.XtraEditors.Repository.CalendarView.TouchUI;
+            this.xtraFADateEdit1.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.xtraFADateEdit1.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.xtraFADateEdit1.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
             this.xtraFADateEdit1.Properties.VistaDisplayMode = DevExpress.Utils.DefaultBoolean.False;
             this.xtraFADateEdit1.Size = new System.Drawing.Size(202, 20);
@@ -216,6 +223,8 @@ namespace FarsiLibrary.WinFormDemo.Pages
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.dateEdit1.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.dateEdit1.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.dateEdit1.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.dateEdit1.Size = new System.Drawing.Size(202, 20);
             this.dateEdit1.TabIndex = 5;
             this.dateEdit1.EditValueChanged += new System.EventHandler(this.dateEdit1_EditValueChanged);
@@ -228,6 +237,18 @@ namespace FarsiLibrary.WinFormDemo.Pages
             this.propertyGrid1.SelectedObject = this.dateEdit1;
             this.propertyGrid1.Size = new System.Drawing.Size(273, 467);
             this.propertyGrid1.TabIndex = 9;
+            // 
+            // dateEdit2
+            // 
+            this.dateEdit2.EditValue = null;
+            this.dateEdit2.Location = new System.Drawing.Point(152, 214);
+            this.dateEdit2.Name = "dateEdit2";
+            this.dateEdit2.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.dateEdit2.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.dateEdit2.Size = new System.Drawing.Size(202, 20);
+            this.dateEdit2.TabIndex = 13;
             // 
             // DevExpressEditor
             // 
@@ -248,6 +269,8 @@ namespace FarsiLibrary.WinFormDemo.Pages
             ((System.ComponentModel.ISupportInitialize)(this.xtraFADatePicker1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEdit1.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEdit1.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dateEdit2.Properties.CalendarTimeProperties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dateEdit2.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -269,5 +292,6 @@ namespace FarsiLibrary.WinFormDemo.Pages
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label6;
         private XtraFADateEdit xtraFADateEdit1;
+        private DateEdit dateEdit2;
     }
 }
