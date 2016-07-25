@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Globalization;
 using DevExpress.Data.Mask;
 using DevExpress.Utils;
 using DevExpress.XtraEditors;
@@ -12,20 +13,24 @@ using DevExpress.XtraEditors.Repository;
 using DevExpress.XtraEditors.ViewInfo;
 using FarsiLibrary.Utils;
 using FarsiLibrary.Utils.Internals;
+using PersianCalendar = FarsiLibrary.Utils.PersianCalendar;
 
 namespace FarsiLibrary.Win.DevExpress
 {
-    public class PersianDateTimeMaskManager : MaskManagerPlainText
-    {
-    }
-
     public class XtraFADateEdit : DateEdit
     {
+        private CultureInfo controlCulture;
         public const string EditorName = "XtraFADateEdit";
 
         static XtraFADateEdit()
         {
             Register();
+        }
+
+        public XtraFADateEdit()
+        {
+            UseDefaultCulture = DefaultBoolean.Default;
+            controlCulture = CultureHelper.CurrentCulture;
         }
 
         public static void Register()
@@ -43,48 +48,37 @@ namespace FarsiLibrary.Win.DevExpress
             return new PersianDateTimeMaskManager();
         }
 
+        [DefaultValue(typeof(DefaultBoolean), "Default")]
+        public DefaultBoolean UseDefaultCulture { get; set; }
+
+        public CultureInfo ControlCulture
+        {
+            get
+            {
+                if (UseDefaultCulture == DefaultBoolean.Default ||
+                    UseDefaultCulture == DefaultBoolean.True)
+                {
+                    return CultureHelper.CurrentCulture;
+                }
+
+                return controlCulture;
+            }
+            set
+            {
+                controlCulture = value;
+                UseDefaultCulture = DefaultBoolean.False;
+            }
+        }
+
         protected override PopupBaseForm CreatePopupForm()
         {
-            if (!CultureHelper.IsFarsiCulture) return base.CreatePopupForm();
+            if (!CultureHelper.IsFarsiCulture()) return base.CreatePopupForm();
 
             if (Properties.CalendarView == CalendarView.TouchUI) return new FATouchPopupDateEditForm(this);
 
             return new VistaPopupPersianDateEditForm(this);
         }
     }
-
-    public class PersianDateEditFormatInfo : FormatInfo
-    {
-        private const string format = "yyyy/MM/dd";
-
-        public PersianDateEditFormatInfo(IComponentLoading componentLoading) : base(componentLoading)
-        {
-            FormatType = FormatType.DateTime;
-            FormatString = format;
-        }
-        public PersianDateEditFormatInfo()
-        {
-            FormatType = FormatType.DateTime;
-            FormatString = format;
-        }
-        protected override void ResetFormatType()
-        {
-            FormatType = FormatType.DateTime;
-        }
-        public override bool ShouldSerialize()
-        {
-            return FormatType != FormatType.DateTime;
-        }
-        protected override bool ShouldSerializeFormatString()
-        {
-            return FormatString != format;
-        }
-        protected override void ResetFormatString()
-        {
-            FormatString = format;
-        }
-    }
-
 
     [UserRepositoryItem("Register")]
     public class RepositoryItemXtraFADateEdit : RepositoryItemDateEdit
@@ -107,25 +101,41 @@ namespace FarsiLibrary.Win.DevExpress
 
         protected override FormatInfo CreateDisplayFormat()
         {
-            return new PersianDateEditFormatInfo();
+            if(CultureHelper.IsFarsiCulture())
+                return new PersianDateEditFormatInfo();
+
+            return base.CreateDisplayFormat();
         }
+
         protected override FormatInfo CreateEditFormat()
         {
-            return new PersianDateEditFormatInfo();
+            if(CultureHelper.IsFarsiCulture())
+                return new PersianDateEditFormatInfo();
+
+            return base.CreateEditFormat();
         }
 
         protected override DateEditValueConverter CreateConverter()
         {
-            return new PersianDateEditValueConverter(this);
+            if(CultureHelper.IsFarsiCulture())
+                return new PersianDateEditValueConverter(this);
+
+            return base.CreateConverter();
         }
 
         protected override DateTime ConvertToDateTime(object val)
         {
-            return ((PersianDateEditValueConverter)Converter).ConvertToDateTime(val);
+            if(CultureHelper.IsFarsiCulture())
+                return ((PersianDateEditValueConverter)Converter).ConvertToDateTime(val);
+
+            return base.ConvertToDateTime(val);
         }
 
         protected override bool IsNullValue(object editValue)
         {
+            if (!CultureHelper.IsFarsiCulture())
+                return base.IsNullValue(editValue);
+
             if (base.IsNullValue(editValue))
                 return true;
 
@@ -151,6 +161,9 @@ namespace FarsiLibrary.Win.DevExpress
 
         public override string GetDisplayText(object editValue)
         {
+            if (!CultureHelper.IsFarsiCulture())
+                return base.GetDisplayText(editValue);
+
             if (editValue is DateTime)
             {
                 DateTime dt = (DateTime)editValue;
@@ -248,5 +261,42 @@ namespace FarsiLibrary.Win.DevExpress
                 return null;
             }
         }
+    }
+
+    public class PersianDateEditFormatInfo : FormatInfo
+    {
+        private const string format = "yyyy/MM/dd";
+
+        public PersianDateEditFormatInfo(IComponentLoading componentLoading) : base(componentLoading)
+        {
+            FormatType = FormatType.DateTime;
+            FormatString = format;
+        }
+        public PersianDateEditFormatInfo()
+        {
+            FormatType = FormatType.DateTime;
+            FormatString = format;
+        }
+        protected override void ResetFormatType()
+        {
+            FormatType = FormatType.DateTime;
+        }
+        public override bool ShouldSerialize()
+        {
+            return FormatType != FormatType.DateTime;
+        }
+        protected override bool ShouldSerializeFormatString()
+        {
+            return FormatString != format;
+        }
+        protected override void ResetFormatString()
+        {
+            FormatString = format;
+        }
+    }
+
+
+    public class PersianDateTimeMaskManager : MaskManagerPlainText
+    {
     }
 }
