@@ -16,7 +16,7 @@ namespace FarsiLibrary.WPF.Converters
             {
                 CalendarDay cd = (CalendarDay)value;
                 DateTime dt = cd.Date;
-                if(CultureHelper.IsFarsiCulture)
+                if(CultureHelper.IsFarsiCulture())
                 {
                     PersianDate pd = dt.Date;
                     return pd.Day;

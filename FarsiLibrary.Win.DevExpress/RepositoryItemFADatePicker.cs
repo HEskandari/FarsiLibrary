@@ -130,7 +130,7 @@ namespace FarsiLibrary.Win.DevExpress
         {
             if (e.EditValue != null && e.EditValue is DateTime)
             {
-                if (CultureHelper.IsFarsiCulture)
+                if (CultureHelper.IsFarsiCulture())
                 {
                     DateTime dt = (DateTime)e.EditValue;
                     PersianDate pd = new PersianDate(dt);
@@ -172,7 +172,7 @@ namespace FarsiLibrary.Win.DevExpress
             {
                 DateTime dt = (DateTime)editValue;
 
-                if (CultureHelper.IsFarsiCulture)
+                if (CultureHelper.IsFarsiCulture())
                 {
                     PersianDate pd = new PersianDate(dt);
                     return FormatDisplayText(pd);

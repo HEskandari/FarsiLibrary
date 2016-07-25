@@ -65,7 +65,7 @@ namespace FarsiLibrary.Utils.Formatter
 
         private static string FormatNumber(double quantity)
         {
-            return CultureHelper.IsFarsiCulture ? ToWords.ToString(quantity) : quantity.ToString();
+            return CultureHelper.IsFarsiCulture() ? ToWords.ToString(quantity) : quantity.ToString();
         }
 
         private double GetQuantity(Duration duration)

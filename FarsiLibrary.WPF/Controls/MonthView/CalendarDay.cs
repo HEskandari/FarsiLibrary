@@ -112,7 +112,7 @@ namespace FarsiLibrary.WPF.Controls
 
         private bool IsDateWeekend(DateTime selectedDate)
         {
-            if(CultureHelper.CurrentCulture.IsFarsiCulture() || CultureHelper.CurrentCulture.IsArabicCulture())
+            if(CultureHelper.IsFarsiCulture() || CultureHelper.IsArabicCulture())
             {
                 return selectedDate.DayOfWeek == DayOfWeek.Friday || selectedDate.DayOfWeek == DayOfWeek.Thursday;
             }

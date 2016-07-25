@@ -1,6 +1,7 @@
 ﻿using System.Globalization;
 using NUnit.Framework;
 using FarsiLibrary.Utils;
+using FarsiLibrary.Utils.Internals;
 
 namespace FarsiLibrary.UnitTest
 {
@@ -22,12 +23,6 @@ namespace FarsiLibrary.UnitTest
             Assert.True(new CultureInfo("ar").IsArabicCulture());
             Assert.True(new CultureInfo("ar-sa").IsArabicCulture());
             Assert.False(new CultureInfo("fa-ir").IsArabicCulture());
-        }
-
-        [Test]
-        public void Can_Determine_Neutral_Culture()
-        {
-            Assert.True(CultureInfo.InvariantCulture.IsNeutralCulture());
         }
     }
 }

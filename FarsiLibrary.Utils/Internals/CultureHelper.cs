@@ -137,12 +137,12 @@ namespace FarsiLibrary.Utils.Internals
         {
             get
             {
-                if (IsFarsiCulture)
+                if (IsFarsiCulture())
                 {
                     return pc;
                 }
                 
-                if (IsArabicCulture)
+                if (IsArabicCulture())
                 {
                     return hc;
                 }
@@ -177,29 +177,26 @@ namespace FarsiLibrary.Utils.Internals
             get { return CurrentCalendar.MaxSupportedDateTime; }
         }
 
-        public static bool IsArabicCulture
+        public static bool IsArabicCulture()
         {
-            get { return CurrentCulture.Equals(arCulture) || CurrentCulture.Name.Equals("ar", StringComparison.InvariantCultureIgnoreCase); }
+            return IsArabicCulture(CurrentCulture);
         }
 
-        public static bool IsDefaultCulture
+        public static bool IsArabicCulture(this CultureInfo culture)
         {
-            get { return CurrentCulture.Equals(NeutralCulture); }
+            return culture.Equals(arCulture) || 
+                   culture.Name.Equals("ar", StringComparison.InvariantCultureIgnoreCase);
         }
 
-        public static bool IsFarsiCulture
+        public static bool IsFarsiCulture()
         {
-            get { return IsCustomizedFarsiCulture || IsBuiltinFarsiCulture; }
+            return IsFarsiCulture(CurrentCulture);
         }
 
-    	public static bool IsCustomizedFarsiCulture
-    	{
-			get { return CurrentCulture.Equals(PersianCulture); }
-    	}
-
-    	public static bool IsBuiltinFarsiCulture
-    	{
-			get { return CurrentCulture.Name.Equals("fa", StringComparison.InvariantCultureIgnoreCase); }
-    	}
+        public static bool IsFarsiCulture(this CultureInfo culture)
+        {
+            return CurrentCulture.Equals(PersianCulture) ||
+                   CurrentCulture.Name.Equals("fa", StringComparison.InvariantCultureIgnoreCase);
+        }
     }
 }

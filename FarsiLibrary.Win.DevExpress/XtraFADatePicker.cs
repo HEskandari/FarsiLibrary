@@ -110,7 +110,7 @@ namespace FarsiLibrary.Win.DevExpress
                 if(string.IsNullOrEmpty(datetime))
                     return false;
 
-                if (CultureHelper.IsFarsiCulture)
+                if (CultureHelper.IsFarsiCulture())
                 {
                     dt = PersianDate.Parse(datetime);
                 }

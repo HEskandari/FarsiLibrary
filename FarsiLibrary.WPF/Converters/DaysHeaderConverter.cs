@@ -34,11 +34,11 @@ namespace FarsiLibrary.WPF.Converters
             string dayName;
             var dow = (DayOfWeek)Enum.Parse(typeof(DayOfWeek), dayValue.ToString(CultureInfo.InvariantCulture));
 
-            if (CultureHelper.IsFarsiCulture)
+            if (CultureHelper.IsFarsiCulture())
             {
                 dayName = PersianDateTimeFormatInfo.GetWeekDayAbbrByIndex(dayValue);
             }
-            else if (CultureHelper.IsArabicCulture)
+            else if (CultureHelper.IsArabicCulture())
             {
                 dayName = CultureHelper.CurrentCulture.DateTimeFormat.GetAbbreviatedDayName(dow);
                 dayName = dayName.Remove(0, 2).Substring(0, 1);
