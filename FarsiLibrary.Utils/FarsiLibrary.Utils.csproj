@@ -36,6 +36,7 @@
     <Compile Include="..\Solution Items\CommonAssemblyInfo.cs">
       <Link>Properties\CommonAssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="CultureManager.cs" />
     <Compile Include="DateTimeExtensions.cs" />
     <Compile Include="Formatter\AbstractTimeUnit.cs" />
     <Compile Include="Formatter\BasicTimeFormat.cs" />

@@ -19,18 +19,11 @@ namespace FarsiLibrary.Win.DevExpress
 {
     public class XtraFADateEdit : DateEdit
     {
-        private CultureInfo controlCulture;
         public const string EditorName = "XtraFADateEdit";
 
         static XtraFADateEdit()
         {
             Register();
-        }
-
-        public XtraFADateEdit()
-        {
-            UseDefaultCulture = DefaultBoolean.Default;
-            controlCulture = CultureHelper.CurrentCulture;
         }
 
         public static void Register()
@@ -48,31 +41,9 @@ namespace FarsiLibrary.Win.DevExpress
             return new PersianDateTimeMaskManager();
         }
 
-        [DefaultValue(typeof(DefaultBoolean), "Default")]
-        public DefaultBoolean UseDefaultCulture { get; set; }
-
-        public CultureInfo ControlCulture
-        {
-            get
-            {
-                if (UseDefaultCulture == DefaultBoolean.Default ||
-                    UseDefaultCulture == DefaultBoolean.True)
-                {
-                    return CultureHelper.CurrentCulture;
-                }
-
-                return controlCulture;
-            }
-            set
-            {
-                controlCulture = value;
-                UseDefaultCulture = DefaultBoolean.False;
-            }
-        }
-
         protected override PopupBaseForm CreatePopupForm()
         {
-            if (!CultureHelper.IsFarsiCulture()) return base.CreatePopupForm();
+            if (!CultureManager.Instance.ControlsCulture.IsFarsiCulture()) return base.CreatePopupForm();
 
             if (Properties.CalendarView == CalendarView.TouchUI) return new FATouchPopupDateEditForm(this);
 
@@ -101,7 +72,7 @@ namespace FarsiLibrary.Win.DevExpress
 
         protected override FormatInfo CreateDisplayFormat()
         {
-            if(CultureHelper.IsFarsiCulture())
+            if(CultureManager.Instance.ControlsCulture.IsFarsiCulture())
                 return new PersianDateEditFormatInfo();
 
             return base.CreateDisplayFormat();
@@ -109,7 +80,7 @@ namespace FarsiLibrary.Win.DevExpress
 
         protected override FormatInfo CreateEditFormat()
         {
-            if(CultureHelper.IsFarsiCulture())
+            if(CultureManager.Instance.ControlsCulture.IsFarsiCulture())
                 return new PersianDateEditFormatInfo();
 
             return base.CreateEditFormat();
@@ -117,7 +88,7 @@ namespace FarsiLibrary.Win.DevExpress
 
         protected override DateEditValueConverter CreateConverter()
         {
-            if(CultureHelper.IsFarsiCulture())
+            if(CultureManager.Instance.ControlsCulture.IsFarsiCulture())
                 return new PersianDateEditValueConverter(this);
 
             return base.CreateConverter();
@@ -125,7 +96,7 @@ namespace FarsiLibrary.Win.DevExpress
 
         protected override DateTime ConvertToDateTime(object val)
         {
-            if(CultureHelper.IsFarsiCulture())
+            if(CultureManager.Instance.ControlsCulture.IsFarsiCulture())
                 return ((PersianDateEditValueConverter)Converter).ConvertToDateTime(val);
 
             return base.ConvertToDateTime(val);
@@ -133,7 +104,7 @@ namespace FarsiLibrary.Win.DevExpress
 
         protected override bool IsNullValue(object editValue)
         {
-            if (!CultureHelper.IsFarsiCulture())
+            if (!CultureManager.Instance.ControlsCulture.IsFarsiCulture())
                 return base.IsNullValue(editValue);
 
             if (base.IsNullValue(editValue))
@@ -159,11 +130,24 @@ namespace FarsiLibrary.Win.DevExpress
             get { return base.OwnerEdit as XtraFADateEdit; }
         }
 
-        public override string GetDisplayText(object editValue)
+        public override string GetDisplayText(FormatInfo format, object editValue)
         {
-            if (!CultureHelper.IsFarsiCulture())
+            if (!CultureManager.Instance.ControlsCulture.IsFarsiCulture())
                 return base.GetDisplayText(editValue);
 
+            return TryFormatEditValue(editValue);
+        }
+
+        public override string GetDisplayText(object editValue)
+        {
+            if (!CultureManager.Instance.ControlsCulture.IsFarsiCulture())
+                return base.GetDisplayText(editValue);
+
+            return TryFormatEditValue(editValue);
+        }
+
+        private string TryFormatEditValue(object editValue)
+        {
             if (editValue is DateTime)
             {
                 DateTime dt = (DateTime)editValue;
@@ -272,23 +256,28 @@ namespace FarsiLibrary.Win.DevExpress
             FormatType = FormatType.DateTime;
             FormatString = format;
         }
+
         public PersianDateEditFormatInfo()
         {
             FormatType = FormatType.DateTime;
             FormatString = format;
         }
+
         protected override void ResetFormatType()
         {
             FormatType = FormatType.DateTime;
         }
+
         public override bool ShouldSerialize()
         {
             return FormatType != FormatType.DateTime;
         }
+
         protected override bool ShouldSerializeFormatString()
         {
             return FormatString != format;
         }
+
         protected override void ResetFormatString()
         {
             FormatString = format;
