@@ -9,7 +9,7 @@
     <ProjectGuid>{240A0D2C-5E44-4C05-8995-EE63E4AE9D0E}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <AssemblyName>FarsiLibrary.Win.DevExpress</AssemblyName>
+    <AssemblyName>FarsiLibrary.Win.DevExpress.15.2</AssemblyName>
     <RootNamespace>FarsiLibrary.Win.DevExpress</RootNamespace>
     <OutputPath>..\binaries\</OutputPath>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>

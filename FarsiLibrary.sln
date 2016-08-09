@@ -38,6 +38,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Extensions", "Extensions", 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Design", "Design", "{B379080F-CB94-47D1-BB06-0996E83820B2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FarsiLibrary.Win.DevExpress.16.1", "FarsiLibrary.Win.DevExpress.16.1\FarsiLibrary.Win.DevExpress.16.1.csproj", "{D0E90437-9EEA-4A34-BF68-093D1717B76D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|.NET = Debug|.NET
@@ -145,6 +147,18 @@ Global
 		{A5EE7D36-30E7-49AB-90EC-97836840C144}.Release|Any CPU.Build.0 = Debug|x86
 		{A5EE7D36-30E7-49AB-90EC-97836840C144}.Release|Mixed Platforms.ActiveCfg = Debug|x86
 		{A5EE7D36-30E7-49AB-90EC-97836840C144}.Release|Mixed Platforms.Build.0 = Debug|x86
+		{D0E90437-9EEA-4A34-BF68-093D1717B76D}.Debug|.NET.ActiveCfg = Debug|Any CPU
+		{D0E90437-9EEA-4A34-BF68-093D1717B76D}.Debug|.NET.Build.0 = Debug|Any CPU
+		{D0E90437-9EEA-4A34-BF68-093D1717B76D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D0E90437-9EEA-4A34-BF68-093D1717B76D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D0E90437-9EEA-4A34-BF68-093D1717B76D}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{D0E90437-9EEA-4A34-BF68-093D1717B76D}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{D0E90437-9EEA-4A34-BF68-093D1717B76D}.Release|.NET.ActiveCfg = Debug|Any CPU
+		{D0E90437-9EEA-4A34-BF68-093D1717B76D}.Release|.NET.Build.0 = Debug|Any CPU
+		{D0E90437-9EEA-4A34-BF68-093D1717B76D}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{D0E90437-9EEA-4A34-BF68-093D1717B76D}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{D0E90437-9EEA-4A34-BF68-093D1717B76D}.Release|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{D0E90437-9EEA-4A34-BF68-093D1717B76D}.Release|Mixed Platforms.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -159,5 +173,6 @@ Global
 		{E7F44116-95CA-4E29-9215-FB4366589780} = {B379080F-CB94-47D1-BB06-0996E83820B2}
 		{240A0D2C-5E44-4C05-8995-EE63E4AE9D0E} = {8E17BAC9-A86F-426B-A988-4C56124B37D7}
 		{A5EE7D36-30E7-49AB-90EC-97836840C144} = {604CE13D-1B5A-41CA-B60D-E7DD5C1C91A2}
+		{D0E90437-9EEA-4A34-BF68-093D1717B76D} = {8E17BAC9-A86F-426B-A988-4C56124B37D7}
 	EndGlobalSection
 EndGlobal
