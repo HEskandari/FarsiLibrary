@@ -62,12 +62,42 @@ namespace FarsiLibrary.Win.DevExpress
 
         public RepositoryItemXtraFADateEdit()
         {
+            EnsureDefaultButton = true;
             NullDateCalendarValue = PersianDate.MinValue;
+        }
+
+        [DefaultValue(true)]
+        public bool EnsureDefaultButton
+        {
+            get; set;
         }
 
         static RepositoryItemXtraFADateEdit()
         {
             Register();
+        }
+
+        public bool ShouldSerializeNullDateCalendarValue()
+        {
+            return false;
+        }
+
+        public override void EndInit()
+        {
+            base.EndInit();
+            if (EnsureDefaultButton && Buttons.Count < 1)
+            {
+                EnsureDefaultButtonExists();
+            }
+        }
+
+        private void EnsureDefaultButtonExists()
+        {
+            Buttons.Add(new EditorButton
+            {
+                IsDefaultButton = true,
+                Kind = ButtonPredefines.Down
+            });
         }
 
         protected override FormatInfo CreateDisplayFormat()
@@ -133,7 +163,7 @@ namespace FarsiLibrary.Win.DevExpress
         public override string GetDisplayText(FormatInfo format, object editValue)
         {
             if (!CultureManager.Instance.ControlsCulture.IsFarsiCulture())
-                return base.GetDisplayText(editValue);
+                return base.GetDisplayText(format, editValue);
 
             return TryFormatEditValue(editValue);
         }
