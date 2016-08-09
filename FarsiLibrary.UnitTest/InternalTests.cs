@@ -95,15 +95,6 @@ namespace FarsiLibrary.UnitTest
             }
         }
 
-        [Test]
-        public void Default_Calendar_Is_Invariant()
-        {
-            using(new CultureSwitchContext(CultureInfo.InvariantCulture))
-            {
-                Assert.That(CultureHelper.IsDefaultCulture);
-            }
-        }
-
         #endregion
 
         #region Guard

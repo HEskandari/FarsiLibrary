@@ -200,7 +200,7 @@ namespace FarsiLibrary.Win.Controls
 
 		private PersianDate GetParsedDate(string formattedValue)
 		{
-			if (CultureHelper.IsBuiltinFarsiCulture)
+			if (CultureHelper.IsFarsiCulture())
 			{
 				return PersianDate.Parse(formattedValue);
 			}

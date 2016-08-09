@@ -77,11 +77,19 @@ namespace FarsiLibrary.Utils
         /// <summary>
         /// Current date/time in PersianDate format.
         /// </summary>
-        [Browsable(false)]
         [Description("Current date/time in PersianDate format")]
         public static PersianDate Now
         {
             get { return PersianDateConverter.ToPersianDate(DateTime.Now); }
+        }
+
+        /// <summary>
+        /// Current date in PersianDate format.
+        /// </summary>
+        [Description("Todays date in PersianDate format")]
+        public static PersianDate Today
+        {
+            get { return PersianDateConverter.ToPersianDate(DateTime.Today); }
         }
 
         /// <summary>

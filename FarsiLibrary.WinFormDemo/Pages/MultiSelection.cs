@@ -56,11 +56,11 @@ namespace FarsiLibrary.WinFormDemo.Pages
             var selection = new List<DateTime>();
             var pd = PersianDate.Now;
             var dt = DateTime.Now;
-            int NumberOfDays = CultureHelper.CurrentCalendar.GetDaysInMonth(pd.Year, pd.Month);
+            var numberOfDays = CultureHelper.CurrentCalendar.GetDaysInMonth(pd.Year, pd.Month);
 
-            for (int dayNo = 1; dayNo <= NumberOfDays; dayNo++)
+            for (int dayNo = 1; dayNo <= numberOfDays; dayNo++)
             {
-                if(CultureInfoExtensions.IsFarsiCulture(faMonthView.DefaultCulture))
+                if(faMonthView.DefaultCulture.IsFarsiCulture())
                 {
                     selection.Add(new PersianDate(pd.Year, pd.Month, dayNo, 0, 0, 0, 0));
                 }

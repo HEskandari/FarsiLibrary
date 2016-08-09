@@ -17,7 +17,7 @@ namespace FarsiLibrary.WPF.Converters
                 if (string.IsNullOrEmpty(converting))
                     return null;
 
-                if(CultureHelper.IsFarsiCulture)
+                if(CultureHelper.IsFarsiCulture())
                 {
                     PersianDate pd;
                     if(PersianDate.TryParse(converting, out pd))

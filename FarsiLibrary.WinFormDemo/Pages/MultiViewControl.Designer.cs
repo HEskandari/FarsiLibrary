@@ -102,7 +102,6 @@
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.faMultiView1);
-            this.IsNew = true;
             this.Name = "MultiViewControl";
             this.Size = new System.Drawing.Size(355, 272);
             this.Title = "MultiView Control";

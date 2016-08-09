@@ -12,7 +12,7 @@
     <RootNamespace>FarsiLibrary.Utils</RootNamespace>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <OutputPath>..\binaries\</OutputPath>
-    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
@@ -36,6 +36,7 @@
     <Compile Include="..\Solution Items\CommonAssemblyInfo.cs">
       <Link>Properties\CommonAssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="CultureManager.cs" />
     <Compile Include="DateTimeExtensions.cs" />
     <Compile Include="Formatter\AbstractTimeUnit.cs" />
     <Compile Include="Formatter\BasicTimeFormat.cs" />
@@ -59,7 +60,6 @@
     <Compile Include="Internals\CultureHelper.cs" />
     <Compile Include="Exceptions\InvalidPersianDateException.cs" />
     <Compile Include="Exceptions\InvalidPersianDateFormatException.cs" />
-    <Compile Include="CultureInfoExtensions.cs" />
     <Compile Include="Internals\Guard.cs" />
     <Compile Include="Internals\ThemeWrapper.cs" />
     <Compile Include="PersianCalendar.cs">

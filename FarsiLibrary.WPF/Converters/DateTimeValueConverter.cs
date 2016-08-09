@@ -61,7 +61,7 @@ namespace FarsiLibrary.WPF.Converters
 
         protected virtual string FormatDateValue(DateTime date, DateTimeFormatInfo dateTimeFormat)
         {
-            if (CultureHelper.IsFarsiCulture)
+            if (CultureHelper.IsFarsiCulture())
             {
                 PersianDate pd = date;
                 return pd.ToString("d");

@@ -4,7 +4,12 @@ namespace FarsiLibrary.WinFormDemo.Demo
 {
     public class DemoItem
     {
-        public IDemoPage Page { get; set; }
+        public DemoItem(IDemoPage demo)
+        {
+            Page = demo;
+        }
+
+        public IDemoPage Page { get; }
 
         public Control Control
         {

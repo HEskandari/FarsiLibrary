@@ -99,12 +99,12 @@ namespace FarsiLibrary.Win.BaseClasses
 
         protected internal int GetFirstDayOfWeek(DateTime date)
         {
-            if (CultureHelper.IsFarsiCulture)
+            if (CultureHelper.IsFarsiCulture())
             {
                 return PersianDateTimeFormatInfo.GetDayIndex(date.DayOfWeek);
             }
          
-            if (CultureHelper.IsArabicCulture)
+            if (CultureHelper.IsArabicCulture())
             {
                 return (int)date.DayOfWeek;
             }

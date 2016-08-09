@@ -59,7 +59,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.label1);
             this.Controls.Add(this.faDatePicker1);
-            this.IsNew = true;
             this.Name = "CustomFormattingAndValidating";
             this.Title = "DatePicker Validation and Formating";
             this.ResumeLayout(false);

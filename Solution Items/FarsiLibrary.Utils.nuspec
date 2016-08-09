@@ -10,7 +10,7 @@
     <projectUrl>http://github.com/HEskandari/FarsiLibrary</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Library containing farsi controls, which has correct Right-To-Left drawing. Also contains classes to work with Jalali Dates.</description>
-    <copyright>Copyright (c) Hadi Eskandari</copyright>
+    <copyright>Copyright (c) SeeSharp Software</copyright>
     <tags>farsi persian language calendar dates jalali</tags>
 	<dependencies />
 	</metadata>
