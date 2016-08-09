@@ -11,5 +11,6 @@ _ReSharper.*
 [Rr]elease.log
 .vs
 .fake
+.idea.*
 packages
 publish
