@@ -26,6 +26,11 @@ namespace FarsiLibrary.Win.DevExpress
             Register();
         }
 
+        public bool ShouldSerializeNullDateCalendarValue()
+        {
+            return false;
+        }
+
         public static void Register()
         {
             EditorRegistrationInfo.Default.Editors.Add(new EditorClassInfo(EditorName, typeof(XtraFADateEdit), typeof(RepositoryItemXtraFADateEdit), typeof(DateEditViewInfo), new ButtonEditPainter(), true, EditImageIndexes.DateEdit));
@@ -63,7 +68,15 @@ namespace FarsiLibrary.Win.DevExpress
         public RepositoryItemXtraFADateEdit()
         {
             EnsureDefaultButton = true;
-            NullDateCalendarValue = PersianDate.MinValue;
+            NullDateCalendarValue = GetNullCalendarDate();
+        }
+
+        private DateTime GetNullCalendarDate()
+        {
+            if (CultureManager.Instance.ControlsCulture.IsFarsiCulture())
+                return PersianDate.MinValue;
+
+            return DateTime.MinValue;
         }
 
         [DefaultValue(true)]
@@ -75,6 +88,14 @@ namespace FarsiLibrary.Win.DevExpress
         static RepositoryItemXtraFADateEdit()
         {
             Register();
+        }
+
+        [RefreshProperties(RefreshProperties.All)]
+        [DXCategory("Behavior")]
+        public new DateTime NullDateCalendarValue
+        {
+            get { return base.NullDateCalendarValue; }
+            set { base.NullDateCalendarValue = value; }
         }
 
         public bool ShouldSerializeNullDateCalendarValue()

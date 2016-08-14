@@ -151,7 +151,6 @@ namespace FarsiLibrary.WinFormDemo.Pages
             this.xtraFADateEdit1.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.xtraFADateEdit1.Properties.CalendarView = DevExpress.XtraEditors.Repository.CalendarView.TouchUI;
-            this.xtraFADateEdit1.Properties.NullDateCalendarValue = new System.DateTime(622, 3, 22, 0, 0, 0, 0);
             this.xtraFADateEdit1.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
             this.xtraFADateEdit1.Properties.VistaDisplayMode = DevExpress.Utils.DefaultBoolean.False;
             this.xtraFADateEdit1.Size = new System.Drawing.Size(202, 20);
@@ -182,7 +181,6 @@ namespace FarsiLibrary.WinFormDemo.Pages
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.dateEdit1.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.dateEdit1.Properties.NullDateCalendarValue = new System.DateTime(622, 3, 22, 0, 0, 0, 0);
             this.dateEdit1.Size = new System.Drawing.Size(202, 20);
             this.dateEdit1.TabIndex = 5;
             this.dateEdit1.EditValueChanged += new System.EventHandler(this.dateEdit1_EditValueChanged);

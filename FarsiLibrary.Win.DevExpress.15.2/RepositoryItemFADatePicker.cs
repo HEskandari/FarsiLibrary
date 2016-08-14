@@ -50,6 +50,11 @@ namespace FarsiLibrary.Win.DevExpress
 
         #region Properties
 
+        public bool ShouldSerializeNullDateCalendarValue()
+        {
+            return false;
+        }
+
         /// <summary>
         /// Properties
         /// </summary>
