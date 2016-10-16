@@ -59,7 +59,7 @@ Target "Test" (fun _ ->
                 OutputFile = OutputDir + "TestResults.xml"})
 )
 
-Target "PackageAll" (fun _ ->
+Target "Package" (fun _ ->
     GeneratePackage "FarsiLibrary.Utils"
     GeneratePackage "FarsiLibrary.WPF"
     GeneratePackage "FarsiLibrary.Win"
@@ -73,7 +73,7 @@ Target "PackageAll" (fun _ ->
    ==> "Build"
 
 "Build"
-   ==> "PackageAll"
+   ==> "Package"
 
-RunTargetOrDefault "Test"
+RunTargetOrDefault "Build"
 
