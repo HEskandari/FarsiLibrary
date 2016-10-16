@@ -14,19 +14,32 @@ using PersianCalendar = FarsiLibrary.Utils.PersianCalendar;
 
 namespace FarsiLibrary.Win.DevExpress
 {
+    public interface IPersianCalendarControl
+    {
+        DateTime GetTodayPersianDate();
+    }
+
     public class VistaPersianCalendarViewInfo : VistaCalendarViewInfo
     {
-        private readonly PopupPersianCalendarControl calendarControl;
+        private readonly IPersianCalendarControl calendarControl;
         private PersianCalendarObjectViewInfo calendarObjectViewInfo;
+        private readonly PersianCultureInfo culture;
 
         public VistaPersianCalendarViewInfo(PopupPersianCalendarControl calendarControl) : base(calendarControl)
         {
             this.calendarControl = calendarControl;
+            this.culture = new PersianCultureInfo();
+        }
+
+        public VistaPersianCalendarViewInfo(XtraFACalendarControl calendarControl) : base(calendarControl)
+        {
+            this.calendarControl = calendarControl;
+            this.culture = new PersianCultureInfo();
         }
 
         protected override string GetAbbreviatedDayNameCore(int day)
         {
-            string dayname = Calendar.DateFormat.AbbreviatedDayNames[(Convert.ToInt32(Calendar.FirstDayOfWeek) + day) % 7];
+            string dayname = culture.DateTimeFormat.AbbreviatedDayNames[(Convert.ToInt32(Calendar.FirstDayOfWeek) + day) % 7];
             return dayname;
         }
 
@@ -65,13 +78,19 @@ namespace FarsiLibrary.Win.DevExpress
         {
             calendarObjectViewInfo.UpdateExistingCellsState();
         }
+
+        public CalendarHitInfo HoverData
+        {
+            get { return HoverInfo; }
+            set { HoverInfo = value; }
+        }
     }
 
     public class PersianCalendarObjectViewInfo : CalendarObjectViewInfo
     {
         PersianCalendar pc;
 
-        public PersianCalendarObjectViewInfo(PopupPersianCalendarControl calendar) : base(calendar)
+        public PersianCalendarObjectViewInfo(IPersianCalendarControl calendar) : base(calendar as CalendarControlBase)
         {
             pc = new PersianCalendar();
             FirstVisibleDate = calendar.GetTodayPersianDate();
@@ -450,7 +469,7 @@ namespace FarsiLibrary.Win.DevExpress
         }
     }
 
-    public class PopupPersianCalendarControl : PopupCalendarControl
+    public class PopupPersianCalendarControl : PopupCalendarControl, IPersianCalendarControl
     {
         private static PersianCalendar pc;
         private static PersianCultureInfo ci;
@@ -515,7 +534,7 @@ namespace FarsiLibrary.Win.DevExpress
 
     public class PersianCalendarSelectionManager : CalendarSelectionManager
     {
-        public PersianCalendarSelectionManager(PopupPersianCalendarControl calendar) : base(calendar)
+        public PersianCalendarSelectionManager(CalendarControlBase calendar) : base(calendar)
         {
         }
 

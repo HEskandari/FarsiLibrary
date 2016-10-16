@@ -29,6 +29,10 @@
       <Link>RepositoryItemFADatePicker.cs</Link>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="..\FarsiLibrary.Win.DevExpress.15.2\XtraFACalendar.cs">
+      <Link>XtraFACalendar.cs</Link>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="..\FarsiLibrary.Win.DevExpress.15.2\XtraFADateEdit.cs">
       <Link>XtraFADateEdit.cs</Link>
       <SubType>Component</SubType>

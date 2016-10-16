@@ -41,6 +41,12 @@
     <Compile Include="Pages\CustomFormattingAndValidating.Designer.cs">
       <DependentUpon>CustomFormattingAndValidating.cs</DependentUpon>
     </Compile>
+    <Compile Include="Pages\DevExpressCalendar.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Pages\DevExpressCalendar.Designer.cs">
+      <DependentUpon>DevExpressCalendar.cs</DependentUpon>
+    </Compile>
     <Compile Include="Pages\DevExpressEditor.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -210,6 +216,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Pages\CustomFormattingAndValidating.resx">
       <DependentUpon>CustomFormattingAndValidating.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\DevExpressCalendar.resx">
+      <DependentUpon>DevExpressCalendar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Pages\DevExpressEditor.resx">
       <DependentUpon>DevExpressEditor.cs</DependentUpon>

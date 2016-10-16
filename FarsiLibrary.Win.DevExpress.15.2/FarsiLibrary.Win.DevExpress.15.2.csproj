@@ -26,6 +26,9 @@
       <Link>Properties\CommonAssemblyInfo.cs</Link>
     </Compile>
     <Compile Include="RepositoryItemDateEditExtentions.cs" />
+    <Compile Include="XtraFACalendar.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="XtraFADateEdit.Vista.cs" />
     <Compile Include="RepositoryItemFADatePicker.cs">
       <SubType>Component</SubType>
