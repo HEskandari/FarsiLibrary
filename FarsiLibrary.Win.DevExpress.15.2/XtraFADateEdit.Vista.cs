@@ -183,7 +183,7 @@ namespace FarsiLibrary.Win.DevExpress
                        calendarDate.Year < cellDate.Year + 10;
             }
 
-            return AreDatesEqual(cell.Date, calendarDate);
+            return Calendar.SelectedRanges.IsDateSelected(cell.Date);
         }
 
         protected bool AreDatesEqual(PersianDate dt1, PersianDate dt2)
