@@ -10,6 +10,7 @@ using DevExpress.XtraEditors.Repository;
 using DevExpress.XtraEditors.ViewInfo;
 using FarsiLibrary.Localization;
 using FarsiLibrary.Utils;
+using FarsiLibrary.Utils.Internals;
 using PersianCalendar = FarsiLibrary.Utils.PersianCalendar;
 
 namespace FarsiLibrary.Win.DevExpress
@@ -39,6 +40,9 @@ namespace FarsiLibrary.Win.DevExpress
 
         protected override string GetAbbreviatedDayNameCore(int day)
         {
+            //Double checking the culture as this may be called in werid scenarios
+            if (!CultureManager.Instance.ControlsCulture.IsFarsiCulture()) return base.GetAbbreviatedDayNameCore(day);
+
             string dayname = culture.DateTimeFormat.AbbreviatedDayNames[(Convert.ToInt32(Calendar.FirstDayOfWeek) + day) % 7];
             return dayname;
         }

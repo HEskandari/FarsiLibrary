@@ -363,9 +363,9 @@
       <Project>{ED29E567-C801-49E9-8C33-CFB66042B07B}</Project>
       <Name>FarsiLibrary.Utils</Name>
     </ProjectReference>
-    <ProjectReference Include="..\FarsiLibrary.Win.DevExpress.16.1\FarsiLibrary.Win.DevExpress.16.1.csproj">
-      <Project>{d0e90437-9eea-4a34-bf68-093d1717b76d}</Project>
-      <Name>FarsiLibrary.Win.DevExpress.16.1</Name>
+    <ProjectReference Include="..\FarsiLibrary.Win.DevExpress.15.2\FarsiLibrary.Win.DevExpress.15.2.csproj">
+      <Project>{240a0d2c-5e44-4c05-8995-ee63e4ae9d0e}</Project>
+      <Name>FarsiLibrary.Win.DevExpress.15.2</Name>
     </ProjectReference>
     <ProjectReference Include="..\FarsiLibrary.Win\FarsiLibrary.Win.csproj">
       <Project>{83C3AEB8-5322-4DB6-9E7E-4BF8A319DCE7}</Project>
@@ -376,21 +376,21 @@
     <None Include="Resources\new.png" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="DevExpress.Data.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+    <Reference Include="DevExpress.Data.v15.2, Version=15.2.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\lib\DevExpress\DevExpress.Data.v16.1.dll</HintPath>
+      <HintPath>..\lib\DevExpress\DevExpress.Data.v15.2.dll</HintPath>
     </Reference>
-    <Reference Include="DevExpress.Utils.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+    <Reference Include="DevExpress.Utils.v15.2, Version=15.2.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\lib\DevExpress\DevExpress.Utils.v16.1.dll</HintPath>
+      <HintPath>..\lib\DevExpress\DevExpress.Utils.v15.2.dll</HintPath>
     </Reference>
-    <Reference Include="DevExpress.XtraEditors.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+    <Reference Include="DevExpress.XtraEditors.v15.2, Version=15.2.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\lib\DevExpress\DevExpress.XtraEditors.v16.1.dll</HintPath>
+      <HintPath>..\lib\DevExpress\DevExpress.XtraEditors.v15.2.dll</HintPath>
     </Reference>
-    <Reference Include="DevExpress.XtraGrid.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+    <Reference Include="DevExpress.XtraGrid.v15.2, Version=15.2.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\lib\DevExpress\DevExpress.XtraGrid.v16.1.dll</HintPath>
+      <HintPath>..\lib\DevExpress\DevExpress.XtraGrid.v15.2.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />

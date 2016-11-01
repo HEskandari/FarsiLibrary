@@ -147,8 +147,11 @@ namespace FarsiLibrary.Win.DevExpress
 
         protected override DateTime ConvertToDateTime(object val)
         {
-            if(CultureManager.Instance.ControlsCulture.IsFarsiCulture())
-                return ((PersianDateEditValueConverter)Converter).ConvertToDateTime(val);
+            if (CultureManager.Instance.ControlsCulture.IsFarsiCulture())
+            {
+                var converter = (Converter is PersianDateEditValueConverter) ? Converter : CreateConverter();
+                return converter.ConvertToDateTime(val);
+            }
 
             return base.ConvertToDateTime(val);
         }
