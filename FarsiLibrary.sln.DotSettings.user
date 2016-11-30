@@ -2,4 +2,5 @@
 	<s:String x:Key="/Default/Environment/AssemblyExplorer/XmlDocument/@EntryValue">&lt;AssemblyExplorer&gt;&#xD;
   &lt;Assembly Path="C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE\PublicAssemblies\Microsoft.Windows.Design.Interaction.dll" /&gt;&#xD;
   &lt;Assembly Path="D:\Projects\FarsiLibrary\lib\DevExpress\DevExpress.Data.v15.1.dll" /&gt;&#xD;
+  &lt;Assembly Path="D:\Projects\FarsiLibrary\binaries\FarsiLibrary.Win.DevExpress.16.1.dll" /&gt;&#xD;
 &lt;/AssemblyExplorer&gt;</s:String></wpf:ResourceDictionary>

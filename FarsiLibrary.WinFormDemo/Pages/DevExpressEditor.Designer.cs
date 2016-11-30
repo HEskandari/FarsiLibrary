@@ -181,8 +181,7 @@ namespace FarsiLibrary.WinFormDemo.Pages
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.dateEdit1.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.dateEdit1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.dateEdit1.Size = new System.Drawing.Size(227, 20);
+            this.dateEdit1.Size = new System.Drawing.Size(202, 20);
             this.dateEdit1.TabIndex = 5;
             this.dateEdit1.EditValueChanged += new System.EventHandler(this.dateEdit1_EditValueChanged);
             // 

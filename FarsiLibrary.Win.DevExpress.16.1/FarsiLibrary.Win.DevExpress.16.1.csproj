@@ -12,7 +12,7 @@
     <AssemblyName>FarsiLibrary.Win.DevExpress.16.1</AssemblyName>
     <RootNamespace>FarsiLibrary.Win.DevExpress</RootNamespace>
     <OutputPath>..\binaries\</OutputPath>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup>
@@ -20,6 +20,9 @@
   </PropertyGroup>
   <PropertyGroup>
     <AssemblyOriginatorKeyFile>..\FarsiLibrary.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="..\FarsiLibrary.Win.DevExpress.15.2\RepositoryItemDateEditExtentions.cs">
