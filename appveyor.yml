@@ -1,8 +1,10 @@
-version: '2.7.{build}'
-
-assembly_info:
-  patch: true
-  file: AssemblyInfo.*
-  assembly_version: "{version}"
-  assembly_file_version: "{version}"
-  assembly_informational_version: "{version}"
+version: 2.7.{build}
+pull_requests:
+  do_not_increment_build_number: true
+build_script:
+- cmd: Build.cmd Package
+test_script:
+- cmd: Build.cmd Test
+artifacts:
+- path: publish\*.nupkg
+  name: Nuget Packages
