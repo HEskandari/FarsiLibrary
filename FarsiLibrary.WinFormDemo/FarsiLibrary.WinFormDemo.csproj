@@ -41,6 +41,12 @@
     <Compile Include="Pages\CustomFormattingAndValidating.Designer.cs">
       <DependentUpon>CustomFormattingAndValidating.cs</DependentUpon>
     </Compile>
+    <Compile Include="Pages\DevExpressCalendar.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Pages\DevExpressCalendar.Designer.cs">
+      <DependentUpon>DevExpressCalendar.cs</DependentUpon>
+    </Compile>
     <Compile Include="Pages\DevExpressEditor.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -211,6 +217,9 @@
     <EmbeddedResource Include="Pages\CustomFormattingAndValidating.resx">
       <DependentUpon>CustomFormattingAndValidating.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Pages\DevExpressCalendar.resx">
+      <DependentUpon>DevExpressCalendar.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Pages\DevExpressEditor.resx">
       <DependentUpon>DevExpressEditor.cs</DependentUpon>
     </EmbeddedResource>
@@ -354,9 +363,9 @@
       <Project>{ED29E567-C801-49E9-8C33-CFB66042B07B}</Project>
       <Name>FarsiLibrary.Utils</Name>
     </ProjectReference>
-    <ProjectReference Include="..\FarsiLibrary.Win.DevExpress\FarsiLibrary.Win.DevExpress.csproj">
-      <Project>{240A0D2C-5E44-4C05-8995-EE63E4AE9D0E}</Project>
-      <Name>FarsiLibrary.Win.DevExpress</Name>
+    <ProjectReference Include="..\FarsiLibrary.Win.DevExpress.16.1\FarsiLibrary.Win.DevExpress.16.1.csproj">
+      <Project>{d0e90437-9eea-4a34-bf68-093d1717b76d}</Project>
+      <Name>FarsiLibrary.Win.DevExpress.16.1</Name>
     </ProjectReference>
     <ProjectReference Include="..\FarsiLibrary.Win\FarsiLibrary.Win.csproj">
       <Project>{83C3AEB8-5322-4DB6-9E7E-4BF8A319DCE7}</Project>
@@ -367,21 +376,12 @@
     <None Include="Resources\new.png" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="DevExpress.Data.v15.2, Version=15.2.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+    <Reference Include="DevExpress.Data.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Utils.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraEditors.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraGrid.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\lib\DevExpress\DevExpress.Data.v15.2.dll</HintPath>
-    </Reference>
-    <Reference Include="DevExpress.Utils.v15.2, Version=15.2.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\lib\DevExpress\DevExpress.Utils.v15.2.dll</HintPath>
-    </Reference>
-    <Reference Include="DevExpress.XtraEditors.v15.2, Version=15.2.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\lib\DevExpress\DevExpress.XtraEditors.v15.2.dll</HintPath>
-    </Reference>
-    <Reference Include="DevExpress.XtraGrid.v15.2, Version=15.2.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\lib\DevExpress\DevExpress.XtraGrid.v15.2.dll</HintPath>
+      <HintPath>..\lib\DevExpress\DevExpress.XtraGrid.v16.1.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />

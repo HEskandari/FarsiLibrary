@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
@@ -30,25 +31,32 @@ namespace FarsiLibrary.WinFormDemo
         private void FindAllDemos()
         {
             var demos = (from type in this.GetType().Assembly.GetExportedTypes()
-                         where typeof(IDemoPage).IsAssignableFrom(type) && 
+                         where typeof(IDemoPage).IsAssignableFrom(type) &&
                                type.IsAbstract == false &&
                                type != typeof(DemoBase)
-                         select type).ToList();
+                         select type)
+                         .ToList();
+
+            var pages = new List<IDemoPage>();
 
             foreach (var demo in demos)
             {
                 var demoForm = Activator.CreateInstance(demo) as IDemoPage;
-                RegisterDemos(demoForm);
+                pages.Add(demoForm);
             }
+
+            RegisterDemos(pages);
         }
 
-        private void RegisterDemos(IDemoPage demo)
+        private void RegisterDemos(IList<IDemoPage> demos)
         {
-            if(demo.Title == null)
-                throw new ApplicationException(string.Format("page has no title : {0}", demo.GetType()));
+            var ordered = demos.OrderByDescending(x => x.IsNew).ThenBy(x => x.Title).ToList();
 
-            var item = new DemoItem(demo);
-            listBoxDemos.Items.Add(item);
+            foreach (var page in ordered)
+            {
+                var item = new DemoItem(page);
+                listBoxDemos.Items.Add(item);
+            }
         }
 
         #endregion

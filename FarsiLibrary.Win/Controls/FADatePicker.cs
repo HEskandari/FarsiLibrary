@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing.Design;
+using System.Windows.Forms;
 using FarsiLibrary.Localization;
 using FarsiLibrary.Utils;
 using FarsiLibrary.Win.BaseClasses;
@@ -61,7 +62,6 @@ namespace FarsiLibrary.Win.Controls
             base.TextBox.TextChanged += (sender, e) => OnTextChanged(EventArgs.Empty);
             PopupShowing += OnInternalPopupShowing;
             Text = FALocalizeManager.Instance.GetLocalizerByCulture(mv.MonthViewControl.DefaultCulture).GetLocalizedString(StringID.Validation_NullText);
-
             FormatInfo = FormatInfoTypes.ShortDate;
         }
 

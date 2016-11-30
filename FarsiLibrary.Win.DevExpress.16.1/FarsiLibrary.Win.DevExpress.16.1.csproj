@@ -1,0 +1,104 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectType>Local</ProjectType>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{D0E90437-9EEA-4A34-BF68-093D1717B76D}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <AssemblyName>FarsiLibrary.Win.DevExpress.16.1</AssemblyName>
+    <RootNamespace>FarsiLibrary.Win.DevExpress</RootNamespace>
+    <OutputPath>..\binaries\</OutputPath>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>..\FarsiLibrary.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="..\FarsiLibrary.Win.DevExpress.15.2\RepositoryItemDateEditExtentions.cs">
+      <Link>RepositoryItemDateEditExtentions.cs</Link>
+    </Compile>
+    <Compile Include="..\FarsiLibrary.Win.DevExpress.15.2\RepositoryItemFADatePicker.cs">
+      <Link>RepositoryItemFADatePicker.cs</Link>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="..\FarsiLibrary.Win.DevExpress.15.2\XtraFACalendar.cs">
+      <Link>XtraFACalendar.cs</Link>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="..\FarsiLibrary.Win.DevExpress.15.2\XtraFADateEdit.cs">
+      <Link>XtraFADateEdit.cs</Link>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="..\FarsiLibrary.Win.DevExpress.15.2\XtraFADateEdit.Vista.cs">
+      <Link>XtraFADateEdit.Vista.cs</Link>
+    </Compile>
+    <Compile Include="..\FarsiLibrary.Win.DevExpress.15.2\XtraFADatePicker.cs">
+      <Link>XtraFADatePicker.cs</Link>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="..\FarsiLibrary.Win.DevExpress.15.2\XtraFAMonthView.cs">
+      <Link>XtraFAMonthView.cs</Link>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="..\Solution Items\CommonAssemblyInfo.cs">
+      <Link>Properties\CommonAssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="XtraFADateEdit.TouchUI.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="DevExpress.Data.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\DevExpress\DevExpress.Data.v16.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Utils.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\DevExpress\DevExpress.Utils.v16.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraEditors.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\DevExpress\DevExpress.XtraEditors.v16.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraGrid.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\DevExpress\DevExpress.XtraGrid.v16.1.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.Design" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Windows.Forms" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FarsiLibrary.Localization\FarsiLibrary.Localization.csproj">
+      <Project>{e5575624-4b92-4e51-b98b-20f31fe5b5b4}</Project>
+      <Name>FarsiLibrary.Localization</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FarsiLibrary.Utils\FarsiLibrary.Utils.csproj">
+      <Project>{ed29e567-c801-49e9-8c33-cfb66042b07b}</Project>
+      <Name>FarsiLibrary.Utils</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FarsiLibrary.Win\FarsiLibrary.Win.csproj">
+      <Project>{83c3aeb8-5322-4db6-9e7e-4bf8a319dce7}</Project>
+      <Name>FarsiLibrary.Win</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

@@ -59,11 +59,12 @@ Target "Test" (fun _ ->
                 OutputFile = OutputDir + "TestResults.xml"})
 )
 
-Target "PackageAll" (fun _ ->
+Target "Package" (fun _ ->
     GeneratePackage "FarsiLibrary.Utils"
     GeneratePackage "FarsiLibrary.WPF"
     GeneratePackage "FarsiLibrary.Win"
-    GeneratePackage "FarsiLibrary.Win.DevExpress"
+    GeneratePackage "FarsiLibrary.Win.DevExpress.15.2"
+    GeneratePackage "FarsiLibrary.Win.DevExpress.16.1"
 )
 
 "EnsureDir"
@@ -72,8 +73,7 @@ Target "PackageAll" (fun _ ->
    ==> "Build"
 
 "Build"
-   ==> "Test"
-   ==> "PackageAll"
+   ==> "Package"
 
-RunTargetOrDefault "Test"
+RunTargetOrDefault "Build"
 

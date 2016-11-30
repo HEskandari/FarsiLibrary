@@ -184,7 +184,7 @@ namespace FarsiLibrary.Utils.Internals
 
         public static bool IsArabicCulture(this CultureInfo culture)
         {
-            return culture.Equals(arCulture) || 
+            return culture.Equals(ArabicCulture) || 
                    culture.Name.Equals("ar", StringComparison.InvariantCultureIgnoreCase);
         }
 

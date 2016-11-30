@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?> 
+<package xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">        
+  <metadata xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">                      
+    <id>Farsi.Library.Win.DevExpress-v15.2</id>
+    <version>@build.number@</version>
+    <title>Farsi Library for DevExpress</title>
+    <authors>Hadi Eskandari</authors>
+    <owners>Hadi Eskandari</owners>
+    <licenseUrl>http://opensource.org/licenses/mit-license.php</licenseUrl>
+    <projectUrl>http://github.com/HEskandari/FarsiLibrary</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Library containing farsi controls, which has correct Right-To-Left drawing that integrates into DevExpress suite of controls. This works with version 15.2 of DevExpress controls.</description>
+    <copyright>Copyright (c) Hadi Eskandari</copyright>
+    <tags>farsi persian language calendar datepicker datepickers controls dates jalali devexpress</tags>
+	<dependencies />
+	</metadata>
+	<files>
+       <file src="FarsiLibrary.Win.DevExpress.15.2.dll" target="lib\net46" />
+       <file src="FarsiLibrary.Win.dll" target="lib\net46" />
+       <file src="FarsiLibrary.Utils.dll" target="lib\net46" />
+       <file src="FarsiLibrary.Localization.dll" target="lib\net46" />
+    </files>
+</package>

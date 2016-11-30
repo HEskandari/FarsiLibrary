@@ -39,10 +39,10 @@
             this.colBirthdate = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemFADatePicker1 = new FarsiLibrary.Win.DevExpress.RepositoryItemFADatePicker();
             this.colHiredate = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemXtraFADateEdit1 = new FarsiLibrary.Win.DevExpress.RepositoryItemXtraFADateEdit();
             this.colAddress = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colCity = new DevExpress.XtraGrid.Columns.GridColumn();
             this.label2 = new System.Windows.Forms.Label();
-            this.repositoryItemXtraFADateEdit1 = new FarsiLibrary.Win.DevExpress.RepositoryItemXtraFADateEdit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.personnelDataSetBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.personnelDataSet)).BeginInit();
@@ -137,6 +137,15 @@
             this.colHiredate.Visible = true;
             this.colHiredate.VisibleIndex = 4;
             // 
+            // repositoryItemXtraFADateEdit1
+            // 
+            this.repositoryItemXtraFADateEdit1.AutoHeight = false;
+            this.repositoryItemXtraFADateEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemXtraFADateEdit1.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemXtraFADateEdit1.Name = "repositoryItemXtraFADateEdit1";
+            // 
             // colAddress
             // 
             this.colAddress.FieldName = "Address";
@@ -160,15 +169,6 @@
             this.label2.Size = new System.Drawing.Size(615, 60);
             this.label2.TabIndex = 2;
             this.label2.Text = "Custom Editor vs. BuiltIn Date Editor";
-            // 
-            // repositoryItemXtraFADateEdit1
-            // 
-            this.repositoryItemXtraFADateEdit1.AutoHeight = false;
-            this.repositoryItemXtraFADateEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.repositoryItemXtraFADateEdit1.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.repositoryItemXtraFADateEdit1.Name = "repositoryItemXtraFADateEdit1";
             // 
             // DevExpressGridViewEditor
             // 
