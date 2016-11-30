@@ -13,5 +13,6 @@ _ReSharper.*
 .fake
 .idea.*
 .idea
-packages
 publish
+**/packages/*
+!**/packages/repositories.config
