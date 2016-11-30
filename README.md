@@ -1,4 +1,4 @@
-<img src="https://ci.appveyor.com/api/projects/status/32r7s2skrgm9ubva?svg=true" alt="Project Badge">
+<img src="https://ci.appveyor.com/api/projects/status/github/HEskandari/FarsiLibrary?svg=true" alt="Project Badge">
 
 This is a library of date functions and user interface controls for major .NET Platforms such as 
 WinForm, WPF, etc. It will facilitate creating fully localized applications providing both RTL and 
