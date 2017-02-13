@@ -261,7 +261,7 @@ namespace FarsiLibrary.Win.BaseClasses
         {
             if(disposing)
             {
-                format.Dispose();
+                format?.Dispose();
                 format = null;
             }
 
