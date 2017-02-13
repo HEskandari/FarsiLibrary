@@ -269,7 +269,7 @@ namespace FarsiLibrary.Win.Controls
                 return string.Empty;
             }
 
-            return SelectedDateTime.Value.ToString("G");
+            return SelectedDateTime?.ToString("G");
         }
 
         ///<summary>
