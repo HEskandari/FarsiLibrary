@@ -524,15 +524,11 @@ namespace FarsiLibrary.Utils
             {
                 try
                 {
-                    DateTime dt = DateTime.Parse(value, CultureHelper.PersianCulture, DateTimeStyles.None);
+                    DateTime dt = DateTime.Parse(value, CultureHelper.FarsiCulture, DateTimeStyles.None);
 
-                    var year = pc.GetYear(dt);
+                    var year = pc.ToFourDigitYear(pc.GetYear(dt));
                     var month = pc.GetMonth(dt);
                     var day = pc.GetDayOfMonth(dt);
-
-                    //Fixed: If year is 2 digit, it is probably 13xx.
-                    if (year < 100)
-                        year = 1300 + year;
 
                     return new PersianDate(year, month, day, dt.Hour, dt.Minute, dt.Second, dt.Millisecond);
                 }
