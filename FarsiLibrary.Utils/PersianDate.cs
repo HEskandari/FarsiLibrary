@@ -524,7 +524,7 @@ namespace FarsiLibrary.Utils
             {
                 try
                 {
-                    DateTime dt = DateTime.Parse(value, CultureHelper.FarsiCulture, DateTimeStyles.None);
+                    DateTime dt = DateTime.Parse(value, CultureHelper.PersianCulture, DateTimeStyles.None);
 
                     var year = pc.ToFourDigitYear(pc.GetYear(dt));
                     var month = pc.GetMonth(dt);
