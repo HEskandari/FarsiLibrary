@@ -1000,7 +1000,7 @@ namespace FarsiLibrary.Utils
         {
             if (format == null) format = "G";
             int smallhour = (Hour > 12) ? Hour - 12 : Hour;
-            string designator = Hour > 12 ? PersianDateTimeFormatInfo.PMDesignator : PersianDateTimeFormatInfo.AMDesignator;
+            string designator = Hour >= 12 ? PersianDateTimeFormatInfo.PMDesignator : PersianDateTimeFormatInfo.AMDesignator;
             
             if (formatProvider != null)
             {
