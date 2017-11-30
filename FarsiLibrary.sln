@@ -40,7 +40,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Design", "Design", "{B37908
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FarsiLibrary.Win.DevExpress.16.1", "FarsiLibrary.Win.DevExpress.16.1\FarsiLibrary.Win.DevExpress.16.1.csproj", "{D0E90437-9EEA-4A34-BF68-093D1717B76D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FarsiLibrary.Win.DevExpress.17.1", "FarsiLibrary.Win.DevExpress.17.1\FarsiLibrary.Win.DevExpress.17.1.csproj", "{637FE543-D2A4-42BD-8414-5E941A9F1A42}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FarsiLibrary.Win.DevExpress.17.2", "FarsiLibrary.Win.DevExpress.17.2\FarsiLibrary.Win.DevExpress.17.2.csproj", "{637FE543-D2A4-42BD-8414-5E941A9F1A42}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

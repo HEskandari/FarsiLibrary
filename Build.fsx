@@ -65,7 +65,7 @@ Target "Package" (fun _ ->
     GeneratePackage "FarsiLibrary.Win"
     GeneratePackage "FarsiLibrary.Win.DevExpress.15.2"
     GeneratePackage "FarsiLibrary.Win.DevExpress.16.1"
-    GeneratePackage "FarsiLibrary.Win.DevExpress.17.1"
+    GeneratePackage "FarsiLibrary.Win.DevExpress.17.2"
 )
 
 "EnsureDir"
