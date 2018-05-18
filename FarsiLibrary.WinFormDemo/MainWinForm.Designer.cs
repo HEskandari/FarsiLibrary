@@ -133,6 +133,7 @@ namespace FarsiLibrary.WinFormDemo
             this.Padding = new System.Windows.Forms.Padding(5);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MainWinForm";
+            this.Load += new System.EventHandler(this.MainWinForm_Load);
             this.splitContainerView.Panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerView)).EndInit();
             this.splitContainerView.ResumeLayout(false);

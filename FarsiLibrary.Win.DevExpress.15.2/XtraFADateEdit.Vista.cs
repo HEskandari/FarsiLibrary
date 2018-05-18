@@ -475,7 +475,6 @@ namespace FarsiLibrary.Win.DevExpress
 
     public class PopupPersianCalendarControl : PopupCalendarControl, IPersianCalendarControl
     {
-        private static PersianCalendar pc;
         private static PersianCultureInfo ci;
 
         static PopupPersianCalendarControl()

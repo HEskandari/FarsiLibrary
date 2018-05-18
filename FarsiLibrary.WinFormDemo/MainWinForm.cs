@@ -145,5 +145,10 @@ namespace FarsiLibrary.WinFormDemo
 
             ShowPage(item);
         }
+
+        private void MainWinForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

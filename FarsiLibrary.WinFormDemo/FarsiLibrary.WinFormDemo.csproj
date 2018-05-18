@@ -11,7 +11,7 @@
     <RootNamespace>FarsiLibrary.WinFormDemo</RootNamespace>
     <AssemblyName>FarsiLibrary.WinFormDemo</AssemblyName>
     <OutputPath>..\binaries\</OutputPath>
-    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup>
@@ -22,6 +22,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
     <UseVSHostingProcess>false</UseVSHostingProcess>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="..\Solution Items\CommonAssemblyInfo.cs">
@@ -58,6 +59,12 @@
     </Compile>
     <Compile Include="Pages\DevExpressGridViewEditor.Designer.cs">
       <DependentUpon>DevExpressGridViewEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ScheduleDemo.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Pages\ScheduleDemo.Designer.cs">
+      <DependentUpon>ScheduleDemo.cs</DependentUpon>
     </Compile>
     <Compile Include="Pages\ThemeAndFocusStyle.cs">
       <SubType>UserControl</SubType>
@@ -226,6 +233,9 @@
     <EmbeddedResource Include="Pages\DevExpressGridViewEditor.resx">
       <DependentUpon>DevExpressGridViewEditor.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Pages\ScheduleDemo.resx">
+      <DependentUpon>ScheduleDemo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Pages\ThemeAndFocusStyle.resx">
       <DependentUpon>ThemeAndFocusStyle.cs</DependentUpon>
     </EmbeddedResource>
@@ -363,9 +373,9 @@
       <Project>{ED29E567-C801-49E9-8C33-CFB66042B07B}</Project>
       <Name>FarsiLibrary.Utils</Name>
     </ProjectReference>
-    <ProjectReference Include="..\FarsiLibrary.Win.DevExpress.16.1\FarsiLibrary.Win.DevExpress.16.1.csproj">
-      <Project>{d0e90437-9eea-4a34-bf68-093d1717b76d}</Project>
-      <Name>FarsiLibrary.Win.DevExpress.16.1</Name>
+    <ProjectReference Include="..\FarsiLibrary.Win.DevExpress.18.1\FarsiLibrary.Win.DevExpress.18.1.csproj">
+      <Project>{65eaad85-3c3d-4bd3-aa15-1d869822000b}</Project>
+      <Name>FarsiLibrary.Win.DevExpress.18.1</Name>
     </ProjectReference>
     <ProjectReference Include="..\FarsiLibrary.Win\FarsiLibrary.Win.csproj">
       <Project>{83C3AEB8-5322-4DB6-9E7E-4BF8A319DCE7}</Project>
@@ -376,13 +386,16 @@
     <None Include="Resources\new.png" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="DevExpress.Data.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.Utils.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.XtraEditors.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.XtraGrid.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\lib\DevExpress\DevExpress.XtraGrid.v16.1.dll</HintPath>
-    </Reference>
+    <Reference Include="DevExpress.Data.v18.1, Version=18.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Printing.v18.1.Core, Version=18.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Utils.v18.1, Version=18.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraBars.v18.1, Version=18.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraEditors.v18.1, Version=18.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraGrid.v18.1, Version=18.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraLayout.v18.1, Version=18.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraPrinting.v18.1, Version=18.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraScheduler.v18.1, Version=18.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraScheduler.v18.1.Core, Version=18.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
