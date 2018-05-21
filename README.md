@@ -9,7 +9,6 @@ DatePicker controls provided on WPF platforms.
 
 This also comes with integration with DevExpress' suite of controls as well as adding Persian Calendar support into those controls. 
 
-You can always read about the latest developments and changes in my [blog][2] and open any issues here. To learn how to use this library, download the source code and have a look at the demo projects.
 
 This project is released under MIT license. Make sure you read the licensing agreement before
 using it.
