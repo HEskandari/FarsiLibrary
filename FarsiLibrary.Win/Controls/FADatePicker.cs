@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing.Design;
@@ -30,7 +30,7 @@ namespace FarsiLibrary.Win.Controls
         private string dateseparator = ";";
         internal FAMonthViewContainer mv;
 
-	    #endregion
+        #endregion
 
         #region Events
 
@@ -68,7 +68,7 @@ namespace FarsiLibrary.Win.Controls
         #endregion
 
         #region Props
-        
+
         /// <summary>
         /// Determines if the control has not made any selection yet.
         /// </summary>
@@ -114,7 +114,7 @@ namespace FarsiLibrary.Win.Controls
             get { return mv.MonthViewControl.ShowTodayButton; }
             set { mv.MonthViewControl.ShowTodayButton = value; }
         }
-        
+
         /// <summary>
         /// Gets or Sets to show a border around the MonthView control.
         /// </summary>
@@ -153,7 +153,7 @@ namespace FarsiLibrary.Win.Controls
                     return;
 
                 //Validating
-                var validateArgs = new ValueValidatingEventArgs(Text) {HasError = HasErrors};
+                var validateArgs = new ValueValidatingEventArgs(Text) { HasError = HasErrors };
                 OnValueValidating(validateArgs);
                 if (validateArgs.HasError)
                     return;
@@ -204,15 +204,15 @@ namespace FarsiLibrary.Win.Controls
         /// </summary>
 		[DefaultValue(false)]
         [Description("Gets or Sets the control in MultiSelect mode.")]
-		public bool IsMultiSelect
-		{
-			get { return mv.MonthViewControl.IsMultiSelect; }
-			set
-			{
-			    mv.MonthViewControl.IsMultiSelect = value;
+        public bool IsMultiSelect
+        {
+            get { return mv.MonthViewControl.IsMultiSelect; }
+            set
+            {
+                mv.MonthViewControl.IsMultiSelect = value;
                 UpdateTextValue();
-			}
-		}
+            }
+        }
 
         /// <summary>
         /// Gets or Sets the character that separates date values when control 
@@ -286,13 +286,13 @@ namespace FarsiLibrary.Win.Controls
         {
             var oldValue = selectedDateTime;
             var newValue = dt;
-            
+
             var changeArgs = new SelectedDateTimeChangingEventArgs(newValue, oldValue);
             OnSelectedDateTimeChanging(changeArgs);
-            
+
             if (changeArgs.Cancel)
             {
-                if(string.IsNullOrEmpty(changeArgs.Message))
+                if (string.IsNullOrEmpty(changeArgs.Message))
                 {
                     Error.SetError(this, FALocalizeManager.Instance.GetLocalizer().GetLocalizedString(StringID.Validation_Cancel));
                 }
@@ -303,8 +303,8 @@ namespace FarsiLibrary.Win.Controls
 
                 return;
             }
-            
-            if(!string.IsNullOrEmpty(changeArgs.Message))
+
+            if (!string.IsNullOrEmpty(changeArgs.Message))
             {
                 Error.SetError(this, changeArgs.Message);
             }
@@ -330,7 +330,7 @@ namespace FarsiLibrary.Win.Controls
             }
             else
             {
-                if(!IsMultiSelect)
+                if (!IsMultiSelect)
                 {
                     Text = ConvertDateValue(SelectedDateTime);
                 }
@@ -340,7 +340,7 @@ namespace FarsiLibrary.Win.Controls
                     bool isFirst = true;
                     foreach (var date in SelectedDateRange)
                     {
-                        if(!isFirst)
+                        if (!isFirst)
                         {
                             textValue += DateSeparator;
                         }
@@ -358,13 +358,13 @@ namespace FarsiLibrary.Win.Controls
         {
             string result;
 
-            if(!date.HasValue)
+            if (!date.HasValue)
             {
                 result = FALocalizeManager.Instance.GetLocalizer().GetLocalizedString(StringID.Validation_NullText);
             }
             else if (mv.MonthViewControl.DefaultCulture.Equals(mv.MonthViewControl.PersianCulture))
             {
-                result = ((PersianDate) date).ToString(GetFormatByFormatInfo(FormatInfo));
+                result = ((PersianDate)date).ToString(GetFormatByFormatInfo(FormatInfo));
             }
             else
             {
@@ -396,7 +396,7 @@ namespace FarsiLibrary.Win.Controls
                 }
                 else
                 {
-                    if(!IsMultiSelect)
+                    if (!IsMultiSelect)
                     {
                         var pd = Parse(txt);
                         e.HasError = false;
@@ -437,7 +437,7 @@ namespace FarsiLibrary.Win.Controls
                 return DateTime.Parse(value);
             }
         }
-        
+
         #endregion
 
         #region ShouldSerialize and Reset
@@ -460,5 +460,162 @@ namespace FarsiLibrary.Win.Controls
         }
 
         #endregion
+
+        #region Overrides
+
+        protected override void OnMouseWheel(MouseEventArgs e)
+        {
+            if (mv.Visible == false && (this.FormatInfo == FormatInfoTypes.DateShortTime || this.FormatInfo == FormatInfoTypes.ShortDate))
+            {
+                //if DropDown is not visible , mouse scroll will change selected part of date
+                AddOrDecreaseDate(e.Delta / 120);
+            }
+            base.OnMouseWheel(e);
+        }
+
+        protected override void OnMouseDown(MouseEventArgs e)
+        {
+            try
+            {
+                if (this.IsReadonly)
+                {
+                    return;
+                }
+
+                // Select part of date based on the mouse position
+                if (((this.SelectionStart < 5) && (this.SelectionLength == 0)))
+                {
+                    this.SelectionStart = 0;
+                    this.SelectionLength = 4;
+                }
+                else if (((this.SelectionStart < 8) && (this.SelectionLength == 0)))
+                {
+                    this.SelectionStart = 5;
+                    this.SelectionLength = 2;
+                }
+                else if (((this.SelectionStart < 11) && (this.SelectionLength == 0)))
+                {
+                    this.SelectionStart = 8;
+                    this.SelectionLength = 2;
+                }
+                else if (((this.SelectionStart < 14) && (this.SelectionLength == 0)))
+                {
+                    this.SelectionStart = 11;
+                    this.SelectionLength = 2;
+                }
+                else if (((this.SelectionStart < 17) && (this.SelectionLength == 0)))
+                {
+                    this.SelectionStart = 14;
+                    this.SelectionLength = 2;
+                }
+                else if (((this.SelectionStart < 20) && (this.SelectionLength == 0)))
+                {
+                    this.SelectionStart = 17;
+                    this.SelectionLength = 3;
+                }
+
+            }
+            catch { }
+            base.OnMouseDown(e);
+
+        }
+
+        public void AddOrDecreaseDate(int intValue)
+        {
+            
+            try
+            {
+                FarsiLibrary.Utils.PersianDate fdt = new FarsiLibrary.Utils.PersianDate();
+                fdt.Year = Convert.ToInt32(this.Text.Substring(0, 4));
+                fdt.Month = Convert.ToInt32(this.Text.Substring(5, 2));
+                fdt.Day = Convert.ToInt32(this.Text.Substring(8, 2));
+                if ((this.SelectionStart < 5))
+                {
+                    // Year
+                    if (((fdt.Month == 11)&& ((intValue > 0) && (fdt.Day > 29))))
+                    {
+                        fdt.Day = 29;
+                        this.Text = fdt.ToString("d");
+                    }
+
+                    string str = Convert.ToString((fdt.Year + intValue));
+                    this.Text = this.Text.Remove(0, 4).Insert(0, str.Substring((str.Length - 4)));
+                    this.SelectionStart = 0;
+                    this.SelectionLength = 4;
+                }
+                else if ((this.SelectionStart < 8))
+                {
+                    // Month
+                    int intMonth = (fdt.Month + intValue);
+                    Math.DivRem(intMonth, 12, out intMonth);
+                    if ((intMonth == 0))
+                    {
+                        intMonth = 12;
+                    }
+                    else if ((intMonth < 0))
+                    {
+                        intMonth = Math.Abs(intMonth);
+                    }
+
+                    if (((intMonth == 12)
+                                && (fdt.Day > 29)))
+                    {
+                        fdt.Day = 29;
+                    }
+                    else if (((intMonth > 6)
+                                && (fdt.Day == 31)))
+                    {
+                        fdt.Day = 30;
+                    }
+
+                    fdt.Month = intMonth;
+                    this.Text = this.Text.Remove(0, 10).Insert(0, fdt.ToString("d"));
+                    this.SelectionStart = 5;
+                    this.SelectionLength = 2;
+                }
+                else if ((this.SelectionStart < 11))
+                {
+                    // Day
+                    this.Text = this.Text.Remove(0, 10).Insert(0, FarsiLibrary.Utils.PersianDateConverter.ToPersianDate(fdt.ToDateTime().AddDays(intValue)).ToString("d"));
+                    this.SelectionStart = 8;
+                    this.SelectionLength = 2;
+                }
+                else if ((this.SelectionStart < 14))
+                {
+                    // Hour
+                    int intHour = Convert.ToInt32(this.Text.Substring(11, 2));
+                    intHour = (intHour + intValue);
+                    intHour = (intHour > 12) ? 1 : (intHour < 1) ? 12 : intHour;
+
+                    this.Text = this.Text.Remove(11, 2).Insert(11, string.Format("{0:00}", intHour));
+                    this.SelectionStart = 11;
+                    this.SelectionLength = 2;
+                }
+                else if ((this.SelectionStart < 17))
+                {
+                    int intMinute = Convert.ToInt32(this.Text.Substring(14, 2));
+                    intMinute = (intMinute - (intMinute % 5));
+                    intMinute = (intMinute + (intValue * 5));
+                    intMinute = (intMinute >= 60) ? 0 : (intMinute < 0) ? 55 : intMinute;
+
+                    this.Text = this.Text.Remove(14, 2).Insert(14, string.Format("{0:00}", intMinute));
+                    this.SelectionStart = 14;
+                    this.SelectionLength = 2;
+                }
+                else if ((this.SelectionStart <= 20))
+                {
+                    this.Text = this.Text.Remove(17, 3).Insert(17, (this.Text.Contains("ب.ظ") ? "ق.ظ" : "ب.ظ"));
+                    this.SelectionStart = 17;
+                    this.SelectionLength = 3;
+                }
+
+            }
+            catch { }
+
+
+        }
+
+        #endregion
+
     }
 }
