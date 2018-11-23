@@ -477,8 +477,9 @@ namespace FarsiLibrary.Win.Controls
         {
             try
             {
-                if (this.IsReadonly)
+                if (this.IsReadonly || this.FormatInfo == FormatInfoTypes.FullDateTime || this.SelectedDateTime == null )
                 {
+                    base.OnMouseDown(e);
                     return;
                 }
 
@@ -613,6 +614,74 @@ namespace FarsiLibrary.Win.Controls
             catch { }
 
 
+        }
+
+        protected override void OnLeave(EventArgs e)
+        {
+            try
+            {
+                //Auto Correct Date on Leave in case user type the date in TextBox
+                //Example : 97/1/1 -> 1397/01/01 
+                if (this.IsReadonly || this.FormatInfo == FormatInfoTypes.FullDateTime || this.SelectedDateTime == null)
+                {
+                    base.OnLeave(e);
+                    return;
+                }
+
+                if (((this.Text.Length != 10) && (this.Text != "")))
+                {
+                    string[] strInputDate;
+                    strInputDate = this.Text.Split(new char[] { '/' });
+                    if ((strInputDate[0].Length == 2))
+                    {
+                        strInputDate[0] = (FarsiLibrary.Utils.PersianDate.Now.Year.ToString().Substring(0, 2) + strInputDate[0]);
+                    }
+
+                    if ((strInputDate[0].Length != 4))
+                    {
+                        strInputDate[0] = FarsiLibrary.Utils.PersianDate.Now.Year.ToString();
+                    }
+
+                    if ((strInputDate[1].Length == 1))
+                    {
+                        strInputDate[1] = ("0" + strInputDate[1]);
+                    }
+
+                    if ((strInputDate[1].Length > 2))
+                    {
+                        strInputDate[1] = "01";
+                    }
+
+                    if (((Convert.ToInt32(strInputDate[1]) > 12) || (Convert.ToInt32(strInputDate[1]) < 1)))
+                    {
+                        strInputDate[1] = "12";
+                    }
+
+                    if ((strInputDate[2].Length == 1))
+                    {
+                        strInputDate[2] = ("0" + strInputDate[2]);
+                    }
+
+                    if ((strInputDate[2].Length > 2))
+                    {
+                        strInputDate[2] = "01";
+                    }
+
+                    if (((Convert.ToInt32(strInputDate[2]) > 31) || (Convert.ToInt32(strInputDate[2]) < 1)))
+                    {
+                        strInputDate[2] = "01";
+                    }
+
+                    this.Text = (strInputDate[0] + ("/" + (strInputDate[1] + ("/" + strInputDate[2]))));
+                }
+
+            }
+            catch
+            {
+                if (this.Text != "")
+                    this.Text = FarsiLibrary.Utils.PersianDate.Now.ToString("d");
+            }
+            base.OnLeave(e);
         }
 
         #endregion
