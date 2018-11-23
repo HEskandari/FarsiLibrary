@@ -428,6 +428,5 @@ namespace FarsiLibrary.Win.Controls
         }
 
         #endregion
-
     }
 }
