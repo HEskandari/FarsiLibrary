@@ -11,7 +11,7 @@
     <RootNamespace>FarsiLibrary.UnitTest</RootNamespace>
     <AssemblyName>FarsiLibrary.UnitTest</AssemblyName>
     <OutputPath>..\binaries\</OutputPath>
-    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <TargetFrameworkProfile />
   </PropertyGroup>
   <ItemGroup>

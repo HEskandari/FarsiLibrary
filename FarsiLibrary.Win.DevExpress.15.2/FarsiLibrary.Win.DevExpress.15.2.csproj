@@ -12,7 +12,7 @@
     <AssemblyName>FarsiLibrary.Win.DevExpress.15.2</AssemblyName>
     <RootNamespace>FarsiLibrary.Win.DevExpress</RootNamespace>
     <OutputPath>..\binaries\</OutputPath>
-    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup>
