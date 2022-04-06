@@ -12,7 +12,7 @@
     <RootNamespace>FarsiLibrary.Utils</RootNamespace>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <OutputPath>..\binaries\</OutputPath>
-    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)' == 'Debug'">

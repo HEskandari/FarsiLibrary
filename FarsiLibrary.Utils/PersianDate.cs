@@ -13,9 +13,9 @@ namespace FarsiLibrary.Utils
     /// PersianDate class to work with dates in Jalali calendar transparently.
  	/// <example>An example on how to convert current System.DateTime to PersianDate.
     /// <code>
-    ///		class MyClass 
+    ///		class MyClass
     ///     {
-    ///		   public static void Main() 
+    ///		   public static void Main()
     ///        {
     ///		      Console.WriteLine("Current Persian Date Is : " + PersianDate.Now.ToString());
     ///		   }
@@ -28,12 +28,12 @@ namespace FarsiLibrary.Utils
     /// </summary>
     [TypeConverter("FarsiLibrary.Win.Design.PersianDateTypeConverter")]
     [Serializable]
-    public sealed class PersianDate : 
+    public sealed class PersianDate :
         IFormattable,
-        ICloneable, 
-        IComparable, 
+        ICloneable,
+        IComparable,
         IComparable<PersianDate>,
-        IComparer, 
+        IComparer,
         IComparer<PersianDate>,
         IEquatable<PersianDate>
     {
@@ -59,7 +59,7 @@ namespace FarsiLibrary.Utils
         #endregion
 
         #region Static Ctor
-        
+
         /// <summary>
         /// Static constructor initializes Now property of PersianDate and Min/Max values.
         /// </summary>
@@ -100,10 +100,10 @@ namespace FarsiLibrary.Utils
         public int Year
         {
             get { return year; }
-            set 
+            set
             {
                 CheckYear(value);
-                year = value; 
+                year = value;
             }
         }
 
@@ -115,10 +115,10 @@ namespace FarsiLibrary.Utils
         public int Month
         {
             get { return month; }
-            set 
+            set
             {
                 CheckMonth(value);
-                month = value; 
+                month = value;
             }
         }
 
@@ -130,10 +130,10 @@ namespace FarsiLibrary.Utils
         public int Day
         {
             get { return day; }
-            set 
+            set
             {
                 CheckDay(Year, Month, value);
-                day = value; 
+                day = value;
             }
         }
 
@@ -145,10 +145,10 @@ namespace FarsiLibrary.Utils
         public int Hour
         {
             get { return hour; }
-            set 
+            set
             {
                 CheckHour(value);
-                hour = value; 
+                hour = value;
             }
         }
 
@@ -160,10 +160,10 @@ namespace FarsiLibrary.Utils
         public int Minute
         {
             get { return minute; }
-            set 
+            set
             {
                 CheckMinute(value);
-                minute = value; 
+                minute = value;
             }
         }
 
@@ -175,10 +175,10 @@ namespace FarsiLibrary.Utils
         public int Second
         {
             get { return second; }
-            set 
+            set
             {
                 CheckSecond(value);
-                second = value; 
+                second = value;
             }
         }
 
@@ -190,10 +190,10 @@ namespace FarsiLibrary.Utils
         public int Millisecond
         {
             get { return millisecond; }
-            set 
+            set
             {
                 CheckMillisecond(value);
-                millisecond = value; 
+                millisecond = value;
             }
         }
 
@@ -328,7 +328,7 @@ namespace FarsiLibrary.Utils
         /// <param name="minute"></param>
         /// <param name="second"></param>
         public PersianDate(int year, int month, int day, int hour, int minute, int second) : this(year, month, day, hour, minute, second, 0)
-        { 
+        {
         }
 
         /// <summary>
@@ -368,7 +368,7 @@ namespace FarsiLibrary.Utils
         /// <param name="year"></param>
         /// <param name="month"></param>
         /// <param name="day"></param>
-        public PersianDate(int year, int month, int day) 
+        public PersianDate(int year, int month, int day)
         {
             CheckYear(year);
             CheckMonth(month);
@@ -454,7 +454,7 @@ namespace FarsiLibrary.Utils
         #endregion
 
         #region Methods
-        
+
         /// <summary>
         /// Assigns an instance of PersianDate's values to this instance.
         /// </summary>
@@ -492,7 +492,7 @@ namespace FarsiLibrary.Utils
         #region Parse Methods
 
         /// <summary>
-        /// Tries to parse a string value into a PersianDate instance. 
+        /// Tries to parse a string value into a PersianDate instance.
         /// Value can only be in 'yyyy/mm/dd' format.
         /// </summary>
         /// <param name="value"></param>
@@ -536,7 +536,7 @@ namespace FarsiLibrary.Utils
 
                     return new PersianDate(year, month, day, dt.Hour, dt.Minute, dt.Second, dt.Millisecond);
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     throw new InvalidPersianDateFormatException("Can not parse the value. Format is incorrect.");
                 }
@@ -557,7 +557,7 @@ namespace FarsiLibrary.Utils
         /// <code>
         ///		class MyClass {
         ///		   public static void Main()
-        ///		   {	
+        ///		   {
         ///				Console.WriteLine(PersianDate.Now.ToString());
         ///		   }
         ///		}
@@ -583,13 +583,13 @@ namespace FarsiLibrary.Utils
         {
             if((date1 as object) == null && (date2 as object) == null)
                 return true;
-            
+
             if((date1 as object) == null)
                 return false;
-            
+
             if((date2 as object) == null)
                 return false;
-                
+
             return date1.Year == date2.Year &&
                    date1.Month == date2.Month &&
                    date1.Day == date2.Day &&
@@ -645,7 +645,7 @@ namespace FarsiLibrary.Utils
             if (date1.Year > date2.Year)
                 return true;
 
-            if (date1.Year == date2.Year && 
+            if (date1.Year == date2.Year &&
                 date1.Month > date2.Month)
                 return true;
 
@@ -680,7 +680,7 @@ namespace FarsiLibrary.Utils
                 date1.Day == date2.Day &&
                 date1.Hour == date2.Hour &&
                 date1.Minute == date2.Minute &&
-                date1.Second == date2.Second && 
+                date1.Second == date2.Second &&
                 date1.Millisecond > date2.Millisecond)
                 return true;
 
@@ -789,7 +789,7 @@ namespace FarsiLibrary.Utils
         {
             if (obj is PersianDate)
                 return this == (PersianDate)obj;
-            
+
             return false;
         }
 
@@ -805,7 +805,7 @@ namespace FarsiLibrary.Utils
         #endregion
 
         #region Implicit Casting
-        
+
         public static implicit operator DateTime(PersianDate pd)
         {
             return PersianDateConverter.ToGregorianDateTime(pd);
@@ -815,7 +815,7 @@ namespace FarsiLibrary.Utils
         {
             if (dt > pc.MaxSupportedDateTime || dt < pc.MinSupportedDateTime)
                 return null;
-            
+
             return PersianDateConverter.ToPersianDate(dt);
         }
 
@@ -837,13 +837,13 @@ namespace FarsiLibrary.Utils
         #endregion
 
         #region ICompareable Interface
-        
+
         ///<summary>
         ///Compares the current instance with another object of the same type.
         ///</summary>
         ///
         ///<returns>
-        ///A 32-bit signed integer that indicates the relative order of the objects being compared. The return value has these meanings: Value Meaning Less than zero This instance is less than obj. Zero This instance is equal to obj. Greater than zero This instance is greater than obj. 
+        ///A 32-bit signed integer that indicates the relative order of the objects being compared. The return value has these meanings: Value Meaning Less than zero This instance is less than obj. Zero This instance is equal to obj. Greater than zero This instance is greater than obj.
         ///</returns>
         ///
         ///<param name="obj">An object to compare with this instance. </param>
@@ -852,12 +852,12 @@ namespace FarsiLibrary.Utils
         {
             if (!(obj is PersianDate))
                 throw new InvalidOperationException("Comparing value is not of type PersianDate.");
-            
+
             var pd = (PersianDate)obj;
 
             if (pd < this)
                 return 1;
-            
+
             if(pd > this)
                 return -1;
 
@@ -867,13 +867,13 @@ namespace FarsiLibrary.Utils
         #endregion
 
         #region IComparer
-        
+
         ///<summary>
         ///Compares two objects and returns a value indicating whether one is less than, equal to, or greater than the other.
         ///</summary>
         ///
         ///<returns>
-        ///Value Condition Less than zero x is less than y. Zero x equals y. Greater than zero x is greater than y. 
+        ///Value Condition Less than zero x is less than y. Zero x equals y. Greater than zero x is greater than y.
         ///</returns>
         ///
         ///<param name="y">The second object to compare. </param>
@@ -890,13 +890,13 @@ namespace FarsiLibrary.Utils
 
             if (!(y is PersianDate))
                 throw new InvalidOperationException("y value is not of type PersianDate.");
-            
+
             var pd1 = (PersianDate) x;
             var pd2 = (PersianDate) y;
 
             if (pd1 > pd2)
                 return 1;
-            
+
             if (pd1 < pd2)
                 return -1;
 
@@ -906,13 +906,13 @@ namespace FarsiLibrary.Utils
         #endregion
 
         #region IComparer<T> Implementation
-        
+
         ///<summary>
         ///Compares the current object with another object of the same type.
         ///</summary>
         ///
         ///<returns>
-        ///A 32-bit signed integer that indicates the relative order of the objects being compared. The return value has the following meanings: Value Meaning Less than zero This object is less than the other parameter.Zero This object is equal to other. Greater than zero This object is greater than other. 
+        ///A 32-bit signed integer that indicates the relative order of the objects being compared. The return value has the following meanings: Value Meaning Less than zero This object is less than the other parameter.Zero This object is equal to other. Greater than zero This object is greater than other.
         ///</returns>
         ///
         ///<param name="other">An object to compare with this object.</param>
@@ -920,7 +920,7 @@ namespace FarsiLibrary.Utils
         {
             if (other < this)
                 return 1;
-            
+
             if (other > this)
                 return -1;
 
@@ -941,7 +941,7 @@ namespace FarsiLibrary.Utils
         {
             if (x > y)
                 return 1;
-            
+
             if (x < y)
                 return -1;
 
@@ -951,7 +951,7 @@ namespace FarsiLibrary.Utils
         #endregion
 
         #region IEquatable<T>
-        
+
         ///<summary>
         ///Indicates whether the current object is equal to another object of the same type.
         ///</summary>
@@ -967,9 +967,9 @@ namespace FarsiLibrary.Utils
         }
 
         #endregion
-        
+
         #region IFormattable
-        
+
         /// <summary>
         /// Returns string representation of this instance in default format.
         /// </summary>
@@ -989,7 +989,7 @@ namespace FarsiLibrary.Utils
         {
             return ToString(null, formatProvider);
         }
-        
+
         /// <summary>
         /// Returns string representation of this instance in desired format, or using provided <see cref="IFormatProvider"/> instance.
         /// </summary>
@@ -1001,7 +1001,7 @@ namespace FarsiLibrary.Utils
             if (format == null) format = "G";
             int smallhour = (Hour > 12) ? Hour - 12 : Hour;
             string designator = Hour >= 12 ? PersianDateTimeFormatInfo.PMDesignator : PersianDateTimeFormatInfo.AMDesignator;
-            
+
             if (formatProvider != null)
             {
                 var formatter = formatProvider.GetFormat(typeof(ICustomFormatter)) as ICustomFormatter;
@@ -1016,7 +1016,7 @@ namespace FarsiLibrary.Utils
                 case "yyyy mm dd dddd":
                     //'yyyy mm dd dddd' e.g. 'دوشنبه 20 شهریور 1384'
                     return string.Format("{0} {1} {2} {3}", LocalizedWeekDayName, Util.toDouble(Day), LocalizedMonthName, Year);
-                
+
 
                 case "f":
                     //'hh:mm yyyy mmmm dd dddd' e.g. 'دوشنبه 20 شهریور 1384 21:30'
@@ -1027,15 +1027,15 @@ namespace FarsiLibrary.Utils
                 case "dddd, MMMM dd, yyyy hh:mm:ss tt":
                     //'tt hh:mm:ss yyyy mmmm dd dddd' e.g. 'دوشنبه 20 شهریور 1384 02:30:22 ب.ض'
                     return string.Format("{0} {1} {2} {3} {4}:{5}:{6} {7}", LocalizedWeekDayName, Util.toDouble(Day), LocalizedMonthName, Year, Util.toDouble(smallhour), Util.toDouble(Minute), Util.toDouble(Second), designator);
-                    
+
                 case "g":
                     //'yyyy/mm/dd hh:mm tt'
                     return string.Format("{0}/{1}/{2} {3}:{4} {5}", Year, Util.toDouble(Month), Util.toDouble(Day), Util.toDouble(smallhour), Util.toDouble(Minute), designator);
-                    
+
                 case "G":
                     //'yyyy/mm/dd hh:mm:ss tt'
                     return string.Format("{0}/{1}/{2} {3}:{4}:{5} {6}", Year, Util.toDouble(Month), Util.toDouble(Day), Util.toDouble(smallhour), Util.toDouble(Minute), Util.toDouble(Second), designator);
-                
+
                 case "MMMM dd":
                 case "dd MMMM":
                     //MMMM dd e.g. 'تیر 10'
@@ -1046,16 +1046,16 @@ namespace FarsiLibrary.Utils
                 case "m":
                     //'yyyy mmmm'
                     return string.Format("{0} {1}", Year, LocalizedMonthName);
-                    
+
                 case "s":
                     //'yyyy-mm-ddThh:mm:ss'
                     return string.Format("{0}-{1}-{2}T{3}:{4}:{5}", Year, Util.toDouble(Month), Util.toDouble(Day), Util.toDouble(Hour), Util.toDouble(Minute), Util.toDouble(Second));
-                
+
                 case "hh:mm tt":
                 case "t":
                     //'hh:mm tt' e.g. 12:22 ب.ض
                     return string.Format("{0}:{1} {2}", Util.toDouble(smallhour), Util.toDouble(Minute), designator);
-                    
+
                 case "T":
                 case "hh:mm:ss tt":
                     //'hh:mm:ss tt' e.g. 12:22:30 ب.ض
@@ -1070,7 +1070,7 @@ namespace FarsiLibrary.Utils
                     return string.Format("{0}/{1}/{2}", Year, Util.toDouble(Month), Util.toDouble(Day));
             }
         }
-        
+
         #endregion
     }
 }

@@ -11,7 +11,7 @@
     <RootNamespace>FarsiLibrary.WPF.VisualStudio.Design</RootNamespace>
     <AssemblyName>FarsiLibrary.WPF.VisualStudio.Design</AssemblyName>
     <OutputPath>..\binaries\</OutputPath>
-    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)' == 'Debug'">

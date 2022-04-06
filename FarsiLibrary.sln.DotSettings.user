@@ -3,4 +3,6 @@
   &lt;Assembly Path="C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE\PublicAssemblies\Microsoft.Windows.Design.Interaction.dll" /&gt;&#xD;
   &lt;Assembly Path="D:\Projects\FarsiLibrary\lib\DevExpress\DevExpress.Data.v15.1.dll" /&gt;&#xD;
   &lt;Assembly Path="D:\Projects\FarsiLibrary\binaries\FarsiLibrary.Win.DevExpress.16.1.dll" /&gt;&#xD;
-&lt;/AssemblyExplorer&gt;</s:String></wpf:ResourceDictionary>
+&lt;/AssemblyExplorer&gt;</s:String>
+	<s:String x:Key="/Default/Environment/Hierarchy/Build/BuildTool/CustomBuildToolPath/@EntryValue">C:\Program Files\JetBrains\JetBrains Rider 2020.3.1\tools\MSBuild\Current\Bin\MSBuild.exe</s:String>
+	<s:Int64 x:Key="/Default/Environment/Hierarchy/Build/BuildTool/MsbuildVersion/@EntryValue">1114112</s:Int64></wpf:ResourceDictionary>
