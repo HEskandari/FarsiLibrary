@@ -465,8 +465,11 @@ namespace FarsiLibrary.Win.Controls
 
         protected override void OnMouseWheel(MouseEventArgs e)
         {
-            if (mv.Visible == false && (this.FormatInfo == FormatInfoTypes.DateShortTime || this.FormatInfo == FormatInfoTypes.ShortDate))
+            if (mv.Visible == false && 
+                (this.FormatInfo == FormatInfoTypes.DateShortTime || this.FormatInfo == FormatInfoTypes.ShortDate) &&
+                mv.MonthViewControl.DefaultCulture.Equals(mv.MonthViewControl.PersianCulture))
             {
+               
                 //if DropDown is not visible , mouse scroll will change selected part of date
                 UpdateDateFromText(e.Delta / 120);
             }
@@ -477,10 +480,12 @@ namespace FarsiLibrary.Win.Controls
         {
             base.OnMouseDown(e);
 
-            if (IsReadonly || FormatInfo == FormatInfoTypes.FullDateTime || SelectedDateTime == null || SelectionLength != 0)
-            {
+            if (IsReadonly)
                 return;
-            }
+            if (FormatInfo == FormatInfoTypes.FullDateTime || SelectedDateTime == null || SelectionLength != 0)
+                return;
+            if (!mv.MonthViewControl.DefaultCulture.Equals(mv.MonthViewControl.PersianCulture))
+                return;
 
             UpdatedSelectedText();
         }
@@ -491,10 +496,12 @@ namespace FarsiLibrary.Win.Controls
             {
                 //Auto Correct Date on Leave in case user type the date in TextBox
                 //Example : 97/1/1 -> 1397/01/01
-                if (IsReadonly || FormatInfo == FormatInfoTypes.FullDateTime || SelectedDateTime == null)
-                {
+                if (IsReadonly)
                     return;
-                }
+                if (FormatInfo == FormatInfoTypes.FullDateTime || SelectedDateTime == null)
+                    return;
+                if (!mv.MonthViewControl.DefaultCulture.Equals(mv.MonthViewControl.PersianCulture))
+                    return;
 
                 if (Text.Length != 10 && Text != "")
                 {
