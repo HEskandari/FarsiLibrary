@@ -29,6 +29,7 @@ namespace FarsiLibrary.Win.Controls
         private DateTime? selectedDateTime;
         private string dateseparator = ";";
         internal FAMonthViewContainer mv;
+        private Helpers.ICalendarScroller scroller;
 
         #endregion
 
@@ -63,6 +64,16 @@ namespace FarsiLibrary.Win.Controls
             PopupShowing += OnInternalPopupShowing;
             Text = FALocalizeManager.Instance.GetLocalizerByCulture(mv.MonthViewControl.DefaultCulture).GetLocalizedString(StringID.Validation_NullText);
             FormatInfo = FormatInfoTypes.ShortDate;
+            
+            if (mv.MonthViewControl.DefaultCulture.Equals(mv.MonthViewControl.PersianCulture))
+                scroller = new Helpers.PersianCalendarScroller(this);
+            else if (mv.MonthViewControl.DefaultCulture.Equals(mv.MonthViewControl.PersianCulture))
+                scroller = new Helpers.ArabicCalendarScroller(this);
+            else
+                scroller = new Helpers.EnglishCalendarScroller(this);
+
+
+
         }
 
         #endregion
@@ -465,14 +476,11 @@ namespace FarsiLibrary.Win.Controls
 
         protected override void OnMouseWheel(MouseEventArgs e)
         {
-            if (mv.Visible == false && 
-                (this.FormatInfo == FormatInfoTypes.DateShortTime || this.FormatInfo == FormatInfoTypes.ShortDate) &&
-                mv.MonthViewControl.DefaultCulture.Equals(mv.MonthViewControl.PersianCulture))
+            if (scroller.CanScroll)
             {
-               
-                //if DropDown is not visible , mouse scroll will change selected part of date
-                UpdateDateFromText(e.Delta / 120);
+                scroller.SetDate(e.Delta);
             }
+          
             base.OnMouseWheel(e);
         }
 
@@ -482,214 +490,12 @@ namespace FarsiLibrary.Win.Controls
 
             if (IsReadonly)
                 return;
-            if (FormatInfo == FormatInfoTypes.FullDateTime || SelectedDateTime == null || SelectionLength != 0)
-                return;
-            if (!mv.MonthViewControl.DefaultCulture.Equals(mv.MonthViewControl.PersianCulture))
+            if (!scroller.CanScroll)
                 return;
 
-            UpdatedSelectedText();
-        }
+            scroller.SetSelection(SelectionStart);
 
-        protected override void OnLeave(EventArgs e)
-        {
-            try
-            {
-                //Auto Correct Date on Leave in case user type the date in TextBox
-                //Example : 97/1/1 -> 1397/01/01
-                if (IsReadonly)
-                    return;
-                if (FormatInfo == FormatInfoTypes.FullDateTime || SelectedDateTime == null)
-                    return;
-                if (!mv.MonthViewControl.DefaultCulture.Equals(mv.MonthViewControl.PersianCulture))
-                    return;
-
-                if (Text.Length != 10 && Text != "")
-                {
-                    UpdateTextFromDate();
-                }
-            }
-            catch
-            {
-                if (Text != string.Empty)
-                {
-                    Text = PersianDate.Now.ToString("d");
-                }
-            }
-            base.OnLeave(e);
-        }
-
-        private void UpdatedSelectedText()
-        {
-            // Select part of date based on the mouse position
-            switch (SelectionStart)
-            {
-                case < 5: //year selected
-                    SelectionStart = 0;
-                    SelectionLength = 4;
-                    break;
-                case < 8: //month selected
-                    SelectionStart = 5;
-                    SelectionLength = 2;
-                    break;
-                case < 11: //day selected
-                    SelectionStart = 8;
-                    SelectionLength = 2;
-                    break;
-                case < 14: //hour selected
-                    SelectionStart = 11;
-                    SelectionLength = 2;
-                    break;
-                case < 17: //min selected
-                    SelectionStart = 14;
-                    SelectionLength = 2;
-                    break;
-                case < 20: //second selected
-                    SelectionStart = 17;
-                    SelectionLength = 3;
-                    break;
-            }
-        }
-
-        private void UpdateDateFromText(int delta)
-        {
-            var newDate = new PersianDate();
-
-            try
-            {
-                newDate.Year = Convert.ToInt32(Text.Substring(0, 4));
-                newDate.Month = Convert.ToInt32(Text.Substring(5, 2));
-                newDate.Day = Convert.ToInt32(Text.Substring(8, 2));
-            }
-            catch
-            {
-                //can't convert text to date parts
-                return;
-            }
-
-            if (SelectionStart < 5)
-            {
-                // Year
-                if (newDate.Month == 11 && delta > 0 && newDate.Day > 29)
-                {
-                    newDate.Day = 29;
-                    Text = newDate.ToString("d");
-                }
-
-                var updatedYear = (newDate.Year + delta).ToString();
-                Text = Text.Remove(0, 4).Insert(0, updatedYear.Substring(updatedYear.Length - 4));
-                SelectionStart = 0;
-                SelectionLength = 4;
-            }
-            else if (SelectionStart < 8)
-            {
-                // Month
-                var newMonth = newDate.Month + delta;
-                Math.DivRem(newMonth, 12, out newMonth);
-                if (newMonth == 0)
-                {
-                    newMonth = 12;
-                }
-                else if (newMonth < 0)
-                {
-                    newMonth = Math.Abs(newMonth);
-                }
-
-                if (newMonth == 12 && newDate.Day > 29)
-                {
-                    newDate.Day = 29;
-                }
-                else if (newMonth > 6 && newDate.Day == 31)
-                {
-                    newDate.Day = 30;
-                }
-
-                newDate.Month = newMonth;
-                Text = Text.Remove(0, 10).Insert(0, newDate.ToString("d"));
-                SelectionStart = 5;
-                SelectionLength = 2;
-            }
-            else if (SelectionStart < 11)
-            {
-                // Day
-                var newDay = PersianDateConverter.ToPersianDate(newDate.ToDateTime().AddDays(delta));
-                Text = Text.Remove(0, 10).Insert(0, newDay.ToString("d"));
-                SelectionStart = 8;
-                SelectionLength = 2;
-            }
-            else if (SelectionStart < 14)
-            {
-                // Hour
-                var newHour = Convert.ToInt32(Text.Substring(11, 2));
-                newHour += delta;
-                newHour = newHour > 12 ? 1 : newHour < 1 ? 12 : newHour;
-
-                Text = Text.Remove(11, 2).Insert(11, string.Format("{0:00}", newHour));
-                SelectionStart = 11;
-                SelectionLength = 2;
-            }
-            else if (SelectionStart < 17)
-            {
-                var newMinute = Convert.ToInt32(Text.Substring(14, 2));
-                newMinute -= newMinute % 5;
-                newMinute += delta * 5;
-                newMinute = newMinute >= 60 ? 0 : newMinute < 0 ? 55 : newMinute;
-
-                Text = Text.Remove(14, 2).Insert(14, string.Format("{0:00}", newMinute));
-                SelectionStart = 14;
-                SelectionLength = 2;
-            }
-            else if (SelectionStart <= 20)
-            {
-                Text = Text.Remove(17, 3).Insert(17, Text.Contains(PersianDateTimeFormatInfo.AMDesignator) ? PersianDateTimeFormatInfo.PMDesignator : PersianDateTimeFormatInfo.AMDesignator);
-                SelectionStart = 17;
-                SelectionLength = 3;
-            }
-        }
-
-        private void UpdateTextFromDate()
-        {
-            var inputDate = Text.Split('/');
-            if (inputDate[0].Length == 2)
-            {
-                inputDate[0] = PersianDate.Now.Year.ToString().Substring(0, 2) + inputDate[0];
-            }
-
-            if (inputDate[0].Length != 4)
-            {
-                inputDate[0] = PersianDate.Now.Year.ToString();
-            }
-
-            if (inputDate[1].Length == 1)
-            {
-                inputDate[1] = "0" + inputDate[1];
-            }
-
-            if (inputDate[1].Length > 2)
-            {
-                inputDate[1] = "01";
-            }
-
-            if (Convert.ToInt32(inputDate[1]) > 12 || Convert.ToInt32(inputDate[1]) < 1)
-            {
-                inputDate[1] = "12";
-            }
-
-            if (inputDate[2].Length == 1)
-            {
-                inputDate[2] = "0" + inputDate[2];
-            }
-
-            if (inputDate[2].Length > 2)
-            {
-                inputDate[2] = "01";
-            }
-
-            if (Convert.ToInt32(inputDate[2]) > 31 || Convert.ToInt32(inputDate[2]) < 1)
-            {
-                inputDate[2] = "01";
-            }
-
-            Text = inputDate[0] + "/" + inputDate[1] + "/" + inputDate[2];
+            
         }
 
         #endregion
