@@ -1,11 +1,5 @@
-﻿using FarsiLibrary.Utils;
-using FarsiLibrary.Utils.Formatter.TimeUnits;
-using FarsiLibrary.Win.Controls;
+﻿using FarsiLibrary.Win.Controls;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FarsiLibrary.Win.Helpers
 {
@@ -13,14 +7,21 @@ namespace FarsiLibrary.Win.Helpers
     {
         FADatePicker picker;
 
-        const int _yearIndex = 6;
-        const int _monthIndex = 0;
-        const int _dayIndex = 3;
+        private readonly int _yearIndex;
+        private readonly int _monthIndex;
+        private readonly int _dayIndex;
+        private readonly int _hourIndex;
+        private readonly int _minuteIndex;
 
         public EnglishCalendarScroller(FADatePicker picker)
         {
             this.picker = picker;
 
+            _yearIndex = picker.mv.MonthViewControl.DefaultCulture.DateTimeFormat.ShortDatePattern.IndexOf("yyyy");
+            _monthIndex = picker.mv.MonthViewControl.DefaultCulture.DateTimeFormat.ShortDatePattern.IndexOf("MM");
+            _dayIndex = picker.mv.MonthViewControl.DefaultCulture.DateTimeFormat.ShortDatePattern.IndexOf("dd");
+            _hourIndex = 11;
+            _minuteIndex = 14;
         }
 
         bool ICalendarScroller.CanScroll
@@ -41,33 +42,33 @@ namespace FarsiLibrary.Win.Helpers
         public void SetSelection(int selectionStart)
         {
             // Select part of date based on the mouse position
-            switch (selectionStart)
+
+            if (selectionStart >= _dayIndex && selectionStart <= _dayIndex + 3)
             {
-                case < 3: //month selected
-                    picker.SelectionStart = 0;
-                    picker.SelectionLength = 2;
-                    break;
-                case < 5: //day selected
-                    picker.SelectionStart = 3;
-                    picker.SelectionLength = 2;
-                    break;
-                case < 11: //year selected
-                    picker.SelectionStart = 6;
-                    picker.SelectionLength = 4;
-                    break;
-                case < 14: //hour selected
-                    picker.SelectionStart = 11;
-                    picker.SelectionLength = 2;
-                    break;
-                case < 17: //min selected
-                    picker.SelectionStart = 14;
-                    picker.SelectionLength = 2;
-                    break;
-                case < 20: //second selected
-                    picker.SelectionStart = 17;
-                    picker.SelectionLength = 3;
-                    break;
+                picker.SelectionStart = _dayIndex;
+                picker.SelectionLength = 2;
             }
+            else if (selectionStart >= _monthIndex && selectionStart <= _monthIndex + 3)
+            {
+                picker.SelectionStart = _monthIndex;
+                picker.SelectionLength = 2;
+            }
+            else if (selectionStart >= _yearIndex && selectionStart <= _yearIndex + 5)
+            {
+                picker.SelectionStart = _yearIndex;
+                picker.SelectionLength = 4;
+            }
+            else if (selectionStart >= _hourIndex && selectionStart <= _hourIndex + 3)
+            {
+                picker.SelectionStart = _hourIndex;
+                picker.SelectionLength = 2;
+            }
+            else if (selectionStart >= _minuteIndex && selectionStart >= _minuteIndex + 3)
+            {
+                picker.SelectionStart = _minuteIndex;
+                picker.SelectionLength = 2;
+            }
+            
         }
 
         public void SetDate(int delta)
@@ -77,9 +78,9 @@ namespace FarsiLibrary.Win.Helpers
             int selectionStart = picker.SelectionStart;
             try
             {
-                newDate = new DateTime(Convert.ToInt32(picker.Text.Substring(6, 4)),
-                    Convert.ToInt32(picker.Text.Substring(0, 2)),
-                    Convert.ToInt32(picker.Text.Substring(3, 2)));
+                newDate = new DateTime(Convert.ToInt32(picker.Text.Substring(_yearIndex, 4)),
+                    Convert.ToInt32(picker.Text.Substring(_monthIndex, 2)),
+                    Convert.ToInt32(picker.Text.Substring(_dayIndex, 2)));
             }
             catch
             {
@@ -87,22 +88,23 @@ namespace FarsiLibrary.Win.Helpers
                 return;
             }
 
-            if (picker.SelectionStart < 3)
-            {
-                // Month
-                picker.Text = picker.Text.Remove(0, 10).Insert(0, newDate.AddMonths(delta).ToString("d"));
-            }
-            else if (picker.SelectionStart < 5)
+           
+            if (selectionStart >= _dayIndex && selectionStart <= _dayIndex + 3)
             {
                 // Day
                 picker.Text = picker.Text.Remove(0, 10).Insert(0, newDate.AddDays(delta).ToString("d"));
             }
-            else if (picker.SelectionStart < 11)
+            else if (selectionStart >= _monthIndex && selectionStart <= _monthIndex + 3)
+            {
+                // Month
+                picker.Text = picker.Text.Remove(0, 10).Insert(0, newDate.AddMonths(delta).ToString("d"));
+            }
+            else if (selectionStart >= _yearIndex && selectionStart <= _yearIndex + 5)
             {
                 // Year
                 picker.Text = picker.Text.Remove(0, 10).Insert(0, newDate.AddYears(delta).ToString("d"));
             }
-            else if (picker.SelectionStart < 14)
+            else if (selectionStart >= _hourIndex && selectionStart <= _hourIndex + 3)
             {
                 // Hour
                 var newHour = Convert.ToInt32(picker.Text.Substring(11, 2));
@@ -116,15 +118,14 @@ namespace FarsiLibrary.Win.Helpers
                 picker.Text = picker.Text.Remove(11, 2).Insert(11, string.Format("{0:00}", newHour));
 
             }
-            else if (picker.SelectionStart < 17)
+            else if (selectionStart >= _minuteIndex && selectionStart >= _minuteIndex + 3)
             {
                 var newMinute = Convert.ToInt32(picker.Text.Substring(14, 2));
                 newMinute -= newMinute % 5;
                 newMinute += delta * 5;
                 newMinute = newMinute >= 60 ? 0 : newMinute < 0 ? 55 : newMinute;
-
+                 
                 picker.Text = picker.Text.Remove(14, 2).Insert(14, string.Format("{0:00}", newMinute));
-
             }
            
             SetSelection(selectionStart);
