@@ -7,21 +7,32 @@ namespace FarsiLibrary.Win.Helpers
     {
         FADatePicker picker;
 
-        private readonly int _yearIndex;
-        private readonly int _monthIndex;
-        private readonly int _dayIndex;
-        private readonly int _hourIndex;
-        private readonly int _minuteIndex;
+        private readonly int yearIndex, monthIndex, dayIndex, hourIndex, minuteIndex;
+        private readonly int yearLength, monthLength, dayLength, hourLength, minuteLength;
+        private readonly string datePattern;
 
         public EnglishCalendarScroller(FADatePicker picker)
         {
             this.picker = picker;
 
-            _yearIndex = picker.mv.MonthViewControl.DefaultCulture.DateTimeFormat.ShortDatePattern.IndexOf("yyyy");
-            _monthIndex = picker.mv.MonthViewControl.DefaultCulture.DateTimeFormat.ShortDatePattern.IndexOf("MM");
-            _dayIndex = picker.mv.MonthViewControl.DefaultCulture.DateTimeFormat.ShortDatePattern.IndexOf("dd");
-            _hourIndex = 11;
-            _minuteIndex = 14;
+            datePattern = picker.mv.MonthViewControl.DefaultCulture.DateTimeFormat.ShortDatePattern;
+
+            yearIndex = datePattern.IndexOf("y");
+            yearLength = datePattern.LastIndexOf("y") - datePattern.IndexOf("y") + 1;
+
+            monthIndex = datePattern.IndexOf("M");
+            monthLength = datePattern.LastIndexOf("M") - datePattern.IndexOf("M") + 1;
+
+
+            dayIndex = datePattern.IndexOf("d");
+            dayLength = datePattern.LastIndexOf("d") - datePattern.IndexOf("d") + 1;
+
+            hourIndex = datePattern.Length + 1;
+            hourLength = 2;
+
+            minuteIndex = hourIndex + 3;
+            minuteLength = 2;
+
         }
 
         bool ICalendarScroller.CanScroll
@@ -43,91 +54,69 @@ namespace FarsiLibrary.Win.Helpers
         {
             // Select part of date based on the mouse position
 
-            if (selectionStart >= _dayIndex && selectionStart <= _dayIndex + 3)
+            if (selectionStart >= dayIndex && selectionStart <= dayIndex + dayLength)
             {
-                picker.SelectionStart = _dayIndex;
-                picker.SelectionLength = 2;
+                picker.SelectionStart = dayIndex;
+                picker.SelectionLength = dayLength;
             }
-            else if (selectionStart >= _monthIndex && selectionStart <= _monthIndex + 3)
+            else if (selectionStart >= monthIndex && selectionStart <= monthIndex + monthLength)
             {
-                picker.SelectionStart = _monthIndex;
-                picker.SelectionLength = 2;
+                picker.SelectionStart = monthIndex;
+                picker.SelectionLength = monthLength;
             }
-            else if (selectionStart >= _yearIndex && selectionStart <= _yearIndex + 5)
+            else if (selectionStart >= yearIndex && selectionStart <= yearIndex + yearLength)
             {
-                picker.SelectionStart = _yearIndex;
-                picker.SelectionLength = 4;
+                picker.SelectionStart = yearIndex;
+                picker.SelectionLength = yearLength;
             }
-            else if (selectionStart >= _hourIndex && selectionStart <= _hourIndex + 3)
+            else if (selectionStart >= hourIndex && selectionStart <= hourIndex + hourLength)
             {
-                picker.SelectionStart = _hourIndex;
-                picker.SelectionLength = 2;
+                picker.SelectionStart = hourIndex;
+                picker.SelectionLength = hourLength;
             }
-            else if (selectionStart >= _minuteIndex && selectionStart >= _minuteIndex + 3)
+            else if (selectionStart >= minuteIndex && selectionStart <= minuteIndex + minuteLength)
             {
-                picker.SelectionStart = _minuteIndex;
-                picker.SelectionLength = 2;
+                picker.SelectionStart = minuteIndex;
+                picker.SelectionLength = minuteLength;
             }
-            
+
         }
 
         public void SetDate(int delta)
         {
             delta = delta / 120;
-            var newDate = new DateTime();
             int selectionStart = picker.SelectionStart;
-            try
-            {
-                newDate = new DateTime(Convert.ToInt32(picker.Text.Substring(_yearIndex, 4)),
-                    Convert.ToInt32(picker.Text.Substring(_monthIndex, 2)),
-                    Convert.ToInt32(picker.Text.Substring(_dayIndex, 2)));
-            }
-            catch
-            {
-                //can't convert text to date parts
-                return;
-            }
 
-           
-            if (selectionStart >= _dayIndex && selectionStart <= _dayIndex + 3)
+            var dateTime = picker.mv.MonthViewControl.SelectedDateTime.Value;
+
+            if (selectionStart >= dayIndex && selectionStart <= dayIndex + dayLength)
             {
                 // Day
-                picker.Text = picker.Text.Remove(0, 10).Insert(0, newDate.AddDays(delta).ToString("d"));
+                dateTime = dateTime.AddDays(delta);
             }
-            else if (selectionStart >= _monthIndex && selectionStart <= _monthIndex + 3)
+            else if (selectionStart >= monthIndex && selectionStart <= monthIndex + monthLength)
             {
                 // Month
-                picker.Text = picker.Text.Remove(0, 10).Insert(0, newDate.AddMonths(delta).ToString("d"));
+                dateTime = dateTime.AddMonths(delta);
             }
-            else if (selectionStart >= _yearIndex && selectionStart <= _yearIndex + 5)
+            else if (selectionStart >= yearIndex && selectionStart <= yearIndex + yearLength)
             {
                 // Year
-                picker.Text = picker.Text.Remove(0, 10).Insert(0, newDate.AddYears(delta).ToString("d"));
+                dateTime = dateTime.AddYears(delta);
             }
-            else if (selectionStart >= _hourIndex && selectionStart <= _hourIndex + 3)
+            else if (selectionStart >= hourIndex && selectionStart <= hourIndex + hourLength)
             {
                 // Hour
-                var newHour = Convert.ToInt32(picker.Text.Substring(11, 2));
-                newHour += delta;
-                if (picker.Text.Length > 16 ) // 12 Hour Oclock
-                    newHour = newHour > 12 ? 1 : newHour < 1 ? 12 : newHour;
-                else
-                    newHour = newHour > 23 ? 0 : newHour < 0 ? 23 : newHour;
-              
-
-                picker.Text = picker.Text.Remove(11, 2).Insert(11, string.Format("{0:00}", newHour));
-
+                dateTime = dateTime.AddHours(delta);
             }
-            else if (selectionStart >= _minuteIndex && selectionStart >= _minuteIndex + 3)
+            else if (selectionStart >= minuteIndex && selectionStart <= minuteIndex + minuteLength)
             {
-                var newMinute = Convert.ToInt32(picker.Text.Substring(14, 2));
-                newMinute -= newMinute % 5;
-                newMinute += delta * 5;
-                newMinute = newMinute >= 60 ? 0 : newMinute < 0 ? 55 : newMinute;
-                 
-                picker.Text = picker.Text.Remove(14, 2).Insert(14, string.Format("{0:00}", newMinute));
+                // Minutes
+                dateTime = dateTime.AddMinutes(delta);
             }
-           
+
+            picker.mv.MonthViewControl.SelectedDateTime = dateTime;
+
             SetSelection(selectionStart);
         }
     }

@@ -67,7 +67,7 @@ namespace FarsiLibrary.Win.Controls
             
             if (mv.MonthViewControl.DefaultCulture.Equals(mv.MonthViewControl.PersianCulture))
                 scroller = new Helpers.PersianCalendarScroller(this);
-            else if (mv.MonthViewControl.DefaultCulture.Equals(mv.MonthViewControl.PersianCulture))
+            else if (mv.MonthViewControl.DefaultCulture.Equals(mv.MonthViewControl.ArabicCulture))
                 scroller = new Helpers.ArabicCalendarScroller(this);
             else
                 scroller = new Helpers.EnglishCalendarScroller(this);
