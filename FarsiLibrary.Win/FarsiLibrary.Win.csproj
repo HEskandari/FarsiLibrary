@@ -133,12 +133,12 @@
     <Compile Include="FAPopup\HookManager.cs" />
     <Compile Include="FAPopup\IHookController.cs" />
     <Compile Include="FAPopup\IPopupServiceControl.cs" />
-    <Compile Include="Helpers\ArabicCalendarScroller.cs" />
-    <Compile Include="Helpers\CalendarScroller.cs" />
+    <Compile Include="Scrollers\ArabicCalendarScroller.cs" />
+    <Compile Include="Scrollers\CalendarScroller.cs" />
     <Compile Include="Helpers\ControlUtils.cs" />
     <Compile Include="Controls\NamespaceDoc.cs" />
-    <Compile Include="Helpers\EnglishCalendarScroller.cs" />
-    <Compile Include="Helpers\PersianCalendarScroller.cs" />
+    <Compile Include="Scrollers\EnglishCalendarScroller.cs" />
+    <Compile Include="Scrollers\PersianCalendarScroller.cs" />
     <Compile Include="Win32\Enums.cs" />
     <Compile Include="Win32\Gdi32.cs" />
     <Compile Include="Win32\Msgs.cs" />
@@ -184,5 +184,6 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -29,7 +29,7 @@ namespace FarsiLibrary.Win.Controls
         private DateTime? selectedDateTime;
         private string dateseparator = ";";
         internal FAMonthViewContainer mv;
-        private Helpers.ICalendarScroller scroller;
+        private Scrollers.ICalendarScroller scroller;
 
         #endregion
 
@@ -66,13 +66,11 @@ namespace FarsiLibrary.Win.Controls
             FormatInfo = FormatInfoTypes.ShortDate;
             
             if (mv.MonthViewControl.DefaultCulture.Equals(mv.MonthViewControl.PersianCulture))
-                scroller = new Helpers.PersianCalendarScroller(this);
+                scroller = new Scrollers.PersianCalendarScroller(this);
             else if (mv.MonthViewControl.DefaultCulture.Equals(mv.MonthViewControl.ArabicCulture))
-                scroller = new Helpers.ArabicCalendarScroller(this);
+                scroller = new Scrollers.ArabicCalendarScroller(this);
             else
-                scroller = new Helpers.EnglishCalendarScroller(this);
-
-
+                scroller = new Scrollers.EnglishCalendarScroller(this);
 
         }
 

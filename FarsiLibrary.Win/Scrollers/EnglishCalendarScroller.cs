@@ -1,7 +1,7 @@
 ﻿using FarsiLibrary.Win.Controls;
 using System;
 
-namespace FarsiLibrary.Win.Helpers
+namespace FarsiLibrary.Win.Scrollers
 {
     class EnglishCalendarScroller : ICalendarScroller
     {
@@ -35,7 +35,7 @@ namespace FarsiLibrary.Win.Helpers
 
         }
 
-        bool ICalendarScroller.CanScroll
+        public bool CanScroll
         {
             get
             {
