@@ -13,8 +13,8 @@ using FarsiLibrary.Win.Events;
 namespace FarsiLibrary.Win.Controls
 {
     /// <summary>
-    /// A datepicker control which can select date in <see cref="System.Globalization.GregorianCalendar"/>, <see cref="PersianCalendar" /> and <see cref="System.Globalization.HijriCalendar"/> based on current thread's Culture and UICulture. 
-    /// 
+    /// A datepicker control which can select date in <see cref="System.Globalization.GregorianCalendar"/>, <see cref="PersianCalendar" /> and <see cref="System.Globalization.HijriCalendar"/> based on current thread's Culture and UICulture.
+    ///
     /// To know how to display the control in other cultures and calendars, please see <see cref="FAMonthView"/> control's documentation.
     /// </summary>
     [ToolboxItem(true)]
@@ -29,8 +29,9 @@ namespace FarsiLibrary.Win.Controls
         private DateTime? selectedDateTime;
         private string dateseparator = ";";
         internal FAMonthViewContainer mv;
+        private Scrollers.ICalendarScroller scroller;
 
-	    #endregion
+        #endregion
 
         #region Events
 
@@ -63,12 +64,20 @@ namespace FarsiLibrary.Win.Controls
             PopupShowing += OnInternalPopupShowing;
             Text = FALocalizeManager.Instance.GetLocalizerByCulture(mv.MonthViewControl.DefaultCulture).GetLocalizedString(StringID.Validation_NullText);
             FormatInfo = FormatInfoTypes.ShortDate;
+            
+            if (mv.MonthViewControl.DefaultCulture.Equals(mv.MonthViewControl.PersianCulture))
+                scroller = new Scrollers.PersianCalendarScroller(this);
+            else if (mv.MonthViewControl.DefaultCulture.Equals(mv.MonthViewControl.ArabicCulture))
+                scroller = new Scrollers.ArabicCalendarScroller(this);
+            else
+                scroller = new Scrollers.EnglishCalendarScroller(this);
+
         }
 
         #endregion
 
         #region Props
-        
+
         /// <summary>
         /// Determines if the control has not made any selection yet.
         /// </summary>
@@ -114,7 +123,7 @@ namespace FarsiLibrary.Win.Controls
             get { return mv.MonthViewControl.ShowTodayButton; }
             set { mv.MonthViewControl.ShowTodayButton = value; }
         }
-        
+
         /// <summary>
         /// Gets or Sets to show a border around the MonthView control.
         /// </summary>
@@ -215,7 +224,7 @@ namespace FarsiLibrary.Win.Controls
 		}
 
         /// <summary>
-        /// Gets or Sets the character that separates date values when control 
+        /// Gets or Sets the character that separates date values when control
         /// is in MultiSelect mode.
         /// </summary>
         [DefaultValue(";")]
@@ -286,10 +295,10 @@ namespace FarsiLibrary.Win.Controls
         {
             var oldValue = selectedDateTime;
             var newValue = dt;
-            
+
             var changeArgs = new SelectedDateTimeChangingEventArgs(newValue, oldValue);
             OnSelectedDateTimeChanging(changeArgs);
-            
+
             if (changeArgs.Cancel)
             {
                 if(string.IsNullOrEmpty(changeArgs.Message))
@@ -303,7 +312,7 @@ namespace FarsiLibrary.Win.Controls
 
                 return;
             }
-            
+
             if(!string.IsNullOrEmpty(changeArgs.Message))
             {
                 Error.SetError(this, changeArgs.Message);
@@ -437,7 +446,7 @@ namespace FarsiLibrary.Win.Controls
                 return DateTime.Parse(value);
             }
         }
-        
+
         #endregion
 
         #region ShouldSerialize and Reset
@@ -457,6 +466,34 @@ namespace FarsiLibrary.Win.Controls
         public void ResetSelectedDateTime()
         {
             SelectedDateTime = null;
+        }
+
+        #endregion
+
+        #region Overrides
+
+        protected override void OnMouseWheel(MouseEventArgs e)
+        {
+            if (scroller.CanScroll)
+            {
+                scroller.SetDate(e.Delta);
+            }
+          
+            base.OnMouseWheel(e);
+        }
+
+        protected override void OnMouseDown(MouseEventArgs e)
+        {
+            base.OnMouseDown(e);
+
+            if (IsReadonly)
+                return;
+            if (!scroller.CanScroll)
+                return;
+
+            scroller.SetSelection(SelectionStart);
+
+            
         }
 
         #endregion
