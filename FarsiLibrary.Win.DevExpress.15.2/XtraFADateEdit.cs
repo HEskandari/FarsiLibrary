@@ -339,7 +339,7 @@ namespace FarsiLibrary.Win.DevExpress
     }
 
 
-    public class PersianDateTimeMaskManager : MaskManagerPlainText
+    public class PersianDateTimeMaskManager : TextMaskManager
     {
     }
 }
