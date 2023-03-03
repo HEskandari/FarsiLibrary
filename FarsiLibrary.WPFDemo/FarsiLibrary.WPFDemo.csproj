@@ -12,7 +12,7 @@
     <StartupObject>FarsiLibrary.WPFDemo.Program</StartupObject>
     <ProductVersion>9.0.30729</ProductVersion>
     <OutputPath>..\binaries\</OutputPath>
-    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup>
@@ -178,7 +178,9 @@
     <Reference Include="PresentationFramework" />
     <Reference Include="System.Xaml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="app.config" />
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\Logo.png" />
   </ItemGroup>
