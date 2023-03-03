@@ -6,13 +6,13 @@
     <ProjectType>Local</ProjectType>
     <ProductVersion>9.0.30729</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{D0E90437-9EEA-4A34-BF68-093D1717B76D}</ProjectGuid>
+    <ProjectGuid>{240A0D2C-5E44-4C05-8995-EE63E4AE9D0E}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <AssemblyName>FarsiLibrary.Win.DevExpress.16.1</AssemblyName>
+    <AssemblyName>FarsiLibrary.Win.DevExpress.15.2</AssemblyName>
     <RootNamespace>FarsiLibrary.Win.DevExpress</RootNamespace>
     <OutputPath>..\binaries\</OutputPath>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup>
@@ -25,58 +25,43 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="..\FarsiLibrary.Win.DevExpress.15.2\RepositoryItemDateEditExtentions.cs">
-      <Link>RepositoryItemDateEditExtentions.cs</Link>
-    </Compile>
-    <Compile Include="..\FarsiLibrary.Win.DevExpress.15.2\RepositoryItemFADatePicker.cs">
-      <Link>RepositoryItemFADatePicker.cs</Link>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="..\FarsiLibrary.Win.DevExpress.15.2\XtraFACalendar.cs">
-      <Link>XtraFACalendar.cs</Link>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="..\FarsiLibrary.Win.DevExpress.15.2\XtraFADateEdit.cs">
-      <Link>XtraFADateEdit.cs</Link>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="..\FarsiLibrary.Win.DevExpress.15.2\XtraFADateEdit.Vista.cs">
-      <Link>XtraFADateEdit.Vista.cs</Link>
-    </Compile>
-    <Compile Include="..\FarsiLibrary.Win.DevExpress.15.2\XtraFADatePicker.cs">
-      <Link>XtraFADatePicker.cs</Link>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="..\FarsiLibrary.Win.DevExpress.15.2\XtraFAMonthView.cs">
-      <Link>XtraFAMonthView.cs</Link>
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="..\Solution Items\CommonAssemblyInfo.cs">
       <Link>Properties\CommonAssemblyInfo.cs</Link>
     </Compile>
-    <Compile Include="XtraFADateEdit.TouchUI.cs" />
+    <Compile Include="RepositoryItemDateEditExtentions.cs" />
+    <Compile Include="XtraFACalendar.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="XtraFADateEdit.Vista.cs" />
+    <Compile Include="RepositoryItemFADatePicker.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="XtraFADateEdit.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="XtraFADatePicker.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="XtraFAMonthView.cs">
+      <SubType>Component</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="DevExpress.Drawing.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+    <Reference Include="DevExpress.Data.v15.2, Version=15.2.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\DevExpress\DevExpress.Data.v15.2.dll</HintPath>
     </Reference>
-    <Reference Include="DevExpress.Printing.v22.2.Core, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+    <Reference Include="DevExpress.Utils.v15.2, Version=15.2.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\DevExpress\DevExpress.Utils.v15.2.dll</HintPath>
     </Reference>
-    <Reference Include="DevExpress.Data.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+    <Reference Include="DevExpress.XtraEditors.v15.2, Version=15.2.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\DevExpress\DevExpress.XtraEditors.v15.2.dll</HintPath>
     </Reference>
-    <Reference Include="DevExpress.Data.Desktop.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+    <Reference Include="DevExpress.XtraGrid.v15.2, Version=15.2.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-    </Reference>
-    <Reference Include="DevExpress.Utils.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-    </Reference>
-    <Reference Include="DevExpress.XtraEditors.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-    </Reference>
-    <Reference Include="DevExpress.XtraGrid.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\DevExpress\DevExpress.XtraGrid.v15.2.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -104,6 +89,10 @@
       <Project>{83c3aeb8-5322-4db6-9e7e-4bf8a319dce7}</Project>
       <Name>FarsiLibrary.Win</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="XtraFADateEdit.TouchUI.cs">
+    </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
