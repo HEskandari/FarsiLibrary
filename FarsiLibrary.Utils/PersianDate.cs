@@ -76,6 +76,8 @@ namespace FarsiLibrary.Utils
 
         /// <summary>
         /// Current date/time in PersianDate format.
+        /// To Set format like : HH:mm yyyy/mm/dd e.g. '13:36 1403/04/26'
+        /// PersianDate.Now.ToString("HH:mm yyyy/mm/dd");
         /// </summary>
         [Description("Current date/time in PersianDate format")]
         public static PersianDate Now
@@ -1017,7 +1019,14 @@ namespace FarsiLibrary.Utils
                     //'yyyy mm dd dddd' e.g. 'دوشنبه 20 شهریور 1384'
                     return string.Format("{0} {1} {2} {3}", LocalizedWeekDayName, Util.toDouble(Day), LocalizedMonthName, Year);
 
+                case "yyyy/mm/dd HH:mm":
+                //ShortDatePattern yyyy/mm/dd HH:mm e.g. '1403/04/26 13:36'
+                return string.Format("{0}/{1}/{2} {3}:{4}", Year, Util.toDouble(Month), Util.toDouble(Day), Util.toDouble(Hour),Util.toDouble(Minute));
 
+                case "HH:mm yyyy/mm/dd":
+                //ShortDatePattern HH:mm yyyy/mm/dd e.g. '13:36 1403/04/26'
+                return string.Format("{0}:{1} {2}/{3}/{4}",Util.toDouble(Hour),Util.toDouble(Minute), Year, Util.toDouble(Month), Util.toDouble(Day));
+                    
                 case "f":
                     //'hh:mm yyyy mmmm dd dddd' e.g. 'دوشنبه 20 شهریور 1384 21:30'
                     return string.Format("{0} {1} {2} {3} {4}:{5}", LocalizedWeekDayName, Util.toDouble(Day), LocalizedMonthName, Year, Util.toDouble(Hour), Util.toDouble(Minute));
