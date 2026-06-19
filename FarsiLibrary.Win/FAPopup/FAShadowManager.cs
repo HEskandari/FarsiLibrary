@@ -177,7 +177,9 @@ namespace FarsiLibrary.Win.FAPopup
             foreach (DictionaryEntry entry in shadows)
             {
                 FAShadow shadow = entry.Value as FAShadow;
+                var oldRegion = shadow.Region;
                 shadow.Region = GetShadowRegion(shadow.RealBounds);
+                oldRegion?.Dispose();
             }
         }
 

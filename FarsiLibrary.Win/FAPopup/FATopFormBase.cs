@@ -51,9 +51,9 @@ namespace FarsiLibrary.Win.FAPopup
 
         #endregion
 
-        #region Ctor
+        #region Ctor & Dispose
 
-   		public FATopFormBase() 
+        public FATopFormBase() 
         {
             shadows = new ArrayList();
             RightToLeft = RightToLeft.Yes;
@@ -71,6 +71,14 @@ namespace FarsiLibrary.Win.FAPopup
 			SetStyle(ControlStyles.AllPaintingInWmPaint, true);
 		}
 
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                FAShadow.DestroyShadows(Shadows);
+            }
+            base.Dispose(disposing);
+        }
         #endregion
 
         #region Props
