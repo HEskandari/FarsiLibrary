@@ -448,6 +448,20 @@ namespace FarsiLibrary.Win.Controls
         {
         }
 
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                FALocalizeManager.Instance.LocalizerChanged -= OnLocalizerChanged;
+
+                var font = base.Font;
+                base.Font = null;
+                font?.Dispose();
+            }
+
+            base.Dispose(disposing);
+        }
+
         #endregion
 
         #region Paint Methods

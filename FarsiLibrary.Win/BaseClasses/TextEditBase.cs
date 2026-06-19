@@ -716,6 +716,32 @@ namespace FarsiLibrary.Win.BaseClasses
             DisableTextbox(IsDisabled);
         }
 
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && TextBox != null)
+            {
+                TextBox.MouseEnter -= TextBox_MouseEnter;
+                TextBox.MouseLeave -= TextBox_MouseLeave;
+                TextBox.GotFocus -= TextBox_GotFocus;
+                TextBox.LostFocus -= TextBox_LostFocus;
+                TextBox.SizeChanged -= TextBox_SizeChanged;
+                TextBox.TextChanged -= TextBox_TextChanged;
+                TextBox.MouseUp -= InvokeMouseUp;
+                TextBox.MouseDown -= InvokeMouseDown;
+                TextBox.MouseEnter -= InvokeMouseEnter;
+                TextBox.MouseHover -= InvokeMouseHover;
+                TextBox.MouseLeave -= InvokeMouseLeave;
+                TextBox.MouseMove -= InvokeMouseMove;
+                TextBox.KeyDown -= InvokeKeyDown;
+                TextBox.KeyPress -= InvokeKeyPress;
+                TextBox.KeyUp -= InvokeKeyUp;
+                TextBox.Click -= InvokeClick;
+                TextBox.DoubleClick -= InvokeDoubleClick;
+                ThemeChanged -= OnThemeChanged;
+            }
+
+            base.Dispose(disposing);
+        }
         #endregion
     }
 }

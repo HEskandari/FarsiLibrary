@@ -46,7 +46,7 @@ namespace FarsiLibrary.Win.Controls
 
         #endregion
 
-        #region Ctor
+        #region Ctor & Dispose
 
         /// <summary>
         /// Creates a new instance of FADatePicker class.
@@ -65,10 +65,31 @@ namespace FarsiLibrary.Win.Controls
             FormatInfo = FormatInfoTypes.ShortDate;
         }
 
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                FALocalizeManager.Instance.LocalizerChanged -= OnInternalLocalizerChanged;
+                RightToLeftChanged -= OnInternalRightToLeftChanged;
+                PopupShowing -= OnInternalPopupShowing;
+
+                if (mv != null)
+                {
+                    mv.MonthViewControl.SelectedDateTimeChanged -= OnMVSelectedDateTimeChanged;
+                    mv.MonthViewControl.SelectedDateRangeChanged -= OnMVSelectedDateRangeChanged;
+                    mv.MonthViewControl.ButtonClicked -= OnMVButtonClicked;
+                    mv.Dispose();
+                    mv = null;
+                }
+            }
+
+            base.Dispose(disposing);
+        }
+
         #endregion
 
         #region Props
-        
+
         /// <summary>
         /// Determines if the control has not made any selection yet.
         /// </summary>
