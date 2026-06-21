@@ -69,18 +69,7 @@ namespace FarsiLibrary.Win.Controls
         {
             if (disposing)
             {
-                FALocalizeManager.Instance.LocalizerChanged -= OnInternalLocalizerChanged;
-                RightToLeftChanged -= OnInternalRightToLeftChanged;
-                PopupShowing -= OnInternalPopupShowing;
-
-                if (mv != null)
-                {
-                    mv.MonthViewControl.SelectedDateTimeChanged -= OnMVSelectedDateTimeChanged;
-                    mv.MonthViewControl.SelectedDateRangeChanged -= OnMVSelectedDateRangeChanged;
-                    mv.MonthViewControl.ButtonClicked -= OnMVButtonClicked;
-                    mv.Dispose();
-                    mv = null;
-                }
+                DisposeComponents();
             }
 
             base.Dispose(disposing);
@@ -478,6 +467,26 @@ namespace FarsiLibrary.Win.Controls
         public void ResetSelectedDateTime()
         {
             SelectedDateTime = null;
+        }
+
+        #endregion
+
+        #region Methods
+
+        private void DisposeComponents()
+        {
+            FALocalizeManager.Instance.LocalizerChanged -= OnInternalLocalizerChanged;
+            RightToLeftChanged -= OnInternalRightToLeftChanged;
+            PopupShowing -= OnInternalPopupShowing;
+
+            if (mv != null)
+            {
+                mv.MonthViewControl.SelectedDateTimeChanged -= OnMVSelectedDateTimeChanged;
+                mv.MonthViewControl.SelectedDateRangeChanged -= OnMVSelectedDateRangeChanged;
+                mv.MonthViewControl.ButtonClicked -= OnMVButtonClicked;
+                mv.Dispose();
+                mv = null;
+            }
         }
 
         #endregion

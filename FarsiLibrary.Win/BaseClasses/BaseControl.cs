@@ -62,9 +62,7 @@ namespace FarsiLibrary.Win.BaseClasses
         {
             if (disposing)
             {
-                error?.Dispose();
-                font?.Dispose();
-                font = null;
+                DisposeComponents();
             }
 
             base.Dispose(disposing);
@@ -672,6 +670,17 @@ namespace FarsiLibrary.Win.BaseClasses
         /// Fires when every Property of the control changes.
         /// </summary>
         public virtual event PropertyChangedEventHandler PropertyChanged;
+
+        #endregion
+
+        #region Methods
+
+        private void DisposeComponents()
+        {
+            error?.Dispose();
+            font?.Dispose();
+            font = null;
+        }
 
         #endregion
     }

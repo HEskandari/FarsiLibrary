@@ -452,11 +452,7 @@ namespace FarsiLibrary.Win.Controls
         {
             if (disposing)
             {
-                FALocalizeManager.Instance.LocalizerChanged -= OnLocalizerChanged;
-
-                var font = base.Font;
-                base.Font = null;
-                font?.Dispose();
+                DisposeComponents();
             }
 
             base.Dispose(disposing);
@@ -1478,6 +1474,15 @@ namespace FarsiLibrary.Win.Controls
         private void ResetAllRectangleStates()
         {
             rects.ForEach(x => x.State = TRectangleStatus.Normal);
+        }
+
+        private void DisposeComponents()
+        {
+            FALocalizeManager.Instance.LocalizerChanged -= OnLocalizerChanged;
+
+            var font = base.Font;
+            base.Font = null;
+            font?.Dispose();
         }
 
         #endregion

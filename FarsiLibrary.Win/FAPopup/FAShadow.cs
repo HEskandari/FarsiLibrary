@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.Drawing.Drawing2D;
@@ -138,12 +139,7 @@ namespace FarsiLibrary.Win.FAPopup
         {
             if (shadows.Count < 1) return;
 
-            foreach (FAShadow shadow in shadows)
-            {
-                var old = shadow.Region;
-                shadow.Region = null;
-                old?.Dispose();
-            }
+            DisposeShadows(shadows);
 
             if (creatorRect1.IsEmpty && creatorRect2.IsEmpty) return;
 
@@ -157,10 +153,21 @@ namespace FarsiLibrary.Win.FAPopup
                     if (!i1.IsEmpty) reg.Exclude(i1);
                     if (!i2.IsEmpty) reg.Exclude(i2);
 
-                    var oldRegion = shadow.Region;
                     shadow.Region = reg;
-                    oldRegion?.Dispose();
                 }
+            }
+        }
+
+        private static void DisposeShadows(ArrayList shadows)
+        {
+            if (shadows == null || shadows.Count < 1)
+                return;
+
+            foreach (FAShadow shadow in shadows)
+            {
+                var oldRegion = shadow.Region;
+                shadow.Region = null;
+                oldRegion?.Dispose();
             }
         }
 

@@ -75,10 +75,11 @@ namespace FarsiLibrary.Win.FAPopup
         {
             if (disposing)
             {
-                FAShadow.DestroyShadows(Shadows);
+                DisposeComponents();
             }
             base.Dispose(disposing);
         }
+
         #endregion
 
         #region Props
@@ -254,6 +255,11 @@ namespace FarsiLibrary.Win.FAPopup
             if (lockUpdate != 0) return;
             if (!IsHandleCreated) return;
             Invalidate();
+        }
+
+        private void DisposeComponents()
+        {
+            FAShadow.DestroyShadows(Shadows);
         }
 
         #endregion

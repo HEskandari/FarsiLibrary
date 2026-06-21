@@ -35,10 +35,9 @@ namespace FarsiLibrary.Win.Drawing
         public void DrawVerticalSeparator(Graphics g, Point from, Point to)
         {
             using (Pen pen1 = new Pen(SystemColors.ControlDark))
-                g.DrawLine(pen1, from, to);
-
             using (Pen pen2 = new Pen(SystemColors.ControlLightLight))
             {
+                g.DrawLine(pen1, from, to);
                 from.X += 1;
                 to.X += 1;
                 g.DrawLine(pen2, from, to);
