@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.Drawing.Drawing2D;
@@ -137,11 +138,11 @@ namespace FarsiLibrary.Win.FAPopup
         public static void UpdateShadows(ArrayList shadows, Rectangle creatorRect1, Rectangle creatorRect2, int shadowSize)
         {
             if (shadows.Count < 1) return;
-            foreach (FAShadow shadow in shadows)
-                shadow.Region = null;
-            
+
+            DisposeShadows(shadows);
+
             if (creatorRect1.IsEmpty && creatorRect2.IsEmpty) return;
-            
+
             foreach (FAShadow shadow in shadows)
             {
                 Rectangle i1 = CheckShadowIntersects(shadow.RealBounds, creatorRect1),
@@ -151,8 +152,22 @@ namespace FarsiLibrary.Win.FAPopup
                     Region reg = new Region(CheckRectangle(new Rectangle(Point.Empty, shadow.RealBounds.Size)));
                     if (!i1.IsEmpty) reg.Exclude(i1);
                     if (!i2.IsEmpty) reg.Exclude(i2);
+
                     shadow.Region = reg;
                 }
+            }
+        }
+
+        private static void DisposeShadows(ArrayList shadows)
+        {
+            if (shadows == null || shadows.Count < 1)
+                return;
+
+            foreach (FAShadow shadow in shadows)
+            {
+                var oldRegion = shadow.Region;
+                shadow.Region = null;
+                oldRegion?.Dispose();
             }
         }
 

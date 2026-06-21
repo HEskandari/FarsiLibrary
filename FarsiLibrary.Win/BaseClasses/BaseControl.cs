@@ -31,9 +31,9 @@ namespace FarsiLibrary.Win.BaseClasses
         private TextAlignment textHorizontalAlignment;
         private TextAlignment textVerticalAlignment;
 
-		#endregion
+        #endregion
 
-		#region Ctor & Dispose
+        #region Ctor & Dispose
 
 
         /// <summary>
@@ -58,10 +58,20 @@ namespace FarsiLibrary.Win.BaseClasses
             SetStyle(ControlStyles.ResizeRedraw, true);
         }
 
-		#endregion
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                DisposeComponents();
+            }
 
-    	#region Props
-        
+            base.Dispose(disposing);
+        }
+
+        #endregion
+
+        #region Props
+
         /// <summary>
         /// Specifies to use WordWrapping displaying the Text of the control.
         /// </summary>
@@ -660,6 +670,17 @@ namespace FarsiLibrary.Win.BaseClasses
         /// Fires when every Property of the control changes.
         /// </summary>
         public virtual event PropertyChangedEventHandler PropertyChanged;
+
+        #endregion
+
+        #region Methods
+
+        private void DisposeComponents()
+        {
+            error?.Dispose();
+            font?.Dispose();
+            font = null;
+        }
 
         #endregion
     }

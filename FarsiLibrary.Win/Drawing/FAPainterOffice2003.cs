@@ -25,8 +25,8 @@ namespace FarsiLibrary.Win.Drawing
 
         public virtual void DrawVerticalSeparator(Graphics g, Point from, Point to)
         {
-            Pen pen1 = new Pen(Office2003Colors.Default[Office2003Color.Border]);
-            g.DrawLine(pen1, from, to);
+            using (Pen pen1 = new Pen(Office2003Colors.Default[Office2003Color.Border]))
+                g.DrawLine(pen1, from, to);
         }
 
         public virtual void DrawFilledBackground(Graphics g, Rectangle rectangle, bool isGradient, float angle)

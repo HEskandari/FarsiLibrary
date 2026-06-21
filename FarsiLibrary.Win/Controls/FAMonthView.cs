@@ -448,6 +448,16 @@ namespace FarsiLibrary.Win.Controls
         {
         }
 
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                DisposeComponents();
+            }
+
+            base.Dispose(disposing);
+        }
+
         #endregion
 
         #region Paint Methods
@@ -1464,6 +1474,15 @@ namespace FarsiLibrary.Win.Controls
         private void ResetAllRectangleStates()
         {
             rects.ForEach(x => x.State = TRectangleStatus.Normal);
+        }
+
+        private void DisposeComponents()
+        {
+            FALocalizeManager.Instance.LocalizerChanged -= OnLocalizerChanged;
+
+            var font = base.Font;
+            base.Font = null;
+            font?.Dispose();
         }
 
         #endregion

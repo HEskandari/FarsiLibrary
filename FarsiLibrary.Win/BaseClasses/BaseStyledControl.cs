@@ -129,6 +129,13 @@ namespace FarsiLibrary.Win.BaseClasses
             Theme = FAThemeManager.Theme;
         }
 
+        private void DisposeComponent()
+        {
+            FAThemeManager.ManagerThemeChanged -= OnInternalManagerThemeChanged;
+            format?.Dispose();
+            format = null;
+        }
+
         #endregion
 
         #region Props
@@ -252,22 +259,21 @@ namespace FarsiLibrary.Win.BaseClasses
             if (!DesignMode && Theme != FAThemeManager.Theme && FAThemeManager.UseGlobalThemes)
                 Theme = FAThemeManager.Theme;
         }
-        
+
         #endregion
 
         #region Dispose
 
         protected override void Dispose(bool disposing)
         {
-            if(disposing)
+            if (disposing)
             {
-                format?.Dispose();
-                format = null;
+                DisposeComponent();
             }
 
             base.Dispose(disposing);
         }
-        
+
         #endregion
     }
 }
