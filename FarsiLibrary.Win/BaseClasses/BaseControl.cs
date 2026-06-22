@@ -505,9 +505,7 @@ namespace FarsiLibrary.Win.BaseClasses
             var f = FindForm();
             if (f != null)
             {
-                var ctrl = f.GetNextControl(this, true);
-                if (ctrl != null) 
-                    ctrl.Focus();
+                f.SelectNextControl(f.ActiveControl, true, true, true, true);
             }
         }
 
