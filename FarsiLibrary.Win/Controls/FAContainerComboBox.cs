@@ -25,6 +25,7 @@ namespace FarsiLibrary.Win.Controls
         private bool readOnly;
         private bool isButtonHot;
         private bool isButtonPressed;
+        private EnterKeyBehavior enterKeyBehavior = EnterKeyBehavior.DropDown;
 
         #endregion
 
@@ -84,6 +85,18 @@ namespace FarsiLibrary.Win.Controls
 
                 Repaint();
             }
+        }
+
+        /// <summary>  
+        /// Determines the behavior of the Enter key when the control has focus.  
+        /// </summary>  
+        [DefaultValue(EnterKeyBehavior.DropDown)]
+        [Description("Determines the behavior of the Enter key when the control has focus.")]
+        [Category("Behavior")]
+        public EnterKeyBehavior EnterKeyBehavior
+        {
+            get { return enterKeyBehavior; }
+            set { enterKeyBehavior = value; }
         }
 
         #endregion
@@ -320,8 +333,27 @@ namespace FarsiLibrary.Win.Controls
                 }
                 else if (e.KeyCode == Keys.Enter)
                 {
-                    ShowDropDown();
+                    OnEnterKeyPressed(e);
                 }
+            }
+        }
+
+        protected virtual void OnEnterKeyPressed(KeyEventArgs e)
+        {
+            e?.SuppressKeyPress = true;
+
+            switch (enterKeyBehavior)
+            {
+                case EnterKeyBehavior.DropDown:
+                    ShowDropDown();
+                    break;
+
+                case EnterKeyBehavior.NextControl:
+                    FocusNextControl();
+                    break;
+
+                case EnterKeyBehavior.Nothing:
+                    break;
             }
         }
 

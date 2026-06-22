@@ -345,4 +345,25 @@ namespace FarsiLibrary.Win.Enums
         /// </summary>
         Far
     }
+
+    /// <summary>  
+    /// Specifies the behavior of the Enter key when FAContainerComboBox has focus.  
+    /// </summary>  
+    public enum EnterKeyBehavior
+    {
+        /// <summary>  
+        /// Opens the dropdown popup (default behavior).  
+        /// </summary>  
+        DropDown,
+
+        /// <summary>  
+        /// Moves focus to the next control in tab order.  
+        /// </summary>  
+        NextControl,
+
+        /// <summary>  
+        /// Does nothing.  
+        /// </summary>  
+        Nothing
+    }
 }
