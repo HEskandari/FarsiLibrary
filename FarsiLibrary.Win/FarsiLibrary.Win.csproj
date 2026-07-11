@@ -12,7 +12,7 @@
     <AssemblyName>FarsiLibrary.Win</AssemblyName>
     <RootNamespace>FarsiLibrary.Win</RootNamespace>
     <OutputPath>..\binaries\</OutputPath>
-    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <TargetFrameworkProfile />
     <LangVersion>latest</LangVersion>
   </PropertyGroup>

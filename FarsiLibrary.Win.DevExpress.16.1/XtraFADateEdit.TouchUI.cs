@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 using DevExpress.Data.Mask;
+using DevExpress.Data.Mask.Internal;
 using DevExpress.Utils.Drawing;
 using DevExpress.XtraEditors;
 using DevExpress.XtraEditors.Popup;
